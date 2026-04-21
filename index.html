@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kailami — Free Resources for VAs</title>
+<meta name="description" content="Curated sheets, trackers, and templates for virtual assistants. Built from real client work. Free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ─── HOMEPAGE-SPECIFIC ─── */
+.hero {
+  padding: 80px 0 60px;
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 60px; align-items: center;
+}
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 40px; } }
+
+h1.hero-title {
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.95; font-weight: 500; letter-spacing: -3px;
+  margin-bottom: 28px; color: #ffffff;
+}
+h1.hero-title em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic; color: #c4ff47; font-weight: 400;
+}
+.lede { font-size: 18px; line-height: 1.6; color: #b0b0b0; margin-bottom: 36px; max-width: 560px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-visual { position: relative; height: 520px; }
+@media (max-width: 900px) { .hero-visual { height: 360px; } }
+.float-card {
+  position: absolute;
+  background: #141414;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.fc-1 { top: 40px; left: 0; width: 220px; animation: float1 6s ease-in-out infinite; }
+.fc-2 { top: 180px; right: 20px; width: 240px; animation: float2 7s ease-in-out infinite; }
+.fc-3 { bottom: 40px; left: 60px; width: 200px; animation: float3 8s ease-in-out infinite; }
+@keyframes float1 { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-12px) rotate(-4deg); } }
+@keyframes float2 { 0%,100% { transform: translateY(0) rotate(3deg); } 50% { transform: translateY(-16px) rotate(3deg); } }
+@keyframes float3 { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(-2deg); } }
+
+.fc-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.fc-dot { width: 8px; height: 8px; border-radius: 50%; }
+.fc-dot.green { background: #c4ff47; }
+.fc-dot.amber { background: #ffc864; }
+.fc-dot.pink { background: #ff79c6; }
+.fc-label { font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; }
+.fc-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+.fc-bar { height: 6px; background: #1f1f1f; border-radius: 999px; overflow: hidden; margin-bottom: 6px; }
+.fc-bar-fill { height: 100%; background: #c4ff47; border-radius: 999px; }
+.fc-meta { font-size: 11px; color: #666; }
+.fc-rows { display: flex; flex-direction: column; gap: 6px; }
+.fc-row { height: 8px; background: #1f1f1f; border-radius: 4px; }
+.fc-row.short { width: 60%; }
+.fc-row.mid { width: 80%; }
+
+.stats-strip {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-top: 40px;
+}
+.stats-inner {
+  max-width: 1400px; margin: 0 auto; padding: 0 48px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 768px) { .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 0 24px; } }
+.stat {
+  padding: 40px 24px; text-align: left;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.stat:last-child { border-right: none; }
+@media (max-width: 768px) {
+  .stat:nth-child(2) { border-right: none; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+}
+.stat-num {
+  font-size: clamp(36px, 5vw, 52px); font-weight: 500; color: #c4ff47;
+  letter-spacing: -2px; line-height: 1; margin-bottom: 8px;
+}
+.stat-label { font-size: 12px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; }
+
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .tools-grid { grid-template-columns: 1fr; } }
+.tool-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; padding: 40px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 20px; min-height: 320px;
+  position: relative; overflow: hidden;
+}
+.tool-card:hover { border-color: #c4ff47; transform: translateY(-4px); }
+.tool-card::after {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+  transition: all 0.5s;
+}
+.tool-card:hover::after { top: -30%; right: -30%; }
+.tool-badge {
+  display: inline-block; background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 5px 12px; border-radius: 999px; font-weight: 500;
+  letter-spacing: 1px; text-transform: uppercase; width: fit-content;
+}
+.tool-title { font-size: 32px; font-weight: 500; color: #fff; letter-spacing: -1px; line-height: 1.1; }
+.tool-desc { font-size: 15px; color: #a0a0a0; line-height: 1.6; flex: 1; }
+.tool-link { font-size: 14px; color: #c4ff47; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.tool-link-arrow { transition: transform 0.2s; }
+.tool-card:hover .tool-link-arrow { transform: translateX(6px); }
+
+.tutorial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 900px) { .tutorial-row { grid-template-columns: 1fr; gap: 32px; } }
+.tutorial-text h3 { font-size: clamp(32px, 4vw, 44px); font-weight: 500; letter-spacing: -1.2px; color: #fff; margin-bottom: 20px; line-height: 1.05; }
+.tutorial-text h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.tutorial-text p { font-size: 16px; color: #a0a0a0; line-height: 1.7; margin-bottom: 28px; }
+.video-card {
+  background: #141414; border-radius: 20px; aspect-ratio: 16/10;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s;
+  position: relative; overflow: hidden; cursor: pointer;
+}
+.video-card:hover { border-color: #c4ff47; transform: scale(1.02); }
+.video-thumb {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0; opacity: 0.65; transition: opacity 0.3s;
+}
+.video-card:hover .video-thumb { opacity: 0.85; }
+.play-btn {
+  width: 80px; height: 80px; border-radius: 50%; background: #c4ff47;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 60px rgba(196,255,71,0.4); transition: transform 0.3s;
+  position: relative; z-index: 2;
+}
+.video-card:hover .play-btn { transform: scale(1.1); }
+.play-triangle { width: 0; height: 0; border-left: 20px solid #0a0a0a; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 5px; }
+.video-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(196,255,71,0.05), transparent 60%);
+}
+
+.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+@media (max-width: 900px) { .bento { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 540px) { .bento { grid-template-columns: 1fr; } }
+.bento-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px; transition: all 0.3s;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 200px;
+}
+.bento-card:hover { border-color: #c4ff47; transform: translateY(-3px); }
+.bento-card:hover .bento-arrow { transform: translate(4px, -4px); color: #c4ff47; }
+.bento-card.span-3 { grid-column: span 3; }
+.bento-card.span-2 { grid-column: span 2; }
+@media (max-width: 900px) { .bento-card.span-3, .bento-card.span-2 { grid-column: span 2; } }
+@media (max-width: 540px) { .bento-card.span-3, .bento-card.span-2 { grid-column: span 1; } }
+
+.bento-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: rgba(196,255,71,0.1);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.bento-icon svg { width: 22px; height: 22px; color: #c4ff47; }
+.bento-title { font-size: 20px; font-weight: 500; color: #fff; letter-spacing: -0.5px; margin-bottom: 8px; line-height: 1.2; }
+.bento-desc { font-size: 13px; color: #888; line-height: 1.5; margin-bottom: 16px; }
+.bento-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.bento-meta { font-size: 11px; color: #666; letter-spacing: 0.8px; text-transform: uppercase; }
+.bento-arrow { color: #666; font-size: 20px; transition: all 0.3s; }
+.bento-card.featured {
+  background: linear-gradient(135deg, rgba(196,255,71,0.1), rgba(196,255,71,0.02));
+  border-color: rgba(196,255,71,0.3);
+}
+.bento-card.featured .bento-title { font-size: 28px; }
+.bento-card.featured .bento-desc { font-size: 15px; color: #c0c0c0; }
+
+/* ─── WEBINARS SECTION ─── */
+.webinars-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.12) 0%, rgba(196,255,71,0.02) 100%);
+  border: 1px solid rgba(196,255,71,0.25);
+  border-radius: 28px; padding: 60px;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+  align-items: center; position: relative; overflow: hidden;
+}
+@media (max-width: 900px) { .webinars-card { grid-template-columns: 1fr; padding: 40px 32px; gap: 32px; } }
+.webinars-card::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.15), transparent 70%);
+}
+.webinars-card::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+}
+.webinars-content { position: relative; z-index: 2; }
+.webinars-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.2); color: #c4ff47;
+  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.webinars-badge-dot {
+  width: 6px; height: 6px; background: #c4ff47; border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.webinars-title {
+  font-size: clamp(32px, 4.5vw, 52px); font-weight: 500;
+  letter-spacing: -1.8px; color: #fff; line-height: 1; margin-bottom: 20px;
+}
+.webinars-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.webinars-desc { font-size: 16px; color: #c0c0c0; line-height: 1.6; margin-bottom: 28px; max-width: 480px; }
+.webinars-features { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+.webinars-feature { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #e0e0e0; }
+.webinars-check {
+  width: 22px; height: 22px; border-radius: 50%; background: #c4ff47;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.webinars-check svg { width: 12px; height: 12px; color: #0a0a0a; }
+
+.webinars-visual { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; }
+.fb-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 28px; width: 100%; max-width: 360px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.fb-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.fb-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: #1877f2;
+  display: flex; align-items: center; justify-content: center;
+}
+.fb-icon svg { width: 22px; height: 22px; color: #fff; }
+.fb-name { font-size: 15px; font-weight: 500; color: #fff; }
+.fb-meta { font-size: 12px; color: #888; }
+.fb-members { display: flex; align-items: center; gap: 8px; padding: 14px; background: rgba(196,255,71,0.05); border-radius: 12px; margin-bottom: 16px; }
+.fb-members-dot { width: 8px; height: 8px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.fb-members-text { font-size: 13px; color: #e0e0e0; }
+.fb-members-text strong { color: #c4ff47; font-weight: 600; }
+.fb-upcoming-label { font-size: 10px; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+.fb-event { display: flex; gap: 12px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 8px; }
+.fb-event-date { background: #c4ff47; color: #0a0a0a; width: 44px; height: 44px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+.fb-event-date-day { font-size: 16px; font-weight: 600; line-height: 1; }
+.fb-event-date-month { font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase; }
+.fb-event-info { flex: 1; min-width: 0; }
+.fb-event-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.fb-event-time { font-size: 11px; color: #888; }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+.testimonial {
+  padding: 32px; background: #141414; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column; gap: 20px;
+  transition: all 0.3s;
+}
+.testimonial:hover { border-color: rgba(196,255,71,0.3); transform: translateY(-3px); }
+.stars { color: #c4ff47; font-size: 14px; letter-spacing: 2px; }
+.quote { font-size: 15px; line-height: 1.6; color: #e0e0e0; flex: 1; }
+.author { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: #c4ff47;
+  color: #0a0a0a; font-size: 14px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+}
+.author-name { font-size: 14px; font-weight: 500; color: #f5f5f5; }
+.author-role { font-size: 12px; color: #888; }
+
+/* ─── ABOUT KAILAMI SECTION ─── */
+.about-block {
+  display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 48px;
+  align-items: center; margin-bottom: 48px;
+}
+@media (max-width: 900px) { .about-block { grid-template-columns: 1fr; gap: 32px; } }
+
+.about-photo-wrap {
+  position: relative; aspect-ratio: 4/5;
+  background: #141414; border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 420px; width: 100%;
+}
+@media (max-width: 900px) { .about-photo-wrap { max-width: 320px; margin: 0 auto; } }
+.about-photo {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.about-photo-fallback {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(196,255,71,0.12), rgba(196,255,71,0.02));
+  display: none; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  color: #c4ff47;
+}
+.about-photo-initials {
+  font-size: 72px; font-weight: 500; font-family: 'Instrument Serif', serif;
+  font-style: italic; color: #c4ff47; line-height: 1;
+}
+.about-photo-fallback-text {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(196,255,71,0.6); text-align: center; font-weight: 500;
+}
+
+.about-text { display: flex; flex-direction: column; gap: 18px; }
+.about-text p { font-size: 17px; color: #d0d0d0; line-height: 1.65; margin: 0; }
+.about-text p:first-child { font-size: 19px; color: #fff; font-weight: 400; line-height: 1.55; }
+.about-text strong { color: #c4ff47; font-weight: 500; }
+.about-text em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+
+.about-stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 56px;
+}
+@media (max-width: 640px) { .about-stats-row { grid-template-columns: 1fr; } }
+.about-stat {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 28px 24px;
+  transition: all 0.3s;
+}
+.about-stat:hover { border-color: rgba(196,255,71,0.3); transform: translateY(-3px); }
+.about-stat-num {
+  font-size: clamp(36px, 5vw, 48px); font-weight: 500; color: #c4ff47;
+  letter-spacing: -1.5px; line-height: 1; margin-bottom: 8px;
+}
+.about-stat-label { font-size: 12px; color: #888; letter-spacing: 1px; text-transform: uppercase; }
+
+/* Client testimonials */
+.client-testimonials { margin-bottom: 56px; }
+.client-test-head { margin-bottom: 28px; }
+.client-test-title { font-size: clamp(26px, 4vw, 40px); font-weight: 500; letter-spacing: -1.2px; color: #fff; line-height: 1; }
+.client-test-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.client-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .client-test-grid { grid-template-columns: 1fr; } }
+.client-test-card {
+  padding: 28px; background: #141414; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column; gap: 18px;
+  transition: all 0.3s;
+}
+.client-test-card:hover { border-color: rgba(196,255,71,0.3); transform: translateY(-3px); }
+.avatar.biz { background: #1a1a1a; color: #c4ff47; border: 1px solid rgba(196,255,71,0.3); }
+
+/* Contact card */
+.contact-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.12), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3); border-radius: 28px;
+  padding: 60px; text-align: center;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 640px) { .contact-card { padding: 40px 28px; } }
+.contact-card::before {
+  content: ''; position: absolute; top: -100px; left: -100px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.15), transparent 70%);
+}
+.contact-card::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.1), transparent 70%);
+}
+.contact-content { position: relative; z-index: 2; }
+.contact-title {
+  font-size: clamp(28px, 4.5vw, 44px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1; margin-bottom: 16px;
+}
+.contact-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.contact-sub {
+  font-size: 16px; color: #c0c0c0; line-height: 1.6;
+  max-width: 480px; margin: 0 auto 28px;
+}
+
+/* ─── SOCIALS ─── */
+.socials-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .socials-row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .socials-row { grid-template-columns: 1fr; } }
+.social-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px; display: flex; flex-direction: column;
+  gap: 16px; transition: all 0.3s;
+}
+.social-card:hover { border-color: #c4ff47; transform: translateY(-3px); }
+.social-card:hover .social-arrow { color: #c4ff47; transform: translate(4px, -4px); }
+.social-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(196,255,71,0.1); display: flex; align-items: center; justify-content: center; }
+.social-icon svg { width: 22px; height: 22px; color: #c4ff47; }
+.social-footer { display: flex; justify-content: space-between; align-items: flex-end; }
+.social-label { font-size: 16px; color: #fff; font-weight: 500; margin-bottom: 4px; }
+.social-handle { font-size: 12px; color: #888; }
+.social-arrow { color: #666; font-size: 18px; transition: all 0.3s; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="#tools">Tools</a>
+<a href="#resources">Resources</a>
+<a href="#webinars">Webinars</a>
+<a href="#about">Hire a VA</a>
+</div>
+<a href="#resources" class="nav-cta">Get resources →</a>
+</div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero">
+<div>
+<div class="tag-chip"><span class="tag-dot"></span>Free for VAs</div>
+<h1 class="hero-title">Tools that make VAs <em>actually</em> efficient.</h1>
+<p class="lede">Curated sheets, trackers, templates, and interactive tools built from real client work — helping 20,000+ VAs land real clients.</p>
+<div class="cta-row">
+<a href="#resources" class="btn btn-primary">Browse resources ↓</a>
+<a href="https://drive.google.com/file/d/1eZk1O8vDQS-iyyCjcxNWt3QcckA_pLcn/view" target="_blank" class="btn btn-ghost">Watch tutorial ▸</a>
+</div>
+</div>
+
+<div class="hero-visual">
+<div class="float-card fc-1">
+<div class="fc-header"><div class="fc-dot green"></div><div class="fc-label">Niche quiz</div></div>
+<div class="fc-title">Executive Assistant</div>
+<div class="fc-bar"><div class="fc-bar-fill" style="width: 88%;"></div></div>
+<div class="fc-meta">88% match</div>
+</div>
+
+<div class="float-card fc-2">
+<div class="fc-header"><div class="fc-dot amber"></div><div class="fc-label">Client tracker</div></div>
+<div class="fc-rows">
+<div class="fc-row"></div>
+<div class="fc-row mid"></div>
+<div class="fc-row short"></div>
+<div class="fc-row mid"></div>
+</div>
+</div>
+
+<div class="float-card fc-3">
+<div class="fc-header"><div class="fc-dot pink"></div><div class="fc-label">Step 4 / 7</div></div>
+<div class="fc-title">Build your portfolio</div>
+<div class="fc-bar"><div class="fc-bar-fill" style="width: 57%;"></div></div>
+<div class="fc-meta">4 of 7 complete</div>
+</div>
+</div>
+</section>
+
+</div>
+
+<div class="stats-strip">
+<div class="stats-inner">
+<div class="stat"><div class="stat-num">20K+</div><div class="stat-label">VAs helped</div></div>
+<div class="stat"><div class="stat-num">5.0</div><div class="stat-label">Average rating</div></div>
+<div class="stat"><div class="stat-num">4yr</div><div class="stat-label">Experience</div></div>
+<div class="stat"><div class="stat-num">7</div><div class="stat-label">Free resources</div></div>
+</div>
+</div>
+
+<div class="wrap">
+
+<section id="tools">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">Interactive tools</div>
+<h2 class="section-title">Find your <em>path</em>.</h2>
+</div>
+<p class="section-sub">Not sure where to start? These three free interactive tools guide you from picking a niche to writing your profile — no guesswork.</p>
+</div>
+
+<div class="tools-grid fade-in">
+<a href="niche-quiz.html" class="tool-card">
+<span class="tool-badge">Quiz</span>
+<h3 class="tool-title">Niche finder quiz</h3>
+<p class="tool-desc">Answer 15 questions and get your top 3 matched VA niches with detailed descriptions and typical tasks.</p>
+<div class="tool-link">Take the quiz <span class="tool-link-arrow">→</span></div>
+</a>
+
+<a href="beginner-checklist.html" class="tool-card">
+<span class="tool-badge">7-step plan</span>
+<h3 class="tool-title">Beginner roadmap</h3>
+<p class="tool-desc">A full step-by-step path from zero experience to landing your first client. Progress saves automatically.</p>
+<div class="tool-link">Start the plan <span class="tool-link-arrow">→</span></div>
+</a>
+
+<a href="about-generator.html" class="tool-card">
+<span class="tool-badge">AI generator</span>
+<h3 class="tool-title">About section generator</h3>
+<p class="tool-desc">Fill a short form and get a polished About section for your Upwork or OnlineJobs profile using free AI. Takes 3 minutes.</p>
+<div class="tool-link">Build my About <span class="tool-link-arrow">→</span></div>
+</a>
+</div>
+</section>
+
+<section id="tutorial">
+<div class="tutorial-row fade-in">
+<a href="https://drive.google.com/file/d/1eZk1O8vDQS-iyyCjcxNWt3QcckA_pLcn/view" target="_blank">
+<div class="video-card">
+<img src="https://drive.google.com/thumbnail?id=1eZk1O8vDQS-iyyCjcxNWt3QcckA_pLcn&sz=w1200" alt="Tutorial video thumbnail" class="video-thumb" onerror="this.style.display='none'">
+<div class="play-btn"><div class="play-triangle"></div></div>
+</div>
+</a>
+<div class="tutorial-text">
+<div class="eyebrow">Start here</div>
+<h3>How to use <em>everything</em> in this library.</h3>
+<p>A walkthrough showing exactly how to copy, customize, and use every template. If you only watch one thing, make it this.</p>
+<a href="https://drive.google.com/file/d/1eZk1O8vDQS-iyyCjcxNWt3QcckA_pLcn/view" target="_blank" class="btn btn-primary">Watch now ▸</a>
+</div>
+</div>
+</section>
+
+<section id="resources">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">The resources</div>
+<h2 class="section-title">Built from <em>real</em> client work.</h2>
+</div>
+<p class="section-sub">Click any to open. Always make your own copy first (File → Make a Copy) before editing.</p>
+</div>
+
+<div class="bento fade-in">
+
+<a href="https://www.canva.com/design/DAG9v9AUyGI/Dn5tvvlunQQX1bRXRYpwKg/edit" target="_blank" class="bento-card featured span-3">
+<div>
+<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.52 0-2.95.41-4.18 1.123v13C3.05 17.16 4.48 16.75 6 16.75c2.3 0 4.4.9 6 2.292m0-13.416c1.6-1.4 3.7-2.292 6-2.292 1.52 0 2.95.41 4.18 1.123v13A9.001 9.001 0 0018 16.75c-2.3 0-4.4.9-6 2.292m0-13.416v13.416"/></svg></div>
+<div class="bento-title">Free live portfolio template</div>
+<div class="bento-desc">A fully designed Canva portfolio template you can customize with your own work — ready to share with clients in under an hour.</div>
+</div>
+<div class="bento-footer"><div class="bento-meta">Canva · Editable</div><div class="bento-arrow">↗</div></div>
+</a>
+
+<a href="https://chatgpt.com/g/g-696657703bbc81919a41044a3bc04420-cover-letters-by-vast" target="_blank" class="bento-card span-3">
+<div>
+<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+<div class="bento-title">AI cover letter writer</div>
+<div class="bento-desc">A custom GPT that writes personalized cover letters for any job post. Paste the listing, get a ready-to-send draft.</div>
+</div>
+<div class="bento-footer"><div class="bento-meta">Custom GPT · AI-powered</div><div class="bento-arrow">↗</div></div>
+</a>
+
+<a href="https://docs.google.com/document/d/1xpw0HbdV_9GcEn02xgyClqc6sIQi290XS5u-tA9uCpw/edit?usp=sharing" target="_blank" class="bento-card span-2">
+<div>
+<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+<div class="bento-title">Resume template</div>
+<div class="bento-desc">Harvard format. Clean, scannable, client-ready.</div>
+</div>
+<div class="bento-footer"><div class="bento-meta">Google Doc</div><div class="bento-arrow">↗</div></div>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/19r_0XatVPCNynqkYz21HFSIXb7NZfdbIqoE59cM7Xjs/edit?gid=0#gid=0" target="_blank" class="bento-card span-2">
+<div>
+<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+<div class="bento-title">Task tracker</div>
+<div class="bento-desc">Daily log with auto-totals for hours and outputs.</div>
+</div>
+<div class="bento-footer"><div class="bento-meta">Google Sheet</div><div class="bento-arrow">↗</div></div>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit?gid=0#gid=0" target="_blank" class="bento-card span-2">
+<div>
+<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+<div class="bento-title">Client tracker</div>
+<div class="bento-desc">Track applications, follow-ups, and interviews in one sheet.</div>
+</div>
+<div class="bento-footer"><div class="bento-meta">Google Sheet</div><div class="bento-arrow">↗</div></div>
+</a>
+
+</div>
+</section>
+
+<section id="webinars">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">Free webinars</div>
+<h2 class="section-title">Learn <em>live</em>, for free.</h2>
+</div>
+<p class="section-sub">Join my free Facebook community to get webinar schedules, replay access, and behind-the-scenes tips you won't find anywhere else.</p>
+</div>
+
+<div class="webinars-card fade-in">
+<div class="webinars-content">
+<div class="webinars-badge"><span class="webinars-badge-dot"></span>Live · Free · Monthly</div>
+<h3 class="webinars-title">Private trainings <em>only</em> in the community.</h3>
+<p class="webinars-desc">I drop free live webinars covering niche-specific skills, client-landing strategies, and tool walkthroughs. The only place to see them announced is the Facebook group.</p>
+<div class="webinars-features">
+<div class="webinars-feature"><div class="webinars-check"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div>Live webinar announcements and schedules</div></div>
+<div class="webinars-feature"><div class="webinars-check"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div>Replay access for members who can't attend live</div></div>
+<div class="webinars-feature"><div class="webinars-check"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div>Community support from other VAs at every level</div></div>
+<div class="webinars-feature"><div class="webinars-check"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div>Job leads and client opportunities shared by members</div></div>
+</div>
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" class="btn btn-primary btn-lg">Join the free community →</a>
+</div>
+
+<div class="webinars-visual">
+<div class="fb-card">
+<div class="fb-header">
+<div class="fb-icon"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+<div>
+<div class="fb-name">Kailami's VA Community</div>
+<div class="fb-meta">Private group · Free</div>
+</div>
+</div>
+<div class="fb-members"><div class="fb-members-dot"></div><div class="fb-members-text"><strong>Active now</strong> · Live webinars inside</div></div>
+<div class="fb-upcoming-label">Upcoming events</div>
+<div class="fb-event">
+<div class="fb-event-date"><div class="fb-event-date-day">15</div><div class="fb-event-date-month">May</div></div>
+<div class="fb-event-info"><div class="fb-event-title">Niche Deep Dive: EA Track</div><div class="fb-event-time">7:00 PM PHT · Live</div></div>
+</div>
+<div class="fb-event">
+<div class="fb-event-date"><div class="fb-event-date-day">29</div><div class="fb-event-date-month">May</div></div>
+<div class="fb-event-info"><div class="fb-event-title">Landing Your First Client</div><div class="fb-event-time">7:00 PM PHT · Live</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">What VAs say</div>
+<h2 class="section-title"><em>Real</em> feedback.</h2>
+</div>
+<p class="section-sub">From the 20,000+ VAs who've used these tools to land clients, stay organized, and grow their freelance careers.</p>
+</div>
+
+<div class="testimonials-grid fade-in">
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+<p class="quote">"The client tracker saved me hours in my first week. I had no idea how disorganized I was before Kailami's templates."</p>
+<div class="author"><div class="avatar">JM</div><div><div class="author-name">Jenna M.</div><div class="author-role">Executive VA · 2yr</div></div></div>
+</div>
+
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+<p class="quote">"Kailami's resources are the reason I got my first retainer client. I looked 10x more professional from day one."</p>
+<div class="author"><div class="avatar">RT</div><div><div class="author-name">Ria T.</div><div class="author-role">Freelance VA</div></div></div>
+</div>
+
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+<p class="quote">"The niche quiz helped me finally pick a direction. I'd been stuck for months trying to be everything to everyone."</p>
+<div class="author"><div class="avatar">AC</div><div><div class="author-name">Angela C.</div><div class="author-role">Social Media VA</div></div></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">About Kailami</div>
+<h2 class="section-title">Hi, I'm <em>Kailami</em>.</h2>
+</div>
+<p class="section-sub">The person behind VAST Professionals, the free resources, and every webinar you'll find here.</p>
+</div>
+
+<div class="about-block fade-in">
+<div class="about-photo-wrap">
+<img src="kailami-photo.jpg" alt="Kailami" class="about-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+<div class="about-photo-fallback">
+<div class="about-photo-initials">K</div>
+<div class="about-photo-fallback-text">Add<br>photo</div>
+</div>
+</div>
+
+<div class="about-text">
+<p>I run a team of 50+ virtual assistants and I've worked with hundreds of clients who were all at the same breaking point — trying to do everything themselves.</p>
+<p>I know what it feels like to wear every hat in your business. That's exactly why I built this.</p>
+<p>Over the years I've <strong>trained 300+ VAs in my live sessions</strong>, matched them with founders who needed real help, and shared my templates with <strong>20,000+ VAs around the world</strong>. The resources on this site are the same ones my team and I actually use.</p>
+<p>Whether you're a VA here to learn, or a business looking for someone to help you breathe again — <em>you're in the right place</em>.</p>
+</div>
+</div>
+
+<div class="about-stats-row fade-in">
+<div class="about-stat">
+<div class="about-stat-num">20K+</div>
+<div class="about-stat-label">VAs using my resources</div>
+</div>
+<div class="about-stat">
+<div class="about-stat-num">300+</div>
+<div class="about-stat-label">VAs trained live</div>
+</div>
+<div class="about-stat">
+<div class="about-stat-num">50+</div>
+<div class="about-stat-label">VAs matched with clients</div>
+</div>
+</div>
+
+<div class="client-testimonials fade-in">
+<div class="client-test-head">
+<div class="eyebrow" style="margin-bottom: 10px;">Clients who hired through us</div>
+<h3 class="client-test-title">What <em>businesses</em> say.</h3>
+</div>
+
+<div class="client-test-grid">
+<div class="client-test-card">
+<div class="stars">★★★★★</div>
+<p class="quote">"I found my EA through Kailami's training program. She hit the ground running — I didn't have to teach her the basics. Honestly a game-changer for how I run my business."</p>
+<div class="author">
+<div class="avatar biz">MS</div>
+<div><div class="author-name">Marcus S.</div><div class="author-role">E-commerce Founder</div></div>
+</div>
+</div>
+
+<div class="client-test-card">
+<div class="stars">★★★★★</div>
+<p class="quote">"Hired a social media VA from VAST Professionals after attending a webinar. Her training showed. We tripled engagement in 2 months. I'll hire from here again."</p>
+<div class="author">
+<div class="avatar biz">LR</div>
+<div><div class="author-name">Lara R.</div><div class="author-role">Coach · 6-fig business</div></div>
+</div>
+</div>
+
+<div class="client-test-card">
+<div class="stars">★★★★★</div>
+<p class="quote">"The difference between a random VA and one trained by Kailami's team is night and day. My bookkeeper VA came prepped, professional, and needed minimal onboarding."</p>
+<div class="author">
+<div class="avatar biz">DK</div>
+<div><div class="author-name">Derek K.</div><div class="author-role">SaaS Founder</div></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contact-card fade-in">
+<div class="contact-content">
+<div class="eyebrow" style="margin-bottom: 10px;">Looking for a VA?</div>
+<h3 class="contact-title">Tell me what you <em>need</em>.</h3>
+<p class="contact-sub">Send me a quick email about your business and what you're looking for. My team and I will match you with a VA who actually fits — usually within 48 hours.</p>
+<a href="mailto:hello@vastprofessionals.com?subject=Looking%20for%20a%20VA" class="btn btn-primary btn-lg">Email hello@vastprofessionals.com →</a>
+</div>
+</div>
+</section>
+
+<section id="follow">
+<div class="section-header fade-in">
+<div>
+<div class="eyebrow">Follow along</div>
+<h2 class="section-title">More tips, <em>daily</em>.</h2>
+</div>
+<p class="section-sub">Daily VA tips, client-landing stories, and new resources drop first on socials. Follow along and never miss an update.</p>
+</div>
+
+<div class="socials-row fade-in">
+<a href="https://instagram.com/kailamitheva" target="_blank" class="social-card">
+<div class="social-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+<div class="social-footer"><div><div class="social-label">Instagram</div><div class="social-handle">@kailamitheva</div></div><div class="social-arrow">↗</div></div>
+</a>
+
+<a href="https://tiktok.com/@kailamitheva" target="_blank" class="social-card">
+<div class="social-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6v12a4 4 0 11-4-4m4-8a5 5 0 005 5V3"/></svg></div>
+<div class="social-footer"><div><div class="social-label">TikTok</div><div class="social-handle">@kailamitheva</div></div><div class="social-arrow">↗</div></div>
+</a>
+
+<a href="https://facebook.com/kailamitheva" target="_blank" class="social-card">
+<div class="social-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+<div class="social-footer"><div><div class="social-label">Facebook</div><div class="social-handle">@kailamitheva</div></div><div class="social-arrow">↗</div></div>
+</a>
+
+<a href="https://linkedin.com/in/kyladon" target="_blank" class="social-card">
+<div class="social-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 7a2 2 0 100-4 2 2 0 000 4z"/></svg></div>
+<div class="social-footer"><div><div class="social-label">LinkedIn</div><div class="social-handle">/in/kyladon</div></div><div class="social-arrow">↗</div></div>
+</a>
+</div>
+</section>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block">
+<div class="footer-logo"><span class="logo-dot"></span>kailami.</div>
+<p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p>
+</div>
+
+<div class="footer-col">
+<div class="footer-col-title">Tools</div>
+<ul>
+<li><a href="niche-quiz.html">Niche quiz</a></li>
+<li><a href="beginner-checklist.html">Beginner roadmap</a></li>
+<li><a href="about-generator.html">About generator</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<div class="footer-col-title">For clients</div>
+<ul>
+<li><a href="#about">Hire a VA</a></li>
+<li><a href="mailto:hello@vastprofessionals.com">hello@vastprofessionals.com</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<div class="footer-col-title">Community</div>
+<ul>
+<li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li>
+<li><a href="#webinars">Free webinars</a></li>
+</ul>
+</div>
+
+<div class="footer-col">
+<div class="footer-col-title">Follow</div>
+<ul>
+<li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li>
+<li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li>
+<li><a href="https://facebook.com/kailamitheva" target="_blank">Facebook</a></li>
+<li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+
+<div class="footer-bottom">
+<div>© 2026 Kailami · All resources free forever</div>
+<div>Made with care for the VA community</div>
+</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
