@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beginner Roadmap — Kailami</title>
+<meta name="description" content="Your specific 7-step path from zero to landing your first VA client.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.checklist-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .checklist-wrap { padding: 0 24px; } }
+
+.progress-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 24px 28px; margin-bottom: 40px;
+  position: sticky; top: 80px; z-index: 50;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.progress-label { font-size: 12px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+.progress-count { font-size: 15px; color: #fff; font-weight: 500; }
+.progress-count em { font-style: normal; color: #c4ff47; font-weight: 600; }
+.progress-bar { height: 6px; background: #1f1f1f; border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; background: #c4ff47; border-radius: 999px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+.reset-btn {
+  background: transparent; color: #888; border: none; font-size: 12px;
+  cursor: pointer; margin-top: 14px; padding: 0;
+}
+.reset-btn:hover { color: #c4ff47; }
+
+.step {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; margin-bottom: 14px; overflow: hidden;
+  transition: all 0.3s;
+}
+.step.complete { border-color: #c4ff47; background: rgba(196,255,71,0.03); }
+.step-header {
+  padding: 24px 28px; display: flex; align-items: center; gap: 18px;
+  cursor: pointer; transition: background 0.2s;
+}
+.step-header:hover { background: rgba(255,255,255,0.02); }
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%; background: #1f1f1f;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 600; color: #888; flex-shrink: 0;
+  transition: all 0.2s;
+}
+.step.complete .step-num { background: #c4ff47; color: #0a0a0a; }
+.step-title-block { flex: 1; min-width: 0; }
+.step-eyebrow {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #888; margin-bottom: 4px; font-weight: 500;
+}
+.step-title { font-size: 18px; font-weight: 500; color: #fff; letter-spacing: -0.4px; line-height: 1.3; }
+.step.complete .step-title { color: #c4ff47; }
+.step-chevron { color: #666; transition: transform 0.3s; font-size: 14px; }
+.step.open .step-chevron { transform: rotate(180deg); }
+.step-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+.step.open .step-body { max-height: 3000px; }
+.step-content { padding: 0 28px 28px 28px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; }
+.step-description { font-size: 15px; color: #c0c0c0; margin-bottom: 20px; line-height: 1.7; }
+.step-section-title {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #c4ff47; margin: 24px 0 14px; font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+}
+.step-section-title::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+
+.task-list { list-style: none; }
+.task-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0; cursor: pointer;
+}
+.task-check {
+  width: 22px; height: 22px; border: 1.5px solid #3a3a3a; border-radius: 6px;
+  flex-shrink: 0; margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.task-item.done .task-check { background: #c4ff47; border-color: #c4ff47; }
+.task-check svg { width: 13px; height: 13px; color: #0a0a0a; opacity: 0; transition: opacity 0.2s; }
+.task-item.done .task-check svg { opacity: 1; }
+.task-label { font-size: 14px; color: #e0e0e0; flex: 1; line-height: 1.6; }
+.task-item.done .task-label { color: #666; text-decoration: line-through; }
+.task-label a { color: #c4ff47; text-decoration: underline; text-decoration-color: rgba(196,255,71,0.3); transition: text-decoration-color 0.2s; }
+.task-label a:hover { text-decoration-color: #c4ff47; }
+
+.tip-box {
+  background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47;
+  padding: 16px 18px; border-radius: 0 10px 10px 0; margin: 16px 0;
+}
+.tip-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 6px; }
+.tip-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+.tip-text a { color: #c4ff47; text-decoration: underline; }
+
+.warning-box {
+  background: rgba(255,200,100,0.05); border-left: 2px solid #ffc864;
+  padding: 16px 18px; border-radius: 0 10px 10px 0; margin: 16px 0;
+}
+.warning-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #ffc864; font-weight: 600; margin-bottom: 6px; }
+.warning-text { font-size: 13px; color: #e0d4b8; line-height: 1.6; }
+
+.goal-box {
+  background: #0a0a0a; border: 1px solid rgba(196,255,71,0.2);
+  padding: 18px 20px; border-radius: 12px; margin-top: 20px;
+}
+.goal-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 6px; }
+.goal-text { font-size: 14px; color: #e0e0e0; line-height: 1.6; }
+
+/* ─── REALITY CHECK CARDS ─── */
+.reality-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 4px;
+}
+@media (max-width: 640px) { .reality-grid { grid-template-columns: 1fr; } }
+.reality-card {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  text-decoration: none; transition: all 0.2s;
+}
+.reality-card:hover { border-color: #c4ff47; transform: translateY(-2px); }
+.reality-card:hover .reality-cta { color: #c4ff47; }
+.reality-badge {
+  display: inline-block; align-self: flex-start;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 10px; padding: 3px 9px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.reality-title { font-size: 14px; font-weight: 500; color: #fff; line-height: 1.3; }
+.reality-desc { font-size: 12px; color: #a0a0a0; line-height: 1.5; flex: 1; }
+.reality-cta { font-size: 11px; color: #888; font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s; margin-top: 4px; }
+
+/* ─── MOCK TASK CARDS (Step 4) ─── */
+.mock-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+@media (max-width: 640px) { .mock-grid { grid-template-columns: 1fr; } }
+.mock-card {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 20px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: all 0.2s; text-decoration: none;
+}
+.mock-card:hover { border-color: #c4ff47; transform: translateY(-2px); }
+.mock-card:hover .mock-cta { color: #c4ff47; }
+.mock-card:hover .mock-cta-arrow { transform: translateX(4px); }
+.mock-niche {
+  display: inline-block; align-self: flex-start;
+  background: rgba(196,255,71,0.08); color: #c4ff47;
+  font-size: 10px; padding: 3px 9px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
+}
+.mock-task-title { font-size: 14px; font-weight: 500; color: #fff; line-height: 1.3; }
+.mock-desc { font-size: 12px; color: #a0a0a0; line-height: 1.5; flex: 1; }
+.mock-cta { font-size: 12px; color: #888; font-weight: 500; margin-top: 8px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; display: flex; align-items: center; gap: 4px; }
+.mock-cta-arrow { transition: transform 0.2s; display: inline-block; }
+
+/* Disclaimer below mock cards */
+.disclaimer-box {
+  background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 4px;
+}
+.disclaimer-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #a0a0a0; font-weight: 600; margin-bottom: 6px; }
+.disclaimer-text { font-size: 13px; color: #c0c0c0; line-height: 1.6; }
+
+/* ─── CELEBRATION PAGE ─── */
+.celebration {
+  display: none; padding: 40px 0 80px;
+}
+.celebration.show { display: block; animation: fadeUp 0.8s ease-out; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+.confetti-hero {
+  text-align: center; padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(196,255,71,0.12), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3);
+  border-radius: 28px; margin-bottom: 40px;
+  position: relative; overflow: hidden;
+}
+.confetti-hero::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.2), transparent 70%);
+}
+.confetti-hero::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.1), transparent 70%);
+}
+.confetti-content { position: relative; z-index: 2; }
+.trophy-icon {
+  width: 88px; height: 88px; border-radius: 50%; background: #c4ff47;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px; box-shadow: 0 0 80px rgba(196,255,71,0.4);
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.trophy-icon svg { width: 44px; height: 44px; color: #0a0a0a; }
+
+.celeb-title {
+  font-size: clamp(36px, 6vw, 64px); font-weight: 500;
+  letter-spacing: -2px; color: #fff; line-height: 1; margin-bottom: 20px;
+}
+.celeb-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.celeb-sub { font-size: 17px; color: #c0c0c0; line-height: 1.6; max-width: 520px; margin: 0 auto 32px; }
+.celeb-stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 36px; flex-wrap: wrap; }
+@media (max-width: 480px) { .celeb-stats { gap: 24px; } }
+.celeb-stat { text-align: center; }
+.celeb-stat-num { font-size: 36px; font-weight: 600; color: #c4ff47; letter-spacing: -1.5px; line-height: 1; margin-bottom: 4px; }
+.celeb-stat-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; }
+
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+@media (max-width: 768px) { .next-grid { grid-template-columns: 1fr; } }
+.next-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 28px; transition: all 0.3s; display: block;
+}
+.next-card:hover { border-color: #c4ff47; transform: translateY(-3px); }
+.next-card-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: rgba(196,255,71,0.1);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.next-card-icon svg { width: 22px; height: 22px; color: #c4ff47; }
+.next-card-title { font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.next-card-desc { font-size: 13px; color: #a0a0a0; line-height: 1.5; margin-bottom: 14px; }
+.next-card-cta { font-size: 13px; color: #c4ff47; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>7 steps · Progress saves automatically</div>
+<h1 class="page-title">Your VA <em>beginner</em> roadmap.</h1>
+<p class="page-lede">The exact steps I took — and teach — to go from zero experience to your first paying client. Specific actions, real tools, no fluff.</p>
+</section>
+
+</div>
+
+<div class="checklist-wrap">
+
+<div id="main-view">
+
+<div class="progress-card">
+<div class="progress-head">
+<span class="progress-label">Your progress</span>
+<span class="progress-count"><em id="completed-count">0</em> / 7 steps complete</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+<button class="reset-btn" onclick="resetProgress()">↻ Reset progress</button>
+</div>
+
+<div id="steps-container"></div>
+
+</div>
+
+<div id="celebration-view" class="celebration">
+<div class="confetti-hero">
+<div class="confetti-content">
+<div class="trophy-icon">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" d="M5 3v2a7 7 0 0014 0V3M8 21h8m-4-6v6M4 7h2m12 0h2M4 7a3 3 0 003 3h10a3 3 0 003-3"/>
+</svg>
+</div>
+<h2 class="celeb-title">You did <em>it</em>.</h2>
+<p class="celeb-sub">You just finished the full 7-step roadmap — the same path I've seen 20,000+ VAs take to land their first client. You're not a beginner anymore. You're ready.</p>
+
+<div class="celeb-stats">
+<div class="celeb-stat"><div class="celeb-stat-num">7/7</div><div class="celeb-stat-label">Steps done</div></div>
+<div class="celeb-stat"><div class="celeb-stat-num">100%</div><div class="celeb-stat-label">Completion</div></div>
+<div class="celeb-stat"><div class="celeb-stat-num">Ready</div><div class="celeb-stat-label">To apply</div></div>
+</div>
+
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" class="btn btn-primary btn-lg">Join the community to celebrate →</a>
+</div>
+</div>
+
+<h3 style="font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 16px; letter-spacing: -0.4px;">What's next?</h3>
+
+<div class="next-grid">
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" class="next-card">
+<div class="next-card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
+<div class="next-card-title">Join the free community</div>
+<div class="next-card-desc">Get live webinar schedules, job leads, and support from other VAs at every level.</div>
+<div class="next-card-cta">Join the Facebook group →</div>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit?gid=0#gid=0" target="_blank" class="next-card">
+<div class="next-card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+<div class="next-card-title">Start tracking applications</div>
+<div class="next-card-desc">Use the client tracker to stay organized as you apply and follow up. Aim for 5–10 apps per day.</div>
+<div class="next-card-cta">Open client tracker →</div>
+</a>
+
+<a href="niche-quiz.html" class="next-card">
+<div class="next-card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+<div class="next-card-title">Retake the niche quiz</div>
+<div class="next-card-desc">Already done? Take it again as you grow — your answers will shift as you discover what fits.</div>
+<div class="next-card-cta">Take the quiz →</div>
+</a>
+
+<a href="index.html#resources" class="next-card">
+<div class="next-card-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.52 0-2.95.41-4.18 1.123v13C3.05 17.16 4.48 16.75 6 16.75c2.3 0 4.4.9 6 2.292m0-13.416c1.6-1.4 3.7-2.292 6-2.292 1.52 0 2.95.41 4.18 1.123v13A9.001 9.001 0 0018 16.75c-2.3 0-4.4.9-6 2.292m0-13.416v13.416"/></svg></div>
+<div class="next-card-title">Browse all resources</div>
+<div class="next-card-desc">Portfolio, resume, cover letter, trackers — revisit any tool whenever you need it.</div>
+<div class="next-card-cta">Back to home →</div>
+</a>
+</div>
+
+<div style="text-align: center; margin-top: 32px;">
+<button class="btn btn-ghost" onclick="backToChecklist()">← Back to checklist</button>
+</div>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block">
+<div class="footer-logo"><span class="logo-dot"></span>kailami.</div>
+<p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Tools</div>
+<ul>
+<li><a href="niche-quiz.html">Niche quiz</a></li>
+<li><a href="beginner-checklist.html">Beginner roadmap</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Community</div>
+<ul>
+<li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li>
+<li><a href="index.html#webinars">Free webinars</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Follow</div>
+<ul>
+<li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li>
+<li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li>
+<li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2026 Kailami · All resources free forever</div>
+<div>Made with care for the VA community</div>
+</div>
+</footer>
+
+<script>
+const steps = [
+  {
+    title: "Get your mindset right before anything else",
+    description: "Here's the truth nobody tells beginners: most VAs fail in their first 3 months — not because they lack skills, but because they had the wrong expectations. This isn't \"work from a beach with your laptop.\" It's real work for real clients. Fix your head first, everything else gets easier.",
+    tasks: [
+      "Watch this 1-minute video: <a href='https://www.tiktok.com/@bestvainph/video/7603955534613548295' target='_blank'>what a VA actually is</a>",
+      "Watch this video: <a href='https://www.youtube.com/watch?v=JFHrK4Z6jaI' target='_blank'>minimum requirements to be a VA</a> (laptop, internet, basics)",
+      "Sign up for a free <a href='https://www.onlinejobs.ph/jobseekers/register' target='_blank'>OnlineJobs.ph account</a>",
+      "Sign up for a free <a href='https://www.upwork.com/nx/signup/?type=freelancer' target='_blank'>Upwork account</a>",
+      "Read all 4 <strong>reality check</strong> resources below — yes, all of them"
+    ],
+    realityChecks: [
+      { type: "FB Post", title: "Initiative beats experience", desc: "Clients fire senior VAs who lack initiative. Read this before you do anything else.", link: "https://www.facebook.com/share/p/1DGyydQmcJ/" },
+      { type: "FB Post", title: "How to stand out as a beginner", desc: "You're competing with thousands of other new VAs. Here's how to not be one of them.", link: "https://www.facebook.com/share/p/1TKV6LHgkh/" },
+      { type: "FB Video", title: "What clients look for in interviews", desc: "The stuff clients actually care about in the first 5 minutes of meeting you.", link: "https://www.facebook.com/share/v/1E4W8QnbyU/" },
+      { type: "TikTok", title: "Expectation vs. reality", desc: "The real day-to-day of being a VA. No sugarcoating.", link: "https://www.tiktok.com/@kailamitheva/video/7593355479145893127" }
+    ],
+    tip: "Don't skip the reality checks. The people who skip them are the same people who quit in 2 months.",
+    goal: "Right mindset + OnlineJobs.ph and Upwork accounts created."
+  },
+  {
+    title: "Pick ONE niche and stick with it",
+    description: "Stop trying to be everything. Clients don't hire generalists — they hire specialists. \"I can do anything\" sounds to a client like \"I'm not really good at any of it.\" Pick one thing, get good at it, then expand later.",
+    tasks: [
+      "Take the <a href='niche-quiz.html'>niche quiz</a> if you haven't — it tells you your top 3 matches",
+      "Pick ONE niche. Just one. Your #1 match is usually the right answer.",
+      "Google: \"[your niche] virtual assistant job description\" — read 3 real job posts so you know what the work actually looks like"
+    ],
+    tip: "If you genuinely can't decide between a few niches, pick Admin Support. It's the most common entry point, and you can niche down later.",
+    warning: "Don't keep \"trying out\" niches. If you change your niche every week, you'll never get hired for any of them.",
+    goal: "One niche picked. Commit to it for at least the next 3 months."
+  },
+  {
+    title: "Set up the tools every VA uses",
+    description: "Every remote business runs on a handful of tools. You need accounts in all of them so you can start working the second a client says yes. This is the easiest step — just click, sign up, done.",
+    tasks: [
+      "Make a <strong>business Gmail</strong> — examples: <code>yourname.va@gmail.com</code>, <code>business.yourname@gmail.com</code>, <code>yourname.services@gmail.com</code>. Don't use your personal email for client work.",
+      "Poke around <a href='https://workspace.google.com/learning/' target='_blank'>Google Workspace basics</a> — Gmail, Docs, Sheets, Drive, Calendar. You don't need to master these, just know where buttons are.",
+      "Sign up for free <a href='https://claude.ai/' target='_blank'>Claude</a> — smartest AI for writing and thinking through problems",
+      "Sign up for free <a href='https://chat.openai.com/' target='_blank'>ChatGPT</a> — fastest AI for quick drafts",
+      "Sign up for free <a href='https://asana.com/create-account' target='_blank'>Asana</a> — project management tool clients love",
+      "Sign up for free <a href='https://www.notion.so/signup' target='_blank'>Notion</a> — docs, wikis, and workflows"
+    ],
+    tip: "Using AI tools doesn't make you lazy — it makes you employable. Clients in 2026 WANT VAs who use Claude and ChatGPT. Embrace them.",
+    goal: "A business Gmail + free accounts in Claude, ChatGPT, Asana, and Notion. Done."
+  },
+  {
+    title: "Build a portfolio with mock work (yes, fake clients are fine)",
+    description: "No experience? You make it up. Not by lying — by doing real mock work for a fake client. Every successful VA started with mock work. It's standard practice and clients expect it. Pick your niche below, follow the guide, actually do the work. Half of getting hired is just having proof you CAN do the thing.",
+    tasks: [
+      "Pick your niche card below and open the guide",
+      "Actually complete the mock task. Don't just read it. Do it.",
+      "Take <strong>BEFORE and AFTER screenshots</strong> of everything",
+      "Copy the <a href='https://www.canva.com/design/DAG9v9AUyGI/Dn5tvvlunQQX1bRXRYpwKg/edit' target='_blank'>free portfolio template</a> (File → Make a copy)",
+      "Add your name, photo, and your mock work with the screenshots",
+      "Publish it as a public Canva link — open it in incognito to make sure it actually loads"
+    ],
+    mockTasks: [
+      { niche: "Executive Assistant", task: "Inbox zero + calendar + file organization", desc: "Build a messy mock Gmail, organize it, manage a mock calendar, set up a mock Google Drive. All with before/after screenshots.", page: "mock-ea.html" },
+      { niche: "Social Media Manager", task: "9-post feed + content calendar + captions", desc: "Design a cohesive Instagram grid, build a 30-day content plan, write 20 hooks + 10 full captions.", page: "mock-smm.html" },
+      { niche: "Graphic Designer", task: "Brand kit + templates + pitch deck", desc: "Build a brand guidelines PDF, a reusable social template pack, and a polished pitch deck.", page: "mock-graphic-design.html" },
+      { niche: "Video Editor", task: "Short-form reel + long-form + podcast clip", desc: "Edit royalty-free footage into 3 finished pieces: a reel, a YouTube-style video, and a podcast clip.", page: "mock-video-editing.html" }
+    ],
+    warning: "DO NOT write \"I'm a beginner\" on your portfolio. Nobody hires someone who introduces themselves as unqualified. Show what you CAN do.",
+    tip: "Before/after screenshots are 10x more powerful than describing your work. Show, don't tell.",
+    goal: "A public portfolio link with at least one finished mock project."
+  },
+  {
+    title: "Write a resume that doesn't look like everyone else's",
+    description: "Your resume has 10 seconds to grab a client. Every resume that says \"hardworking virtual assistant\" goes in the trash. Yours needs to scream your niche, show transferable wins, and fit on one page.",
+    tasks: [
+      "Copy the <a href='https://docs.google.com/document/d/1xpw0HbdV_9GcEn02xgyClqc6sIQi290XS5u-tA9uCpw/edit?usp=sharing' target='_blank'>Harvard resume template</a> (File → Make a copy)",
+      "At the top, write your niche — not \"Virtual Assistant\". Write \"Social Media Manager VA\" or \"Executive Assistant for Coaches\"",
+      "List 5–7 skills specific to your niche. Not everything you know. Just the niche-relevant ones.",
+      "Rewrite past jobs as wins with numbers: <em>\"BPO agent\"</em> becomes <em>\"Handled 80+ tickets daily at 95% satisfaction\"</em>",
+      "Export as PDF named: <strong>YourName-Niche-VA.pdf</strong>"
+    ],
+    tip: "NEVER send a .docx file. Always PDF. Word files break, reformat, or get flagged as spam. PDF every time.",
+    warning: "Non-VA work experience counts. BPO = support. Admin = EA. Sales = client management. Don't dismiss your past.",
+    goal: "A one-page PDF resume that matches your niche."
+  },
+  {
+    title: "Fix your Upwork & OnlineJobs profile",
+    description: "Your profile is the first thing clients see — before your resume, before your cover letter, before anything. A weak profile means clients scroll right past you. Here's exactly what to do, copy-paste-style.",
+    tasks: [
+      "Write a <strong>pipe-separated headline</strong> that stacks your tools, niche, and what you deliver. Format: <code>Tool | Tool | Niche | Problem You Solve | Result</code>. Example: <em>Gmail | Google Calendar | Executive Assistant | Inbox Zero Systems | Saving Founders 10+ Hrs/Week</em>. Another: <em>Canva | Instagram | Social Media Manager | Content Strategy | Helping Coaches Grow to 10K Followers</em>. Specific beats generic every time.",
+      "Upload a <strong>clean headshot</strong>: plain background, natural lighting, real smile, shoulders up. No filters. No selfies. No group photos. This ONE thing boosts response rates.",
+      "Write your About section using the <a href='about-generator.html'><strong>free About Section Generator</strong></a> — fill in the form, copy the prompt, paste it into Claude, and get a polished About section in under 3 minutes. Don't use it word-for-word — tweak it so it sounds like you.",
+      "List 5–7 skills. Just niche-relevant ones. Clients search by skill tags.",
+      "Add your portfolio link from Step 4. On Upwork, upload screenshots as portfolio items.",
+      "<strong>OnlineJobs.ph only:</strong> Fill in every single field. Take the free DISC + IQ tests (they rank your profile higher). Set salary to PHP 25,000–40,000/month as a beginner.",
+      "<strong>Upwork only:</strong> Start your hourly rate at $5–$10. Raise it after 2–3 jobs. Write a specialized profile for your niche."
+    ],
+    tip: "Start your About section with the CLIENT, not yourself. <em>\"I help coaches get to inbox zero\"</em> crushes <em>\"I'm a hardworking VA with attention to detail.\"</em>",
+    warning: "DO NOT copy another VA's profile word-for-word. Clients notice. Recruiters see hundreds of profiles a week — identical = invisible.",
+    goal: "Both profiles complete and optimized, ready for clients to find you."
+  },
+  {
+    title: "Apply every day — and track everything",
+    description: "This is where most people quit. They apply to 20 jobs, hear nothing, and give up. Reality: landing your first client usually takes 50–150 applications. That's normal. The difference between people who make it and people who don't is who keeps going.",
+    tasks: [
+      "Copy the <a href='https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit?gid=0#gid=0' target='_blank'>client tracker sheet</a> (File → Make a copy)",
+      "Use the <a href='https://chatgpt.com/g/g-696657703bbc81919a41044a3bc04420-cover-letters-by-vast' target='_blank'>Cover Letter Writer GPT</a> for every application. Edit the output so it sounds like you.",
+      "Start every cover letter with the CLIENT'S problem — not \"Hi, I'm...\" — and keep it under 150 words",
+      "Apply to 5–10 jobs per day. Quality over spam.",
+      "Log every application: date, client, platform, role, pay, link",
+      "Follow up 5–7 days later. Most hires come from the follow-up, not the first message.",
+      "Pick ONE platform and focus. Don't spread thin across five.",
+      "When a client replies, respond within 2 hours. Speed gets you hired."
+    ],
+    tip: "Check your response rate weekly. Below 10%? The problem is your cover letter or portfolio — not the market. Fix and test again.",
+    warning: "If you're about to quit — you're probably 10 applications away from your first client. Don't stop.",
+    goal: "A daily application + follow-up routine you can keep up for 30+ days."
+  }
+];
+
+const STORAGE_KEY = 'kailami_checklist_v2';
+let state = loadState();
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    return {
+      openStep: saved.openStep ?? 0,
+      taskStates: saved.taskStates ?? {}
+    };
+  } catch {
+    return { openStep: 0, taskStates: {} };
+  }
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+function isStepComplete(stepIdx) {
+  const total = steps[stepIdx].tasks.length;
+  let done = 0;
+  for (let i = 0; i < total; i++) {
+    if (state.taskStates[`${stepIdx}-${i}`]) done++;
+  }
+  return total > 0 && done === total;
+}
+
+function allStepsComplete() {
+  return steps.every((_, i) => isStepComplete(i));
+}
+
+function renderSteps() {
+  const container = document.getElementById('steps-container');
+  container.innerHTML = steps.map((step, i) => {
+    const complete = isStepComplete(i);
+    const open = state.openStep === i;
+    return `
+      <div class="step ${complete ? 'complete' : ''} ${open ? 'open' : ''}" data-step="${i}">
+        <div class="step-header" onclick="toggleStep(${i})">
+          <div class="step-num">${complete ? '✓' : i + 1}</div>
+          <div class="step-title-block">
+            <div class="step-eyebrow">Step ${i + 1} of 7</div>
+            <div class="step-title">${step.title}</div>
+          </div>
+          <div class="step-chevron">▼</div>
+        </div>
+        <div class="step-body">
+          <div class="step-content">
+            <p class="step-description">${step.description}</p>
+            ${step.warning ? `<div class="warning-box"><div class="warning-label">Important</div><div class="warning-text">${step.warning}</div></div>` : ''}
+            <div class="step-section-title">Action items</div>
+            <ul class="task-list">
+              ${step.tasks.map((task, j) => {
+                const done = state.taskStates[`${i}-${j}`];
+                return `
+                  <li class="task-item ${done ? 'done' : ''}" onclick="toggleTask(${i}, ${j}, event)">
+                    <div class="task-check">
+                      <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div class="task-label">${task}</div>
+                  </li>
+                `;
+              }).join('')}
+            </ul>
+            ${step.tip ? `<div class="tip-box"><div class="tip-label">Kailami tip</div><div class="tip-text">${step.tip}</div></div>` : ''}
+            ${step.realityChecks ? `
+              <div class="step-section-title">Reality checks <span style="color:#888;font-weight:400;letter-spacing:0.5px;text-transform:none;font-size:11px;margin-left:4px;">— mindset resources</span></div>
+              <div class="reality-grid">
+                ${step.realityChecks.map(rc => `
+                  <a href="${rc.link}" target="_blank" class="reality-card">
+                    <div class="reality-badge">${rc.type}</div>
+                    <div class="reality-title">${rc.title}</div>
+                    <div class="reality-desc">${rc.desc}</div>
+                    <div class="reality-cta">Read / watch ↗</div>
+                  </a>
+                `).join('')}
+              </div>
+            ` : ''}
+            ${step.mockTasks ? `
+              <div class="step-section-title">Mock tasks by niche <span style="color:#888;font-weight:400;letter-spacing:0.5px;text-transform:none;font-size:11px;margin-left:4px;">— pick yours</span></div>
+              <div class="mock-grid">
+                ${step.mockTasks.map(mt => `
+                  <a href="${mt.page}" class="mock-card">
+                    <div class="mock-niche">${mt.niche}</div>
+                    <div class="mock-task-title">${mt.task}</div>
+                    <div class="mock-desc">${mt.desc}</div>
+                    <div class="mock-cta">Open guide <span class="mock-cta-arrow">→</span></div>
+                  </a>
+                `).join('')}
+              </div>
+              <div class="disclaimer-box">
+                <div class="disclaimer-label">Niche not listed?</div>
+                <div class="disclaimer-text">These 4 cover the most common beginner niches. If yours isn't here — digital marketer, bookkeeper, tech/systems, eCommerce, customer support, automation, real estate, or another specialty — search YouTube for "[your niche] VA mock task" and follow the same format: pick a fake client, actually do the work, screenshot before and after. The method is the same.</div>
+              </div>
+            ` : ''}
+            <div class="goal-box"><div class="goal-label">Goal of this step</div><div class="goal-text">${step.goal}</div></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  updateProgress();
+}
+
+function toggleStep(idx) {
+  state.openStep = state.openStep === idx ? -1 : idx;
+  saveState();
+  renderSteps();
+}
+
+function toggleTask(stepIdx, taskIdx, event) {
+  if (event && event.target.tagName === 'A') return;
+  const key = `${stepIdx}-${taskIdx}`;
+  state.taskStates[key] = !state.taskStates[key];
+  saveState();
+  renderSteps();
+
+  // Auto-show celebration when all 7 steps become complete
+  if (allStepsComplete()) {
+    setTimeout(() => showCelebration(), 600);
+  }
+}
+
+function updateProgress() {
+  const completedSteps = steps.filter((_, i) => isStepComplete(i)).length;
+  document.getElementById('completed-count').textContent = completedSteps;
+  document.getElementById('progress-fill').style.width = `${(completedSteps / steps.length) * 100}%`;
+}
+
+function showCelebration() {
+  document.getElementById('main-view').style.display = 'none';
+  document.getElementById('celebration-view').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function backToChecklist() {
+  document.getElementById('celebration-view').classList.remove('show');
+  document.getElementById('main-view').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetProgress() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  state = { openStep: 0, taskStates: {} };
+  saveState();
+  renderSteps();
+}
+
+renderSteps();
+
+// If returning user already completed everything, show the celebration
+if (allStepsComplete()) showCelebration();
+</script>
+
+</body>
+</html>

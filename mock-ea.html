@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EA Mock Task — Kailami</title>
+<meta name="description" content="Build a complete Executive Assistant portfolio: inbox zero, calendar management, and file organization mock tasks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.mock-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .mock-wrap { padding: 0 24px; } }
+
+.mock-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 48px; }
+@media (max-width: 640px) { .mock-meta { grid-template-columns: 1fr; } }
+.meta-card { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 20px; }
+.meta-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.meta-value { font-size: 15px; color: #fff; font-weight: 500; line-height: 1.3; }
+
+.section-block { margin-bottom: 56px; }
+.block-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-size: 38px; line-height: 1; font-weight: 400; }
+.block-title { font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
+.block-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 28px; line-height: 1.6; }
+
+.tutorial-callout {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.25); border-radius: 14px;
+  padding: 16px 20px; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px; transition: all 0.2s;
+}
+.tutorial-callout:hover { border-color: #c4ff47; transform: translateY(-2px); }
+.tutorial-icon {
+  width: 40px; height: 40px; border-radius: 10px; background: #c4ff47;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.tutorial-icon-triangle { width: 0; height: 0; border-left: 12px solid #0a0a0a; border-top: 8px solid transparent; border-bottom: 8px solid transparent; margin-left: 3px; }
+.tutorial-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 2px; }
+.tutorial-title { font-size: 14px; font-weight: 500; color: #fff; }
+.tutorial-arrow { color: #c4ff47; font-size: 18px; }
+
+.mock-step {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 28px 30px; margin-bottom: 14px;
+  transition: all 0.3s;
+}
+.mock-step:hover { border-color: rgba(196,255,71,0.2); }
+.mock-step-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.mock-step-num {
+  width: 36px; height: 36px; border-radius: 50%; background: rgba(196,255,71,0.1);
+  color: #c4ff47; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600; flex-shrink: 0;
+}
+.mock-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; line-height: 1.3; }
+.mock-step p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 12px; }
+.mock-step p:last-child { margin-bottom: 0; }
+.mock-step ul { list-style: none; margin: 10px 0; }
+.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 6px; }
+.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #c4ff47; }
+.mock-step strong { color: #c4ff47; font-weight: 500; }
+
+.callout-box {
+  background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47;
+  padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px;
+}
+.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 4px; }
+.callout-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+
+.screenshot-list {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 20px 24px; margin-top: 24px;
+}
+.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.screenshot-list ul { list-style: none; }
+.screenshot-list ul li { font-size: 13px; color: #e0e0e0; padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
+.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 600; }
+
+.back-cta {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 32px; text-align: center; margin-top: 48px;
+}
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="beginner-checklist.html" class="back-link">← Back to roadmap</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Executive Assistant mock task</div>
+<h1 class="page-title">Build your <em>EA</em> portfolio.</h1>
+<p class="page-lede">Three complete mock tasks that prove you can manage inboxes, calendars, and files like a pro. Follow each one, screenshot your work, and you'll have portfolio-ready proof in a weekend.</p>
+</section>
+</div>
+
+<div class="mock-wrap">
+
+<div class="mock-meta">
+<div class="meta-card"><div class="meta-label">Tools needed</div><div class="meta-value">Gmail, Google Calendar, Google Drive</div></div>
+<div class="meta-card"><div class="meta-label">Time commitment</div><div class="meta-value">4–6 hours total</div></div>
+<div class="meta-card"><div class="meta-label">Difficulty</div><div class="meta-value">Beginner-friendly</div></div>
+</div>
+
+<!-- ══ MOCK 1: INBOX ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">01</div>
+<div class="block-title">Inbox zero mock (Gmail)</div>
+</div>
+<p class="block-sub">If you don't have experience yet, this is one of the best ways to show clients you can manage an inbox. Build a messy inbox, organize it with labels, filters, and templates — then screenshot the transformation.</p>
+
+<a href="https://www.youtube.com/watch?v=eVr0aMNdyQ4" target="_blank" class="tutorial-callout">
+<div class="tutorial-icon"><div class="tutorial-icon-triangle"></div></div>
+<div style="flex: 1;">
+<div class="tutorial-label">Watch first</div>
+<div class="tutorial-title">Email Management Training for Beginners — Zero Inbox Tutorial</div>
+</div>
+<div class="tutorial-arrow">↗</div>
+</a>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Create a new Gmail account</div>
+</div>
+<p>Create a <strong>separate Gmail account</strong> you'll use only for practice or mock work. Don't use your personal email — keeps your portfolio clean and professional.</p>
+<ul>
+<li>mockclient.coach@gmail.com</li>
+<li>samplebusiness.va@gmail.com</li>
+<li>practice.executive@gmail.com</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Make the inbox look realistic</div>
+</div>
+<p>Send emails to yourself or ask a friend to help. Aim for around <strong>30–50 emails</strong> so the inbox looks busy and unorganized at first. Create different types:</p>
+<ul>
+<li>Client inquiries</li>
+<li>Newsletters or promotions</li>
+<li>Order confirmations</li>
+<li>Meeting requests</li>
+<li>Follow-up emails</li>
+<li>Spam-like emails</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Create labels (folders)</div>
+</div>
+<p>Set up labels like Clients, Leads, Urgent, Follow-ups, Newsletters, Finance, and Spam. This shows you know how to <strong>prioritize emails</strong>, not just read them.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Set up filters and rules</div>
+</div>
+<p>Create filters so Gmail automatically organizes emails. Examples:</p>
+<ul>
+<li>Emails with "invoice" → Finance</li>
+<li>Emails from certain domains → Clients</li>
+<li>Newsletters → Newsletters (auto-archive)</li>
+<li>Emails with "meeting" → Urgent</li>
+</ul>
+<div class="callout-box"><div class="callout-label">Why this matters</div><div class="callout-text">Filters are a big plus for clients — they prove you can automate repetitive work and save hours every week.</div></div>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Create professional email templates</div>
+</div>
+<p>Save <strong>email templates as drafts</strong> for:</p>
+<ul>
+<li>Acknowledging inquiries</li>
+<li>Confirming meetings</li>
+<li>Following up on emails</li>
+<li>Rescheduling requests</li>
+<li>Out-of-office or availability replies</li>
+</ul>
+<p>Keep them polite, clear, and easy to edit. Shows clients you can respond <strong>quickly and consistently</strong>.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">6</div>
+<div class="mock-step-title">Clean and organize the inbox</div>
+</div>
+<p>Now organize everything: archive old emails, mark important ones, flag follow-ups, and aim for <strong>zero or near-zero inbox</strong>. Take before-and-after screenshots.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>BEFORE: messy, cluttered inbox with 30+ unread</li>
+<li>AFTER: organized inbox, zero unread, labels visible in sidebar</li>
+<li>Filters dashboard showing your automation rules</li>
+<li>Your saved email templates in drafts</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 2: CALENDAR ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">02</div>
+<div class="block-title">Calendar management mock (Google Calendar)</div>
+</div>
+<p class="block-sub">Managing an executive's calendar is one of the most trusted EA skills. This mock shows you can protect their time, avoid conflicts, and keep everything organized.</p>
+
+<a href="https://www.youtube.com/watch?v=5Et7W1o7oWA" target="_blank" class="tutorial-callout">
+<div class="tutorial-icon"><div class="tutorial-icon-triangle"></div></div>
+<div style="flex: 1;">
+<div class="tutorial-label">Watch first</div>
+<div class="tutorial-title">Calendar Management Walkthrough for Virtual Assistants</div>
+</div>
+<div class="tutorial-arrow">↗</div>
+</a>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Create a mock calendar</div>
+</div>
+<p>Use your mock Gmail or personal Google account. Create a <strong>new calendar</strong> named like "Sample Client – Coaching Business" or "Mock Executive Calendar" — keeps it separate from personal and cleaner for portfolio use.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Set the client's rules</div>
+</div>
+<p>Before adding meetings, define how the client works:</p>
+<ul>
+<li>Work days: Monday to Friday</li>
+<li>Working hours: 10:00 AM – 4:00 PM</li>
+<li>No meetings on Fridays</li>
+<li>15-minute buffer between meetings</li>
+<li>Maximum of 4 calls per day</li>
+</ul>
+<div class="callout-box"><div class="callout-label">Why this matters</div><div class="callout-text">This shows clients you know how to <strong>protect their time</strong> — not just fill their calendar with meetings.</div></div>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Add realistic events</div>
+</div>
+<p>Add events that normally happen in real work:</p>
+<ul>
+<li>1:1 client calls</li>
+<li>Discovery or sales calls</li>
+<li>Team meetings</li>
+<li>Admin or focus time</li>
+<li>Breaks and buffer time</li>
+</ul>
+<p>Mix one-time and recurring events for realism.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Use color coding</div>
+</div>
+<p>Assign colors so the calendar is scannable at a glance:</p>
+<ul>
+<li>Client calls — Blue</li>
+<li>Internal meetings — Green</li>
+<li>Admin work — Purple</li>
+<li>Personal / breaks — Yellow</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Add complete event details</div>
+</div>
+<p>Open each event and include:</p>
+<ul>
+<li>Meeting link (Zoom or Google Meet)</li>
+<li>Agenda or purpose of the call</li>
+<li>Attendees (sample emails)</li>
+<li>Notes or reminders</li>
+</ul>
+<p>Small details like these show clients you're <strong>careful and organized</strong> — exactly what EAs are hired for.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">6</div>
+<div class="mock-step-title">Practice handling changes</div>
+</div>
+<p>In real work, changes are constant. Practice:</p>
+<ul>
+<li>Rescheduling a meeting</li>
+<li>Canceling a meeting properly</li>
+<li>Fixing double bookings</li>
+<li>Keeping buffer time and rules intact</li>
+</ul>
+<p>Take before-and-after screenshots for each scenario.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>BEFORE: messy calendar with overlapping meetings, no color coding</li>
+<li>AFTER: clean weekly view with color-coded events</li>
+<li>AFTER: monthly view showing consistent structure</li>
+<li>Event detail view with meeting link, agenda, and attendees</li>
+<li>Before-and-after of a conflict resolution scenario</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 3: FILE ORG ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">03</div>
+<div class="block-title">File organization mock (Google Drive)</div>
+</div>
+<p class="block-sub">Shows clients you can organize files and follow a system — a core admin skill that makes you immediately useful on day one.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Create a mock Google Drive folder</div>
+</div>
+<p>Use your mock Gmail. Create a <strong>main folder</strong> named like "Sample Client – Online Business" or "Mock Client – Admin Files". This becomes your "client folder".</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Create main folders (top-level)</div>
+</div>
+<p>Inside the main folder, create basic folders most clients use:</p>
+<ul>
+<li>01_Admin</li>
+<li>02_Finance</li>
+<li>03_Marketing</li>
+<li>04_Clients</li>
+<li>05_Operations</li>
+<li>06_Resources</li>
+<li>07_Archive</li>
+</ul>
+<p>Numbering keeps everything <strong>organized and consistent</strong>.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Create subfolders</div>
+</div>
+<p>Inside each main folder, add subfolders:</p>
+<ul>
+<li><strong>01_Admin</strong> — Contracts, SOPs, Meeting Notes</li>
+<li><strong>02_Finance</strong> — Invoices, Receipts, Expenses</li>
+<li><strong>03_Marketing</strong> — Content, Graphics, Captions</li>
+<li><strong>04_Clients</strong> — Client A, Client B, Client C</li>
+</ul>
+<p>This shows clients you know how to <strong>structure</strong>, not just create folders.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Add sample files</div>
+</div>
+<p>Create or upload sample files: Google Docs (meeting notes, SOPs), Google Sheets (trackers, lists), sample PDFs, sample images. Use file names like:</p>
+<ul>
+<li>2024-01_ClientA_MeetingNotes</li>
+<li>Invoice_Jan2024</li>
+<li>Content_Calendar_Week1</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Apply a clear naming convention</div>
+</div>
+<p>All files should follow a consistent format:</p>
+<ul>
+<li>YYYY-MM-DD_FileName_Version</li>
+<li>ClientName_DocumentType_Date</li>
+</ul>
+<p>Shows you're <strong>detail-oriented</strong> and files are easy to find.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">6</div>
+<div class="mock-step-title">Clean and organize</div>
+</div>
+<p>Pretend the drive is messy, then fix it:</p>
+<ul>
+<li>Move files to correct folders</li>
+<li>Remove duplicates (or move to Archive)</li>
+<li>Rename unclear file names</li>
+<li>Group related files together</li>
+</ul>
+<p>Create a <strong>messy folder first</strong>, then show the organized version — this is what makes the before-and-after powerful.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>BEFORE: random file names, no folder structure</li>
+<li>AFTER: clean numbered folders with proper naming</li>
+<li>Subfolder view showing consistent organization</li>
+<li>A sample file opened showing the naming convention</li>
+</ul>
+</div>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Done with your EA portfolio?</div>
+<p class="back-cta-sub">Head back to the roadmap and continue to the next step — your resume.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block">
+<div class="footer-logo"><span class="logo-dot"></span>kailami.</div>
+<p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p>
+</div>
+<div class="footer-col"><div class="footer-col-title">Tools</div><ul><li><a href="niche-quiz.html">Niche quiz</a></li><li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

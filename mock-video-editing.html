@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Editing Mock Task — Kailami</title>
+<meta name="description" content="Build a video editor VA portfolio without recording yourself. Use free footage, interview friends, or edit for creators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.mock-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .mock-wrap { padding: 0 24px; } }
+.mock-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 48px; }
+@media (max-width: 640px) { .mock-meta { grid-template-columns: 1fr; } }
+.meta-card { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 20px; }
+.meta-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.meta-value { font-size: 15px; color: #fff; font-weight: 500; line-height: 1.3; }
+.section-block { margin-bottom: 56px; }
+.block-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-size: 38px; line-height: 1; font-weight: 400; }
+.block-title { font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
+.block-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 28px; line-height: 1.6; }
+.mock-step { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px 30px; margin-bottom: 14px; transition: all 0.3s; }
+.mock-step:hover { border-color: rgba(196,255,71,0.2); }
+.mock-step-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.mock-step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(196,255,71,0.1); color: #c4ff47; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.mock-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; line-height: 1.3; }
+.mock-step p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 12px; }
+.mock-step p:last-child { margin-bottom: 0; }
+.mock-step ul { list-style: none; margin: 10px 0; }
+.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 6px; }
+.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #c4ff47; }
+.mock-step strong { color: #c4ff47; font-weight: 500; }
+.callout-box { background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px; }
+.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 4px; }
+.callout-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+.screenshot-list { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
+.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.screenshot-list ul { list-style: none; }
+.screenshot-list ul li { font-size: 13px; color: #e0e0e0; padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
+.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 600; }
+.back-cta { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px; text-align: center; margin-top: 48px; }
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+.source-box { background: rgba(196,255,71,0.04); border: 1px solid rgba(196,255,71,0.2); border-radius: 12px; padding: 16px 20px; margin: 14px 0; }
+.source-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 8px; }
+.source-box p { font-size: 13px; color: #e0e0e0; margin: 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="beginner-checklist.html" class="back-link">← Back to roadmap</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Video Editor mock task</div>
+<h1 class="page-title">Build your <em>editing</em> portfolio.</h1>
+<p class="page-lede">You don't need to record yourself. You don't need a studio. You just need good footage and your editing skills. Here's how to build 3 portfolio pieces without ever being on camera.</p>
+</section>
+</div>
+
+<div class="mock-wrap">
+
+<div class="mock-meta">
+<div class="meta-card"><div class="meta-label">Tools needed</div><div class="meta-value">CapCut (free) or DaVinci Resolve</div></div>
+<div class="meta-card"><div class="meta-label">Time</div><div class="meta-value">8–12 hours total</div></div>
+<div class="meta-card"><div class="meta-label">On camera?</div><div class="meta-value">Nope, never</div></div>
+</div>
+
+<!-- ══ WHERE TO GET FOOTAGE ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">00</div>
+<div class="block-title">Where to get footage (read this first)</div>
+</div>
+<p class="block-sub">Before any editing, you need footage. You will NOT be recording yourself. Here are 3 legit ways to get editable clips.</p>
+
+<div class="source-box">
+<div class="source-label">Option 1 — Royalty-free stock (easiest)</div>
+<p>Free stock video sites let you download clips anyone can use. Quality is surprisingly good. This is the fastest way.</p>
+<ul style="list-style: none; margin-top: 10px;">
+<li style="padding: 4px 0; padding-left: 20px; position: relative; font-size: 13px; color: #e0e0e0;"><span style="position: absolute; left: 0; color: #c4ff47;">→</span> <a href="https://www.pexels.com/videos/" target="_blank" style="color: #c4ff47;">Pexels Videos</a> — biggest free library</li>
+<li style="padding: 4px 0; padding-left: 20px; position: relative; font-size: 13px; color: #e0e0e0;"><span style="position: absolute; left: 0; color: #c4ff47;">→</span> <a href="https://pixabay.com/videos/" target="_blank" style="color: #c4ff47;">Pixabay Videos</a> — also free</li>
+<li style="padding: 4px 0; padding-left: 20px; position: relative; font-size: 13px; color: #e0e0e0;"><span style="position: absolute; left: 0; color: #c4ff47;">→</span> <a href="https://mixkit.co/free-stock-video/" target="_blank" style="color: #c4ff47;">Mixkit</a> — clean, modern clips</li>
+</ul>
+</div>
+
+<div class="source-box">
+<div class="source-label">Option 2 — Edit for a friend or family member</div>
+<p>Ask someone you know who talks on camera (a friend with a small YouTube channel, a family member who records events, anyone who has raw footage sitting around). Offer to edit ONE video for them for free in exchange for using it in your portfolio. You get real client-style footage. They get a free edit. Everyone wins.</p>
+</div>
+
+<div class="source-box">
+<div class="source-label">Option 3 — Volunteer edit for a small creator</div>
+<p>Find a small YouTuber or TikToker (under 5k followers) whose content you like. DM them: "I'm a beginner editor building a portfolio. Can I edit one of your videos for free? You own the final edit, I just want to use it in my portfolio." Most say yes — small creators always need help. You get real content + a testimonial if they like the work.</p>
+</div>
+
+<div class="callout-box">
+<div class="callout-label">Rule</div>
+<div class="callout-text">Never use content you didn't get permission to use. Don't rip someone's YouTube video and re-edit it for your portfolio unless they said yes.</div>
+</div>
+</div>
+
+<!-- ══ MOCK 1: REEL ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">01</div>
+<div class="block-title">Short-form reel (IG / TikTok / Shorts)</div>
+</div>
+<p class="block-sub">Reels are the #1 thing clients pay editors for. Build one and you're instantly more hireable.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Grab 2–3 short clips on one theme</div>
+</div>
+<p>From Pexels or Pixabay. Pick a theme: productivity, morning routine, travel, fitness, food. 5–10 seconds per clip is plenty.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Write a simple script or hook</div>
+</div>
+<p>Don't record it. Just write text overlays. Examples:</p>
+<ul>
+<li>"3 morning habits that changed my life"</li>
+<li>"POV: you finally started freelancing"</li>
+<li>"The one app I wish I found sooner"</li>
+</ul>
+<p>Your text overlays will tell the story — no voiceover needed.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Edit for retention</div>
+</div>
+<ul>
+<li>Cut every 1–2 seconds — no slow shots</li>
+<li>Add big text overlays that reinforce your story</li>
+<li>Grab a trending sound from IG or TikTok's library</li>
+<li>Zoom in on key moments</li>
+<li>End with a CTA text ("save this" or "follow for more")</li>
+</ul>
+<div class="callout-box"><div class="callout-label">Why this matters</div><div class="callout-text">Clients measure editors by retention. Fast cuts + big text + trending audio = more views = you keep getting hired.</div></div>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Export vertical at 1080x1920</div>
+</div>
+<p>H.264 format, 30fps. Upload it to YouTube as unlisted so you can drop the link in your portfolio.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">What goes in your portfolio</div>
+<ul>
+<li>Link to the finished reel (unlisted YouTube)</li>
+<li>Screenshot of your editing timeline showing cuts + text</li>
+<li>The concept / hook you wrote before editing</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 2: LONG FORM ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">02</div>
+<div class="block-title">Long-form YouTube edit</div>
+</div>
+<p class="block-sub">Long-form editors charge more and keep retainer clients. Proving you can edit a 3–5 min video well = higher pay, more stability.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Get footage from one of the 3 sources above</div>
+</div>
+<p>Best options for this one:</p>
+<ul>
+<li>Edit a free vlog-style clip from Pexels</li>
+<li>Edit a friend or family member's existing raw footage</li>
+<li>Volunteer-edit one video for a small YouTuber</li>
+</ul>
+<p>You want 5–10 minutes of raw footage to cut down to 3–5 min.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Edit it to a polished 3–5 min final</div>
+</div>
+<p>Your edit needs:</p>
+<ul>
+<li>An intro title card or animated logo (2–4 seconds)</li>
+<li>A strong hook in the first 15 seconds — cut any slow intro</li>
+<li>Cut all filler words (um, uh, like, you know) — this alone transforms a video</li>
+<li>B-roll over key moments (use Pexels for this too)</li>
+<li>Lower-third text for important points</li>
+<li>Background music from <a href="https://www.youtube.com/audiolibrary" target="_blank" style="color: #c4ff47;">YouTube Audio Library</a> (free)</li>
+<li>An outro with CTA text (subscribe, watch next)</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Color correct the footage</div>
+</div>
+<p>Even basic color correction makes amateur footage look professional. Adjust exposure, white balance, and apply a subtle preset across all clips so everything looks consistent.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Clean the audio</div>
+</div>
+<ul>
+<li>Normalize volume — all clips at similar levels</li>
+<li>Remove background hiss / room noise</li>
+<li>Music should soften when someone speaks (it's called "ducking")</li>
+</ul>
+<p>Clients care about audio. Bad audio = they won't rehire you.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Export and upload</div>
+</div>
+<p>1920x1080, H.264, 30fps. Upload to YouTube as unlisted. Grab the link for your portfolio.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">What goes in your portfolio</div>
+<ul>
+<li>Link to the edited YouTube video (unlisted)</li>
+<li>Before/after — a snippet of raw vs. edited</li>
+<li>Timeline screenshot showing your work</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 3: PODCAST CLIP ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">03</div>
+<div class="block-title">Podcast clip edit</div>
+</div>
+<p class="block-sub">Every coach, founder, and creator is starting a podcast. They all need someone to pull viral clips. This skill alone can get you hired.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Find free podcast footage</div>
+</div>
+<p>Options:</p>
+<ul>
+<li>Pexels has free interview-style stock clips</li>
+<li>Ask a small podcaster if you can edit a clip for their show (tag them when you post it)</li>
+<li>If you know someone with a podcast — offer to clip one episode for them free</li>
+</ul>
+<p><strong>Do not rip someone's podcast and republish it without permission.</strong></p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Find the best 30–60 seconds</div>
+</div>
+<p>Listen to the full episode (or use a transcript). Pull the most punchy moment — a hot take, a story, a surprising insight. It should stand alone and hit emotionally.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Make 2 versions: vertical + square</div>
+</div>
+<p>Clients want clips for multiple platforms:</p>
+<ul>
+<li><strong>Vertical (9:16):</strong> for Reels, TikTok, Shorts</li>
+<li><strong>Square (1:1):</strong> for LinkedIn, Facebook, Twitter</li>
+</ul>
+<p>Reposition the speaker's face so they stay centered in both ratios.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Add captions + polish</div>
+</div>
+<ul>
+<li>Auto-generate captions in CapCut, then clean them up manually</li>
+<li>Make captions big, bold, and on-brand (match the podcast's colors)</li>
+<li>Add a title card: "What [guest] said about X"</li>
+<li>Small zoom-ins during key moments</li>
+<li>Quiet background music if it fits</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Export both versions</div>
+</div>
+<p>Upload both to YouTube unlisted or a portfolio folder. Show clients you can deliver platform-specific content, not just one format.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">What goes in your portfolio</div>
+<ul>
+<li>Both versions (vertical + square)</li>
+<li>Before/after — raw clip vs. your polished version</li>
+<li>Timeline screenshot showing captions + reframe work</li>
+</ul>
+</div>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Done editing?</div>
+<p class="back-cta-sub">Head back to the roadmap and finish your portfolio.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Tools</div><ul><li><a href="niche-quiz.html">Niche quiz</a></li><li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

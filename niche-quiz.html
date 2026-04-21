@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Niche Finder Quiz — Kailami</title>
+<meta name="description" content="Answer 15 questions and discover your top 3 matched VA niches for 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.quiz-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .quiz-wrap { padding: 0 24px; } }
+
+.progress-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 24px 28px; margin-bottom: 40px;
+  position: sticky; top: 80px; z-index: 50;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+}
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.progress-label { font-size: 12px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+.progress-count { font-size: 15px; color: #fff; font-weight: 500; }
+.progress-count em { font-style: normal; color: #c4ff47; font-weight: 600; }
+.progress-bar { height: 6px; background: #1f1f1f; border-radius: 999px; overflow: hidden; }
+.progress-fill { height: 100%; background: #c4ff47; border-radius: 999px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+
+.question-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; padding: 40px; margin-bottom: 20px;
+  transition: all 0.3s;
+}
+.question-card:hover { border-color: rgba(255,255,255,0.12); }
+.question-card.answered { border-color: rgba(196,255,71,0.3); }
+.q-num {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; color: #c4ff47; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;
+}
+.q-num-dot { width: 24px; height: 1px; background: #c4ff47; }
+.q-text {
+  font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: #fff;
+  letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 28px;
+}
+.options-grid { display: flex; flex-direction: column; gap: 10px; }
+.option {
+  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 18px 22px; cursor: pointer;
+  display: flex; align-items: center; gap: 14px; transition: all 0.2s;
+}
+.option:hover { background: #1f1f1f; border-color: rgba(255,255,255,0.15); }
+.option.selected { border-color: #c4ff47; background: rgba(196,255,71,0.06); }
+.option-radio {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1.5px solid #3a3a3a; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.option.selected .option-radio { border-color: #c4ff47; }
+.option-radio-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #c4ff47; opacity: 0; transition: opacity 0.2s;
+}
+.option.selected .option-radio-dot { opacity: 1; }
+.option-text { font-size: 15px; color: #e0e0e0; flex: 1; line-height: 1.5; }
+.option.selected .option-text { color: #fff; }
+
+.action-row { display: flex; gap: 12px; margin: 40px 0; justify-content: center; flex-wrap: wrap; }
+
+.results { display: none; }
+.results.show { display: block; animation: fadeUp 0.6s ease-out; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.match-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; padding: 36px; margin-bottom: 16px;
+  transition: all 0.3s; position: relative; overflow: hidden;
+}
+.match-card.rank-1 {
+  border-color: #c4ff47;
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+}
+.match-header { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+.rank-badge {
+  width: 52px; height: 52px; border-radius: 50%; background: #1f1f1f;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 600; color: #888; flex-shrink: 0;
+}
+.match-card.rank-1 .rank-badge { background: #c4ff47; color: #0a0a0a; }
+.match-title-block { flex: 1; }
+.match-title { font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
+.match-card.rank-1 .match-title { color: #c4ff47; }
+.match-score { font-size: 13px; color: #888; margin-top: 4px; }
+.match-bar-wrap { height: 4px; background: #1f1f1f; border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
+.match-bar { height: 100%; background: #c4ff47; border-radius: 999px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+.match-desc { font-size: 15px; color: #c0c0c0; line-height: 1.6; margin-bottom: 18px; }
+.match-tasks { font-size: 13px; color: #888; line-height: 1.6; }
+.match-tasks strong { color: #c4ff47; font-weight: 500; }
+
+.next-steps {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.25);
+  border-radius: 24px; padding: 40px; margin-top: 32px; text-align: center;
+}
+.next-steps-title { font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 10px; letter-spacing: -0.5px; }
+.next-steps-sub { font-size: 14px; color: #c0c0c0; margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>15 questions · ~3 min</div>
+<h1 class="page-title">Find your <em>VA niche</em>.</h1>
+<p class="page-lede">Answer 15 multiple-choice questions and we'll match you with the top 3 VA niches based on how you naturally think, work, and make decisions.</p>
+</section>
+
+</div>
+
+<div class="quiz-wrap">
+
+<div id="quiz-view">
+
+<div class="progress-card">
+<div class="progress-head">
+<span class="progress-label">Your progress</span>
+<span class="progress-count"><em id="answered-count">0</em> / 15 answered</span>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+</div>
+
+<div id="questions-container"></div>
+
+<div class="action-row">
+<button class="btn btn-primary btn-lg" id="submit-btn" onclick="showResults()" disabled>See my top 3 niches →</button>
+</div>
+
+</div>
+
+<div id="results-view" class="results">
+<section class="page-hero" style="padding: 40px 0 32px;">
+<div class="tag-chip"><span class="tag-dot"></span>Your matches are in</div>
+<h2 class="page-title" style="font-size: clamp(36px, 5vw, 56px);">Your top 3 <em>niches</em>.</h2>
+<p class="page-lede">These are the VA niches that best match how you think and work. Start with your #1 match.</p>
+</section>
+
+<div id="results-list"></div>
+
+<div class="next-steps">
+<div class="next-steps-title">Ready to start?</div>
+<p class="next-steps-sub">Take your #1 niche into the beginner roadmap and start building toward your first client.</p>
+<a href="beginner-checklist.html" class="btn btn-primary btn-lg">Go to the beginner roadmap →</a>
+</div>
+
+<div class="action-row">
+<button class="btn btn-ghost" onclick="retakeQuiz()">↻ Retake quiz</button>
+</div>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block">
+<div class="footer-logo"><span class="logo-dot"></span>kailami.</div>
+<p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Tools</div>
+<ul>
+<li><a href="niche-quiz.html">Niche quiz</a></li>
+<li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Community</div>
+<ul>
+<li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li>
+<li><a href="index.html#webinars">Free webinars</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="footer-col-title">Follow</div>
+<ul>
+<li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li>
+<li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li>
+<li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2026 Kailami · All resources free forever</div>
+<div>Made with care for the VA community</div>
+</div>
+</footer>
+
+<script>
+// ═══ NICHES (10 total) ═══
+// ADMIN = Administrative Support
+// EA = Executive Assistant (high-trust admin, for leaders)
+// SMM = Social Media Management
+// ECOM = eCommerce Support
+// TECH = Technical Support/Specialist
+// DM = Digital Marketing / Content Creation
+// CS = Customer Support
+// INDUSTRY = Industry-Specific (Real Estate, Podcast, Legal)
+// AUTO = Automation Specialist
+// MEDIA = Media Buyer
+
+const nicheInfo = {
+  ADMIN: {
+    name: "Administrative Support VA",
+    desc: "You're adaptable, organized, and reliable. Admin VAs handle the operational backbone — calendar, email, data entry, research, scheduling. One of the most in-demand niches in 2026 because every business needs it.",
+    tasks: "Calendar management · Email triage · Data entry · Research · File organization · Scheduling"
+  },
+  EA: {
+    name: "Executive Assistant",
+    desc: "You think ahead, handle pressure calmly, and protect your executive's time like it's your own. EAs are the right hand of founders — trusted with sensitive decisions, complex scheduling, and keeping everything running behind the scenes.",
+    tasks: "Calendar & inbox management · Travel planning · Meeting prep · Stakeholder coordination · Project tracking"
+  },
+  SMM: {
+    name: "Social Media Manager",
+    desc: "You notice what audiences respond to, think in terms of engagement, and understand that social is strategy plus storytelling. SMMs build brand presence, grow communities, and turn followers into customers.",
+    tasks: "Content planning · Caption writing · Engagement · Analytics · Trend research · Community management"
+  },
+  ECOM: {
+    name: "eCommerce Support VA",
+    desc: "You're detail-oriented, systematic, and enjoy the mix of product, operations, and customer work. eCommerce VAs help Shopify/Amazon stores with listings, inventory, orders, and customer service.",
+    tasks: "Product listings · Shopify / Amazon management · Inventory tracking · Order processing · Returns"
+  },
+  TECH: {
+    name: "Technical Support Specialist",
+    desc: "You learn tools quickly, figure things out without hand-holding, and enjoy untangling technical messes. Tech VAs handle CRMs, website updates, integrations, and tool-stack problems that drive other people crazy.",
+    tasks: "CRM updates · Website management · WordPress · Integrations · Troubleshooting · Tool setup"
+  },
+  DM: {
+    name: "Digital Marketing / Content Creator",
+    desc: "You think in terms of audience and outcomes, not just tasks. Digital marketing VAs run email campaigns, write blog content, create graphics, and help businesses grow through content.",
+    tasks: "Email marketing · Blog writing · Graphic design · Canva · Newsletter ops · SEO basics"
+  },
+  CS: {
+    name: "Customer Support VA",
+    desc: "You're patient, calm under pressure, and a natural problem-solver. Customer support VAs handle inquiries via chat, email, and ticketing systems. High demand, great starting point for beginners.",
+    tasks: "Email support · Live chat · Zendesk / Intercom · FAQs · Ticket management · Refunds"
+  },
+  INDUSTRY: {
+    name: "Industry-Specific VA",
+    desc: "You love going deep in one niche. Industry-specific VAs (real estate, podcast, legal, coaching) become the go-to expert in a single industry — higher rates, stickier clients, better long-term positioning.",
+    tasks: "Real estate listings · Podcast editing & show notes · Legal admin · Coaching operations"
+  },
+  AUTO: {
+    name: "Automation Specialist",
+    desc: "You see repetitive work and immediately think 'I can automate this.' Automation VAs build workflows in Zapier, Make, and Notion that save clients hours every week. A newer, high-paying niche.",
+    tasks: "Zapier / Make workflows · Notion systems · CRM automation · Airtable · Process optimization"
+  },
+  MEDIA: {
+    name: "Media Buyer VA",
+    desc: "You're analytical, data-driven, and comfortable making decisions based on numbers. Media buyers manage paid ad budgets on Meta, TikTok, and Google — one of the highest-paid VA niches.",
+    tasks: "Meta Ads · Google Ads · TikTok Ads · Campaign management · A/B testing · Reporting"
+  }
+};
+
+// ═══ 15 QUESTIONS — multiple choice, each answer weights different niches ═══
+const questions = [
+  {
+    q: "When you're given a messy project with no instructions, what's your instinct?",
+    options: [
+      { text: "Organize it into a system first, then tackle it step by step", niches: ["ADMIN","EA","AUTO"] },
+      { text: "Ask the client exactly what they need, then execute", niches: ["CS","ADMIN"] },
+      { text: "Research how others have solved this and adapt their approach", niches: ["TECH","AUTO","MEDIA"] },
+      { text: "Figure out who the work is FOR and work backwards from there", niches: ["SMM","DM","MEDIA"] }
+    ]
+  },
+  {
+    q: "Which of these describes your ideal workday?",
+    options: [
+      { text: "Variety — different tasks, different clients, never bored", niches: ["ADMIN","CS"] },
+      { text: "Deep focus on one executive's world all day", niches: ["EA"] },
+      { text: "Creating content, posting, watching engagement grow", niches: ["SMM","DM"] },
+      { text: "Building systems so things run without me", niches: ["AUTO","TECH"] }
+    ]
+  },
+  {
+    q: "How do you feel about numbers and data?",
+    options: [
+      { text: "Love them — I notice trends and patterns others miss", niches: ["MEDIA","AUTO","ECOM"] },
+      { text: "Comfortable — I use them when needed but they're not my main thing", niches: ["SMM","DM","EA"] },
+      { text: "Tolerate them — I'd rather focus on people and tasks", niches: ["CS","ADMIN"] },
+      { text: "I'd rather build systems that handle the numbers for me", niches: ["AUTO","TECH"] }
+    ]
+  },
+  {
+    q: "A client says 'this tool is broken.' What do you do?",
+    options: [
+      { text: "Google the issue, try 3 fixes, document what worked", niches: ["TECH","AUTO"] },
+      { text: "Contact their support team and manage the back-and-forth", niches: ["CS","ADMIN","EA"] },
+      { text: "Report it to the client and ask them to handle it", niches: ["SMM","DM"] },
+      { text: "Figure out a workaround so the work still gets done", niches: ["ECOM","ADMIN","TECH"] }
+    ]
+  },
+  {
+    q: "What naturally grabs your attention on social media?",
+    options: [
+      { text: "The design, colors, and layout of the post", niches: ["DM","SMM"] },
+      { text: "Which posts are getting engagement and why", niches: ["SMM","MEDIA"] },
+      { text: "Products being sold and how they're positioned", niches: ["ECOM","MEDIA","DM"] },
+      { text: "Honestly, I don't spend much time on social", niches: ["EA","ADMIN","TECH","AUTO"] }
+    ]
+  },
+  {
+    q: "How do you handle repetitive work?",
+    options: [
+      { text: "I build a template or system so it's faster next time", niches: ["AUTO","TECH","ADMIN"] },
+      { text: "I focus in and get it done accurately", niches: ["ADMIN","ECOM","CS"] },
+      { text: "I lose focus fast — I prefer creative work", niches: ["SMM","DM"] },
+      { text: "I batch it and knock it out in one block", niches: ["EA","ADMIN","ECOM"] }
+    ]
+  },
+  {
+    q: "What would you rather do for 8 hours?",
+    options: [
+      { text: "Manage a leader's calendar, inbox, and meetings", niches: ["EA","ADMIN"] },
+      { text: "Design social graphics and write captions", niches: ["DM","SMM"] },
+      { text: "Update product listings and manage orders", niches: ["ECOM","ADMIN"] },
+      { text: "Optimize ad campaigns and analyze performance", niches: ["MEDIA","AUTO"] }
+    ]
+  },
+  {
+    q: "Which problem would you most enjoy solving?",
+    options: [
+      { text: "This business loses track of applicants — help them stay organized", niches: ["ADMIN","EA","AUTO"] },
+      { text: "This brand has no social presence — help them grow online", niches: ["SMM","DM"] },
+      { text: "This store's checkout is broken — help them fix and optimize it", niches: ["ECOM","TECH"] },
+      { text: "This founder spends too much time on admin — help them get time back", niches: ["EA","AUTO"] }
+    ]
+  },
+  {
+    q: "When you learn a new tool, what's your approach?",
+    options: [
+      { text: "I dive in, break things, then figure it out by doing", niches: ["TECH","AUTO","SMM"] },
+      { text: "I watch a tutorial first, then apply it step by step", niches: ["ADMIN","ECOM","CS"] },
+      { text: "I ask someone who knows it to show me the basics", niches: ["CS","ADMIN","EA"] },
+      { text: "I learn the parts I need for the job and ignore the rest", niches: ["DM","MEDIA","INDUSTRY"] }
+    ]
+  },
+  {
+    q: "A client is upset about a mistake. Your first move is:",
+    options: [
+      { text: "Apologize, own it, propose how I'll fix it", niches: ["CS","EA","ADMIN"] },
+      { text: "Investigate what actually went wrong before responding", niches: ["TECH","ECOM","AUTO"] },
+      { text: "Stay calm, ask questions, de-escalate the situation", niches: ["CS","EA"] },
+      { text: "Document the issue and send a written response", niches: ["ADMIN","EA","INDUSTRY"] }
+    ]
+  },
+  {
+    q: "How do you feel about working in ONE specific industry long-term?",
+    options: [
+      { text: "Love it — I want to be the go-to expert in one space", niches: ["INDUSTRY","MEDIA","AUTO"] },
+      { text: "Open to it — depends on the industry and the pay", niches: ["EA","INDUSTRY","TECH"] },
+      { text: "Prefer variety across industries so I don't get bored", niches: ["ADMIN","CS","SMM"] },
+      { text: "I'd rather specialize in a SKILL than an industry", niches: ["DM","SMM","AUTO","MEDIA"] }
+    ]
+  },
+  {
+    q: "What sounds most satisfying to you?",
+    options: [
+      { text: "Turning a messy inbox into zero unread", niches: ["ADMIN","EA","CS"] },
+      { text: "Watching a post you made go viral", niches: ["SMM","DM"] },
+      { text: "Seeing an ad you built generate 3x the ROI", niches: ["MEDIA","AUTO"] },
+      { text: "Building one Zapier workflow that saves 10 hours a week", niches: ["AUTO","TECH"] }
+    ]
+  },
+  {
+    q: "Which of these feels closest to your personal style?",
+    options: [
+      { text: "Quiet, behind-the-scenes, keeping things in order", niches: ["ADMIN","EA","INDUSTRY"] },
+      { text: "Visible, creative, always in the mix with audiences", niches: ["SMM","DM"] },
+      { text: "Analytical, systems-focused, spreadsheet brain", niches: ["MEDIA","AUTO","ECOM","TECH"] },
+      { text: "Warm, communicative, people-first", niches: ["CS","EA","ADMIN"] }
+    ]
+  },
+  {
+    q: "How do you feel about being highly accountable for a specific metric?",
+    options: [
+      { text: "Bring it on — I want results I can measure", niches: ["MEDIA","SMM","DM"] },
+      { text: "Good with it, as long as the target is realistic", niches: ["ECOM","AUTO","TECH"] },
+      { text: "I prefer being measured on quality and reliability over numbers", niches: ["EA","ADMIN","CS","INDUSTRY"] },
+      { text: "I'd rather avoid performance metrics entirely", niches: ["ADMIN","CS"] }
+    ]
+  },
+  {
+    q: "Six months from now, what would success look like?",
+    options: [
+      { text: "Being trusted with sensitive, high-stakes work for one or two clients", niches: ["EA","INDUSTRY","AUTO"] },
+      { text: "Having a portfolio of creative work I'm proud of", niches: ["DM","SMM"] },
+      { text: "Knowing I've streamlined systems that save clients real time", niches: ["AUTO","TECH","ADMIN"] },
+      { text: "Being the reliable VA clients can't run their business without", niches: ["ADMIN","CS","ECOM","EA"] }
+    ]
+  }
+];
+
+const state = { answers: {} }; // { questionIdx: optionIdx }
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = questions.map((question, qi) => {
+    const answered = state.answers[qi] !== undefined;
+    return `
+      <div class="question-card ${answered ? 'answered' : ''}" id="q-${qi}">
+        <div class="q-num"><span class="q-num-dot"></span>Question ${qi + 1} / 15</div>
+        <div class="q-text">${question.q}</div>
+        <div class="options-grid">
+          ${question.options.map((opt, oi) => {
+            const selected = state.answers[qi] === oi;
+            return `
+              <div class="option ${selected ? 'selected' : ''}" onclick="selectOption(${qi}, ${oi})">
+                <div class="option-radio"><div class="option-radio-dot"></div></div>
+                <div class="option-text">${opt.text}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }).join('');
+  updateProgress();
+}
+
+function selectOption(qi, oi) {
+  state.answers[qi] = oi;
+  renderQuestions();
+}
+
+function updateProgress() {
+  const count = Object.keys(state.answers).length;
+  document.getElementById('answered-count').textContent = count;
+  document.getElementById('progress-fill').style.width = `${(count / questions.length) * 100}%`;
+  document.getElementById('submit-btn').disabled = count < questions.length;
+}
+
+function showResults() {
+  const scores = {};
+  Object.keys(nicheInfo).forEach(k => scores[k] = 0);
+  const maxPossible = { ...scores };
+
+  questions.forEach((question, qi) => {
+    // For max possible: each question's best-case is if the answer maxes out every niche listed.
+    // Track per-niche max by summing the max contribution across all questions (1 per option that includes that niche, taking max across options per question).
+    const perNicheMaxThisQ = {};
+    question.options.forEach(opt => {
+      opt.niches.forEach(n => {
+        perNicheMaxThisQ[n] = 1; // each option either gives 1 or 0
+      });
+    });
+    Object.keys(perNicheMaxThisQ).forEach(n => { maxPossible[n] += perNicheMaxThisQ[n]; });
+
+    const chosenIdx = state.answers[qi];
+    if (chosenIdx !== undefined) {
+      question.options[chosenIdx].niches.forEach(n => {
+        scores[n]++;
+      });
+    }
+  });
+
+  const results = Object.keys(scores).map(k => ({
+    key: k,
+    score: scores[k],
+    percent: maxPossible[k] > 0 ? Math.round((scores[k] / maxPossible[k]) * 100) : 0
+  })).sort((a, b) => b.percent - a.percent || b.score - a.score);
+
+  const top3 = results.slice(0, 3);
+
+  const list = document.getElementById('results-list');
+  list.innerHTML = top3.map((r, i) => {
+    const info = nicheInfo[r.key];
+    return `
+      <div class="match-card ${i === 0 ? 'rank-1' : ''}">
+        <div class="match-header">
+          <div class="rank-badge">#${i + 1}</div>
+          <div class="match-title-block">
+            <div class="match-title">${info.name}</div>
+            <div class="match-score">${r.percent}% match</div>
+          </div>
+        </div>
+        <div class="match-bar-wrap"><div class="match-bar" data-width="${r.percent}"></div></div>
+        <p class="match-desc">${info.desc}</p>
+        <p class="match-tasks"><strong>Typical work:</strong> ${info.tasks}</p>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('quiz-view').style.display = 'none';
+  document.getElementById('results-view').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(() => {
+    document.querySelectorAll('.match-bar').forEach(b => {
+      b.style.width = b.dataset.width + '%';
+    });
+  }, 100);
+}
+
+function retakeQuiz() {
+  state.answers = {};
+  document.getElementById('results-view').classList.remove('show');
+  document.getElementById('quiz-view').style.display = 'block';
+  renderQuestions();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>

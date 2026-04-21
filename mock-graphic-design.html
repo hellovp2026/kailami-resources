@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graphic Design Mock Task — Kailami</title>
+<meta name="description" content="Build a complete Graphic Design VA portfolio: brand kit, social media templates, and a pitch deck.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.mock-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .mock-wrap { padding: 0 24px; } }
+.mock-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 48px; }
+@media (max-width: 640px) { .mock-meta { grid-template-columns: 1fr; } }
+.meta-card { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 20px; }
+.meta-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.meta-value { font-size: 15px; color: #fff; font-weight: 500; line-height: 1.3; }
+.section-block { margin-bottom: 56px; }
+.block-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-size: 38px; line-height: 1; font-weight: 400; }
+.block-title { font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
+.block-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 28px; line-height: 1.6; }
+.mock-step { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px 30px; margin-bottom: 14px; transition: all 0.3s; }
+.mock-step:hover { border-color: rgba(196,255,71,0.2); }
+.mock-step-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.mock-step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(196,255,71,0.1); color: #c4ff47; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.mock-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; line-height: 1.3; }
+.mock-step p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 12px; }
+.mock-step p:last-child { margin-bottom: 0; }
+.mock-step ul { list-style: none; margin: 10px 0; }
+.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 6px; }
+.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #c4ff47; }
+.mock-step strong { color: #c4ff47; font-weight: 500; }
+.callout-box { background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px; }
+.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 4px; }
+.callout-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+.screenshot-list { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
+.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.screenshot-list ul { list-style: none; }
+.screenshot-list ul li { font-size: 13px; color: #e0e0e0; padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
+.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 600; }
+.back-cta { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px; text-align: center; margin-top: 48px; }
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="beginner-checklist.html" class="back-link">← Back to roadmap</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Graphic Design mock task</div>
+<h1 class="page-title">Build your <em>design</em> portfolio.</h1>
+<p class="page-lede">Three mock tasks that prove you can build a brand identity, design branded templates, and deliver polished client assets. The trifecta for landing design VA work.</p>
+</section>
+</div>
+
+<div class="mock-wrap">
+
+<div class="mock-meta">
+<div class="meta-card"><div class="meta-label">Tools needed</div><div class="meta-value">Canva (free) or Figma, Google Docs</div></div>
+<div class="meta-card"><div class="meta-label">Time commitment</div><div class="meta-value">6–10 hours total</div></div>
+<div class="meta-card"><div class="meta-label">Difficulty</div><div class="meta-value">Intermediate</div></div>
+</div>
+
+<!-- ══ MOCK 1: BRAND KIT ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">01</div>
+<div class="block-title">Brand kit for a fake business</div>
+</div>
+<p class="block-sub">A brand kit is the foundation of every design project. Proving you can build one shows clients you understand brand systems, not just individual assets.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Pick a fake brand with clear personality</div>
+</div>
+<p>Choose something with a distinct voice and audience:</p>
+<ul>
+<li>A minimalist skincare brand for busy professionals</li>
+<li>A bold fitness app for Gen Z</li>
+<li>A warm, earthy coffee roaster</li>
+<li>A sleek fintech startup for freelancers</li>
+</ul>
+<p>Write a <strong>one-paragraph brand brief</strong>: who, what, for whom, and the vibe.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Design the logo</div>
+</div>
+<p>Create:</p>
+<ul>
+<li>Primary logo (wordmark or combination)</li>
+<li>Secondary mark (icon or monogram)</li>
+<li>Black version</li>
+<li>White version (for dark backgrounds)</li>
+</ul>
+<p>Keep it simple. Clean beats clever for beginner portfolios.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Define the color palette</div>
+</div>
+<p>5 colors total:</p>
+<ul>
+<li>1 primary (the main brand color)</li>
+<li>1 secondary (for accents)</li>
+<li>2 neutrals (light and dark)</li>
+<li>1 highlight (for CTAs, alerts)</li>
+</ul>
+<p>Include hex codes for each. Use <a href="https://coolors.co" target="_blank" style="color:#c4ff47;">coolors.co</a> to help.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Pick typography</div>
+</div>
+<p>2 fonts max:</p>
+<ul>
+<li>Display font (headings, big moments)</li>
+<li>Body font (paragraphs, UI)</li>
+</ul>
+<p>Use free Google Fonts. Specify sizes and weights for H1, H2, body, and small text.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">5</div>
+<div class="mock-step-title">Compile into a brand guidelines PDF</div>
+</div>
+<p>Create a <strong>6–10 page PDF</strong> showing:</p>
+<ul>
+<li>Cover page with brand name</li>
+<li>Brand story / brief</li>
+<li>Logo variations</li>
+<li>Color palette with hex codes</li>
+<li>Typography system</li>
+<li>Photo / imagery style (mood board)</li>
+<li>Do's and don'ts (logo misuse examples)</li>
+</ul>
+<div class="callout-box">
+<div class="callout-label">Shortcut — use Claude to build the PDF</div>
+<div class="callout-text">If building a full PDF feels overwhelming, use <a href="https://claude.ai/" target="_blank" style="color:#c4ff47;">Claude</a> free. Paste all your brand info (colors, fonts, logo description, brand story) and ask Claude to build you a brand guidelines PDF. It'll generate a polished, downloadable document in seconds. You just add your logo images. This is NOT cheating — clients love VAs who use AI efficiently.</div>
+</div>
+<p style="margin-top: 14px;">Otherwise, build it in Canva — search "brand guidelines template" to start from a pre-made layout.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>Cover page of the brand guidelines</li>
+<li>Logo variation page</li>
+<li>Color palette page with hex codes</li>
+<li>Typography system page</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 2: SOCIAL TEMPLATES ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">02</div>
+<div class="block-title">Social media template pack</div>
+</div>
+<p class="block-sub">Most clients don't need one-off designs — they need <strong>templates</strong> they can reuse. Creating a template pack shows you can design for scale.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Design 9 Instagram post templates</div>
+</div>
+<p>Using the brand kit from Mock #1, design 9 reusable post templates (1080x1080) for:</p>
+<ul>
+<li>Quote posts (2 variations)</li>
+<li>Tips or how-to posts (3 variations)</li>
+<li>Product / service promo (2 variations)</li>
+<li>Testimonial (1 variation)</li>
+<li>Announcement (1 variation)</li>
+</ul>
+<p>Each template should have editable text placeholders — clients should be able to swap content easily.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Design 3 Instagram Story templates</div>
+</div>
+<p>Size 1080x1920. Create:</p>
+<ul>
+<li>Quote / text story</li>
+<li>Polls / engagement story (with elements)</li>
+<li>Product promo story with CTA</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Design 2 carousel templates</div>
+</div>
+<p>Carousels get the highest IG engagement. Design:</p>
+<ul>
+<li>A 5-slide educational carousel (hook → 3 tips → CTA)</li>
+<li>A 5-slide story/case-study carousel</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Package as a client-ready folder</div>
+</div>
+<p>Organize in Canva with clear folder structure. Share as a public link. Clients should be able to duplicate and use immediately.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>The 9 feed templates shown as a 3x3 grid</li>
+<li>The 3 story templates side by side</li>
+<li>Full carousel slides shown in order</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 3: PITCH DECK ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">03</div>
+<div class="block-title">Pitch deck / presentation design</div>
+</div>
+<p class="block-sub">Presentation design is a high-paid design skill most VAs ignore. Proving you can design a polished deck opens doors to coaches, consultants, and course creators.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Pick a presentation type</div>
+</div>
+<p>Choose one:</p>
+<ul>
+<li>A startup pitch deck (for investors)</li>
+<li>A course sales deck (for a masterclass)</li>
+<li>A proposal deck (VA → client)</li>
+<li>A webinar presentation deck</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Design 12–15 slides</div>
+</div>
+<p>Standard structure to follow:</p>
+<ul>
+<li>Cover / title</li>
+<li>Intro / about</li>
+<li>Problem</li>
+<li>Solution</li>
+<li>Features / what's inside</li>
+<li>Social proof / testimonials</li>
+<li>Process / timeline</li>
+<li>Investment / pricing</li>
+<li>FAQ</li>
+<li>CTA / next steps</li>
+<li>Thank you / contact</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Keep design principles tight</div>
+</div>
+<ul>
+<li>Max 1 main idea per slide</li>
+<li>Consistent header style</li>
+<li>Plenty of whitespace — don't cram</li>
+<li>Use brand colors from Mock #1</li>
+<li>Never shrink text below 18pt for body</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Export both formats</div>
+</div>
+<p>Export the deck as <strong>both a PDF and a PowerPoint/Canva editable file</strong>. Clients want options.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>Cover slide</li>
+<li>5–7 content slides showing design consistency</li>
+<li>Full deck overview (thumbnail view)</li>
+</ul>
+</div>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Done with your design portfolio?</div>
+<p class="back-cta-sub">Head back to the roadmap and continue to the next step.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Tools</div><ul><li><a href="niche-quiz.html">Niche quiz</a></li><li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

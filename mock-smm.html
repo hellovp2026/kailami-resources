@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMM Mock Task — Kailami</title>
+<meta name="description" content="Build a complete Social Media Manager portfolio: Instagram feed design, content calendar, and caption bank.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.mock-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .mock-wrap { padding: 0 24px; } }
+.mock-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 48px; }
+@media (max-width: 640px) { .mock-meta { grid-template-columns: 1fr; } }
+.meta-card { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 20px; }
+.meta-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.meta-value { font-size: 15px; color: #fff; font-weight: 500; line-height: 1.3; }
+.section-block { margin-bottom: 56px; }
+.block-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
+.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-size: 38px; line-height: 1; font-weight: 400; }
+.block-title { font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
+.block-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 28px; line-height: 1.6; }
+.mock-step { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px 30px; margin-bottom: 14px; transition: all 0.3s; }
+.mock-step:hover { border-color: rgba(196,255,71,0.2); }
+.mock-step-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.mock-step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(196,255,71,0.1); color: #c4ff47; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.mock-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; line-height: 1.3; }
+.mock-step p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 12px; }
+.mock-step p:last-child { margin-bottom: 0; }
+.mock-step ul { list-style: none; margin: 10px 0; }
+.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 6px; }
+.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #c4ff47; }
+.mock-step strong { color: #c4ff47; font-weight: 500; }
+.callout-box { background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px; }
+.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 4px; }
+.callout-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
+.screenshot-list { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
+.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.screenshot-list ul { list-style: none; }
+.screenshot-list ul li { font-size: 13px; color: #e0e0e0; padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
+.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 600; }
+.back-cta { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px; text-align: center; margin-top: 48px; }
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="beginner-checklist.html" class="back-link">← Back to roadmap</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Social Media Manager mock task</div>
+<h1 class="page-title">Build your <em>SMM</em> portfolio.</h1>
+<p class="page-lede">Three mock tasks that prove you can plan content, design visuals, and write captions that convert. A weekend's worth of work for a portfolio that gets you hired.</p>
+</section>
+</div>
+
+<div class="mock-wrap">
+
+<div class="mock-meta">
+<div class="meta-card"><div class="meta-label">Tools needed</div><div class="meta-value">Canva (free), Google Sheets, Instagram</div></div>
+<div class="meta-card"><div class="meta-label">Time commitment</div><div class="meta-value">6–8 hours total</div></div>
+<div class="meta-card"><div class="meta-label">Difficulty</div><div class="meta-value">Beginner-friendly</div></div>
+</div>
+
+<!-- ══ MOCK 1: FEED DESIGN ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">01</div>
+<div class="block-title">9-post Instagram feed design</div>
+</div>
+<p class="block-sub">A cohesive 9-post grid proves you can build a visual brand identity. This is the first thing clients look for when hiring an SMM — can you make their feed look professional and aesthetic?</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Pick a fake brand to design for</div>
+</div>
+<p>Don't use real brands. Create a mock business like:</p>
+<ul>
+<li>A wellness coach ("Bloom Coaching")</li>
+<li>A small coffee roaster ("Ember Roasters")</li>
+<li>A fitness studio ("Studio 26")</li>
+<li>A skincare line ("Dewey")</li>
+</ul>
+<p>Write a <strong>one-line brand description</strong> — e.g., "A Manila-based wellness coach helping women in their 30s reset their habits."</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Define the visual identity</div>
+</div>
+<p>Before designing, lock in:</p>
+<ul>
+<li>3–5 brand colors (use <a href="https://coolors.co" target="_blank" style="color:#c4ff47;">coolors.co</a> to generate palettes)</li>
+<li>2 fonts max: one display, one body</li>
+<li>A consistent photo style (bright & airy, moody, minimal, etc.)</li>
+<li>Recurring visual elements (shapes, frames, icons)</li>
+</ul>
+<div class="callout-box"><div class="callout-label">Why this matters</div><div class="callout-text">Clients pay extra when their feed feels like a cohesive brand, not random posts. Consistency is the skill.</div></div>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Design 9 posts in Canva</div>
+</div>
+<p>Open Canva, search "Instagram Post" (1080x1080). Design 9 posts using a mix of content types:</p>
+<ul>
+<li>3 educational posts (tips, how-tos, lists)</li>
+<li>2 promotional posts (service, offer, CTA)</li>
+<li>2 lifestyle / behind-the-scenes</li>
+<li>1 testimonial or social proof</li>
+<li>1 quote or inspirational</li>
+</ul>
+<p>Keep the visual system consistent across all 9 — same colors, fonts, and layout logic.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">4</div>
+<div class="mock-step-title">Arrange as a 3x3 grid preview</div>
+</div>
+<p>In Canva, create one 1080x1080 canvas and lay out all 9 posts together as a grid. This shows clients how the <strong>feed looks as a whole</strong>, not just individual posts.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>The full 3x3 grid preview</li>
+<li>3–5 individual posts shown larger</li>
+<li>Your brand style board (colors, fonts, mood)</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 2: CONTENT CALENDAR ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">02</div>
+<div class="block-title">30-day content calendar</div>
+</div>
+<p class="block-sub">Clients need to see that you can plan, not just design. A content calendar proves you think strategically about what to post, when, and why.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Create a Google Sheet</div>
+</div>
+<p>Columns to include:</p>
+<ul>
+<li>Date</li>
+<li>Day of week</li>
+<li>Platform (IG feed, Story, Reel, TikTok)</li>
+<li>Content pillar (Educate / Entertain / Promote / Inspire)</li>
+<li>Caption draft</li>
+<li>Hashtags</li>
+<li>Status (Draft / Approved / Scheduled / Posted)</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Map out 30 days of content</div>
+</div>
+<p>Use a <strong>60/30/10 rule</strong>:</p>
+<ul>
+<li>60% value (education, tips, insights)</li>
+<li>30% connection (behind-the-scenes, stories, personal)</li>
+<li>10% promotion (offers, services, CTAs)</li>
+</ul>
+<p>Aim for 4–5 feed posts per week + daily stories. Don't overpost — consistency beats frequency.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Fill in each row completely</div>
+</div>
+<p>Don't leave placeholder text. Actually write out:</p>
+<ul>
+<li>The hook for each post</li>
+<li>A draft caption (50–150 words)</li>
+<li>15–20 relevant hashtags per post</li>
+<li>Post time (use <a href="https://later.com/blog/best-time-to-post-on-instagram/" target="_blank" style="color:#c4ff47;">Later's best-times guide</a>)</li>
+</ul>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>Full sheet showing 30 days filled in</li>
+<li>Zoomed-in view of 3–5 rows with full captions and hashtags</li>
+<li>Content pillar summary (pie chart or breakdown)</li>
+</ul>
+</div>
+</div>
+
+<!-- ══ MOCK 3: CAPTION BANK ══ -->
+<div class="section-block">
+<div class="block-header">
+<div class="block-num">03</div>
+<div class="block-title">Caption + hook bank</div>
+</div>
+<p class="block-sub">Writing captions that convert is the #1 skill clients pay for. Prove you can write hooks that stop the scroll and CTAs that drive action.</p>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">1</div>
+<div class="mock-step-title">Write 20 scroll-stopping hooks</div>
+</div>
+<p>The first line is everything. Write 20 hooks for your fake brand using these formulas:</p>
+<ul>
+<li>"The mistake most [audience] make when [topic]..."</li>
+<li>"I spent [time/money] learning this so you don't have to:"</li>
+<li>"If I had to start over as a [role], here's what I'd do:"</li>
+<li>"Unpopular opinion:"</li>
+<li>"POV: you just [situation]"</li>
+</ul>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">2</div>
+<div class="mock-step-title">Write 10 full captions</div>
+</div>
+<p>Each caption should follow this structure:</p>
+<ul>
+<li>Hook (1–2 lines — grabs attention)</li>
+<li>Context or story (2–3 short paragraphs)</li>
+<li>Main lesson or insight</li>
+<li>CTA (comment, save, share, DM, click link in bio)</li>
+</ul>
+<p>Keep paragraphs short — <strong>2–3 lines max</strong>. Mobile reading.</p>
+</div>
+
+<div class="mock-step">
+<div class="mock-step-head">
+<div class="mock-step-num">3</div>
+<div class="mock-step-title">Build hashtag sets by topic</div>
+</div>
+<p>Clients love hashtag banks. Create 4–5 saved hashtag sets (each 20 tags) for different post types:</p>
+<ul>
+<li>Educational posts</li>
+<li>Lifestyle / personal</li>
+<li>Promotional</li>
+<li>Community / engagement</li>
+</ul>
+<p>Mix <strong>big (100k+), medium (10–100k), and small (under 10k)</strong> hashtags in each set.</p>
+</div>
+
+<div class="screenshot-list">
+<div class="screenshot-title">Screenshots to capture</div>
+<ul>
+<li>Your 20-hook document</li>
+<li>Full captions shown in a doc or sheet</li>
+<li>Hashtag sets organized by category</li>
+</ul>
+</div>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Done with your SMM portfolio?</div>
+<p class="back-cta-sub">Head back to the roadmap and continue to the next step.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Tools</div><ul><li><a href="niche-quiz.html">Niche quiz</a></li><li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

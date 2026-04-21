@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Section Generator — Kailami</title>
+<meta name="description" content="Build a perfect About section for your Upwork or OnlineJobs profile. Fill the form, copy the prompt, paste into Claude.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.gen-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .gen-wrap { padding: 0 24px; } }
+
+.how-it-works {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  margin: 32px 0 48px;
+}
+@media (max-width: 640px) { .how-it-works { grid-template-columns: 1fr; } }
+.how-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 22px;
+}
+.how-num {
+  width: 32px; height: 32px; border-radius: 50%; background: rgba(196,255,71,0.1);
+  color: #c4ff47; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600; margin-bottom: 14px;
+}
+.how-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 6px; letter-spacing: -0.3px; }
+.how-text { font-size: 13px; color: #a0a0a0; line-height: 1.6; }
+
+.form-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 36px; margin-bottom: 20px;
+}
+@media (max-width: 640px) { .form-card { padding: 24px; } }
+.form-section-title {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 10px;
+}
+.form-section-title::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+
+.field { margin-bottom: 22px; }
+.field-label { font-size: 13px; color: #e0e0e0; font-weight: 500; margin-bottom: 8px; display: block; }
+.field-hint { font-size: 12px; color: #888; margin-bottom: 10px; line-height: 1.5; }
+.field input, .field textarea, .field select {
+  width: 100%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px 14px; font-family: inherit; font-size: 14px;
+  color: #fff; transition: border-color 0.2s;
+  resize: vertical;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: #c4ff47;
+}
+.field input::placeholder, .field textarea::placeholder { color: #555; }
+.field textarea { min-height: 70px; line-height: 1.5; }
+.field select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+
+.generate-btn-row {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin: 32px 0 12px;
+}
+
+.prompt-output {
+  background: #0a0a0a; border: 1px solid rgba(196,255,71,0.25);
+  border-radius: 20px; padding: 28px; margin-bottom: 20px;
+  display: none;
+}
+.prompt-output.visible { display: block; animation: fadeUp 0.4s ease-out; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.prompt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+.prompt-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600;
+}
+.copy-btn {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  font-family: inherit;
+}
+.copy-btn:hover { background: #d4ff6b; transform: translateY(-1px); }
+.copy-btn.copied { background: #141414; color: #c4ff47; border: 1px solid #c4ff47; }
+.prompt-text {
+  background: #141414; border-radius: 12px; padding: 20px;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px; color: #e0e0e0; line-height: 1.7;
+  white-space: pre-wrap; word-wrap: break-word;
+  max-height: 400px; overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.next-steps-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.25); border-radius: 20px;
+  padding: 28px; margin-top: 20px;
+  display: none;
+}
+.next-steps-card.visible { display: block; }
+.next-steps-title { font-size: 18px; font-weight: 500; color: #fff; margin-bottom: 16px; letter-spacing: -0.3px; }
+.next-steps-card ol { list-style: none; counter-reset: step; }
+.next-steps-card ol li {
+  counter-increment: step; padding-left: 36px; position: relative;
+  font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 14px;
+}
+.next-steps-card ol li:last-child { margin-bottom: 0; }
+.next-steps-card ol li::before {
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #c4ff47; color: #0a0a0a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.next-steps-card a { color: #c4ff47; text-decoration: underline; text-decoration-color: rgba(196,255,71,0.3); }
+.next-steps-card a:hover { text-decoration-color: #c4ff47; }
+
+.error-msg {
+  background: rgba(255,100,100,0.08); border: 1px solid rgba(255,100,100,0.3);
+  color: #ff9999; padding: 12px 16px; border-radius: 10px;
+  font-size: 13px; margin-top: 16px; text-align: center;
+  display: none;
+}
+.error-msg.visible { display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="index.html#tools">Tools</a>
+<a href="index.html#resources">Resources</a>
+<a href="index.html#webinars">Webinars</a>
+</div>
+<a href="beginner-checklist.html" class="back-link">← Back to roadmap</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free AI-powered tool</div>
+<h1 class="page-title">About section <em>generator</em>.</h1>
+<p class="page-lede">Fill in the blanks. Copy the prompt. Paste it into Claude for a free, polished About section that sounds like you — not a robot. Takes 3 minutes.</p>
+</section>
+</div>
+
+<div class="gen-wrap">
+
+<div class="how-it-works">
+<div class="how-card">
+<div class="how-num">1</div>
+<div class="how-title">Fill the form</div>
+<div class="how-text">Answer a few short questions about you, your niche, and who you want to work with.</div>
+</div>
+<div class="how-card">
+<div class="how-num">2</div>
+<div class="how-title">Copy the prompt</div>
+<div class="how-text">We build a detailed prompt using your answers. One click copies it to your clipboard.</div>
+</div>
+<div class="how-card">
+<div class="how-num">3</div>
+<div class="how-title">Paste into Claude</div>
+<div class="how-text">Open Claude (free), paste, done. You get a custom About section ready to use.</div>
+</div>
+</div>
+
+<div class="form-card">
+
+<div class="form-section-title">About you</div>
+
+<div class="field">
+<label class="field-label">Your first name</label>
+<div class="field-hint">So Claude can address you personally in the output.</div>
+<input type="text" id="name" placeholder="e.g., Kyla">
+</div>
+
+<div class="field">
+<label class="field-label">Your VA niche</label>
+<div class="field-hint">The one you picked in Step 2 of the roadmap.</div>
+<select id="niche">
+<option value="">Pick your niche...</option>
+<option>Administrative Support VA</option>
+<option>Executive Assistant</option>
+<option>Social Media Manager</option>
+<option>Graphic Designer</option>
+<option>Video Editor</option>
+<option>Digital Marketing VA</option>
+<option>Customer Support VA</option>
+<option>eCommerce VA</option>
+<option>Technical Support VA</option>
+<option>Bookkeeper VA</option>
+<option>Real Estate VA</option>
+<option>Podcast VA</option>
+<option>Automation Specialist</option>
+<option>Media Buyer</option>
+<option>Other (I'll describe it)</option>
+</select>
+</div>
+
+<div class="field" id="custom-niche-field" style="display: none;">
+<label class="field-label">Describe your niche</label>
+<input type="text" id="custom-niche" placeholder="e.g., Coaching Operations VA">
+</div>
+
+<div class="field">
+<label class="field-label">Who do you want to help?</label>
+<div class="field-hint">Be specific. Who's your ideal client? (The more specific, the better.)</div>
+<input type="text" id="ideal-client" placeholder="e.g., busy coaches, SaaS founders, Shopify store owners, real estate agents">
+</div>
+
+<div class="form-section-title" style="margin-top: 32px;">What you do</div>
+
+<div class="field">
+<label class="field-label">What problem do you solve for them?</label>
+<div class="field-hint">In plain English. What pain are you removing? (E.g., "they drown in emails" or "their Instagram looks inconsistent")</div>
+<textarea id="problem" placeholder="e.g., they waste 10+ hours a week on email and calendar when they should be working with clients"></textarea>
+</div>
+
+<div class="field">
+<label class="field-label">Top 3–5 tools you use</label>
+<div class="field-hint">List the main tools you master. Separate with commas.</div>
+<input type="text" id="tools" placeholder="e.g., Gmail, Google Calendar, Notion, Asana, Slack">
+</div>
+
+<div class="field">
+<label class="field-label">Top 3 skills you offer</label>
+<div class="field-hint">The specific things you deliver. Separate with commas.</div>
+<input type="text" id="skills" placeholder="e.g., inbox management, calendar scheduling, travel coordination">
+</div>
+
+<div class="form-section-title" style="margin-top: 32px;">Style</div>
+
+<div class="field">
+<label class="field-label">How do you want to sound?</label>
+<select id="tone">
+<option>Warm and friendly</option>
+<option>Professional and confident</option>
+<option>Straightforward and blunt</option>
+<option>Casual and approachable</option>
+<option>Polished and premium</option>
+</select>
+</div>
+
+<div class="field">
+<label class="field-label">Platform you're writing for</label>
+<select id="platform">
+<option>Upwork</option>
+<option>OnlineJobs.ph</option>
+<option>LinkedIn</option>
+<option>Personal website or portfolio</option>
+<option>All of the above</option>
+</select>
+</div>
+
+<div class="field">
+<label class="field-label">Anything unique about you?</label>
+<div class="field-hint">Optional. Past experience, languages, a story, a specialty — anything that makes you YOU. Skip if none.</div>
+<textarea id="unique" placeholder="e.g., 5 years in BPO handling client escalations, bilingual English/Filipino, former nurse turned VA"></textarea>
+</div>
+
+<div class="generate-btn-row">
+<button class="btn btn-primary btn-lg" onclick="buildPrompt()">Build my prompt →</button>
+</div>
+
+<div class="error-msg" id="error-msg">Please fill in at least your niche, ideal client, and the problem you solve before generating.</div>
+
+</div>
+
+<div class="prompt-output" id="prompt-output">
+<div class="prompt-header">
+<div class="prompt-label">Your prompt is ready</div>
+<button class="copy-btn" onclick="copyPrompt()" id="copy-btn">
+<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+Copy prompt
+</button>
+</div>
+<div class="prompt-text" id="prompt-text"></div>
+</div>
+
+<div class="next-steps-card" id="next-steps-card">
+<div class="next-steps-title">Next steps</div>
+<ol>
+<li>Open <a href="https://claude.ai/" target="_blank">Claude</a> in a new tab (sign up free if you don't have an account yet)</li>
+<li>Start a new chat and paste the prompt you just copied</li>
+<li>Claude will write a custom About section. Read it — does it sound like you? If not, ask Claude to rewrite it more casual / more formal / shorter / etc.</li>
+<li>Copy the final version into your Upwork or OnlineJobs profile</li>
+<li><strong>Don't use it word-for-word.</strong> Tweak it so it genuinely sounds like you wrote it. Clients notice AI-sounding text.</li>
+</ol>
+</div>
+
+<div style="text-align: center; margin: 40px 0;">
+<a href="beginner-checklist.html" class="btn btn-ghost">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Tools</div><ul><li><a href="niche-quiz.html">Niche quiz</a></li><li><a href="beginner-checklist.html">Beginner roadmap</a></li><li><a href="about-generator.html">About generator</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+// Show custom niche field when "Other" is selected
+document.getElementById('niche').addEventListener('change', function() {
+  document.getElementById('custom-niche-field').style.display =
+    this.value === 'Other (I\'ll describe it)' ? 'block' : 'none';
+});
+
+function val(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function buildPrompt() {
+  const name = val('name');
+  let niche = val('niche');
+  const customNiche = val('custom-niche');
+  const idealClient = val('ideal-client');
+  const problem = val('problem');
+  const tools = val('tools');
+  const skills = val('skills');
+  const tone = val('tone');
+  const platform = val('platform');
+  const unique = val('unique');
+
+  if (niche === 'Other (I\'ll describe it)' && customNiche) {
+    niche = customNiche;
+  }
+
+  // Minimum validation - need the core stuff
+  if (!niche || niche === 'Other (I\'ll describe it)' || !idealClient || !problem) {
+    document.getElementById('error-msg').classList.add('visible');
+    document.getElementById('prompt-output').classList.remove('visible');
+    document.getElementById('next-steps-card').classList.remove('visible');
+    return;
+  }
+
+  document.getElementById('error-msg').classList.remove('visible');
+
+  // Build the prompt
+  let prompt = `You are helping me write an About section for my Virtual Assistant profile on ${platform}. Please write it in a ${tone.toLowerCase()} tone.
+
+ABOUT ME:
+`;
+  if (name) prompt += `- Name: ${name}\n`;
+  prompt += `- Niche: ${niche}\n`;
+  prompt += `- Ideal client: ${idealClient}\n`;
+  prompt += `- Problem I solve: ${problem}\n`;
+  if (tools) prompt += `- Tools I use: ${tools}\n`;
+  if (skills) prompt += `- Top skills: ${skills}\n`;
+  if (unique) prompt += `- Unique background: ${unique}\n`;
+
+  prompt += `
+INSTRUCTIONS:
+- Keep the About section under 150 words
+- Start with the CLIENT, not with me (e.g., "I help [client] do [outcome]" — NOT "I'm a hardworking VA...")
+- First 2 lines are critical — make them grabby, specific, and scannable
+- Focus on the outcome I deliver, not my job title or traits
+- Use short sentences and natural paragraph breaks — no dense walls of text
+- Weave in my tools and skills naturally, never list them like a resume
+- End with a soft call-to-action (e.g., "let's chat" or "send me a message")
+- Sound human. Avoid clichés like "hardworking," "detail-oriented," "team player," "go-getter"
+- Don't use emojis
+- Don't use hashtags
+- Match the tone I asked for: ${tone.toLowerCase()}
+
+Write the final About section only. No preamble, no explanations — just the final text ready to paste into my profile.`;
+
+  document.getElementById('prompt-text').textContent = prompt;
+  document.getElementById('prompt-output').classList.add('visible');
+  document.getElementById('next-steps-card').classList.add('visible');
+
+  // Scroll to output
+  setTimeout(() => {
+    document.getElementById('prompt-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function copyPrompt() {
+  const text = document.getElementById('prompt-text').textContent;
+  const btn = document.getElementById('copy-btn');
+
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy prompt';
+    }, 2500);
+  }).catch(() => {
+    // Fallback for older browsers
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy prompt';
+    }, 2500);
+  });
+}
+</script>
+
+</body>
+</html>
