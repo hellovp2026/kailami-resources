@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Tools — Kailami</title>
+<meta name="description" content="The full collection of free interactive tools for VAs — niche quiz, rate calculator, scam detector, onboarding checklist, application mastery, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.hub-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .hub-wrap { padding: 0 24px; } }
+
+.tools-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 28px 0 40px;
+}
+@media (max-width: 700px) { .tools-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* Mini Path callout at top of hub page */
+.path-callout-mini {
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  background: linear-gradient(135deg, #c4ff47 0%, #a8e632 100%);
+  color: #0a0a0a;
+  border-radius: 18px; padding: 24px 32px;
+  margin: 28px 0 16px;
+  text-decoration: none; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .path-callout-mini { grid-template-columns: 1fr; padding: 22px 24px; gap: 16px; } }
+.path-callout-mini::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%);
+  transition: all 0.5s;
+}
+.path-callout-mini:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(196,255,71,0.18); }
+.path-callout-mini:hover::before { top: -50px; right: -50px; }
+.path-callout-mini:hover .pcm-arrow { transform: translateX(6px); }
+
+.pcm-content { position: relative; z-index: 2; }
+.pcm-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(10,10,10,0.1); color: #0a0a0a;
+  font-size: 10px; padding: 4px 11px; border-radius: 999px;
+  font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.pcm-dot { width: 5px; height: 5px; background: #0a0a0a; border-radius: 50%; animation: pulse 2s infinite; }
+.pcm-title {
+  font-size: 22px; font-weight: 600; letter-spacing: -0.6px;
+  line-height: 1.15; margin-bottom: 6px; color: #0a0a0a;
+}
+.pcm-title em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+.pcm-desc { font-size: 13px; line-height: 1.55; color: #0a0a0a; opacity: 0.85; max-width: 580px; }
+.pcm-cta {
+  background: #0a0a0a; color: #c4ff47;
+  padding: 12px 20px; border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  position: relative; z-index: 2;
+}
+.pcm-arrow { transition: transform 0.3s; display: inline-block; }
+.stat-mini {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 22px;
+}
+.stat-mini-num { font-size: 24px; font-weight: 500; color: #c4ff47; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.stat-mini-label { font-size: 12px; color: #888; letter-spacing: 0.5px; }
+
+.tools-grid-hub {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1000px) { .tools-grid-hub { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .tools-grid-hub { grid-template-columns: 1fr; } }
+
+.tool-hub-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 16px; min-height: 260px;
+  position: relative; overflow: hidden;
+  text-decoration: none;
+}
+.tool-hub-card:hover { border-color: #c4ff47; transform: translateY(-4px); }
+.tool-hub-card::after {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+  transition: all 0.5s;
+}
+.tool-hub-card:hover::after { top: -30%; right: -30%; }
+.tool-hub-badge {
+  display: inline-block; background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 4px 11px; border-radius: 999px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; width: fit-content;
+}
+.tool-hub-title { font-size: 22px; font-weight: 500; color: #fff; letter-spacing: -0.5px; line-height: 1.2; }
+.tool-hub-desc { font-size: 14px; color: #a0a0a0; line-height: 1.6; flex: 1; }
+.tool-hub-link { font-size: 13px; color: #c4ff47; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.tool-hub-arrow { transition: transform 0.2s; }
+.tool-hub-card:hover .tool-hub-arrow { transform: translateX(6px); }
+
+/* Highlight card for the bigger items */
+.tool-hub-card.highlight {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.01));
+  border-color: rgba(196,255,71,0.25);
+}
+
+.section-divider { margin: 60px 0 28px; }
+.section-divider-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.section-divider-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.section-divider-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 500; letter-spacing: -1px; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+.section-divider-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.section-divider-sub { font-size: 14px; color: #a0a0a0; line-height: 1.6; max-width: 700px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>9 free tools · No signup · No paywall</div>
+<h1 class="page-title">Free <em>tools</em> for VAs.</h1>
+<p class="page-lede">Interactive tools that solve specific problems VAs hit every day — picking a niche, setting your rate, vetting clients, closing discovery calls, getting hired. Use what you need, when you need it.</p>
+</section>
+</div>
+
+<div class="hub-wrap">
+
+<a href="the-path.html" class="path-callout-mini">
+<div class="pcm-content">
+<div class="pcm-pill"><span class="pcm-dot"></span>New here? Start with this</div>
+<div class="pcm-title">The <em>Path</em> — guided program</div>
+<div class="pcm-desc">Don't know which tool to open first? The Path takes you through everything in the right order — niche, certs, portfolio, applications, first client. Pick your pace, commit, and follow it.</div>
+</div>
+<div class="pcm-cta">Start the Path <span class="pcm-arrow">→</span></div>
+</a>
+
+<div class="tools-stats">
+<div class="stat-mini"><div class="stat-mini-num">9</div><div class="stat-mini-label">Interactive tools</div></div>
+<div class="stat-mini"><div class="stat-mini-num">$0</div><div class="stat-mini-label">Cost forever</div></div>
+<div class="stat-mini"><div class="stat-mini-num">∞</div><div class="stat-mini-label">Times you can use them</div></div>
+<div class="stat-mini"><div class="stat-mini-num">0</div><div class="stat-mini-label">Sign-ups required</div></div>
+</div>
+
+<!-- Pre-client tools -->
+<div class="section-divider">
+<div class="section-divider-eyebrow">Step 01 · Before you have clients</div>
+<h2 class="section-divider-title">Find your <em>niche</em>, set your <em>rate</em>, get <em>hired</em>.</h2>
+<p class="section-divider-sub">If you're starting from zero, run through these in order. Most beginners skip steps 1-3 and waste 6 months figuring out what they should've nailed in week one.</p>
+</div>
+
+<div class="tools-grid-hub">
+<a href="niche-quiz.html" class="tool-hub-card">
+<span class="tool-hub-badge">Quiz · 5 min</span>
+<h3 class="tool-hub-title">Niche finder quiz</h3>
+<p class="tool-hub-desc">Answer 15 questions about your skills, interests, and goals. Get your top 3 matched VA niches with detailed descriptions and typical tasks.</p>
+<div class="tool-hub-link">Take the quiz <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="beginner-checklist.html" class="tool-hub-card">
+<span class="tool-hub-badge">7-step plan</span>
+<h3 class="tool-hub-title">Beginner roadmap</h3>
+<p class="tool-hub-desc">A full step-by-step path from zero experience to landing your first client. Reality checks, niche-specific mock tasks, progress saves automatically.</p>
+<div class="tool-hub-link">Start the plan <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="about-generator.html" class="tool-hub-card">
+<span class="tool-hub-badge">AI generator</span>
+<h3 class="tool-hub-title">About section generator</h3>
+<p class="tool-hub-desc">Fill a short form and get a polished About section for your Upwork or OnlineJobs profile. Built using a Claude prompt that you can copy + run.</p>
+<div class="tool-hub-link">Build my About <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="rate-calculator.html" class="tool-hub-card">
+<span class="tool-hub-badge">Calculator</span>
+<h3 class="tool-hub-title">VA rate calculator</h3>
+<p class="tool-hub-desc">Stop underpricing. Plug in your income goal, hours, expenses, and platform fees — get the exact hourly rate you need to charge in USD and PHP.</p>
+<div class="tool-hub-link">Calculate my rate <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="application-mastery.html" class="tool-hub-card highlight">
+<span class="tool-hub-badge">Big guide ★</span>
+<h3 class="tool-hub-title">Application mastery</h3>
+<p class="tool-hub-desc">The full platform-by-platform guide to landing clients on OnlineJobs.ph, Upwork, and LinkedIn. Do's, don'ts, adaptable templates, and gate-kept tactics.</p>
+<div class="tool-hub-link">Open the guide <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="scam-detector.html" class="tool-hub-card">
+<span class="tool-hub-badge">Safety check</span>
+<h3 class="tool-hub-title">Scam detector</h3>
+<p class="tool-hub-desc">Run a potential client through 10 red-flag checks. Get a risk score (low / caution / high) and specific advice before you accept the work.</p>
+<div class="tool-hub-link">Check my client <span class="tool-hub-arrow">→</span></div>
+</a>
+</div>
+
+<!-- Post-hire tools -->
+<div class="section-divider">
+<div class="section-divider-eyebrow">Step 02 · Once you have clients</div>
+<h2 class="section-divider-title">Onboard them, <em>communicate</em> well, get <em>paid</em>.</h2>
+<p class="section-divider-sub">After someone says yes, the first 2 weeks decide whether they refer you. These tools make sure you don't fumble the start.</p>
+</div>
+
+<div class="tools-grid-hub">
+<a href="discovery-call.html" class="tool-hub-card">
+<span class="tool-hub-badge">Script + cheat sheet</span>
+<h3 class="tool-hub-title">Discovery call script</h3>
+<p class="tool-hub-desc">The 30-minute call framework that closes clients. Phase-by-phase structure, exact phrases, objection handling, and a printable cheat sheet to keep beside you.</p>
+<div class="tool-hub-link">Open the script <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="onboarding-checklist.html" class="tool-hub-card">
+<span class="tool-hub-badge">22-step checklist</span>
+<h3 class="tool-hub-title">Onboarding checklist</h3>
+<p class="tool-hub-desc">22 steps to onboard any new client like a pro. Includes the full contractor agreement template. Saves your progress automatically; reset for each new client.</p>
+<div class="tool-hub-link">Onboard my client <span class="tool-hub-arrow">→</span></div>
+</a>
+
+<a href="email-templates.html" class="tool-hub-card">
+<span class="tool-hub-badge">Templates</span>
+<h3 class="tool-hub-title">Email templates pack</h3>
+<p class="tool-hub-desc">25+ copy-paste emails for every situation — pitches, scope creep, late payments, firing clients, declining work. Tone badges, search, one-click copy.</p>
+<div class="tool-hub-link">Browse templates <span class="tool-hub-arrow">→</span></div>
+</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

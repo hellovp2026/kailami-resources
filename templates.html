@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Templates — Kailami</title>
+<meta name="description" content="The full collection of free templates for VAs — portfolio, resume, contractor agreement, email templates, trackers, and AI-powered tools. All free, no signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.hub-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .hub-wrap { padding: 0 24px; } }
+
+.tools-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 28px 0 40px;
+}
+@media (max-width: 700px) { .tools-stats { grid-template-columns: repeat(2, 1fr); } }
+.stat-mini {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 22px;
+}
+.stat-mini-num { font-size: 24px; font-weight: 500; color: #c4ff47; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.stat-mini-label { font-size: 12px; color: #888; letter-spacing: 0.5px; }
+
+.tpl-grid-hub {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1000px) { .tpl-grid-hub { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .tpl-grid-hub { grid-template-columns: 1fr; } }
+
+.tpl-hub-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 16px; min-height: 240px;
+  position: relative; overflow: hidden;
+  text-decoration: none;
+}
+.tpl-hub-card:hover { border-color: #c4ff47; transform: translateY(-4px); }
+.tpl-hub-card::after {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+  transition: all 0.5s;
+}
+.tpl-hub-card:hover::after { top: -30%; right: -30%; }
+
+.tpl-meta-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.tpl-hub-badge {
+  display: inline-block; background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 4px 11px; border-radius: 999px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; width: fit-content;
+}
+.tpl-hub-format {
+  display: inline-block; background: rgba(255,255,255,0.05); color: #a0a0a0;
+  font-size: 10px; padding: 4px 9px; border-radius: 999px; font-weight: 500;
+  letter-spacing: 0.5px; text-transform: uppercase; width: fit-content;
+}
+.tpl-hub-title { font-size: 20px; font-weight: 500; color: #fff; letter-spacing: -0.5px; line-height: 1.2; }
+.tpl-hub-desc { font-size: 13px; color: #a0a0a0; line-height: 1.6; flex: 1; }
+.tpl-hub-link { font-size: 13px; color: #c4ff47; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.tpl-hub-arrow { transition: transform 0.2s; }
+.tpl-hub-card:hover .tpl-hub-arrow { transform: translateX(6px); }
+
+.tpl-hub-card.highlight {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.01));
+  border-color: rgba(196,255,71,0.25);
+}
+
+.section-divider { margin: 60px 0 28px; }
+.section-divider:first-of-type { margin-top: 0; }
+.section-divider-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.section-divider-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.section-divider-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 500; letter-spacing: -1px; color: #fff; line-height: 1.1; margin-bottom: 10px; }
+.section-divider-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.section-divider-sub { font-size: 14px; color: #a0a0a0; line-height: 1.6; max-width: 700px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>10 templates · Copy + customize</div>
+<h1 class="page-title">Free <em>templates</em> for VAs.</h1>
+<p class="page-lede">Battle-tested templates you can copy, customize, and use today. Portfolio, resume, contract, email pack, trackers, AI-powered tools — all the document work most VAs spend hours building from scratch.</p>
+</section>
+</div>
+
+<div class="hub-wrap">
+
+<div class="tools-stats">
+<div class="stat-mini"><div class="stat-mini-num">10</div><div class="stat-mini-label">Templates ready to copy</div></div>
+<div class="stat-mini"><div class="stat-mini-num">$0</div><div class="stat-mini-label">Cost forever</div></div>
+<div class="stat-mini"><div class="stat-mini-num">5</div><div class="stat-mini-label">Formats supported</div></div>
+<div class="stat-mini"><div class="stat-mini-num">25+</div><div class="stat-mini-label">Email scripts inside</div></div>
+</div>
+
+<!-- Profile-building -->
+<div class="section-divider">
+<div class="section-divider-eyebrow">Profile + portfolio</div>
+<h2 class="section-divider-title">Look <em>professional</em>. Land the interview.</h2>
+<p class="section-divider-sub">Templates to build your profile — portfolio, resume, About section. The basics every VA needs but most get wrong.</p>
+</div>
+
+<div class="tpl-grid-hub">
+
+<a href="https://www.canva.com/design/DAG9v9AUyGI/Dn5tvvlunQQX1bRXRYpwKg/edit" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Portfolio</span>
+<span class="tpl-hub-format">Canva</span>
+</div>
+<h3 class="tpl-hub-title">VA portfolio template</h3>
+<p class="tpl-hub-desc">A clean, modern portfolio template designed specifically for VAs. Sections for niche, services, sample work, testimonials, and contact. Edit in Canva, export as PDF, send to clients.</p>
+<div class="tpl-hub-link">Open in Canva <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+<a href="https://docs.google.com/document/d/1xpw0HbdV_9GcEn02xgyClqc6sIQi290XS5u-tA9uCpw/edit?usp=sharing" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Resume</span>
+<span class="tpl-hub-format">Google Docs</span>
+</div>
+<h3 class="tpl-hub-title">VA resume template</h3>
+<p class="tpl-hub-desc">A 1-page resume template proven to pass through ATS systems and impress small business owners. Make a copy, swap your details, export as PDF.</p>
+<div class="tpl-hub-link">Open in Google Docs <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+<a href="about-generator.html" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">AI generator</span>
+<span class="tpl-hub-format">On-page tool</span>
+</div>
+<h3 class="tpl-hub-title">About section generator</h3>
+<p class="tpl-hub-desc">Fill out a short form. Get a polished About section for your Upwork or OnlineJobs profile. Powered by a Claude prompt you can copy and run.</p>
+<div class="tpl-hub-link">Build my About <span class="tpl-hub-arrow">→</span></div>
+</a>
+
+</div>
+
+<!-- Communication -->
+<div class="section-divider">
+<div class="section-divider-eyebrow">Client communication</div>
+<h2 class="section-divider-title">Write the <em>right</em> email, every time.</h2>
+<p class="section-divider-sub">Cover letters, day-to-day messages, difficult conversations. The 25+ scripts that handle every client situation you'll hit.</p>
+</div>
+
+<div class="tpl-grid-hub">
+
+<a href="email-templates.html" class="tpl-hub-card highlight">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">25+ templates ★</span>
+<span class="tpl-hub-format">Searchable</span>
+</div>
+<h3 class="tpl-hub-title">Email templates pack</h3>
+<p class="tpl-hub-desc">25+ copy-paste emails covering pitches, onboarding, scope creep, rate increases, payment reminders, firing clients, declining work. Search, filter, copy, send. New templates added regularly.</p>
+<div class="tpl-hub-link">Browse all 25+ <span class="tpl-hub-arrow">→</span></div>
+</a>
+
+<a href="https://chatgpt.com/g/g-696657703bbc81919a41044a3bc04420-cover-letters-by-vast" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">AI tool</span>
+<span class="tpl-hub-format">ChatGPT</span>
+</div>
+<h3 class="tpl-hub-title">Cover letter GPT</h3>
+<p class="tpl-hub-desc">A custom GPT trained to write personalized cover letters for VA job applications. Paste the job post, get a tailored cover letter that actually references the post — not generic spam.</p>
+<div class="tpl-hub-link">Open the GPT <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+<a href="discovery-call.html" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Script</span>
+<span class="tpl-hub-format">Printable</span>
+</div>
+<h3 class="tpl-hub-title">Discovery call script</h3>
+<p class="tpl-hub-desc">The 30-minute call framework that closes clients without sounding salesy. Phase-by-phase exact phrases, objection handling, and a printable cheat sheet to keep beside your laptop.</p>
+<div class="tpl-hub-link">Open the script <span class="tpl-hub-arrow">→</span></div>
+</a>
+
+</div>
+
+<!-- Operations -->
+<div class="section-divider">
+<div class="section-divider-eyebrow">Operations + tracking</div>
+<h2 class="section-divider-title">Run your <em>business</em>, not just your tasks.</h2>
+<p class="section-divider-sub">Trackers, contracts, and onboarding tools that turn you from "freelancer who gets work done" into "professional with systems."</p>
+</div>
+
+<div class="tpl-grid-hub">
+
+<a href="onboarding-checklist.html" class="tpl-hub-card highlight">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Checklist + contract ★</span>
+<span class="tpl-hub-format">Interactive</span>
+</div>
+<h3 class="tpl-hub-title">Onboarding checklist + contract</h3>
+<p class="tpl-hub-desc">22 steps to onboard new clients like a pro. Includes the full 17-section contractor agreement template (5,500 words, one-click Google Docs copy). Saves progress automatically.</p>
+<div class="tpl-hub-link">Open the checklist <span class="tpl-hub-arrow">→</span></div>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/19r_0XatVPCNynqkYz21HFSIXb7NZfdbIqoE59cM7Xjs/edit?gid=0#gid=0" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Tracker</span>
+<span class="tpl-hub-format">Google Sheets</span>
+</div>
+<h3 class="tpl-hub-title">Daily task tracker</h3>
+<p class="tpl-hub-desc">A simple Google Sheet to track tasks per client, time spent, completion status, and notes. Use it for billing, time tracking, or weekly client reports.</p>
+<div class="tpl-hub-link">Open in Sheets <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit?gid=0#gid=0" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Tracker</span>
+<span class="tpl-hub-format">Google Sheets</span>
+</div>
+<h3 class="tpl-hub-title">Client + application tracker</h3>
+<p class="tpl-hub-desc">Track every job application, lead, and active client in one place. Status, follow-up dates, rate, notes. Find what's working and what's wasting your time.</p>
+<div class="tpl-hub-link">Open in Sheets <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+<a href="https://docs.google.com/document/d/1AajSmHQ5DS06on-4g0FAZwp5lnUulNTDkU5P1Wuu6uk/copy" target="_blank" class="tpl-hub-card">
+<div class="tpl-meta-row">
+<span class="tpl-hub-badge">Contract</span>
+<span class="tpl-hub-format">Google Docs</span>
+</div>
+<h3 class="tpl-hub-title">Independent contractor agreement</h3>
+<p class="tpl-hub-desc">A comprehensive 17-section contract for PH-based VAs working with US/UK/AU clients. Covers scope, payment, IP, AI usage, GDPR data protection, dispute resolution. Click to make your own copy.</p>
+<div class="tpl-hub-link">Make a copy in Google Docs <span class="tpl-hub-arrow">↗</span></div>
+</a>
+
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>

@@ -86,31 +86,151 @@ h1.hero-title em {
 }
 .stat-label { font-size: 12px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; }
 
-.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-@media (max-width: 900px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .tools-grid { grid-template-columns: 1fr; } }
+/* ─── HERO CARDS (Tools + Templates landing CTAs) ─── */
+.hero-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .hero-cards-grid { grid-template-columns: 1fr; } }
+
+/* The Path callout banner — for beginners */
+.path-callout {
+  display: grid; grid-template-columns: 1.4fr auto; gap: 32px; align-items: center;
+  background: linear-gradient(135deg, #c4ff47 0%, #a8e632 100%);
+  color: #0a0a0a;
+  border-radius: 24px; padding: 36px 44px; margin-bottom: 18px;
+  text-decoration: none; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .path-callout { grid-template-columns: 1fr; padding: 28px 28px; gap: 18px; } }
+.path-callout::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  transition: all 0.5s;
+}
+.path-callout:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(196,255,71,0.2); }
+.path-callout:hover::before { top: -60px; right: -60px; }
+.path-callout:hover .path-callout-arrow { transform: translateX(8px); }
+
+.path-callout-left { position: relative; z-index: 2; }
+.path-callout-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(10,10,10,0.1); color: #0a0a0a;
+  font-size: 11px; padding: 5px 12px; border-radius: 999px;
+  font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.path-callout-dot { width: 5px; height: 5px; background: #0a0a0a; border-radius: 50%; animation: pulse 2s infinite; }
+.path-callout-title {
+  font-size: clamp(26px, 4vw, 38px); font-weight: 600;
+  letter-spacing: -1.2px; line-height: 1.05; margin-bottom: 12px; color: #0a0a0a;
+}
+.path-callout-title em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+.path-callout-desc {
+  font-size: 14px; line-height: 1.6; color: #0a0a0a;
+  max-width: 560px; opacity: 0.85;
+}
+.path-callout-right { position: relative; z-index: 2; }
+.path-callout-cta {
+  background: #0a0a0a; color: #c4ff47;
+  padding: 14px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.3px;
+  display: inline-flex; align-items: center; gap: 8px;
+  white-space: nowrap;
+}
+.path-callout-arrow { transition: transform 0.3s; display: inline-block; }
+
+.hero-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px; padding: 44px;
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center;
+  text-decoration: none; transition: all 0.3s; min-height: 360px;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .hero-card { grid-template-columns: 1fr; padding: 32px; gap: 24px; } }
+.hero-card:hover { border-color: #c4ff47; transform: translateY(-4px); }
+.hero-card:hover .hero-card-arrow { transform: translateX(8px); }
+
+.hero-card-tools::before, .hero-card-templates::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.1), transparent 70%);
+  transition: all 0.5s;
+}
+.hero-card:hover::before { top: -80px; right: -80px; }
+
+.hero-card-content { position: relative; z-index: 2; }
+.hero-card-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 10px; padding: 5px 12px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero-card-dot { width: 5px; height: 5px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.hero-card-title {
+  font-size: clamp(32px, 4.5vw, 48px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1; margin-bottom: 16px;
+}
+.hero-card-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.hero-card-desc {
+  font-size: 14px; color: #c0c0c0; line-height: 1.6; margin-bottom: 14px;
+}
+.hero-card-meta {
+  font-size: 12px; color: #888; line-height: 1.5;
+  padding-top: 14px; margin-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 18px;
+}
+.hero-card-cta {
+  font-size: 15px; color: #c4ff47; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.hero-card-arrow { transition: transform 0.3s; display: inline-block; }
+
+.hero-card-visual {
+  position: relative; z-index: 2; height: 200px;
+  display: flex; flex-direction: column; gap: 10px; justify-content: center;
+}
+@media (max-width: 700px) { .hero-card-visual { height: 140px; } }
+.hcv-card {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; color: #d0d0d0;
+  transition: all 0.4s;
+}
+.hcv-1 { transform: rotate(-3deg) translateX(-10px); }
+.hcv-2 { transform: rotate(2deg); }
+.hcv-3 { transform: rotate(-2deg) translateX(8px); }
+.hero-card:hover .hcv-1 { transform: rotate(-1deg) translateX(-2px); }
+.hero-card:hover .hcv-2 { transform: rotate(0deg); }
+.hero-card:hover .hcv-3 { transform: rotate(0deg) translateX(2px); }
+.hcv-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.hcv-dot.lime { background: #c4ff47; }
+.hcv-dot.amber { background: #ffc864; }
+.hcv-dot.blue { background: #87b4ff; }
+.hcv-text { flex: 1; font-weight: 500; color: #e0e0e0; }
 .tool-card {
   background: #141414; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 24px; padding: 40px; transition: all 0.3s;
-  display: flex; flex-direction: column; gap: 20px; min-height: 320px;
+  border-radius: 20px; padding: 26px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 14px; min-height: 230px;
   position: relative; overflow: hidden;
 }
 .tool-card:hover { border-color: #c4ff47; transform: translateY(-4px); }
 .tool-card::after {
   content: ''; position: absolute; top: -50%; right: -50%;
-  width: 200px; height: 200px; border-radius: 50%;
+  width: 180px; height: 180px; border-radius: 50%;
   background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
   transition: all 0.5s;
 }
 .tool-card:hover::after { top: -30%; right: -30%; }
 .tool-badge {
   display: inline-block; background: rgba(196,255,71,0.1); color: #c4ff47;
-  font-size: 11px; padding: 5px 12px; border-radius: 999px; font-weight: 500;
+  font-size: 10px; padding: 4px 10px; border-radius: 999px; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase; width: fit-content;
 }
-.tool-title { font-size: 32px; font-weight: 500; color: #fff; letter-spacing: -1px; line-height: 1.1; }
-.tool-desc { font-size: 15px; color: #a0a0a0; line-height: 1.6; flex: 1; }
-.tool-link { font-size: 14px; color: #c4ff47; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.tool-title { font-size: 20px; font-weight: 500; color: #fff; letter-spacing: -0.5px; line-height: 1.15; }
+.tool-desc { font-size: 13px; color: #a0a0a0; line-height: 1.6; flex: 1; }
+.tool-link { font-size: 12px; color: #c4ff47; font-weight: 500; display: flex; align-items: center; gap: 6px; }
 .tool-link-arrow { transition: transform 0.2s; }
 .tool-card:hover .tool-link-arrow { transform: translateX(6px); }
 
@@ -179,6 +299,95 @@ h1.hero-title em {
 }
 .bento-card.featured .bento-title { font-size: 28px; }
 .bento-card.featured .bento-desc { font-size: 15px; color: #c0c0c0; }
+
+/* ─── CERTS BANNER (homepage) ─── */
+#certs-banner { padding: 40px 0; }
+.certs-banner-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px; padding: 56px; display: grid;
+  grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;
+  position: relative; overflow: hidden; transition: all 0.3s;
+  text-decoration: none;
+}
+.certs-banner-card:hover { border-color: #c4ff47; transform: translateY(-3px); }
+.certs-banner-card:hover .certs-banner-arrow { transform: translateX(6px); color: #c4ff47; }
+@media (max-width: 900px) { .certs-banner-card { grid-template-columns: 1fr; padding: 40px 32px; gap: 32px; } }
+.certs-banner-card::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 340px; height: 340px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.12), transparent 70%);
+  pointer-events: none;
+}
+.certs-banner-content { position: relative; z-index: 2; }
+.certs-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 18px;
+}
+.certs-eyebrow-dot { width: 6px; height: 6px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.certs-banner-title {
+  font-size: clamp(32px, 5vw, 48px); font-weight: 500;
+  letter-spacing: -1.8px; color: #fff; line-height: 1.05; margin-bottom: 16px;
+}
+.certs-banner-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.certs-banner-sub { font-size: 15px; color: #c0c0c0; line-height: 1.65; margin-bottom: 24px; max-width: 500px; }
+.certs-banner-cta { font-size: 14px; color: #c4ff47; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.certs-banner-arrow { transition: transform 0.2s; display: inline-block; }
+
+.certs-banner-visual {
+  position: relative; height: 280px; z-index: 2;
+}
+@media (max-width: 900px) { .certs-banner-visual { height: 220px; } }
+.cert-preview {
+  position: absolute; background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.cp-1 { top: 20px; left: 0; animation: float1 6s ease-in-out infinite; }
+.cp-2 { top: 90px; right: 0; animation: float2 7s ease-in-out infinite; }
+.cp-3 { top: 150px; left: 30px; animation: float3 8s ease-in-out infinite; }
+.cp-4 { bottom: 10px; right: 20px; animation: float1 7.5s ease-in-out infinite; }
+.cp-logo {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(196,255,71,0.15); color: #c4ff47;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600; flex-shrink: 0;
+}
+.cp-text { font-size: 12px; color: #e0e0e0; font-weight: 500; white-space: nowrap; }
+
+/* ─── HIRING STRIP (homepage horizontal banner) ─── */
+#hiring-banner-home { padding: 0 0 40px; }
+.hiring-strip {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 32px 40px;
+  display: grid; grid-template-columns: 1fr auto; gap: 32px;
+  align-items: center; transition: all 0.3s; text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.hiring-strip:hover { border-color: #c4ff47; transform: translateY(-2px); }
+.hiring-strip:hover .hiring-strip-arrow { transform: translateX(6px); color: #c4ff47; }
+.hiring-strip:hover .hiring-strip-cta { color: #c4ff47; }
+@media (max-width: 768px) { .hiring-strip { grid-template-columns: 1fr; padding: 28px 24px; gap: 20px; } }
+.hiring-strip-left { display: flex; flex-direction: column; gap: 8px; }
+.hiring-strip-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.12); color: #c4ff47;
+  font-size: 10px; padding: 5px 12px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  align-self: flex-start;
+}
+.hiring-strip-pill-dot { width: 5px; height: 5px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.hiring-strip-title {
+  font-size: clamp(22px, 3vw, 30px); font-weight: 500;
+  color: #fff; letter-spacing: -0.8px; line-height: 1.2;
+}
+.hiring-strip-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.hiring-strip-sub { font-size: 14px; color: #a0a0a0; line-height: 1.6; max-width: 600px; }
+.hiring-strip-right { display: flex; align-items: center; }
+.hiring-strip-cta { font-size: 14px; color: #c4ff47; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.hiring-strip-arrow { transition: transform 0.2s; display: inline-block; }
 
 /* ─── WEBINARS SECTION ─── */
 .webinars-card {
@@ -400,12 +609,13 @@ h1.hero-title em {
 <div class="nav-inner">
 <a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
 <div class="nav-links">
-<a href="#tools">Tools</a>
-<a href="#resources">Resources</a>
-<a href="#webinars">Webinars</a>
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
 <a href="#about">Hire a VA</a>
 </div>
-<a href="#resources" class="nav-cta">Get resources →</a>
+<a href="tools.html" class="nav-cta">Get free tools →</a>
 </div>
 </nav>
 
@@ -417,8 +627,8 @@ h1.hero-title em {
 <h1 class="hero-title">Tools that make VAs <em>actually</em> efficient.</h1>
 <p class="lede">Curated sheets, trackers, templates, and interactive tools built from real client work — helping 20,000+ VAs land real clients.</p>
 <div class="cta-row">
-<a href="#resources" class="btn btn-primary">Browse resources ↓</a>
-<a href="https://drive.google.com/file/d/1eZk1O8vDQS-iyyCjcxNWt3QcckA_pLcn/view" target="_blank" class="btn btn-ghost">Watch tutorial ▸</a>
+<a href="tools.html" class="btn btn-primary">Browse free tools →</a>
+<a href="templates.html" class="btn btn-ghost">Browse templates →</a>
 </div>
 </div>
 
@@ -465,33 +675,61 @@ h1.hero-title em {
 <section id="tools">
 <div class="section-header fade-in">
 <div>
-<div class="eyebrow">Interactive tools</div>
-<h2 class="section-title">Find your <em>path</em>.</h2>
+<div class="eyebrow">Free for VAs</div>
+<h2 class="section-title">Everything you need, <em>nothing</em> you don't.</h2>
 </div>
-<p class="section-sub">Not sure where to start? These three free interactive tools guide you from picking a niche to writing your profile — no guesswork.</p>
+<p class="section-sub">Two collections covering everything a VA needs — interactive tools you USE, and templates you COPY. All free. No sign-up, no paywall, ever.</p>
 </div>
 
-<div class="tools-grid fade-in">
-<a href="niche-quiz.html" class="tool-card">
-<span class="tool-badge">Quiz</span>
-<h3 class="tool-title">Niche finder quiz</h3>
-<p class="tool-desc">Answer 15 questions and get your top 3 matched VA niches with detailed descriptions and typical tasks.</p>
-<div class="tool-link">Take the quiz <span class="tool-link-arrow">→</span></div>
+<a href="the-path.html" class="path-callout fade-in">
+<div class="path-callout-left">
+<div class="path-callout-pill"><span class="path-callout-dot"></span>Don't know where to start?</div>
+<div class="path-callout-title">I built this <em>for you</em>.</div>
+<div class="path-callout-desc">Overwhelmed by all this? Skip the chaos. The Path is a guided, day-by-day program — pick your pace, commit, and I walk you through everything in order. Niche → certs → portfolio → applications → first client. 30 tasks. Real work. No shortcuts.</div>
+</div>
+<div class="path-callout-right">
+<div class="path-callout-cta">Start the Path <span class="path-callout-arrow">→</span></div>
+</div>
 </a>
 
-<a href="beginner-checklist.html" class="tool-card">
-<span class="tool-badge">7-step plan</span>
-<h3 class="tool-title">Beginner roadmap</h3>
-<p class="tool-desc">A full step-by-step path from zero experience to landing your first client. Progress saves automatically.</p>
-<div class="tool-link">Start the plan <span class="tool-link-arrow">→</span></div>
+<div class="hero-cards-grid fade-in">
+
+<a href="tools.html" class="hero-card hero-card-tools">
+<div class="hero-card-content">
+<div class="hero-card-eyebrow">
+<span class="hero-card-dot"></span>
+9 interactive tools
+</div>
+<h3 class="hero-card-title">Free <em>tools</em>.</h3>
+<p class="hero-card-desc">Niche quiz · Beginner roadmap · Rate calculator · Scam detector · Discovery call script · Onboarding checklist · About generator · Application mastery · Email templates pack</p>
+<div class="hero-card-meta">All tools work in your browser. Nothing to install. Some save your progress so you can come back anytime.</div>
+<div class="hero-card-cta">Open all tools <span class="hero-card-arrow">→</span></div>
+</div>
+<div class="hero-card-visual">
+<div class="hcv-card hcv-1"><div class="hcv-dot lime"></div><div class="hcv-text">Niche match: 88%</div></div>
+<div class="hcv-card hcv-2"><div class="hcv-dot amber"></div><div class="hcv-text">Rate: $18/hr</div></div>
+<div class="hcv-card hcv-3"><div class="hcv-dot blue"></div><div class="hcv-text">Scam check: low risk</div></div>
+</div>
 </a>
 
-<a href="about-generator.html" class="tool-card">
-<span class="tool-badge">AI generator</span>
-<h3 class="tool-title">About section generator</h3>
-<p class="tool-desc">Fill a short form and get a polished About section for your Upwork or OnlineJobs profile using free AI. Takes 3 minutes.</p>
-<div class="tool-link">Build my About <span class="tool-link-arrow">→</span></div>
+<a href="templates.html" class="hero-card hero-card-templates">
+<div class="hero-card-content">
+<div class="hero-card-eyebrow">
+<span class="hero-card-dot"></span>
+10 templates
+</div>
+<h3 class="hero-card-title">Free <em>templates</em>.</h3>
+<p class="hero-card-desc">Portfolio · Resume · Independent contractor agreement · 25+ email templates · Cover letter GPT · Daily task tracker · Client + application tracker · About generator · Discovery call script · Onboarding checklist</p>
+<div class="hero-card-meta">Open in Canva, Google Docs, Sheets, or copy directly. Battle-tested with real clients.</div>
+<div class="hero-card-cta">Open all templates <span class="hero-card-arrow">→</span></div>
+</div>
+<div class="hero-card-visual">
+<div class="hcv-card hcv-1"><div class="hcv-dot lime"></div><div class="hcv-text">Portfolio.canva</div></div>
+<div class="hcv-card hcv-2"><div class="hcv-dot amber"></div><div class="hcv-text">Resume.docx</div></div>
+<div class="hcv-card hcv-3"><div class="hcv-dot blue"></div><div class="hcv-text">Contract.docs</div></div>
+</div>
 </a>
+
 </div>
 </section>
 
@@ -512,63 +750,37 @@ h1.hero-title em {
 </div>
 </section>
 
-<section id="resources">
-<div class="section-header fade-in">
-<div>
-<div class="eyebrow">The resources</div>
-<h2 class="section-title">Built from <em>real</em> client work.</h2>
+<section id="certs-banner">
+<a href="certifications.html" class="certs-banner-card fade-in">
+<div class="certs-banner-content">
+<div class="certs-eyebrow">
+<span class="certs-eyebrow-dot"></span>
+Free certifications + courses
 </div>
-<p class="section-sub">Click any to open. Always make your own copy first (File → Make a Copy) before editing.</p>
+<h2 class="certs-banner-title">Stack <em>legit</em> certs. Free.</h2>
+<p class="certs-banner-sub">Real free certifications from Google, HubSpot, Meta, Canva, QuickBooks, and more — plus free courses from Coursera, edX, Udemy, and beyond. Organized by niche and time. 50+ resources. All 100% free.</p>
+<div class="certs-banner-cta">Browse the full list <span class="certs-banner-arrow">→</span></div>
 </div>
-
-<div class="bento fade-in">
-
-<a href="https://www.canva.com/design/DAG9v9AUyGI/Dn5tvvlunQQX1bRXRYpwKg/edit" target="_blank" class="bento-card featured span-3">
-<div>
-<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.52 0-2.95.41-4.18 1.123v13C3.05 17.16 4.48 16.75 6 16.75c2.3 0 4.4.9 6 2.292m0-13.416c1.6-1.4 3.7-2.292 6-2.292 1.52 0 2.95.41 4.18 1.123v13A9.001 9.001 0 0018 16.75c-2.3 0-4.4.9-6 2.292m0-13.416v13.416"/></svg></div>
-<div class="bento-title">Free live portfolio template</div>
-<div class="bento-desc">A fully designed Canva portfolio template you can customize with your own work — ready to share with clients in under an hour.</div>
+<div class="certs-banner-visual">
+<div class="cert-preview cp-1"><div class="cp-logo">G</div><div class="cp-text">Google Digital Marketing</div></div>
+<div class="cert-preview cp-2"><div class="cp-logo">H</div><div class="cp-text">HubSpot Social Media</div></div>
+<div class="cert-preview cp-3"><div class="cp-logo">M</div><div class="cp-text">Meta Digital Marketing</div></div>
+<div class="cert-preview cp-4"><div class="cp-logo">Q</div><div class="cp-text">QuickBooks Certified</div></div>
 </div>
-<div class="bento-footer"><div class="bento-meta">Canva · Editable</div><div class="bento-arrow">↗</div></div>
 </a>
+</section>
 
-<a href="https://chatgpt.com/g/g-696657703bbc81919a41044a3bc04420-cover-letters-by-vast" target="_blank" class="bento-card span-3">
-<div>
-<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
-<div class="bento-title">AI cover letter writer</div>
-<div class="bento-desc">A custom GPT that writes personalized cover letters for any job post. Paste the listing, get a ready-to-send draft.</div>
+<section id="hiring-banner-home">
+<a href="apply.html" class="hiring-strip fade-in">
+<div class="hiring-strip-left">
+<div class="hiring-strip-pill"><span class="hiring-strip-pill-dot"></span>We're hiring</div>
+<div class="hiring-strip-title">Want to <em>work with us</em>?</div>
+<div class="hiring-strip-sub">Join the VAST Professionals network — get matched with pre-vetted clients, market-competitive USD rates, and a team that has your back.</div>
 </div>
-<div class="bento-footer"><div class="bento-meta">Custom GPT · AI-powered</div><div class="bento-arrow">↗</div></div>
+<div class="hiring-strip-right">
+<div class="hiring-strip-cta">Learn more <span class="hiring-strip-arrow">→</span></div>
+</div>
 </a>
-
-<a href="https://docs.google.com/document/d/1xpw0HbdV_9GcEn02xgyClqc6sIQi290XS5u-tA9uCpw/edit?usp=sharing" target="_blank" class="bento-card span-2">
-<div>
-<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
-<div class="bento-title">Resume template</div>
-<div class="bento-desc">Harvard format. Clean, scannable, client-ready.</div>
-</div>
-<div class="bento-footer"><div class="bento-meta">Google Doc</div><div class="bento-arrow">↗</div></div>
-</a>
-
-<a href="https://docs.google.com/spreadsheets/d/19r_0XatVPCNynqkYz21HFSIXb7NZfdbIqoE59cM7Xjs/edit?gid=0#gid=0" target="_blank" class="bento-card span-2">
-<div>
-<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
-<div class="bento-title">Task tracker</div>
-<div class="bento-desc">Daily log with auto-totals for hours and outputs.</div>
-</div>
-<div class="bento-footer"><div class="bento-meta">Google Sheet</div><div class="bento-arrow">↗</div></div>
-</a>
-
-<a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit?gid=0#gid=0" target="_blank" class="bento-card span-2">
-<div>
-<div class="bento-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>
-<div class="bento-title">Client tracker</div>
-<div class="bento-desc">Track applications, follow-ups, and interviews in one sheet.</div>
-</div>
-<div class="bento-footer"><div class="bento-meta">Google Sheet</div><div class="bento-arrow">↗</div></div>
-</a>
-
-</div>
 </section>
 
 <section id="webinars">
@@ -777,12 +989,7 @@ h1.hero-title em {
 </div>
 
 <div class="footer-col">
-<div class="footer-col-title">Tools</div>
-<ul>
-<li><a href="niche-quiz.html">Niche quiz</a></li>
-<li><a href="beginner-checklist.html">Beginner roadmap</a></li>
-<li><a href="about-generator.html">About generator</a></li>
-</ul>
+<div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul>
 </div>
 
 <div class="footer-col">

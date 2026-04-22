@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Onboarding Checklist — Kailami</title>
+<meta name="description" content="The 22-step checklist every VA should run through with a new client. Plus a free contractor agreement template. Look like a pro from day one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.onb-wrap { max-width: 880px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .onb-wrap { padding: 0 24px; } }
+
+/* Top intro card */
+.intro-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 24px 28px; margin: 32px 0 28px;
+}
+.intro-card p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin: 0; }
+.intro-card strong { color: #c4ff47; font-weight: 500; }
+.intro-card em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+
+/* Progress bar (sticky) */
+.progress-bar {
+  position: sticky; top: 80px; z-index: 50;
+  background: rgba(10,10,10,0.85); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08); border-radius: 14px;
+  padding: 14px 22px; margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.progress-info { font-size: 13px; color: #a0a0a0; white-space: nowrap; }
+.progress-info strong { color: #c4ff47; font-weight: 600; }
+.progress-bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: #c4ff47; transition: width 0.4s ease-out; border-radius: 999px; }
+.btn-reset {
+  background: transparent; border: 1px solid rgba(255,255,255,0.15);
+  color: #888; padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s; font-family: inherit; white-space: nowrap;
+}
+.btn-reset:hover { border-color: #ff9999; color: #ff9999; }
+
+/* Phase blocks */
+.phase {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px; margin-bottom: 18px;
+  transition: all 0.3s;
+}
+.phase.complete { border-color: rgba(196,255,71,0.25); }
+.phase-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 24px; }
+.phase-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: #c4ff47; font-size: 42px; line-height: 1; font-weight: 400; flex-shrink: 0;
+}
+.phase-title-block { flex: 1; }
+.phase-eyebrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; margin-bottom: 4px; font-weight: 600; }
+.phase-title { font-size: 22px; font-weight: 500; color: #fff; letter-spacing: -0.6px; line-height: 1.2; }
+.phase-progress {
+  font-size: 11px; color: #888; margin-top: 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.phase-progress strong { color: #c4ff47; font-weight: 600; }
+
+/* Items */
+.items-list { display: flex; flex-direction: column; gap: 8px; }
+.item-row {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 16px 18px;
+  display: flex; gap: 14px; align-items: flex-start;
+  cursor: pointer; transition: all 0.2s;
+}
+.item-row:hover { border-color: rgba(196,255,71,0.2); }
+.item-row.checked {
+  background: rgba(196,255,71,0.04); border-color: rgba(196,255,71,0.25);
+}
+.item-row.checked .item-text { color: #888; text-decoration: line-through; }
+.item-checkbox {
+  width: 22px; height: 22px; border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0;
+  transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.item-row.checked .item-checkbox { background: #c4ff47; border-color: #c4ff47; }
+.item-checkbox svg { width: 14px; height: 14px; opacity: 0; transition: opacity 0.2s; }
+.item-row.checked .item-checkbox svg { opacity: 1; }
+.item-content { flex: 1; }
+.item-text { font-size: 14px; color: #e0e0e0; line-height: 1.5; transition: color 0.2s; }
+.item-tip {
+  margin-top: 8px; padding: 10px 12px;
+  background: rgba(196,255,71,0.04); border-left: 2px solid rgba(196,255,71,0.4);
+  border-radius: 0 8px 8px 0;
+  font-size: 12px; color: #b0b0b0; line-height: 1.55;
+}
+.item-tip strong { color: #c4ff47; font-weight: 500; }
+.item-action {
+  display: inline-block; margin-top: 8px;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 5px 10px; border-radius: 999px;
+  font-weight: 500; letter-spacing: 0.5px; text-decoration: none;
+  transition: all 0.2s;
+}
+.item-action:hover { background: rgba(196,255,71,0.2); }
+
+/* Red flag callout */
+.red-flag-box {
+  background: rgba(255,100,100,0.05); border: 1px solid rgba(255,100,100,0.25);
+  border-radius: 16px; padding: 22px 26px; margin: 32px 0;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.red-flag-icon {
+  width: 36px; height: 36px; border-radius: 50%; background: rgba(255,100,100,0.1);
+  color: #ff9999; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 18px; font-weight: 600;
+}
+.red-flag-content h4 { font-size: 14px; color: #ff9999; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.3px; }
+.red-flag-content p { font-size: 13px; color: #d0d0d0; line-height: 1.6; margin: 0; }
+.red-flag-content a { color: #ff9999; text-decoration: underline; }
+
+/* Contract template section */
+.contract-section {
+  background: #141414; border: 1px solid rgba(196,255,71,0.2);
+  border-radius: 22px; padding: 36px; margin: 32px 0;
+}
+.contract-head { margin-bottom: 20px; }
+.contract-eyebrow {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.contract-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.contract-title { font-size: 24px; font-weight: 500; color: #fff; letter-spacing: -0.6px; line-height: 1.2; margin-bottom: 8px; }
+.contract-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.contract-sub { font-size: 14px; color: #a0a0a0; line-height: 1.6; }
+
+.contract-disclaimer {
+  background: rgba(255,200,100,0.06); border: 1px solid rgba(255,200,100,0.2);
+  border-radius: 12px; padding: 14px 18px; margin: 18px 0 20px;
+  font-size: 13px; color: #d0d0d0; line-height: 1.6;
+}
+.contract-disclaimer strong { color: #ffc864; font-weight: 500; }
+
+.contract-toolbar {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.btn-copy {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-copy:hover { background: #d4ff6b; transform: translateY(-1px); }
+.btn-copy.copied { background: #141414; color: #c4ff47; border: 1px solid #c4ff47; }
+
+.btn-toggle {
+  background: transparent; border: 1px solid rgba(255,255,255,0.15);
+  color: #c0c0c0; padding: 10px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s; font-family: inherit;
+}
+.btn-toggle:hover { border-color: #c4ff47; color: #c4ff47; }
+
+.contract-body {
+  background: #0a0a0a; border-radius: 14px; padding: 28px;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12.5px; color: #d0d0d0; line-height: 1.75;
+  white-space: pre-wrap; word-wrap: break-word;
+  max-height: 400px; overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: none;
+}
+.contract-body.visible { display: block; }
+
+/* Celebration */
+.celebration {
+  background: linear-gradient(135deg, rgba(196,255,71,0.12), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3); border-radius: 28px;
+  padding: 56px 40px; text-align: center; margin-top: 40px;
+  position: relative; overflow: hidden;
+  display: none;
+}
+.celebration.visible { display: block; animation: fadeUp 0.6s ease-out; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.celebration::before {
+  content: ''; position: absolute; top: -100px; left: -100px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.15), transparent 70%);
+}
+.celebration::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.1), transparent 70%);
+}
+.celeb-content { position: relative; z-index: 2; }
+.celeb-emoji { font-size: 56px; margin-bottom: 14px; }
+.celeb-title { font-size: clamp(28px, 4.5vw, 44px); font-weight: 500; color: #fff; letter-spacing: -1.5px; margin-bottom: 14px; line-height: 1.05; }
+.celeb-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.celeb-sub { font-size: 16px; color: #c0c0c0; line-height: 1.6; max-width: 480px; margin: 0 auto 24px; }
+
+/* Reset confirmation modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px); display: none;
+  align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
+}
+.modal-overlay.visible { display: flex; }
+.modal {
+  background: #141414; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 32px; max-width: 420px; width: 100%;
+  text-align: center;
+}
+.modal h3 { font-size: 20px; color: #fff; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.4px; }
+.modal p { font-size: 14px; color: #c0c0c0; line-height: 1.6; margin-bottom: 24px; }
+.modal-actions { display: flex; gap: 10px; justify-content: center; }
+.btn-modal-confirm {
+  background: #ff6464; color: #fff; border: none; cursor: pointer;
+  padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;
+  font-family: inherit; transition: all 0.2s;
+}
+.btn-modal-confirm:hover { background: #ff7a7a; }
+.btn-modal-cancel {
+  background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  color: #c0c0c0; padding: 10px 22px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-modal-cancel:hover { border-color: #c4ff47; color: #c4ff47; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free checklist · Saves automatically</div>
+<h1 class="page-title">New client? <em>Onboard</em> like a pro.</h1>
+<p class="page-lede">The first 48 hours decide if your client trusts you. Run this 22-step checklist with every new client and you'll look like a senior VA from day one — not someone winging it.</p>
+</section>
+</div>
+
+<div class="onb-wrap">
+
+<div class="intro-card">
+<p>Most VAs skip onboarding. They start working immediately, then spend the next 2 weeks asking basic questions, missing context, and looking unprofessional. <strong>Run this checklist instead.</strong> Your progress saves automatically — when you sign a new client, hit <em>Reset</em> to start fresh.</p>
+</div>
+
+<div class="progress-bar">
+<div class="progress-info"><strong id="completed-count">0</strong> of 22 complete</div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div></div>
+<button class="btn-reset" onclick="confirmReset()">Reset for new client</button>
+</div>
+
+<div id="phases-container"></div>
+
+<div class="celebration" id="celebration">
+<div class="celeb-content">
+<div class="celeb-emoji">🎉</div>
+<h2 class="celeb-title">Onboarding <em>complete</em>.</h2>
+<p class="celeb-sub">You've done what 95% of VAs skip. Your client now knows you're organized, professional, and serious — before you've even started the real work. Time to deliver that first quick win.</p>
+<button class="btn-reset" onclick="confirmReset()" style="border-color: #c4ff47; color: #c4ff47;">Reset for next client</button>
+</div>
+</div>
+
+</div>
+
+<!-- Reset Modal -->
+<div class="modal-overlay" id="reset-modal">
+<div class="modal">
+<h3>Reset checklist?</h3>
+<p>This will clear all your progress. Use this when starting onboarding with a brand new client.</p>
+<div class="modal-actions">
+<button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+<button class="btn-modal-confirm" onclick="doReset()">Yes, reset</button>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon"target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+const STORAGE_KEY = 'kailami_onboarding_v1';
+
+const contractTemplate = `================================================================
+                INDEPENDENT CONTRACTOR AGREEMENT
+              Virtual Assistant Services — Cross-Border
+================================================================
+
+⚠ IMPORTANT DISCLAIMER ⚠
+
+This template is provided as a starting point for independent VAs
+and their clients. It is NOT legal advice. Laws governing freelance
+work, taxation, intellectual property, and contracts vary by country.
+
+Before using this contract for any engagement above $5,000 in total
+value, both parties should have it reviewed by a licensed attorney
+in their respective jurisdictions. Filipino freelancers should also
+consult a local accountant regarding tax language and BIR compliance.
+
+Customize all bracketed fields [LIKE THIS] before signing.
+
+================================================================
+
+
+THIS INDEPENDENT CONTRACTOR AGREEMENT (the "Agreement") is entered
+into on [DATE] (the "Effective Date") by and between:
+
+CLIENT:
+    [Full Legal Name or Registered Company Name]
+    [Registered Address]
+    [City, State/Province, Country, Postal Code]
+    [Email Address]
+    [Phone Number]
+    (hereinafter referred to as the "Client")
+
+CONTRACTOR:
+    [Your Full Legal Name]
+    [Your Registered Address]
+    [City, Province, Country, Postal Code]
+    [Email Address]
+    [Phone Number]
+    [Tax ID / TIN, if applicable]
+    (hereinafter referred to as the "Contractor")
+
+The Client and the Contractor shall be referred to individually as
+a "Party" and collectively as the "Parties."
+
+WHEREAS the Client wishes to engage the Contractor to provide
+virtual assistant services, and the Contractor agrees to provide
+such services on the terms set forth in this Agreement;
+
+NOW THEREFORE, in consideration of the mutual covenants and promises
+contained herein, the Parties agree as follows:
+
+
+────────────────────────────────────────────────────────────────
+1. SERVICES
+────────────────────────────────────────────────────────────────
+
+1.1  Scope of Services. The Contractor agrees to provide the
+following services (the "Services") to the Client:
+
+     [Describe specific services in detail. Examples:
+      - Email and inbox management
+      - Calendar scheduling and coordination
+      - Travel booking and itinerary management
+      - Social media content creation, scheduling, and reporting
+      - Customer support via [channels]
+      - Bookkeeping in [QuickBooks/Xero]
+      - Project management in [Asana/ClickUp/Notion]
+      - Other tasks as agreed upon in writing]
+
+1.2  Service Standards. The Contractor will perform the Services in
+     a professional, timely, and competent manner consistent with
+     industry standards.
+
+1.3  Changes to Scope. Any changes, additions, or reductions to the
+     Services described in Section 1.1 must be agreed upon in
+     writing (email is sufficient) by both Parties before being
+     performed. The Contractor is not obligated to perform work
+     outside the agreed scope without compensation adjustment.
+
+1.4  Excluded Services. The following are explicitly NOT included
+     in the scope unless separately agreed in writing:
+     - Tasks requiring professional licenses (legal, medical, accounting advice)
+     - Work outside the Contractor's stated working hours (Section 4)
+     - Personal errands or tasks unrelated to the Client's business
+     - [Any other exclusions specific to this engagement]
+
+
+────────────────────────────────────────────────────────────────
+2. TERM
+────────────────────────────────────────────────────────────────
+
+2.1  Effective Date. This Agreement begins on [START DATE] and
+     continues until terminated by either Party in accordance with
+     Section 11 (Termination).
+
+2.2  Trial Period (Optional). The first [TWO (2) / FOUR (4)] weeks
+     of the engagement shall be considered a trial period during
+     which either Party may terminate this Agreement with [SEVEN (7)]
+     days written notice without penalty. All work completed during
+     the trial period shall be paid in full.
+
+
+────────────────────────────────────────────────────────────────
+3. COMPENSATION
+────────────────────────────────────────────────────────────────
+
+3.1  Rate. The Client agrees to pay the Contractor as follows
+     (select one):
+
+     ☐  HOURLY: $[AMOUNT] USD per hour, billed in [15-minute /
+        30-minute] increments.
+
+     ☐  MONTHLY RETAINER: $[AMOUNT] USD per month for up to
+        [NUMBER] hours of work. Hours exceeding the retainer cap
+        will be billed at $[OVERAGE RATE] per hour.
+
+     ☐  PROJECT-BASED: $[AMOUNT] USD for the complete project
+        described in Section 1.1, with payment milestones as
+        follows: [LIST MILESTONES, e.g., "50% upon signing, 50%
+        upon delivery"].
+
+3.2  Currency. All amounts in this Agreement are stated in [USD /
+     EUR / AUD / GBP] unless otherwise specified. Currency
+     conversion costs and fees are the responsibility of the Client.
+
+3.3  Invoicing. The Contractor will issue invoices on the [DAY] of
+     each [WEEK / TWO WEEKS / MONTH], covering work completed in the
+     prior period.
+
+3.4  Payment Terms. The Client shall pay each invoice within [SEVEN
+     (7) / FOURTEEN (14) / THIRTY (30)] days of receipt.
+
+3.5  Payment Method. Payment shall be made via [Wise / Payoneer /
+     PayPal / Direct Bank Transfer / Other]. The Client is
+     responsible for any payment processing fees charged to the
+     Contractor by the chosen platform.
+
+3.6  Late Payments. Payments not received within the timeframe in
+     Section 3.4 shall accrue a late fee of [FIVE PERCENT (5%)] per
+     month or the maximum permitted by law, whichever is lower. The
+     Contractor reserves the right to suspend Services after
+     [FOURTEEN (14)] days of non-payment, without prejudice to any
+     other remedies.
+
+3.7  Expenses. Pre-approved business expenses incurred by the
+     Contractor on behalf of the Client (e.g., software subscriptions
+     purchased on the Client's behalf, paid stock photos) shall be
+     reimbursed within the next invoice cycle, with receipts attached.
+
+3.8  Rate Reviews. Rates may be reviewed annually by mutual written
+     agreement. The Contractor will provide [THIRTY (30)] days
+     written notice of any proposed rate change.
+
+
+────────────────────────────────────────────────────────────────
+4. WORKING HOURS & AVAILABILITY
+────────────────────────────────────────────────────────────────
+
+4.1  Working Hours. The Contractor will be available to perform
+     Services during the following hours:
+
+     Days: [Monday through Friday / Specify]
+     Hours: [9:00 AM to 5:00 PM]
+     Time Zone: [Philippine Standard Time (PST) / Client's Time Zone]
+
+4.2  Response Times. The Contractor will respond to non-urgent
+     messages within [FOUR (4) / TWENTY-FOUR (24)] business hours
+     during working hours.
+
+4.3  Urgent Communications. Truly urgent matters may be communicated
+     via [Slack / WhatsApp / Phone]. The Contractor reserves the
+     right to define what qualifies as urgent and is not obligated
+     to respond outside working hours unless mutually agreed and
+     compensated as overtime per Section 4.6.
+
+4.4  Holidays. The Contractor observes the following holidays and
+     will not be available on these dates: [LIST PUBLIC HOLIDAYS
+     OBSERVED]. The Contractor will provide reasonable advance
+     notice of additional planned time off (vacation, personal
+     days) and will arrange for any time-sensitive coverage where
+     applicable.
+
+4.5  Time Off. The Contractor is entitled to reasonable time off
+     and is not obligated to work on holidays observed in Section 4.4.
+
+4.6  Overtime. Work performed outside agreed working hours, on
+     holidays, or in excess of agreed hours shall be billed at
+     [1.5x / 2x] the standard rate, unless waived in writing by
+     the Contractor.
+
+
+────────────────────────────────────────────────────────────────
+5. INDEPENDENT CONTRACTOR STATUS
+────────────────────────────────────────────────────────────────
+
+5.1  Status. The Contractor is engaged as an independent contractor,
+     not as an employee, partner, joint venturer, or agent of the
+     Client. Nothing in this Agreement shall be interpreted to
+     create an employer-employee relationship.
+
+5.2  Tax Obligations. The Contractor is solely responsible for:
+     - Reporting and paying all applicable income taxes
+     - Self-employment taxes and government contributions in their
+       jurisdiction
+     - Business permits and registrations required by their
+       local laws
+     - Issuing official receipts as required (for Filipino contractors
+       registered with the BIR)
+
+5.3  Benefits. The Contractor is NOT entitled to employee benefits
+     including but not limited to: health insurance, retirement
+     contributions, paid leave, workers' compensation, or
+     unemployment insurance.
+
+5.4  Equipment & Tools. The Contractor shall provide their own
+     equipment (computer, internet connection, software) necessary
+     to perform the Services, unless otherwise agreed in writing.
+
+5.5  Other Clients. The Contractor is free to work with other
+     clients during the term of this Agreement, provided such work
+     does not (a) violate the confidentiality provisions in
+     Section 7, or (b) directly compete with the Client's business
+     during the term of the Agreement (see Section 12).
+
+
+────────────────────────────────────────────────────────────────
+6. SUBCONTRACTING
+────────────────────────────────────────────────────────────────
+
+6.1  Prior Approval. The Contractor may not subcontract, delegate,
+     or assign any portion of the Services to a third party without
+     the Client's prior written approval.
+
+6.2  Subcontractor Standards. If subcontracting is approved, the
+     Contractor remains fully responsible for:
+     - The quality and timeliness of the subcontracted work
+     - Ensuring all subcontractors are bound by confidentiality
+       obligations equivalent to those in this Agreement
+     - Payment of all subcontractors
+
+6.3  Notification. The Contractor will identify any approved
+     subcontractor by name and role to the Client in writing.
+
+
+────────────────────────────────────────────────────────────────
+7. CONFIDENTIALITY
+────────────────────────────────────────────────────────────────
+
+7.1  Confidential Information. "Confidential Information" includes
+     all non-public information disclosed by either Party to the
+     other, including but not limited to:
+     - Business strategies, financial data, customer lists,
+       supplier information
+     - Trade secrets, proprietary processes, internal SOPs
+     - Login credentials and access details
+     - Marketing plans, product roadmaps, internal communications
+     - Personal information of customers, employees, or contractors
+     - Any information marked or reasonably understood to be
+       confidential
+
+7.2  Obligations. Each Party agrees to:
+     - Hold the other's Confidential Information in strict confidence
+     - Use Confidential Information only to perform obligations
+       under this Agreement
+     - Not disclose Confidential Information to any third party
+       without written consent
+     - Use the same degree of care to protect Confidential Information
+       as it uses for its own confidential information (and no less
+       than reasonable care)
+
+7.3  Exclusions. Confidential Information does not include
+     information that:
+     - Is or becomes publicly known through no breach by the
+       receiving Party
+     - Was already known to the receiving Party before disclosure
+     - Is independently developed without use of the disclosed
+       Confidential Information
+     - Is required to be disclosed by law or court order (with
+       prompt notice to the disclosing Party where legally permitted)
+
+7.4  Duration. Confidentiality obligations survive termination of
+     this Agreement and continue indefinitely for trade secrets and
+     for [THREE (3)] years for other Confidential Information.
+
+7.5  Return of Information. Upon termination, each Party shall
+     return or securely destroy the other's Confidential Information,
+     except where retention is required by law or for legitimate
+     business records.
+
+
+────────────────────────────────────────────────────────────────
+8. INTELLECTUAL PROPERTY
+────────────────────────────────────────────────────────────────
+
+8.1  Work Product Ownership. All original work product created by
+     the Contractor specifically for the Client during this
+     engagement (the "Work Product") shall become the exclusive
+     property of the Client UPON FULL PAYMENT for that work.
+
+8.2  Pre-Existing Materials. The Contractor retains ownership of:
+     - Any tools, templates, methodologies, frameworks, or
+       intellectual property the Contractor created prior to this
+       engagement
+     - Any general skills, knowledge, or experience used in
+       performing the Services
+
+     The Contractor grants the Client a non-exclusive, perpetual,
+     royalty-free license to use any pre-existing materials
+     incorporated into the Work Product, solely for the Client's
+     internal business purposes.
+
+8.3  Portfolio Rights. Unless explicitly prohibited in writing in
+     advance, the Contractor retains the right to display
+     non-confidential examples of the Work Product in the
+     Contractor's portfolio for marketing purposes. This includes:
+     - Visual examples (with sensitive information removed)
+     - Generic descriptions of the type of work performed
+     - Anonymous results or metrics
+
+     The Contractor will NOT publish:
+     - Specific Client business details, financials, or strategies
+     - Identifying information about the Client's customers
+     - Anything explicitly marked confidential by the Client
+
+8.4  Third-Party Materials. If the Contractor uses third-party
+     materials (stock photos, fonts, plugins, etc.) in the Work
+     Product, the Contractor warrants they have the right to do so
+     and will identify any licensing requirements that transfer to
+     the Client.
+
+8.5  Moral Rights. To the fullest extent permitted by law, the
+     Contractor waives any moral rights in the Work Product upon
+     full payment.
+
+
+────────────────────────────────────────────────────────────────
+9. AI TOOLS & AUTOMATION
+────────────────────────────────────────────────────────────────
+
+9.1  Disclosure. The Contractor may use generative AI tools
+     (including but not limited to ChatGPT, Claude, Gemini, Copilot,
+     and similar) to enhance efficiency in performing the Services,
+     unless explicitly restricted by the Client in writing.
+
+9.2  Confidentiality with AI. The Contractor agrees NOT to input the
+     Client's Confidential Information into any AI tool that:
+     - Trains on user inputs by default
+     - Stores conversations indefinitely without privacy controls
+     - Has not been approved in writing by the Client for
+       confidential use
+
+     For confidential work, the Contractor will use enterprise/team
+     versions of AI tools that explicitly do not train on user
+     inputs, OR will anonymize/redact sensitive information before
+     prompting.
+
+9.3  Quality. The Contractor is responsible for reviewing,
+     editing, and verifying all AI-generated content before
+     delivery. AI is a productivity tool, not a substitute for the
+     Contractor's professional judgment.
+
+9.4  Restricted Uses. The Contractor will NOT use AI tools to:
+     - Impersonate the Client in deceptive ways without explicit
+       authorization
+     - Generate content that violates copyright or third-party rights
+     - Produce material misrepresented as fully human-created where
+       disclosure is required by law or platform policy
+
+9.5  Client Restrictions. If the Client wishes to restrict AI use
+     entirely, that restriction must be specified here:
+     [☐ AI tools may NOT be used in performing any Services under
+     this Agreement]
+
+
+────────────────────────────────────────────────────────────────
+10. DATA PROTECTION & SECURITY
+────────────────────────────────────────────────────────────────
+
+10.1 Personal Data. If the Services involve handling personal data
+     of third parties (the Client's customers, employees, etc.),
+     both Parties agree to comply with applicable data protection
+     laws, including but not limited to:
+     - The General Data Protection Regulation (GDPR) for EU/UK data
+     - The California Consumer Privacy Act (CCPA) for California data
+     - The Philippine Data Privacy Act (RA 10173) for Philippine data
+     - Other applicable jurisdictional laws
+
+10.2 Contractor Obligations. The Contractor agrees to:
+     - Process personal data only as instructed by the Client
+     - Implement reasonable technical and organizational measures
+       to protect personal data (strong passwords, two-factor
+       authentication, encrypted storage)
+     - Notify the Client within [SEVENTY-TWO (72)] hours of
+       discovering any data breach or security incident
+     - Not transfer personal data to third parties without the
+       Client's written consent
+
+10.3 Access Credentials. The Client acknowledges that the
+     Contractor may require access to passwords and accounts to
+     perform Services. The Client agrees to:
+     - Provide credentials through secure means (e.g., 1Password,
+       Bitwarden, LastPass) — NOT plaintext email
+     - Use unique passwords for accounts shared with the Contractor
+     - Promptly revoke access upon termination
+
+10.4 Security Standards. The Contractor will maintain reasonable
+     cybersecurity hygiene, including:
+     - Up-to-date operating system and software
+     - Antivirus/anti-malware protection
+     - Use of secure (HTTPS) connections
+     - Avoiding public Wi-Fi for confidential work without VPN
+
+10.5 Liability for Breaches. Liability for data breaches shall be
+     determined based on which Party's actions or negligence caused
+     the breach, subject to the limitations in Section 13.
+
+
+────────────────────────────────────────────────────────────────
+11. TERMINATION
+────────────────────────────────────────────────────────────────
+
+11.1 Termination for Convenience. Either Party may terminate this
+     Agreement for any reason with [FOURTEEN (14) / THIRTY (30)]
+     days written notice.
+
+11.2 Termination for Cause. Either Party may terminate this
+     Agreement immediately if the other Party:
+     - Materially breaches this Agreement and fails to cure the
+       breach within [SEVEN (7)] days of written notice
+     - Becomes insolvent, files for bankruptcy, or ceases business
+       operations
+     - Engages in fraudulent, illegal, or grossly unprofessional
+       conduct
+
+11.3 Termination for Non-Payment. The Contractor may terminate
+     this Agreement immediately if the Client fails to pay any
+     undisputed invoice within [FOURTEEN (14)] days of the due date.
+
+11.4 Effects of Termination. Upon termination:
+     - The Client shall pay for all Services performed up to the
+       termination date within [SEVEN (7)] days
+     - The Contractor shall return any Client property, files,
+       and access credentials
+     - The Contractor shall hand off any in-progress work in a
+       reasonable manner
+     - Confidentiality, IP, and indemnification provisions
+       survive termination
+
+11.5 Refunds. If the Client has prepaid for Services that were not
+     delivered before termination, the Contractor shall refund the
+     unused portion within [FOURTEEN (14)] days of termination.
+
+
+────────────────────────────────────────────────────────────────
+12. NON-COMPETE & NON-SOLICITATION
+────────────────────────────────────────────────────────────────
+
+12.1 Limited Non-Compete. During the term of this Agreement, the
+     Contractor will not provide direct services to a business
+     that is a direct competitor of the Client in the same niche
+     and target market. This restriction does NOT prevent the
+     Contractor from working with other businesses generally.
+
+12.2 Non-Solicitation of Clients. For a period of [TWELVE (12)]
+     months following termination, the Contractor will not actively
+     solicit the Client's customers introduced through this
+     engagement for the purpose of providing competing services.
+
+12.3 Non-Solicitation of Personnel. Both Parties agree not to
+     directly hire or solicit each other's employees or
+     contractors for [TWELVE (12)] months after termination,
+     without written consent. A general public job posting does
+     not constitute solicitation.
+
+12.4 Reasonableness. Both Parties agree these restrictions are
+     reasonable in scope, duration, and geography, and necessary
+     to protect legitimate business interests.
+
+
+────────────────────────────────────────────────────────────────
+13. WARRANTIES & LIMITATION OF LIABILITY
+────────────────────────────────────────────────────────────────
+
+13.1 Contractor Warranties. The Contractor warrants that:
+     - The Contractor has the legal capacity to enter into this
+       Agreement
+     - The Services will be performed with reasonable skill and care
+     - The Work Product will not knowingly infringe on third-party
+       intellectual property rights
+     - The Contractor will comply with all applicable laws
+
+13.2 Client Warranties. The Client warrants that:
+     - The Client has the legal capacity to enter into this
+       Agreement
+     - Any materials provided to the Contractor (logos, content,
+       assets) are owned or properly licensed by the Client
+     - The Client will pay all invoices according to the agreed
+       terms
+     - The Client will not require the Contractor to engage in
+       illegal or unethical conduct
+
+13.3 Disclaimer. EXCEPT AS EXPLICITLY STATED IN THIS AGREEMENT,
+     THE CONTRACTOR PROVIDES THE SERVICES "AS IS" AND DISCLAIMS
+     ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES
+     OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+13.4 Limitation of Liability. TO THE MAXIMUM EXTENT PERMITTED BY
+     LAW, NEITHER PARTY'S TOTAL CUMULATIVE LIABILITY UNDER THIS
+     AGREEMENT SHALL EXCEED THE TOTAL AMOUNT PAID BY THE CLIENT TO
+     THE CONTRACTOR IN THE [THREE (3) / SIX (6) / TWELVE (12)]
+     MONTHS PRECEDING THE CLAIM.
+
+13.5 Excluded Damages. NEITHER PARTY SHALL BE LIABLE TO THE OTHER
+     FOR INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE
+     DAMAGES, INCLUDING LOST PROFITS, LOST BUSINESS, OR LOSS OF
+     DATA, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+13.6 Exceptions. The limitations in Sections 13.4 and 13.5 do
+     NOT apply to:
+     - Breach of confidentiality (Section 7)
+     - Indemnification obligations (Section 14)
+     - Gross negligence, willful misconduct, or fraud
+     - Unpaid fees owed to the Contractor
+
+
+────────────────────────────────────────────────────────────────
+14. INDEMNIFICATION
+────────────────────────────────────────────────────────────────
+
+14.1 By Contractor. The Contractor shall indemnify and hold the
+     Client harmless from any third-party claims arising from:
+     - The Contractor's breach of this Agreement
+     - The Contractor's gross negligence or willful misconduct
+     - Infringement of third-party intellectual property by the
+       Work Product (excluding materials provided by the Client)
+
+14.2 By Client. The Client shall indemnify and hold the Contractor
+     harmless from any third-party claims arising from:
+     - The Client's breach of this Agreement
+     - The Client's use of the Work Product for purposes beyond
+       the agreed scope
+     - Materials, content, or information provided by the Client
+       that infringe third-party rights
+     - The Client's products or services generally
+
+14.3 Procedure. The indemnified Party shall: (a) promptly notify
+     the indemnifying Party of any claim, (b) allow the
+     indemnifying Party to control the defense, and (c) cooperate
+     reasonably in the defense.
+
+
+────────────────────────────────────────────────────────────────
+15. FORCE MAJEURE
+────────────────────────────────────────────────────────────────
+
+15.1 Definition. Neither Party shall be liable for failure to
+     perform obligations under this Agreement to the extent caused
+     by events beyond their reasonable control, including but not
+     limited to: natural disasters, acts of war, terrorism,
+     pandemics, government orders, internet/utility outages, or
+     extended power failures.
+
+15.2 Notification. The affected Party shall notify the other Party
+     promptly upon becoming aware of any force majeure event and
+     provide an estimated duration of the disruption.
+
+15.3 Extended Duration. If a force majeure event continues for more
+     than [THIRTY (30)] days, either Party may terminate this
+     Agreement without penalty. Any prepaid but undelivered Services
+     shall be refunded.
+
+
+────────────────────────────────────────────────────────────────
+16. DISPUTE RESOLUTION
+────────────────────────────────────────────────────────────────
+
+16.1 Good Faith Discussion. The Parties agree to first attempt to
+     resolve any dispute through good faith discussion, with each
+     Party's primary contact making themselves available for a
+     video call within [SEVEN (7)] days of a dispute arising.
+
+16.2 Mediation. If good-faith discussion does not resolve the
+     dispute within [FOURTEEN (14)] days, the Parties agree to
+     attempt mediation through a mutually agreed online mediator,
+     with costs split equally.
+
+16.3 Final Resolution. If mediation fails, disputes shall be
+     resolved through:
+
+     [Choose ONE option:
+
+     ☐  ARBITRATION: Binding arbitration administered by [arbitration
+        body] in [city, country], with a single arbitrator chosen by
+        the Parties. The arbitrator's decision shall be final and
+        enforceable in any court of competent jurisdiction.
+
+     ☐  COURTS: Litigation in the courts of [JURISDICTION], with
+        the prevailing Party entitled to reasonable attorney's
+        fees and costs.]
+
+16.4 Governing Law. This Agreement shall be governed by and
+     construed in accordance with the laws of [JURISDICTION —
+     typically the Client's country, but negotiable].
+
+16.5 Continued Performance. During any dispute, both Parties shall
+     continue to perform their obligations under this Agreement,
+     except where the dispute concerns non-payment by the Client,
+     in which case the Contractor may suspend Services per Section 3.6.
+
+
+────────────────────────────────────────────────────────────────
+17. GENERAL PROVISIONS
+────────────────────────────────────────────────────────────────
+
+17.1 Entire Agreement. This Agreement constitutes the entire
+     agreement between the Parties and supersedes all prior
+     discussions, proposals, and agreements regarding the Services.
+
+17.2 Amendments. Any modification to this Agreement must be in
+     writing and signed (or electronically agreed) by both Parties.
+
+17.3 Severability. If any provision of this Agreement is found
+     unenforceable, the remaining provisions remain in full force,
+     and the unenforceable provision shall be modified to the
+     minimum extent necessary to make it enforceable.
+
+17.4 Waiver. Failure by either Party to enforce any right under
+     this Agreement shall not constitute a waiver of that right or
+     any other right.
+
+17.5 Assignment. Neither Party may assign this Agreement without
+     the other Party's written consent, except to a successor entity
+     in the case of merger, acquisition, or sale of substantially
+     all assets.
+
+17.6 Notices. Formal notices under this Agreement shall be sent
+     in writing via email to the addresses listed at the top of
+     this Agreement, with confirmation of receipt requested.
+
+17.7 Counterparts & Electronic Signatures. This Agreement may be
+     executed in counterparts and via electronic signature platforms
+     (DocuSign, HelloSign, etc.). Electronic signatures shall have
+     the same legal effect as handwritten signatures.
+
+17.8 Survival. All provisions that by their nature should survive
+     termination — including confidentiality, IP, indemnification,
+     limitation of liability, and dispute resolution — shall
+     survive.
+
+17.9 Headings. Section headings are for convenience only and do
+     not affect interpretation.
+
+17.10 Counterparts. This Agreement may be signed in counterparts,
+      each of which shall be an original and together constitute
+      one document.
+
+
+────────────────────────────────────────────────────────────────
+                          SIGNATURES
+────────────────────────────────────────────────────────────────
+
+The Parties acknowledge that they have read, understood, and agree
+to be bound by all terms of this Agreement.
+
+
+CLIENT:
+
+Signature:   _________________________________________
+
+Printed Name: _________________________________________
+
+Title (if entity): ____________________________________
+
+Date:        _________________________________________
+
+
+CONTRACTOR:
+
+Signature:   _________________________________________
+
+Printed Name: _________________________________________
+
+Date:        _________________________________________
+
+
+================================================================
+                         END OF AGREEMENT
+================================================================
+`;
+
+const phases = [
+  {
+    eyebrow: "Phase 1",
+    title: "Lock in the agreement",
+    items: [
+      { text: "Confirm scope of work in writing — exactly what you'll do, what you won't" },
+      { text: "Confirm rate and what's included (hourly, monthly retainer, project fee, hours per week)" },
+      { text: "Confirm payment terms — when you invoice, when they pay, what method (Wise, PayPal, Payoneer), what currency",
+        tip: "<strong>Push for half upfront for project work, weekly/bi-weekly invoicing for retainers.</strong> Don't wait until end-of-month for your first invoice — test their payment behavior early." },
+      { text: "Get a signed contract or written agreement (use the template below if they don't have one)",
+        action: "scrollToContract" },
+    ]
+  },
+  {
+    eyebrow: "Phase 2",
+    title: "The kickoff call",
+    items: [
+      { text: "Schedule a 30–45 minute kickoff call (video, not just chat)" },
+      { text: "Send a welcome email with what to expect from you in the first week" },
+      { text: "Ask them to share: company info, target audience, brand assets, existing SOPs",
+        tip: "<strong>If they don't have any of these, that's OK.</strong> But ask anyway — their answer tells you whether they're organized or chaotic, which shapes how you'll work with them." },
+      { text: "Get added to their tools — Slack, Asana, Google Drive, ClickUp, etc." },
+      { text: "Confirm timezone, working hours, and expected response times" },
+    ]
+  },
+  {
+    eyebrow: "Phase 3",
+    title: "Set up your workspace",
+    items: [
+      { text: "Create a dedicated client folder in your Google Drive (use a clear naming convention)" },
+      { text: "Set up time tracking — Toggl, Clockify, or the platform's built-in tracker",
+        tip: "<strong>Always track time, even on flat-fee work.</strong> You need to know how long things take so you can price the next gig correctly." },
+      { text: "Create a private Notion page or doc for: client notes, login credentials, SOPs, and recurring tasks" },
+      { text: "Save important contacts — their team members, vendors, designers, anyone you might coordinate with" },
+      { text: "Separate communication channels — don't mix this client's Slack with personal stuff" },
+    ]
+  },
+  {
+    eyebrow: "Phase 4",
+    title: "Gather what you need to win",
+    items: [
+      { text: "Brand voice/tone — get examples of how they sound (past emails, social posts, blog articles)" },
+      { text: "Their target customer — who are you really serving? Get specific (age, profession, pain points)" },
+      { text: "Tools they currently use — full list, not just the obvious ones",
+        tip: "<strong>Ask: \"What tools does your team use that I should know about?\"</strong> They'll often forget to mention 2–3 critical ones — internal Slack channels, custom dashboards, weird automation tools." },
+      { text: "Past work examples they consider \"good\" — and \"bad\". Both matter." },
+      { text: "Their pet peeves and non-negotiables — what specifically drives them crazy?" },
+      { text: "Decision-makers — who else might assign you tasks? Who has final approval on what?" },
+    ]
+  },
+  {
+    eyebrow: "Phase 5",
+    title: "Deliver in week 1",
+    items: [
+      { text: "Send a written summary of the kickoff within 24 hours — \"Here's what we agreed on, did I miss anything?\"",
+        tip: "<strong>This single email separates pros from amateurs.</strong> It catches misunderstandings early, creates a paper trail, and signals you're organized. Write one for every new client, every time." },
+      { text: "Deliver one quick win in week 1 — even small (a cleaned-up inbox, a single great post, a fixed file structure)" },
+      { text: "Set up a weekly check-in cadence — same day, same time, recurring" },
+      { text: "End week 1 with a recap: what you did, hours used, what's next" },
+    ]
+  }
+];
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
+  } catch { return {}; }
+}
+
+function saveState(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+let state = loadState();
+
+function getItemId(phaseIdx, itemIdx) { return `p${phaseIdx}-i${itemIdx}`; }
+
+function totalItems() {
+  return phases.reduce((sum, p) => sum + p.items.length, 0);
+}
+
+function completedItems() {
+  return Object.values(state).filter(v => v === true).length;
+}
+
+function renderPhases() {
+  const container = document.getElementById('phases-container');
+  container.innerHTML = phases.map((phase, pIdx) => {
+    const phaseItems = phase.items;
+    const completedInPhase = phaseItems.filter((_, iIdx) => state[getItemId(pIdx, iIdx)]).length;
+    const phaseComplete = completedInPhase === phaseItems.length;
+
+    let phaseHTML = `
+      <div class="phase ${phaseComplete ? 'complete' : ''}" id="phase-${pIdx}">
+        <div class="phase-head">
+          <div class="phase-num">0${pIdx + 1}</div>
+          <div class="phase-title-block">
+            <div class="phase-eyebrow">${phase.eyebrow}</div>
+            <div class="phase-title">${phase.title}</div>
+            <div class="phase-progress"><strong>${completedInPhase}</strong> of ${phaseItems.length} done</div>
+          </div>
+        </div>
+        <div class="items-list">
+          ${phaseItems.map((item, iIdx) => {
+            const itemId = getItemId(pIdx, iIdx);
+            const checked = state[itemId] === true;
+            return `
+              <div class="item-row ${checked ? 'checked' : ''}" onclick="toggleItem('${itemId}', ${pIdx}, ${iIdx})">
+                <div class="item-checkbox">
+                  <svg fill="none" stroke="#0a0a0a" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div class="item-content">
+                  <div class="item-text">${item.text}</div>
+                  ${item.tip ? `<div class="item-tip">${item.tip}</div>` : ''}
+                  ${item.action === 'scrollToContract' ? `<button onclick="event.stopPropagation(); document.getElementById('contract-section').scrollIntoView({behavior:'smooth',block:'start'});" class="item-action">↓ Use the template below</button>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+
+    // Insert red flag callout after Phase 1
+    if (pIdx === 0) {
+      phaseHTML += `
+        <div class="red-flag-box">
+          <div class="red-flag-icon">!</div>
+          <div class="red-flag-content">
+            <h4>Walk-away signals</h4>
+            <p>If a client refuses to sign a contract, won't agree to standard payment methods, or skips the kickoff call — those aren't quirks. Those are scams or chaos clients. Run. <a href="scam-detector.html">Use the scam detector</a> if you're unsure.</p>
+          </div>
+        </div>
+
+        <div class="contract-section" id="contract-section">
+          <div class="contract-head">
+            <div class="contract-eyebrow">Free template · 17 sections · ~5,500 words</div>
+            <h3 class="contract-title">Comprehensive contractor <em>agreement</em>.</h3>
+            <p class="contract-sub">A full professional contract that protects both you and your client. Built specifically for PH-based VAs working with US/UK/AU clients. Covers scope, payment, IP, confidentiality, AI usage, data protection (GDPR/CCPA), termination, dispute resolution, and more.</p>
+          </div>
+
+          <div class="contract-disclaimer">
+            <strong>Not legal advice.</strong> This is a strong starting point covering modern, balanced terms — but every jurisdiction has different rules. For engagements above $5,000, have a lawyer in your country review it. Filipino freelancers should also check tax language with a local accountant for BIR compliance.
+          </div>
+
+          <div class="contract-toolbar">
+            <a href="https://docs.google.com/document/d/1AajSmHQ5DS06on-4g0FAZwp5lnUulNTDkU5P1Wuu6uk/copy" target="_blank" class="btn-copy" style="text-decoration: none;">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Make a copy in Google Docs
+            </a>
+            <button class="btn-toggle" onclick="copyContract()" id="copy-btn">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:middle;"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              Copy as plain text
+            </button>
+            <button class="btn-toggle" onclick="toggleContract()" id="toggle-btn">View contract ▾</button>
+          </div>
+          <div class="contract-body" id="contract-body">${escapeHTML(contractTemplate)}</div>
+        </div>
+      `;
+    }
+
+    return phaseHTML;
+  }).join('');
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+}
+
+function toggleItem(itemId, pIdx, iIdx) {
+  state[itemId] = !state[itemId];
+  saveState(state);
+  renderPhases();
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = totalItems();
+  const done = completedItems();
+  document.getElementById('completed-count').textContent = done;
+  document.getElementById('progress-fill').style.width = `${(done / total) * 100}%`;
+
+  const celebration = document.getElementById('celebration');
+  if (done === total) {
+    celebration.classList.add('visible');
+    setTimeout(() => celebration.scrollIntoView({behavior:'smooth',block:'start'}), 200);
+  } else {
+    celebration.classList.remove('visible');
+  }
+}
+
+function toggleContract() {
+  const body = document.getElementById('contract-body');
+  const btn = document.getElementById('toggle-btn');
+  body.classList.toggle('visible');
+  btn.textContent = body.classList.contains('visible') ? 'Hide contract ▴' : 'View contract ▾';
+}
+
+function copyContract() {
+  const btn = document.getElementById('copy-btn');
+  const original = btn.innerHTML;
+  navigator.clipboard.writeText(contractTemplate).then(() => {
+    btn.style.borderColor = '#c4ff47';
+    btn.style.color = '#c4ff47';
+    btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right:6px;vertical-align:middle;"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Copied to clipboard';
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = contractTemplate;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => { btn.innerHTML = original; }, 2500);
+  });
+}
+
+function confirmReset() {
+  document.getElementById('reset-modal').classList.add('visible');
+}
+function closeModal() {
+  document.getElementById('reset-modal').classList.remove('visible');
+}
+function doReset() {
+  state = {};
+  saveState(state);
+  renderPhases();
+  updateProgress();
+  closeModal();
+  document.getElementById('celebration').classList.remove('visible');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// Init
+renderPhases();
+updateProgress();
+</script>
+
+</body>
+</html>

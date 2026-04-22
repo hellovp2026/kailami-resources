@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rate Calculator — Kailami</title>
+<meta name="description" content="Free VA hourly rate calculator. Stop underpricing. Find out exactly what you need to charge to hit your income goal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.calc-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .calc-wrap { padding: 0 24px; } }
+
+.calc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin: 32px 0 60px;
+}
+@media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
+
+.calc-input-card, .calc-output-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 32px;
+}
+.calc-output-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border-color: rgba(196,255,71,0.25);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.calc-output-card::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.12), transparent 70%);
+}
+.calc-output-content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+
+.calc-section-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.calc-section-label::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+
+.calc-field { margin-bottom: 22px; }
+.calc-field-label { font-size: 13px; color: #e0e0e0; font-weight: 500; margin-bottom: 6px; display: block; }
+.calc-field-hint { font-size: 11px; color: #888; margin-bottom: 8px; line-height: 1.5; }
+.calc-input-wrap { position: relative; }
+.calc-input-prefix {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: #888; font-size: 14px; pointer-events: none;
+}
+.calc-input-suffix {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  color: #888; font-size: 13px; pointer-events: none;
+}
+.calc-field input, .calc-field select {
+  width: 100%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px 14px; font-family: inherit; font-size: 15px;
+  color: #fff; transition: border-color 0.2s;
+}
+.calc-field input.has-prefix { padding-left: 28px; }
+.calc-field input.has-suffix { padding-right: 50px; }
+.calc-field input:focus, .calc-field select:focus { outline: none; border-color: #c4ff47; }
+.calc-field select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+
+.result-headline {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #888; font-weight: 600; margin-bottom: 10px;
+}
+.result-rate {
+  font-size: clamp(48px, 10vw, 80px); font-weight: 500; color: #c4ff47;
+  letter-spacing: -3px; line-height: 1; margin-bottom: 8px;
+}
+.result-rate-unit { font-size: 18px; color: #888; font-weight: 400; }
+.result-context { font-size: 14px; color: #c0c0c0; line-height: 1.6; margin-bottom: 24px; }
+
+.result-breakdown { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+.result-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; padding: 6px 0; color: #c0c0c0;
+}
+.result-row strong { color: #fff; font-weight: 500; }
+
+.result-warning {
+  background: rgba(255,200,100,0.08); border: 1px solid rgba(255,200,100,0.2);
+  border-radius: 10px; padding: 12px 14px; font-size: 12px;
+  color: #ffc864; margin-top: 16px; display: none; line-height: 1.5;
+}
+.result-warning.visible { display: block; }
+
+/* Reality check section */
+.reality-section {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 36px; margin-bottom: 48px;
+}
+.reality-section h3 {
+  font-size: 22px; font-weight: 500; color: #fff;
+  letter-spacing: -0.5px; margin-bottom: 18px;
+}
+.reality-section p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 14px; }
+.reality-section p:last-child { margin-bottom: 0; }
+.reality-section strong { color: #c4ff47; font-weight: 500; }
+.reality-section em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+
+.back-cta {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 32px; text-align: center; margin: 40px 0;
+}
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free calculator · Stop underpricing</div>
+<h1 class="page-title">VA <em>rate</em> calculator.</h1>
+<p class="page-lede">Most VAs underprice because they've never done the math. Plug in your numbers below and see exactly what you need to charge to hit your income goal — accounting for unbillable hours, expenses, and reality.</p>
+</section>
+</div>
+
+<div class="calc-wrap">
+
+<div class="calc-grid">
+
+<!-- INPUTS -->
+<div class="calc-input-card">
+<div class="calc-section-label">Your inputs</div>
+
+<div class="calc-field">
+<label class="calc-field-label">Target monthly take-home (USD)</label>
+<div class="calc-field-hint">What you actually want to bring home each month, after expenses.</div>
+<div class="calc-input-wrap">
+<span class="calc-input-prefix">$</span>
+<input type="number" id="target-income" value="1500" min="100" class="has-prefix" oninput="calculate()">
+</div>
+</div>
+
+<div class="calc-field">
+<label class="calc-field-label">Hours you can actually work per week</label>
+<div class="calc-field-hint">Be realistic. Most full-time VAs bill 25–35 hrs (not 40 — meetings, breaks, admin eat the rest).</div>
+<div class="calc-input-wrap">
+<input type="number" id="hours-per-week" value="30" min="1" max="80" class="has-suffix" oninput="calculate()">
+<span class="calc-input-suffix">hrs/wk</span>
+</div>
+</div>
+
+<div class="calc-field">
+<label class="calc-field-label">Monthly business expenses (USD)</label>
+<div class="calc-field-hint">Subscriptions, internet upgrade, courses, tools, etc. Estimate $50–150 if unsure.</div>
+<div class="calc-input-wrap">
+<span class="calc-input-prefix">$</span>
+<input type="number" id="expenses" value="100" min="0" class="has-prefix" oninput="calculate()">
+</div>
+</div>
+
+<div class="calc-field">
+<label class="calc-field-label">Platform fees</label>
+<div class="calc-field-hint">Upwork takes 10%, OnlineJobs takes 0%, direct clients take 0%.</div>
+<select id="platform-fee" onchange="calculate()">
+<option value="0">No platform fee (direct clients)</option>
+<option value="0">OnlineJobs.ph (0%)</option>
+<option value="10" selected>Upwork (10%)</option>
+<option value="20">Other platform (20%)</option>
+</select>
+</div>
+
+<div class="calc-field">
+<label class="calc-field-label">Tax buffer</label>
+<div class="calc-field-hint">Set aside for taxes. PH freelancers usually budget 15–25% (depends on bracket).</div>
+<select id="tax-rate" onchange="calculate()">
+<option value="0">None (handle separately)</option>
+<option value="10">10%</option>
+<option value="15" selected>15%</option>
+<option value="20">20%</option>
+<option value="25">25%</option>
+</select>
+</div>
+
+</div>
+
+<!-- OUTPUTS -->
+<div class="calc-output-card">
+<div class="calc-output-content">
+<div class="result-headline">You need to charge</div>
+<div class="result-rate">$<span id="result-rate">0</span><span class="result-rate-unit">/hr</span></div>
+<div class="result-context" id="result-context">to hit your goal.</div>
+
+<div class="result-breakdown">
+<div class="result-row"><span>Monthly billable hours</span><strong id="r-hours">0 hrs</strong></div>
+<div class="result-row"><span>Gross monthly revenue needed</span><strong id="r-gross">$0</strong></div>
+<div class="result-row"><span>After platform fees</span><strong id="r-after-fees">$0</strong></div>
+<div class="result-row"><span>After expenses</span><strong id="r-after-expenses">$0</strong></div>
+<div class="result-row"><span>After tax buffer</span><strong id="r-after-tax">$0</strong></div>
+<div class="result-row"><span>≈ in PHP</span><strong id="r-php">₱0</strong></div>
+</div>
+
+<div class="result-warning" id="rate-warning"></div>
+</div>
+</div>
+
+</div>
+
+<!-- REALITY CHECK -->
+<div class="reality-section">
+<h3>Quick reality check on rates</h3>
+<p><strong>Beginner range (0–6 months):</strong> $5–$10/hr is realistic on Upwork to build your first reviews. On OnlineJobs.ph, expect PHP 25,000–40,000/month for full-time work.</p>
+<p><strong>1–2 years experience:</strong> $10–$20/hr is fair. You should have 3–5 client reviews and a clear niche by now.</p>
+<p><strong>2+ years specialized:</strong> $20–$40/hr is achievable for niche work (technical VAs, marketing strategists, executive assistants for founders). You're not just executing tasks — you're solving problems.</p>
+<p><em>If your calculator says you need $60/hr to hit your goal but you have 0 reviews, that's a sign to either lower your goal, increase your hours, or be patient and build your way up.</em></p>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Ready to set your rates?</div>
+<p class="back-cta-sub">Now optimize your profile so clients actually find you at this rate.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">Open the roadmap →</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+const PHP_RATE = 56; // 1 USD ≈ 56 PHP (roughly current)
+
+function calculate() {
+  const target = +document.getElementById('target-income').value || 0;
+  const hoursWk = +document.getElementById('hours-per-week').value || 0;
+  const expenses = +document.getElementById('expenses').value || 0;
+  const platformFee = +document.getElementById('platform-fee').value / 100;
+  const taxRate = +document.getElementById('tax-rate').value / 100;
+
+  if (hoursWk <= 0) return;
+
+  const monthlyHours = hoursWk * 4.33; // avg weeks per month
+
+  // Work backward: target take-home → gross needed
+  // After expenses: target + expenses
+  // After tax: that / (1 - taxRate)
+  // After platform fees: that / (1 - platformFee)
+  const afterExpenses = target + expenses;
+  const afterTax = afterExpenses / (1 - taxRate);
+  const grossNeeded = afterTax / (1 - platformFee);
+
+  const hourlyRate = grossNeeded / monthlyHours;
+  const phpAmount = target * PHP_RATE;
+
+  // Update DOM
+  document.getElementById('result-rate').textContent = hourlyRate.toFixed(2);
+  document.getElementById('r-hours').textContent = `${monthlyHours.toFixed(0)} hrs`;
+  document.getElementById('r-gross').textContent = `$${grossNeeded.toFixed(0)}`;
+  document.getElementById('r-after-fees').textContent = `$${(grossNeeded * (1 - platformFee)).toFixed(0)}`;
+  document.getElementById('r-after-expenses').textContent = `$${(afterTax).toFixed(0)} → $${afterExpenses.toFixed(0)}`;
+  document.getElementById('r-after-tax').textContent = `$${target.toFixed(0)} take-home`;
+  document.getElementById('r-php').textContent = `₱${phpAmount.toLocaleString('en-US', {maximumFractionDigits: 0})}/mo`;
+
+  // Context message
+  let context = '';
+  if (hourlyRate < 5) context = 'This is below most platform minimums. Either raise your goal or accept that this rate is unsustainable.';
+  else if (hourlyRate < 10) context = 'This is in the typical beginner range — achievable in your first 3–6 months.';
+  else if (hourlyRate < 20) context = 'This is fair for 1–2 years of focused niche experience.';
+  else if (hourlyRate < 40) context = 'This is specialist territory — niche down hard and have a strong portfolio.';
+  else context = 'This is premium / agency-tier rates. You\'ll need a strong reputation and proven results to charge this.';
+
+  document.getElementById('result-context').textContent = context;
+
+  // Warning
+  const warning = document.getElementById('rate-warning');
+  if (hourlyRate > 50 && hoursWk < 20) {
+    warning.textContent = '⚠ You\'re trying to earn premium income on part-time hours. Either work more hours, lower your target, or commit to becoming a true specialist.';
+    warning.classList.add('visible');
+  } else if (hoursWk > 50) {
+    warning.textContent = '⚠ Working 50+ billable hours/week is a fast track to burnout. Consider raising your rate instead.';
+    warning.classList.add('visible');
+  } else {
+    warning.classList.remove('visible');
+  }
+}
+
+calculate(); // Initial render
+</script>
+
+</body>
+</html>

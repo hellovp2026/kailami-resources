@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Path — Kailami</title>
+<meta name="description" content="The guided, day-by-day path from zero to your first VA client. 30 tasks. Real commitment required. No shortcuts. No bullshit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.path-wrap { max-width: 920px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .path-wrap { padding: 0 24px; } }
+
+/* Screen container — only one visible at a time */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ─────────── INTRO SCREEN — brutal honesty ─────────── */
+.intro-hero {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.01));
+  border: 1px solid rgba(196,255,71,0.2);
+  border-radius: 28px; padding: 56px 48px;
+  margin: 32px 0 24px;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .intro-hero { padding: 36px 28px; } }
+.intro-hero::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.18), transparent 70%);
+}
+.intro-content { position: relative; z-index: 2; }
+.intro-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.12); color: #c4ff47;
+  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.intro-pill-dot { width: 6px; height: 6px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.intro-headline {
+  font-size: clamp(36px, 6vw, 60px); font-weight: 500;
+  letter-spacing: -2px; color: #fff; line-height: 1; margin-bottom: 20px;
+}
+.intro-headline em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.intro-lede { font-size: 16px; color: #d0d0d0; line-height: 1.7; margin-bottom: 12px; max-width: 620px; }
+
+/* The truth section — direct, no sugar */
+.truth-section {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 36px 40px; margin-bottom: 24px;
+}
+@media (max-width: 700px) { .truth-section { padding: 28px 24px; } }
+.truth-eyebrow {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #ff9999; font-weight: 700; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.truth-eyebrow::before { content: ''; width: 24px; height: 1px; background: #ff9999; }
+.truth-section h2 {
+  font-size: clamp(24px, 3.5vw, 32px); font-weight: 500;
+  letter-spacing: -0.8px; color: #fff; line-height: 1.15; margin-bottom: 20px;
+}
+.truth-section h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #ff9999; font-weight: 400; }
+.truth-section p {
+  font-size: 15px; color: #d0d0d0; line-height: 1.75; margin-bottom: 14px;
+}
+.truth-section p:last-child { margin-bottom: 0; }
+.truth-section strong { color: #fff; font-weight: 500; }
+
+.truth-list {
+  background: rgba(255,100,100,0.04); border-left: 3px solid rgba(255,100,100,0.4);
+  border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 18px 0;
+}
+.truth-list ul { list-style: none; }
+.truth-list li {
+  position: relative; padding-left: 22px; font-size: 14px;
+  color: #d0d0d0; line-height: 1.65; margin-bottom: 8px;
+}
+.truth-list li:last-child { margin-bottom: 0; }
+.truth-list li::before { content: '✗'; position: absolute; left: 0; color: #ff9999; font-weight: 700; }
+
+/* Big intro CTA */
+.intro-cta-row {
+  display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+  margin-top: 32px;
+}
+.btn-big {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 18px 36px; border-radius: 999px;
+  font-size: 16px; font-weight: 600; font-family: inherit;
+  transition: all 0.2s; display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-big:hover { background: #d4ff6b; transform: translateY(-2px); }
+.btn-big-ghost {
+  background: transparent; color: #c0c0c0; border: 1px solid rgba(255,255,255,0.15);
+  padding: 17px 30px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
+  transition: all 0.2s;
+  text-decoration: none; display: inline-flex; align-items: center;
+}
+.btn-big-ghost:hover { border-color: #c4ff47; color: #c4ff47; }
+
+
+/* ─────────── PACE SELECT SCREEN ─────────── */
+.pace-header { text-align: center; margin: 48px 0 32px; }
+.pace-header .eyebrow-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.pace-header h2 {
+  font-size: clamp(30px, 5vw, 48px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1.05; margin-bottom: 14px;
+}
+.pace-header h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.pace-header p { font-size: 15px; color: #a0a0a0; line-height: 1.6; max-width: 580px; margin: 0 auto; }
+
+.pace-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin: 32px 0;
+}
+@media (max-width: 800px) { .pace-grid { grid-template-columns: 1fr; } }
+
+.pace-card {
+  background: #141414; border: 2px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px 28px; cursor: pointer;
+  transition: all 0.3s; text-align: center;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.pace-card:hover { border-color: rgba(196,255,71,0.4); transform: translateY(-3px); }
+.pace-card.recommended { border-color: rgba(196,255,71,0.3); position: relative; }
+.pace-card.recommended::before {
+  content: 'Recommended'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: #c4ff47; color: #0a0a0a;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px;
+}
+.pace-name { font-size: 14px; color: #c4ff47; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.pace-duration {
+  font-size: 56px; font-weight: 500; color: #fff; letter-spacing: -2px;
+  font-family: 'Instrument Serif', serif; font-style: italic; line-height: 1; font-weight: 400;
+}
+.pace-duration small { font-size: 18px; color: #888; font-style: normal; font-family: 'Space Grotesk', sans-serif; font-weight: 500; margin-left: 4px; letter-spacing: 0; }
+.pace-commitment { font-size: 14px; color: #d0d0d0; font-weight: 500; }
+.pace-best-for { font-size: 12px; color: #888; line-height: 1.5; }
+
+
+/* ─────────── COMMIT SCREEN ─────────── */
+.commit-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px; padding: 56px 48px; margin: 40px 0;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .commit-card { padding: 36px 28px; } }
+.commit-card::before {
+  content: ''; position: absolute; bottom: -120px; left: -120px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+}
+.commit-content { position: relative; z-index: 2; }
+.commit-eyebrow {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.commit-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.commit-card h2 {
+  font-size: clamp(28px, 4.5vw, 40px); font-weight: 500;
+  letter-spacing: -1.2px; color: #fff; line-height: 1.1; margin-bottom: 20px;
+}
+.commit-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.commit-card p { font-size: 15px; color: #c0c0c0; line-height: 1.75; margin-bottom: 14px; }
+.commit-card strong { color: #fff; font-weight: 500; }
+
+.commit-statement {
+  background: rgba(196,255,71,0.06); border: 2px dashed rgba(196,255,71,0.3);
+  border-radius: 16px; padding: 28px 32px; margin: 28px 0;
+  font-size: 18px; color: #fff; font-weight: 500; line-height: 1.5;
+  letter-spacing: -0.3px;
+}
+@media (max-width: 600px) { .commit-statement { font-size: 16px; padding: 24px; } }
+.commit-statement em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+
+.commit-checkbox-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 22px; margin: 20px 0; cursor: pointer;
+  transition: all 0.2s;
+}
+.commit-checkbox-row:hover { border-color: rgba(196,255,71,0.3); }
+.commit-checkbox-row.checked { background: rgba(196,255,71,0.04); border-color: #c4ff47; }
+.commit-checkbox {
+  width: 24px; height: 24px; border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; margin-top: 1px;
+}
+.commit-checkbox-row.checked .commit-checkbox { background: #c4ff47; border-color: #c4ff47; }
+.commit-checkbox svg { width: 14px; height: 14px; opacity: 0; }
+.commit-checkbox-row.checked .commit-checkbox svg { opacity: 1; }
+.commit-checkbox-text { font-size: 13px; color: #d0d0d0; line-height: 1.6; }
+.commit-checkbox-row.checked .commit-checkbox-text { color: #fff; }
+
+
+/* ─────────── PATH SCREEN — the actual journey ─────────── */
+/* Sticky progress + reset bar */
+.path-progress {
+  position: sticky; top: 80px; z-index: 50;
+  background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 14px 22px;
+  margin: 32px 0 28px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.path-progress-info {
+  font-size: 13px; color: #a0a0a0; white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.path-progress-info strong { color: #c4ff47; font-weight: 600; font-size: 14px; }
+.path-progress-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; min-width: 120px; }
+.path-progress-fill { height: 100%; background: #c4ff47; transition: width 0.4s ease-out; border-radius: 999px; }
+.path-pace-badge {
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 11px; padding: 4px 11px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 0.5px; white-space: nowrap;
+}
+.path-reset {
+  background: transparent; border: 1px solid rgba(255,255,255,0.15);
+  color: #888; padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s; font-family: inherit; white-space: nowrap;
+}
+.path-reset:hover { border-color: #ff9999; color: #ff9999; }
+
+/* Week blocks */
+.week-block {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px; margin-bottom: 18px;
+  transition: all 0.3s;
+}
+.week-block.complete { border-color: rgba(196,255,71,0.3); }
+.week-block.locked {
+  background: #0c0c0c; border-color: rgba(255,255,255,0.04);
+  opacity: 0.55;
+}
+.week-block.current {
+  border-color: rgba(196,255,71,0.4);
+  box-shadow: 0 0 0 4px rgba(196,255,71,0.06);
+}
+
+.week-head {
+  display: flex; gap: 18px; align-items: flex-start;
+  margin-bottom: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+.week-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: #c4ff47; font-size: 42px; line-height: 1; font-weight: 400; flex-shrink: 0;
+}
+.week-block.locked .week-num { color: #555; }
+.week-head-content { flex: 1; }
+.week-eyebrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; font-weight: 600; margin-bottom: 4px; }
+.week-block.complete .week-eyebrow { color: #c4ff47; }
+.week-title { font-size: 22px; color: #fff; font-weight: 500; letter-spacing: -0.5px; line-height: 1.2; }
+.week-block.locked .week-title { color: #666; }
+.week-meta {
+  display: flex; align-items: center; gap: 10px; margin-top: 8px;
+  font-size: 12px; color: #888;
+}
+.week-meta-pill {
+  background: rgba(255,255,255,0.04); padding: 3px 9px; border-radius: 999px;
+  font-weight: 500;
+}
+.week-status-icon {
+  flex-shrink: 0; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+}
+.week-collapse {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center;
+  color: #888; transition: all 0.3s;
+}
+.week-block.expanded .week-collapse { background: #c4ff47; color: #0a0a0a; transform: rotate(180deg); }
+
+.week-body {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+}
+.week-block.expanded .week-body { max-height: 5000px; }
+
+.week-locked-msg {
+  background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px 20px;
+  font-size: 13px; color: #888; line-height: 1.6; margin-top: 8px;
+  display: flex; align-items: center; gap: 12px;
+}
+.week-locked-msg svg { width: 18px; height: 18px; flex-shrink: 0; color: #666; }
+
+/* Day cards within a week */
+.days-list { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+.day-card {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 18px 22px;
+  transition: all 0.2s;
+}
+.day-card.done {
+  background: rgba(196,255,71,0.04); border-color: rgba(196,255,71,0.25);
+}
+.day-head {
+  display: flex; gap: 14px; align-items: flex-start;
+  cursor: pointer;
+}
+.day-checkbox {
+  width: 22px; height: 22px; border-radius: 6px;
+  border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; margin-top: 2px;
+}
+.day-card.done .day-checkbox { background: #c4ff47; border-color: #c4ff47; }
+.day-checkbox svg { width: 13px; height: 13px; opacity: 0; transition: opacity 0.2s; }
+.day-card.done .day-checkbox svg { opacity: 1; }
+
+.day-content { flex: 1; }
+.day-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.day-label {
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600;
+}
+.day-time {
+  background: rgba(255,255,255,0.05); color: #a0a0a0;
+  font-size: 10px; padding: 2px 8px; border-radius: 999px;
+  font-weight: 500;
+}
+.day-title {
+  font-size: 15px; color: #fff; font-weight: 500;
+  letter-spacing: -0.2px; line-height: 1.4;
+}
+.day-card.done .day-title { color: #888; text-decoration: line-through; }
+.day-detail {
+  font-size: 13px; color: #a0a0a0; line-height: 1.6;
+  margin-top: 8px; padding-left: 36px;
+}
+.day-action {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 12px; padding: 6px 12px; border-radius: 999px;
+  font-weight: 500; text-decoration: none; margin-top: 10px;
+  margin-left: 36px; transition: all 0.2s;
+}
+.day-action:hover { background: rgba(196,255,71,0.2); }
+
+
+/* ─────────── COMPLETE SCREEN ─────────── */
+.complete-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.14), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3); border-radius: 28px;
+  padding: 64px 48px; margin: 40px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .complete-card { padding: 44px 24px; } }
+.complete-card::before {
+  content: ''; position: absolute; top: -120px; left: -120px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.18), transparent 70%);
+}
+.complete-card::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.12), transparent 70%);
+}
+.complete-content { position: relative; z-index: 2; }
+.complete-emoji { font-size: 72px; margin-bottom: 20px; }
+.complete-card h2 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 500;
+  letter-spacing: -1.8px; color: #fff; line-height: 1; margin-bottom: 18px;
+}
+.complete-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.complete-card p {
+  font-size: 16px; color: #d0d0d0; line-height: 1.7;
+  max-width: 560px; margin: 0 auto 16px;
+}
+.complete-card p:last-of-type { margin-bottom: 32px; }
+.complete-card strong { color: #c4ff47; font-weight: 500; }
+
+
+/* ─────────── RESET MODAL ─────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px); display: none;
+  align-items: center; justify-content: center;
+  z-index: 1000; padding: 20px;
+}
+.modal-overlay.visible { display: flex; }
+.modal {
+  background: #141414; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 32px; max-width: 440px; width: 100%;
+  text-align: center;
+}
+.modal h3 { font-size: 20px; color: #fff; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.4px; }
+.modal p { font-size: 14px; color: #c0c0c0; line-height: 1.6; margin-bottom: 24px; }
+.modal-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-modal-confirm {
+  background: #ff6464; color: #fff; border: none; cursor: pointer;
+  padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;
+  font-family: inherit; transition: all 0.2s;
+}
+.btn-modal-confirm:hover { background: #ff7a7a; }
+.btn-modal-cancel {
+  background: transparent; border: 1px solid rgba(255,255,255,0.2);
+  color: #c0c0c0; padding: 10px 22px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-modal-cancel:hover { border-color: #c4ff47; color: #c4ff47; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free guided program · Saves your progress</div>
+<h1 class="page-title">The <em>Path</em>.</h1>
+<p class="page-lede">Don't know where to start? This is the only thing you need to open. A guided, day-by-day program that takes you from "I don't know what a VA is" to "I just landed my first client." 30 tasks. Real commitment. No shortcuts.</p>
+</section>
+</div>
+
+<div class="path-wrap">
+
+<!-- ═══════════ SCREEN 1: INTRO ═══════════ -->
+<div class="screen active" id="screen-intro">
+
+<div class="intro-hero">
+<div class="intro-content">
+<div class="intro-pill"><span class="intro-pill-dot"></span>Built for beginners</div>
+<h1 class="intro-headline">Don't know how to <em>start</em>? Don't worry — I built this for you.</h1>
+<p class="intro-lede">There are over 30 free tools, templates, and guides on this site. Most VAs get overwhelmed and quit on day three because they don't know what to do first. <strong style="color:#fff;">This page solves that.</strong></p>
+<p class="intro-lede">Click "Start" below. I'll walk you through everything — niche, certs, portfolio, applications, discovery calls, onboarding — in the right order, on a realistic schedule. You just show up every day and do the work.</p>
+</div>
+</div>
+
+<!-- The brutal truth section — your voice, no sugar -->
+<div class="truth-section">
+<div class="truth-eyebrow">Read this before you click start</div>
+<h2>You only become a VA if you <em>deserve</em> to.</h2>
+<p>Let me be honest with you, because nobody else will: <strong>becoming a VA is not a side hustle, a get-rich-quick gig, or something you do when you're bored.</strong> It's real, professional work that takes 2-3 months of consistent effort before you see your first paycheck. And then it's daily work to keep the clients coming.</p>
+<p>The VAs who succeed aren't smarter than you, more talented than you, or luckier than you. They just put in the fucking work. Every single day. While you were waiting for "the right time" to start, they were on day 12 of applications. While you were "still researching niches," they had already landed their first client.</p>
+<p><strong>Here's who should close this tab right now:</strong></p>
+<div class="truth-list">
+<ul>
+<li>Anyone looking for a "VA hack" or shortcut to skip the work</li>
+<li>Anyone who thinks they'll do this "when they have time" — you won't</li>
+<li>Anyone unwilling to commit at least 2 hours a day for 30 days</li>
+<li>Anyone who quits the moment something gets uncomfortable</li>
+<li>Anyone who needs to be motivated by someone else to keep going</li>
+</ul>
+</div>
+<p>If any of that is you, this page isn't for you. <strong>Close it. Save your time.</strong> Go look for a 9-to-5.</p>
+<p>If you're still reading — good. You're the kind of person this works for. Now let's go.</p>
+</div>
+
+<div class="intro-cta-row">
+<button class="btn-big" onclick="goToScreen('pace')">I'm in. Let's go →</button>
+<a href="index.html" class="btn-big-ghost">Not for me</a>
+</div>
+
+</div>
+
+<!-- ═══════════ SCREEN 2: PACE SELECT ═══════════ -->
+<div class="screen" id="screen-pace">
+
+<div class="pace-header">
+<div class="eyebrow-pill">Step 01 of 02</div>
+<h2>How <em>fast</em> can you go?</h2>
+<p>Pick the pace that matches your real life — not your fantasy life. The 30 tasks are the same; only the timeline changes. You can switch later if you need to.</p>
+</div>
+
+<div class="pace-grid">
+
+<div class="pace-card" onclick="selectPace('sprint')">
+<div class="pace-name">Sprint</div>
+<div class="pace-duration">4<small> weeks</small></div>
+<div class="pace-commitment">3-4 hours/day · 6 days/week</div>
+<div class="pace-best-for">For full-time committed VAs with no other job. Aggressive but achievable.</div>
+</div>
+
+<div class="pace-card recommended" onclick="selectPace('steady')">
+<div class="pace-name">Steady</div>
+<div class="pace-duration">6<small> weeks</small></div>
+<div class="pace-commitment">2 hours/day · 5 days/week</div>
+<div class="pace-best-for">For most beginners. Realistic for someone working part-time on this around other commitments.</div>
+</div>
+
+<div class="pace-card" onclick="selectPace('marathon')">
+<div class="pace-name">Marathon</div>
+<div class="pace-duration">8<small> weeks</small></div>
+<div class="pace-commitment">1-2 hours/day · 4 days/week</div>
+<div class="pace-best-for">For working parents, students, or anyone with limited free hours. Slow and steady.</div>
+</div>
+
+</div>
+
+<div style="text-align: center; margin-top: 28px;">
+<button class="btn-big-ghost" onclick="goToScreen('intro')">← Back</button>
+</div>
+
+</div>
+
+<!-- ═══════════ SCREEN 3: COMMIT ═══════════ -->
+<div class="screen" id="screen-commit">
+
+<div class="pace-header">
+<div class="eyebrow-pill">Step 02 of 02</div>
+<h2>One thing left.</h2>
+<p>Read the commitment below. If you're not willing to agree to it, this won't work — and that's OK, just close the tab. If you ARE willing, check the box and let's start.</p>
+</div>
+
+<div class="commit-card">
+<div class="commit-content">
+<div class="commit-eyebrow">The commitment</div>
+<h2>Read this <em>out loud</em>. Then check the box.</h2>
+
+<div class="commit-statement" id="commit-statement">
+"I commit to spending <em>2 hours a day</em> for the next <em>30 days</em>. I will <em>not</em> quit halfway. I will <em>not</em> wait for motivation. I will show up every day and do the work — even when it's hard, even when nobody's watching, even when I want to quit. I am building my own future, and nobody else will do this for me."
+</div>
+
+<p>This isn't a contract. Nobody will check on you. There's no app reminding you. The only person who will know if you broke this commitment is you — and that's the whole point.</p>
+
+<div class="commit-checkbox-row" id="commit-row" onclick="toggleCommit()">
+<div class="commit-checkbox">
+<svg fill="none" stroke="#0a0a0a" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+</div>
+<div class="commit-checkbox-text">
+I have read the commitment out loud. I'm in. Let's begin.
+</div>
+</div>
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 28px;">
+<button class="btn-big" id="commit-btn" disabled onclick="startPath()" style="opacity: 0.4; cursor: not-allowed;">Start the Path →</button>
+<button class="btn-big-ghost" onclick="goToScreen('pace')">← Back</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- ═══════════ SCREEN 4: THE PATH ═══════════ -->
+<div class="screen" id="screen-path">
+
+<div class="path-progress">
+<div class="path-progress-info"><strong id="done-count">0</strong> of 30 done</div>
+<div class="path-progress-bar"><div class="path-progress-fill" id="progress-fill" style="width: 0%"></div></div>
+<span class="path-pace-badge" id="pace-display">Steady · 6 weeks</span>
+<button class="path-reset" onclick="confirmReset()">Reset</button>
+</div>
+
+<div id="weeks-container"></div>
+
+</div>
+
+<!-- ═══════════ SCREEN 5: COMPLETE ═══════════ -->
+<div class="screen" id="screen-complete">
+<div class="complete-card">
+<div class="complete-content">
+<div class="complete-emoji">🎉</div>
+<h2>You did the <em>damn thing</em>.</h2>
+<p>30 tasks. Real work. No shortcuts. You showed up every day for weeks while most people would've quit on day 3. <strong>You're a VA now.</strong></p>
+<p>The hard part isn't over — but the foundation is built. You have a niche, a portfolio, a profile, applications going out daily, and the systems to onboard your first client when they say yes. Now it's about consistency.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
+<a href="onboarding-checklist.html" class="btn-big">Open onboarding checklist →</a>
+<button class="btn-big-ghost" onclick="confirmReset()">Reset & start again</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- Reset modal -->
+<div class="modal-overlay" id="reset-modal">
+<div class="modal">
+<h3>Reset the Path?</h3>
+<p>This will erase all your progress, your pace selection, and your commitment. Use this if you want to start completely fresh. This can't be undone.</p>
+<div class="modal-actions">
+<button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
+<button class="btn-modal-confirm" onclick="doReset()">Yes, reset everything</button>
+</div>
+</div>
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+const STORAGE_KEY = 'kailami_path_v1';
+
+// Pace configurations — mostly affects display labels and week count
+const PACES = {
+  sprint:   { label: 'Sprint',   weeks: 4, dailyHours: '3-4', daysPerWeek: 6 },
+  steady:   { label: 'Steady',   weeks: 6, dailyHours: '2',   daysPerWeek: 5 },
+  marathon: { label: 'Marathon', weeks: 8, dailyHours: '1-2', daysPerWeek: 4 },
+};
+
+// The 30 tasks — sequenced from "no idea what a VA is" → "first client onboarded"
+// Distributed into 6 phases, displayed differently per pace
+const TASKS = [
+  // ─── PHASE 1: Foundations + niche ───
+  { phase: 1, time: '30 min',   title: 'Read the Beginner Roadmap intro carefully', detail: 'Open the roadmap, read the intro section, and the reality-check cards. Don\'t skip them. Knowing what you\'re signing up for matters more than any tactic.', link: 'beginner-checklist.html', linkLabel: 'Open roadmap' },
+  { phase: 1, time: '20 min',   title: 'Take the Niche Finder Quiz', detail: 'Answer all 15 questions honestly. Don\'t pick what sounds cool — pick what matches what you\'re actually good at.', link: 'niche-quiz.html', linkLabel: 'Take quiz' },
+  { phase: 1, time: '40 min',   title: 'Pick ONE niche from your top 3 results', detail: 'Read the descriptions for your top 3 matches. Pick the ONE you\'ll commit to. Yes, just one. You can pivot later if it doesn\'t work — but generalists never get hired.', link: 'beginner-checklist.html', linkLabel: 'See niches' },
+  { phase: 1, time: '30 min',   title: 'Set up the basics — Upwork, OnlineJobs.ph, Claude/ChatGPT', detail: 'Create accounts on Upwork and OnlineJobs.ph. Sign up for a free Claude or ChatGPT account — you\'ll use it daily. Add a real headshot to your profiles.', link: 'beginner-checklist.html', linkLabel: 'Account setup steps' },
+  { phase: 1, time: '20 min',   title: 'Use the Rate Calculator to set your starting rate', detail: 'Plug in your target income, hours, expenses. Get a realistic hourly number. Memorize it — you\'ll need to say it out loud on your first call.', link: 'rate-calculator.html', linkLabel: 'Open calculator' },
+
+  // ─── PHASE 2: Skills + first cert ───
+  { phase: 2, time: '20 min',   title: 'Browse the Free Certifications hub for your niche', detail: 'Filter by your niche. Pick ONE certification to start. The Google or HubSpot ones are widely recognized — start there if unsure.', link: 'certifications.html', linkLabel: 'Browse certs' },
+  { phase: 2, time: '2-4 hrs',  title: 'Complete your first free certification', detail: 'Block off real time. No phone, no notifications. Finish the cert, take the exam, save the certificate as a PDF. This is your first credential.', link: 'certifications.html', linkLabel: 'Open certs' },
+  { phase: 2, time: '2-3 hrs',  title: 'Start your niche-specific mock task', detail: 'Open the mock task page for your niche. Begin building a portfolio sample using a fake or volunteer client. This is the work clients actually want to see.', link: 'beginner-checklist.html', linkLabel: 'Find mock task' },
+  { phase: 2, time: '2-3 hrs',  title: 'Complete the mock task and document the work', detail: 'Finish the mock task. Save screenshots, before/after shots, and a short write-up of your process. This becomes the centerpiece of your portfolio.', link: 'beginner-checklist.html', linkLabel: 'Mock task pages' },
+  { phase: 2, time: '20 min',   title: 'Pick your second certification', detail: 'Two certs is a meaningful resume signal. One looks accidental. Pick another from your niche or stack a complementary skill (e.g., Canva + Social Media if you\'re SMM).', link: 'certifications.html', linkLabel: 'Browse certs' },
+
+  // ─── PHASE 3: Portfolio + profile ───
+  { phase: 3, time: '2-3 hrs',  title: 'Build your portfolio in Canva', detail: 'Use the free portfolio template. Add your mock task work, your certifications, a short bio, your services, and contact info. Export as PDF. Get a public sharing link.', link: 'templates.html', linkLabel: 'Open templates' },
+  { phase: 3, time: '40 min',   title: 'Use the About Section Generator', detail: 'Fill out the form. Get a polished About section. Edit a few sentences so it sounds like you, not generic AI text.', link: 'about-generator.html', linkLabel: 'Generate About' },
+  { phase: 3, time: '1 hr',     title: 'Build your full Upwork profile', detail: 'Add a real photo (no selfies). Use your generated About. List specific skills. Upload your portfolio. Take 2-3 skill tests. Set your rate to what the calculator gave you.', link: 'beginner-checklist.html', linkLabel: 'Profile guide' },
+  { phase: 3, time: '40 min',   title: 'Build your full OnlineJobs.ph profile', detail: 'Same energy. Get your ID badge verified — huge trust signal on OLJ. Take 2-3 skill tests. Add your photo, headline, and a clean job objective.', link: 'beginner-checklist.html', linkLabel: 'Profile guide' },
+  { phase: 3, time: '2 hrs',    title: 'Complete your second certification', detail: 'Finish the cert you picked earlier. Add it to your profile, your portfolio, your resume. Stack the credentials.', link: 'certifications.html', linkLabel: 'Open certs' },
+
+  // ─── PHASE 4: Application Mastery + first applications ───
+  { phase: 4, time: '1-2 hrs',  title: 'Read the FULL Application Mastery guide', detail: 'This is the most important page on the site. Read every section: fundamentals, OLJ guide, Upwork guide, LinkedIn guide, gate-kept tactics, daily routine. No skimming.', link: 'application-mastery.html', linkLabel: 'Open guide' },
+  { phase: 4, time: '1-2 hrs',  title: 'Send your first 3 customized applications', detail: 'Pick 3 jobs that match your niche on OLJ or Upwork. Use the Application Mastery framework. Customize EVERY one. Reference the job post in your first 2 sentences. Send them.', link: 'application-mastery.html', linkLabel: 'Open guide' },
+  { phase: 4, time: '2 hrs',    title: 'Daily application routine — Day 1', detail: '7-9 customized applications across OLJ + Upwork + LinkedIn. Use the daily routine schedule from the Mastery guide. Log every application in the client tracker.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+  { phase: 4, time: '2 hrs',    title: 'Daily application routine — Day 2', detail: 'Repeat. Same number. Same quality. Don\'t lower the bar because you\'re tired.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+  { phase: 4, time: '2 hrs',    title: 'Daily application routine — Day 3', detail: 'Repeat. By now you should be feeling rejection. That\'s normal. Keep going.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+
+  // ─── PHASE 5: Volume, replies, vetting ───
+  { phase: 5, time: '2 hrs',    title: 'Daily routine — Day 4 + check your replies', detail: 'Continue applying. Check your inbox 2x today. Reply to ANY interest within 30 minutes. Speed of response matters.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+  { phase: 5, time: '2 hrs',    title: 'Daily routine — Day 5 + run any leads through Scam Detector', detail: 'Continue applying. For any client who replied — run them through the Scam Detector before you commit time. Better safe than scammed.', link: 'scam-detector.html', linkLabel: 'Open scam check' },
+  { phase: 5, time: '2 hrs',    title: 'Daily routine — Day 6 + start engaging on LinkedIn', detail: 'Continue applying on OLJ + Upwork. Start the LinkedIn comment-for-a-week play from the Mastery guide. Pick 5 dream clients. Comment thoughtfully on their posts.', link: 'application-mastery.html', linkLabel: 'LinkedIn tactics' },
+  { phase: 5, time: '2 hrs',    title: 'Daily routine — Day 7', detail: 'Keep applying. Keep commenting on LinkedIn. By now you may have a discovery call scheduled. If yes — start preparing.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+  { phase: 5, time: '2 hrs',    title: 'Daily routine — Day 8 + send your first LinkedIn DMs', detail: 'After a week of engagement, DM 1-2 of your dream clients using the LinkedIn template. Don\'t pitch — start a relationship.', link: 'application-mastery.html', linkLabel: 'Open guide' },
+
+  // ─── PHASE 6: Discovery calls + close + onboard ───
+  { phase: 6, time: '1 hr',     title: 'Read the Discovery Call Script + cheat sheet', detail: 'Read every section. Print the cheat sheet (or open it on a second screen). Practice saying your rate OUT LOUD three times.', link: 'discovery-call.html', linkLabel: 'Open script' },
+  { phase: 6, time: '2 hrs',    title: 'Daily routine + take any scheduled calls', detail: 'Apply to 5-7 more jobs. If you have a call today, use the framework. State your rate, then SHUT UP. Send the post-call summary email within 24 hours.', link: 'discovery-call.html', linkLabel: 'Call framework' },
+  { phase: 6, time: '2 hrs',    title: 'Browse the Email Templates pack', detail: 'Even if you haven\'t closed yet, get familiar with the templates. You\'ll need the post-call thank-you and the kickoff email this week. Bookmark them.', link: 'email-templates.html', linkLabel: 'Open pack' },
+  { phase: 6, time: '2 hrs',    title: 'Keep applying + close any open conversations', detail: 'Don\'t stop applying just because you have leads. The pipeline must keep moving. For warm conversations, follow up TODAY — not tomorrow.', link: 'application-mastery.html', linkLabel: 'Open routine' },
+  { phase: 6, time: '1-2 hrs',  title: 'Land your first client → Open the Onboarding Checklist', detail: 'When you get a yes (and you will if you do this right), open the Onboarding Checklist. Walk through all 22 steps. Lock the contract. Set up your workspace. Deliver in week 1. This is your final destination.', link: 'onboarding-checklist.html', linkLabel: 'Open onboarding ★' },
+];
+
+// ─── State ───
+let state = loadState();
+
+function loadState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch {}
+  return { screen: 'intro', pace: null, committed: false, completedTasks: [], expandedWeek: null };
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+}
+
+// On load: jump to whatever screen they were on
+window.addEventListener('DOMContentLoaded', () => {
+  if (state.committed && state.pace) {
+    showScreen('path');
+    renderPath();
+  } else if (state.pace && !state.committed) {
+    showScreen('commit');
+  } else {
+    showScreen('intro');
+  }
+});
+
+// ─── Screen navigation ───
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goToScreen(name) {
+  state.screen = name;
+  saveState();
+  showScreen(name);
+}
+
+// ─── Pace selection ───
+function selectPace(pace) {
+  state.pace = pace;
+  saveState();
+  goToScreen('commit');
+}
+
+// ─── Commit checkbox ───
+function toggleCommit() {
+  const row = document.getElementById('commit-row');
+  const btn = document.getElementById('commit-btn');
+  row.classList.toggle('checked');
+  if (row.classList.contains('checked')) {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0.4';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+function startPath() {
+  state.committed = true;
+  saveState();
+  goToScreen('path');
+  renderPath();
+}
+
+// ─── The Path render ───
+function getWeeks() {
+  // Distribute 30 tasks across the chosen pace
+  const pace = PACES[state.pace];
+  const weeks = pace.weeks;
+  const tasksPerWeek = Math.ceil(30 / weeks);
+
+  const weekArr = [];
+  let taskIdx = 0;
+
+  // Phase-aware grouping titles for each week
+  // For 4-week (sprint): ~7-8 tasks per week — combine phases
+  // For 6-week (steady): ~5 tasks per week — roughly one phase per week
+  // For 8-week (marathon): ~4 tasks per week — split phases across 2 weeks
+
+  const PHASE_TITLES = [
+    'Foundations + Niche',
+    'Skills + Certifications',
+    'Portfolio + Profile',
+    'Application Mastery',
+    'Volume + Replies',
+    'Close + Onboard',
+  ];
+
+  for (let w = 0; w < weeks; w++) {
+    const tasksThisWeek = [];
+    let count = 0;
+    while (count < tasksPerWeek && taskIdx < TASKS.length) {
+      tasksThisWeek.push({ ...TASKS[taskIdx], globalIdx: taskIdx });
+      taskIdx++;
+      count++;
+    }
+    // Title comes from the first task's phase, but for clarity use a phase-driven title
+    const firstPhase = tasksThisWeek[0]?.phase || 1;
+    const lastPhase = tasksThisWeek[tasksThisWeek.length - 1]?.phase || firstPhase;
+    let title;
+    if (firstPhase === lastPhase) title = PHASE_TITLES[firstPhase - 1];
+    else title = PHASE_TITLES[firstPhase - 1] + ' → ' + PHASE_TITLES[lastPhase - 1];
+    weekArr.push({ num: w + 1, title, tasks: tasksThisWeek });
+  }
+  return weekArr;
+}
+
+function renderPath() {
+  const pace = PACES[state.pace];
+  document.getElementById('pace-display').textContent = `${pace.label} · ${pace.weeks} weeks`;
+
+  const weeks = getWeeks();
+  const container = document.getElementById('weeks-container');
+
+  // Determine which week is current (first week with incomplete tasks)
+  let currentWeekNum = null;
+  for (const w of weeks) {
+    const allDone = w.tasks.every(t => state.completedTasks.includes(t.globalIdx));
+    if (!allDone) { currentWeekNum = w.num; break; }
+  }
+  if (currentWeekNum === null) currentWeekNum = weeks.length; // all done
+
+  // Auto-expand the current week if no week is explicitly expanded
+  if (state.expandedWeek === null) {
+    state.expandedWeek = currentWeekNum;
+  }
+
+  const html = weeks.map((week) => {
+    const allDone = week.tasks.every(t => state.completedTasks.includes(t.globalIdx));
+    const doneCount = week.tasks.filter(t => state.completedTasks.includes(t.globalIdx)).length;
+
+    // Lock check: all earlier weeks must be complete
+    let isLocked = false;
+    for (const earlier of weeks) {
+      if (earlier.num >= week.num) break;
+      if (!earlier.tasks.every(t => state.completedTasks.includes(t.globalIdx))) {
+        isLocked = true;
+        break;
+      }
+    }
+
+    const isCurrent = !isLocked && !allDone && week.num === currentWeekNum;
+    const isExpanded = state.expandedWeek === week.num;
+
+    let classes = 'week-block';
+    if (allDone) classes += ' complete';
+    if (isLocked) classes += ' locked';
+    if (isCurrent) classes += ' current';
+    if (isExpanded && !isLocked) classes += ' expanded';
+
+    let bodyHTML;
+    if (isLocked) {
+      bodyHTML = `<div class="week-locked-msg">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Complete the previous week to unlock this one.
+      </div>`;
+    } else {
+      bodyHTML = '<div class="days-list">' + week.tasks.map(task => {
+        const isDone = state.completedTasks.includes(task.globalIdx);
+        return `
+          <div class="day-card ${isDone ? 'done' : ''}">
+            <div class="day-head" onclick="toggleTask(${task.globalIdx})">
+              <div class="day-checkbox">
+                <svg fill="none" stroke="#0a0a0a" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="day-content">
+                <div class="day-meta-row">
+                  <span class="day-label">Task ${task.globalIdx + 1}</span>
+                  <span class="day-time">⏱ ${task.time}</span>
+                </div>
+                <div class="day-title">${task.title}</div>
+              </div>
+            </div>
+            ${task.detail ? `<div class="day-detail">${task.detail}</div>` : ''}
+            ${task.link ? `<a href="${task.link}" target="_blank" class="day-action" onclick="event.stopPropagation()">${task.linkLabel} →</a>` : ''}
+          </div>
+        `;
+      }).join('') + '</div>';
+    }
+
+    return `
+      <div class="${classes}" id="week-${week.num}">
+        <div class="week-head" onclick="toggleWeek(${week.num}, ${isLocked})">
+          <div class="week-num">0${week.num}</div>
+          <div class="week-head-content">
+            <div class="week-eyebrow">Week ${week.num}${isLocked ? ' · Locked' : (allDone ? ' · Complete' : (isCurrent ? ' · Current week' : ''))}</div>
+            <div class="week-title">${week.title}</div>
+            <div class="week-meta">
+              <span class="week-meta-pill">${doneCount}/${week.tasks.length} tasks</span>
+              ${!isLocked ? `<span class="week-meta-pill">⏱ ${pace.dailyHours}h/day · ${pace.daysPerWeek}d/wk</span>` : ''}
+            </div>
+          </div>
+          ${isLocked
+            ? `<div class="week-status-icon"><svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>`
+            : `<div class="week-collapse"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>`
+          }
+        </div>
+        <div class="week-body">${bodyHTML}</div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = html;
+
+  // Update progress bar
+  const done = state.completedTasks.length;
+  document.getElementById('done-count').textContent = done;
+  document.getElementById('progress-fill').style.width = `${(done / 30) * 100}%`;
+
+  // If all 30 done, show complete screen
+  if (done === 30) {
+    setTimeout(() => showScreen('complete'), 600);
+  }
+}
+
+function toggleTask(taskIdx) {
+  const i = state.completedTasks.indexOf(taskIdx);
+  if (i >= 0) state.completedTasks.splice(i, 1);
+  else state.completedTasks.push(taskIdx);
+  saveState();
+  renderPath();
+}
+
+function toggleWeek(num, isLocked) {
+  if (isLocked) return;
+  state.expandedWeek = (state.expandedWeek === num) ? null : num;
+  saveState();
+  renderPath();
+}
+
+// ─── Reset ───
+function confirmReset() { document.getElementById('reset-modal').classList.add('visible'); }
+function closeModal() { document.getElementById('reset-modal').classList.remove('visible'); }
+function doReset() {
+  state = { screen: 'intro', pace: null, committed: false, completedTasks: [], expandedWeek: null };
+  saveState();
+  closeModal();
+  showScreen('intro');
+  // Also reset the commit checkbox visually
+  const row = document.getElementById('commit-row');
+  if (row) row.classList.remove('checked');
+  const btn = document.getElementById('commit-btn');
+  if (btn) {
+    btn.disabled = true;
+    btn.style.opacity = '0.4';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+</script>
+
+</body>
+</html>

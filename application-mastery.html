@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Mastery — Kailami</title>
+<meta name="description" content="The platform-by-platform guide to landing clients on OnlineJobs.ph, Upwork, and LinkedIn. Do's, don'ts, and adaptable templates that actually get replies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.app-wrap { max-width: 920px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .app-wrap { padding: 0 24px; } }
+
+/* THE GOLDEN RULE banner — needs to dominate */
+.golden-rule {
+  background: linear-gradient(135deg, #c4ff47, #a8e632);
+  color: #0a0a0a;
+  border-radius: 22px;
+  padding: 36px 40px;
+  margin: 32px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+.golden-rule::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+}
+.golden-rule-content { position: relative; z-index: 2; }
+.golden-rule-eyebrow {
+  font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(10,10,10,0.1); padding: 6px 14px; border-radius: 999px;
+}
+.golden-rule-title {
+  font-size: clamp(28px, 4.5vw, 42px); font-weight: 600;
+  line-height: 1.05; letter-spacing: -1px; margin-bottom: 14px;
+}
+.golden-rule-title em {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-weight: 400;
+}
+.golden-rule-text {
+  font-size: 15px; line-height: 1.6; max-width: 680px;
+  font-weight: 500;
+}
+.golden-rule-text strong { font-weight: 700; }
+
+/* Section dividers */
+.major-section { margin: 60px 0 32px; scroll-margin-top: 100px; }
+.major-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.major-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.major-title { font-size: clamp(28px, 4vw, 42px); font-weight: 500; letter-spacing: -1.2px; color: #fff; line-height: 1.05; margin-bottom: 14px; }
+.major-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.major-sub { font-size: 15px; color: #a0a0a0; line-height: 1.65; max-width: 720px; }
+
+/* TOC */
+.toc {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 22px 26px; margin-bottom: 40px;
+}
+.toc-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.toc-list a { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #c0c0c0; text-decoration: none; transition: color 0.2s; }
+.toc-list a:hover { color: #c4ff47; }
+.toc-num { color: #c4ff47; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 18px; width: 24px; }
+
+/* Fundamentals — numbered cards */
+.fundamentals-list { display: flex; flex-direction: column; gap: 14px; }
+.fund-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 28px 32px;
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.fund-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: #c4ff47; font-size: 36px; line-height: 1; font-weight: 400; flex-shrink: 0;
+}
+.fund-content { flex: 1; }
+.fund-title { font-size: 18px; font-weight: 500; color: #fff; letter-spacing: -0.4px; margin-bottom: 8px; line-height: 1.3; }
+.fund-text { font-size: 14px; color: #c0c0c0; line-height: 1.65; }
+.fund-text strong { color: #c4ff47; font-weight: 500; }
+
+/* Platform sections */
+.platform-block {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 36px; margin-bottom: 20px;
+}
+.platform-header { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.platform-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 22px; font-weight: 700;
+  font-family: 'Instrument Serif', serif; font-style: italic;
+}
+.platform-icon.olj { background: linear-gradient(135deg, #87b4ff, #5a8af0); color: #0a0a0a; }
+.platform-icon.upwork { background: linear-gradient(135deg, #87ffb4, #5ae092); color: #0a0a0a; }
+.platform-icon.linkedin { background: linear-gradient(135deg, #ffc864, #f0a020); color: #0a0a0a; }
+.platform-name { font-size: 26px; color: #fff; font-weight: 500; letter-spacing: -0.6px; line-height: 1.1; margin-bottom: 4px; }
+.platform-tag { font-size: 12px; color: #888; letter-spacing: 0.5px; }
+
+.platform-section { margin-bottom: 26px; }
+.platform-section:last-child { margin-bottom: 0; }
+.platform-section-head {
+  font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* Do's and Don'ts grid */
+.dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+@media (max-width: 700px) { .dos-donts { grid-template-columns: 1fr; } }
+.dos-card, .donts-card {
+  border-radius: 14px; padding: 20px 22px;
+  border: 1px solid;
+}
+.dos-card {
+  background: rgba(196,255,71,0.04);
+  border-color: rgba(196,255,71,0.2);
+}
+.donts-card {
+  background: rgba(255,100,100,0.04);
+  border-color: rgba(255,100,100,0.2);
+}
+.dos-card h4, .donts-card h4 {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 12px;
+}
+.dos-card h4 { color: #c4ff47; }
+.donts-card h4 { color: #ff9999; }
+.dos-card ul, .donts-card ul { list-style: none; }
+.dos-card li, .donts-card li {
+  font-size: 13px; color: #d0d0d0; line-height: 1.55;
+  padding-left: 18px; position: relative; margin-bottom: 8px;
+}
+.dos-card li:last-child, .donts-card li:last-child { margin-bottom: 0; }
+.dos-card li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 700; }
+.donts-card li::before { content: '✗'; position: absolute; left: 0; color: #ff9999; font-weight: 700; }
+
+/* Template — adaptive structure */
+.template-wrap {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 0;
+  overflow: hidden;
+}
+.template-meta {
+  background: rgba(196,255,71,0.04);
+  padding: 12px 18px; border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.template-meta-label { font-size: 11px; color: #c4ff47; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; }
+.btn-copy-tpl {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 7px 14px; border-radius: 999px; font-size: 11px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+  font-family: inherit; letter-spacing: 0.3px;
+}
+.btn-copy-tpl:hover { background: #d4ff6b; }
+.template-body {
+  padding: 22px 26px;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px; color: #e0e0e0; line-height: 1.75;
+  white-space: pre-wrap; word-wrap: break-word;
+}
+.template-body .placeholder {
+  background: rgba(196,255,71,0.12); color: #c4ff47;
+  padding: 1px 5px; border-radius: 3px; font-weight: 500;
+}
+
+/* Scenario cards — 3 different real job posts */
+.scenarios-intro {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 22px 26px; margin: 16px 0 18px;
+  font-size: 14px; color: #c0c0c0; line-height: 1.7;
+}
+.scenarios-intro strong { color: #c4ff47; font-weight: 500; }
+
+.scenario-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 26px 30px; margin-bottom: 14px;
+}
+.scenario-label {
+  font-size: 11px; color: #c4ff47; letter-spacing: 1.5px;
+  text-transform: uppercase; font-weight: 600; margin-bottom: 10px;
+}
+.scenario-quote {
+  background: #0a0a0a; border-left: 2px solid rgba(196,255,71,0.3);
+  border-radius: 0 8px 8px 0; padding: 14px 18px; margin-bottom: 16px;
+  font-size: 13px; color: #c0c0c0; line-height: 1.65; font-style: italic;
+}
+.scenario-quote strong { color: #fff; font-style: normal; font-weight: 500; }
+.scenario-analysis { margin-bottom: 16px; }
+.scenario-analysis p { font-size: 13px; color: #c0c0c0; line-height: 1.65; margin: 0; }
+.scenario-analysis strong { color: #c4ff47; font-weight: 500; }
+
+/* Gate-kept tactics */
+.tactic-card {
+  background: linear-gradient(135deg, rgba(255,200,100,0.06), rgba(255,200,100,0.01));
+  border: 1px solid rgba(255,200,100,0.2);
+  border-radius: 18px; padding: 28px 32px; margin-bottom: 14px;
+  position: relative; overflow: hidden;
+}
+.tactic-eyebrow {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #ffc864; font-weight: 600; margin-bottom: 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.tactic-title { font-size: 19px; color: #fff; font-weight: 500; letter-spacing: -0.4px; line-height: 1.3; margin-bottom: 10px; }
+.tactic-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #ffc864; font-weight: 400; }
+.tactic-body { font-size: 14px; color: #c0c0c0; line-height: 1.7; }
+.tactic-body p { margin-bottom: 10px; }
+.tactic-body p:last-child { margin-bottom: 0; }
+.tactic-body strong { color: #ffc864; font-weight: 500; }
+.tactic-body code {
+  background: rgba(0,0,0,0.4); padding: 1px 7px; border-radius: 4px;
+  font-size: 12px; color: #c4ff47;
+}
+
+/* Routine */
+.routine-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 36px;
+}
+.routine-table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+.routine-table th {
+  text-align: left; padding: 14px 18px;
+  background: rgba(196,255,71,0.06); color: #c4ff47;
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+  border: none;
+}
+.routine-table th:first-child { border-radius: 12px 0 0 12px; width: 90px; }
+.routine-table th:last-child { border-radius: 0 12px 12px 0; }
+.routine-table td {
+  padding: 14px 18px; font-size: 13px; color: #d0d0d0; line-height: 1.6;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: top;
+}
+.routine-table td:first-child { color: #c4ff47; font-weight: 500; white-space: nowrap; }
+.routine-table tbody tr:last-child td { border-bottom: none; }
+
+.back-cta {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 32px; text-align: center; margin: 40px 0;
+}
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free guide · Platform-by-platform</div>
+<h1 class="page-title">Application <em>mastery</em>.</h1>
+<p class="page-lede">Most VAs send 50 generic applications a day and wonder why nobody replies. The ones who get hired do something completely different. This is the full breakdown — fundamentals, platform-specific do's and don'ts for OLJ, Upwork, and LinkedIn, plus the gate-kept tactics most VA coaches don't share publicly.</p>
+</section>
+</div>
+
+<div class="app-wrap">
+
+<!-- THE GOLDEN RULE — impossible to miss -->
+<div class="golden-rule">
+<div class="golden-rule-content">
+<div class="golden-rule-eyebrow">⚡ The rule above all rules</div>
+<h2 class="golden-rule-title">ALWAYS reference the <em>job post</em>.</h2>
+<p class="golden-rule-text">If you take ONE thing from this page: <strong>do not send the same template to every job.</strong> The single biggest reason VAs get ignored is generic copy-paste pitches that could've been sent to anyone. Your first 1–2 sentences MUST quote a specific phrase from the job post — the pain point, the tool they mentioned, the outcome they want. If you can't name a specific thing from their post, you haven't read it carefully enough. Read it again before you write a single word.</p>
+</div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+<div class="toc-label">On this page</div>
+<ul class="toc-list">
+<li><a href="#fundamentals"><span class="toc-num">01</span> The 7 fundamentals every VA must know</a></li>
+<li><a href="#olj"><span class="toc-num">02</span> OnlineJobs.ph — full guide</a></li>
+<li><a href="#upwork"><span class="toc-num">03</span> Upwork — full guide</a></li>
+<li><a href="#linkedin"><span class="toc-num">04</span> LinkedIn — full guide</a></li>
+<li><a href="#tactics"><span class="toc-num">05</span> Gate-kept tactics most VA coaches don't share</a></li>
+<li><a href="#routine"><span class="toc-num">06</span> The daily application routine</a></li>
+</ul>
+</div>
+
+
+<!-- ═══ SECTION 1: FUNDAMENTALS ═══ -->
+<div class="major-section" id="fundamentals">
+<div class="major-eyebrow">Section 01 · The basics</div>
+<h2 class="major-title">7 <em>fundamentals</em> every VA must know.</h2>
+<p class="major-sub">Before tactics, before templates — these seven principles separate the VAs who land clients from the ones who burn out applying. Read these even if you skip everything else.</p>
+</div>
+
+<div class="fundamentals-list">
+
+<div class="fund-card">
+<div class="fund-num">01</div>
+<div class="fund-content">
+<div class="fund-title">Quality over quantity — always</div>
+<div class="fund-text">10 thoughtful, customized applications a day will outperform 50 generic ones every single time. Most VAs do this backwards. <strong>Time spent reading the job post carefully is time you save on rejections.</strong></div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">02</div>
+<div class="fund-content">
+<div class="fund-title">Lead with their problem, not yourself</div>
+<div class="fund-text">Clients skim the first 2 lines of every application. If those lines are about YOU ("Hi, I'm a hardworking VA with 3 years experience..."), they delete it. <strong>Your first sentence should mirror something specific they said.</strong></div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">03</div>
+<div class="fund-content">
+<div class="fund-title">Specificity beats polish</div>
+<div class="fund-text">A messy, specific message about THEIR business will beat a beautifully written generic one. "I noticed your Shopify store doesn't have abandoned-cart emails set up" beats any version of "I'm passionate about ecommerce."</div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">04</div>
+<div class="fund-content">
+<div class="fund-title">Show, don't claim</div>
+<div class="fund-text">Don't say "I'm detail-oriented." Show it: spell their name right, reference the right product, format your message cleanly. <strong>Every application is a working sample of your communication skills.</strong> If your application is sloppy, why would they trust you with their business?</div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">05</div>
+<div class="fund-content">
+<div class="fund-title">Make the next step easy</div>
+<div class="fund-text">End with a specific, easy yes. NOT: "Let me know if you're interested." That's vague homework. INSTEAD: "Want to jump on a quick 15-min call this week? Here's my calendar: [link]." One click, done.</div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">06</div>
+<div class="fund-content">
+<div class="fund-title">Apply where the competition is weakest</div>
+<div class="fund-text">Posts with 50+ applications are red oceans. Posts that are 1 hour old with 0 applications are gold. <strong>Speed of application matters as much as quality.</strong> Set up alerts and apply within the first hour wherever possible.</div>
+</div>
+</div>
+
+<div class="fund-card">
+<div class="fund-num">07</div>
+<div class="fund-content">
+<div class="fund-title">Track everything</div>
+<div class="fund-text">Use the <a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/edit" target="_blank" style="color:#c4ff47;">free client tracker</a> from the resources page. Log every application: where, when, what role, did they reply. After 30 days, you'll see what's working and what's not — and you can stop wasting time on dead patterns.</div>
+</div>
+</div>
+</div>
+
+
+<!-- ═══ SECTION 2: ONLINEJOBS.PH ═══ -->
+<div class="major-section" id="olj">
+<div class="major-eyebrow">Section 02 · Platform-specific</div>
+<h2 class="major-title">OnlineJobs.ph — <em>the PH-specific play</em>.</h2>
+<p class="major-sub">OLJ is a different beast from Upwork — clients are mostly small business owners (1-5 employees) hiring direct, no platform fees, lower rates but longer-term work. Here's how to win on it.</p>
+</div>
+
+<div class="platform-block">
+<div class="platform-header">
+<div class="platform-icon olj">olj</div>
+<div>
+<div class="platform-name">OnlineJobs.ph</div>
+<div class="platform-tag">Direct hire · Long-term · PH-focused</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">⚙ How OLJ actually works</div>
+<div class="fund-text" style="font-size: 14px;">Clients post jobs, you send a "cover letter" message, they review your profile. Unlike Upwork, there's no bidding. Most clients message back within 1-3 days if interested. Your <strong>profile is doing 50% of the work</strong> — make sure it's complete with photo, ID badge verified, and skill tests taken.</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">✓✗ Do's and Don'ts</div>
+<div class="dos-donts">
+<div class="dos-card">
+<h4>Do</h4>
+<ul>
+<li>Reference the exact job title in your subject line</li>
+<li>Quote 1-2 specific phrases from their post in your first 2 sentences</li>
+<li>Mention tools they listed in the job post — proves you read it</li>
+<li>Get your ID badge verified (huge trust signal on OLJ)</li>
+<li>Take 2-3 skill tests relevant to your niche — they show on your profile</li>
+<li>Apply within 24 hours of the job posting</li>
+<li>Keep messages under 200 words</li>
+</ul>
+</div>
+<div class="donts-card">
+<h4>Don't</h4>
+<ul>
+<li>Send generic "I'm a hardworking VA" intros</li>
+<li>List every skill you have (focus only on what's in the post)</li>
+<li>Attach a 5-page CV (link to a 1-page resume)</li>
+<li>Quote rates above what's in the job post (negotiate later, not in the pitch)</li>
+<li>Use overly formal "Dear Sir/Madam" English (sounds like a scam)</li>
+<li>Apply to jobs older than 7 days (already filled or dead)</li>
+<li>Ignore the "Why are you the best fit?" field — that's where you win it</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📝 Adaptable template — OLJ cover letter</div>
+
+<div class="scenarios-intro">
+<p>The structure below is the framework. <strong>The placeholders highlighted in lime MUST be customized to the actual job post</strong> — they're not optional. Below the template are 3 sample fills showing you exactly how it changes for different jobs.</p>
+</div>
+
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">⚡ The framework — never copy verbatim</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'olj-template')">Copy structure</button>
+</div>
+<div class="template-body" id="olj-template">Hi <span class="placeholder">[Their first name from job post]</span>,
+
+You mentioned in your post that <span class="placeholder">[quote a specific pain or task they listed]</span>. That's exactly the kind of work I focus on.
+
+Quick fit:
+• <span class="placeholder">[Their tool/requirement #1]</span> → I use this daily for <span class="placeholder">[brief context]</span>
+• <span class="placeholder">[Their tool/requirement #2]</span> → <span class="placeholder">[your relevant experience in 1 line]</span>
+• <span class="placeholder">[Their requirement #3]</span> → <span class="placeholder">[concrete result you achieved before, with a number if possible]</span>
+
+What I'd do in your first 2 weeks:
+• <span class="placeholder">[Specific action tied to their post]</span>
+• <span class="placeholder">[Second specific action]</span>
+• <span class="placeholder">[Third specific action]</span>
+
+My rate: <span class="placeholder">[your rate]</span>. Available <span class="placeholder">[your hours]</span> in <span class="placeholder">[your timezone]</span>.
+
+Resume: <span class="placeholder">[link]</span>
+Portfolio: <span class="placeholder">[link]</span>
+
+Free for a quick 15-min call this week if it sounds like a fit?
+
+<span class="placeholder">[Your name]</span></div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📌 3 sample fills — see how it adapts</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario A — small ecom store hiring</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "Looking for a Shopify VA to help manage product uploads, customer service emails, and basic inventory tracking. We use Shopify, Zendesk, Google Sheets. 20 hrs/week, $5/hr to start."</div>
+<div class="scenario-analysis">
+<p><strong>Your opening line should be:</strong> "Hi [Name], you mentioned managing product uploads and customer service for your Shopify store — that's exactly the kind of admin work I focus on for ecom brands."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'olj-sample-a')">Copy</button>
+</div>
+<div class="template-body" id="olj-sample-a">Hi Mark,
+
+You mentioned managing product uploads, customer service, and inventory tracking for your Shopify store — that's exactly the kind of work I focus on for small ecom brands.
+
+Quick fit:
+• Shopify → I've managed catalogs of 200-500 SKUs, daily product uploads, variant management
+• Zendesk → I've handled 30-50 tickets/day for a similar-sized store, 2-hour avg response time
+• Google Sheets → comfortable with formulas, pivot tables, and basic inventory automations
+
+What I'd do in your first 2 weeks:
+• Audit your current product listings and flag any with missing info or low-quality images
+• Set up a simple Zendesk macro library so common questions get faster, on-brand responses
+• Build a basic inventory dashboard in Sheets so you can see stock levels at a glance
+
+My rate: $5/hr to start (matching your post). Available 20 hrs/week in PHT.
+
+Resume: [link]
+Portfolio: [link]
+
+Free for a quick 15-min call this week if it sounds like a fit?
+
+Maria</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario B — coach hiring social media VA</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "Need an experienced Instagram VA for my coaching business. Will repurpose my podcast into IG carousels, reels, captions. Must use Canva and ChatGPT. 15 hrs/week."</div>
+<div class="scenario-analysis">
+<p><strong>Your opening line should be:</strong> "Hi [Name], you said you want to repurpose podcast content into IG carousels and reels — I've done this exact workflow for [similar client] and can show you what worked."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'olj-sample-b')">Copy</button>
+</div>
+<div class="template-body" id="olj-sample-b">Hi Sarah,
+
+You mentioned repurposing your podcast into IG carousels, reels, and captions — that's a workflow I've built specifically for coaches. Most podcast-to-IG repurposing fails because the content is too long-form for the platform. I have a system that fixes that.
+
+Quick fit:
+• Canva Pro → I have 50+ templates I can adapt to your brand on day one
+• ChatGPT → I use it daily for caption first-drafts, hook variations, and content hooks
+• Podcast repurposing → I've turned 1 podcast episode into 7-10 pieces of IG content for [niche]
+
+What I'd do in your first 2 weeks:
+• Watch 3 of your recent episodes and pull a content bank (carousels, quote graphics, reel hooks)
+• Set up a content pipeline in Notion/Airtable so you always have 2 weeks of posts ready
+• Audit your current IG and flag what's working / what to drop
+
+My rate: $7/hr. Available 15 hrs/week in PHT.
+
+Portfolio with podcast→IG examples: [link]
+
+Free for a quick 15-min call this week?
+
+Anna</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario C — solo founder needing executive admin</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "Solo SaaS founder drowning in inbox + meetings. Need someone to manage email, schedule calls, light project tracking in Asana. 25 hrs/week, $8-10/hr."</div>
+<div class="scenario-analysis">
+<p><strong>Your opening line should be:</strong> "Hi [Name], 'drowning in inbox + meetings' is exactly the founder problem I solve. I take 4-6 hours of admin off your plate every week without you having to micromanage me."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'olj-sample-c')">Copy</button>
+</div>
+<div class="template-body" id="olj-sample-c">Hi James,
+
+"Drowning in inbox + meetings" is exactly the founder problem I solve. I take 4-6 hours of admin off your plate every week without you needing to micromanage me.
+
+Quick fit:
+• Inbox management → I clear 100+ emails/day, draft responses for your approval, only escalate the ones that need YOUR brain
+• Calendar/scheduling → I use Calendly + buffer rules so you stop double-booking yourself
+• Asana → I've run sprint boards for 3-person SaaS teams, kept tasks moving without daily standups
+
+What I'd do in your first 2 weeks:
+• Set up an inbox triage system (urgent / wait / FYI / archive)
+• Build calendar buffers + a meeting-free deep-work block
+• Audit your Asana and identify any blockers older than 7 days
+
+My rate: $9/hr (in your range). Available 25 hrs/week, overlap with US ET morning hours.
+
+Resume: [link]
+
+Want to jump on a 15-min call this week to see if it clicks?
+
+Kim</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- ═══ SECTION 3: UPWORK ═══ -->
+<div class="major-section" id="upwork">
+<div class="major-eyebrow">Section 03 · Platform-specific</div>
+<h2 class="major-title">Upwork — <em>the high-stakes game</em>.</h2>
+<p class="major-sub">Upwork is brutal: 50-100 applications per job, 10% platform fee, picky algorithm. But the clients pay 2-5x what OLJ pays. Here's how to win it.</p>
+</div>
+
+<div class="platform-block">
+<div class="platform-header">
+<div class="platform-icon upwork">up</div>
+<div>
+<div class="platform-name">Upwork</div>
+<div class="platform-tag">Bidding · Higher rates · Global · Connects required</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">⚙ How Upwork actually works</div>
+<div class="fund-text" style="font-size: 14px;">You bid on jobs using "Connects" (Upwork's currency, ~$0.15 each). Most jobs cost 8-16 Connects to apply. Clients see a snippet of your proposal first — that snippet decides if they keep reading. Algorithm punishes you for sending too many proposals to jobs you're not a fit for. <strong>Specialize, don't generalize.</strong></div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">✓✗ Do's and Don'ts</div>
+<div class="dos-donts">
+<div class="dos-card">
+<h4>Do</h4>
+<ul>
+<li>Open with a question or insight tied to their post — NEVER your name</li>
+<li>Use the "Boost" feature on jobs you really want (your proposal goes to the top)</li>
+<li>Apply within 1 hour of the post going live (most hires happen from the first 10-15 proposals)</li>
+<li>Get the "Rising Talent" badge ASAP (complete profile, take skill tests, deliver early jobs well)</li>
+<li>Set your hourly rate ABOVE the budget shown — clients filter by quality, not lowest bid</li>
+<li>Add a 30-second video intro for jobs over $1,000 (huge differentiator)</li>
+<li>Use your specialized profile, not your general one</li>
+</ul>
+</div>
+<div class="donts-card">
+<h4>Don't</h4>
+<ul>
+<li>Start with "Hi, I'm [name], a hardworking VA..." — instant delete</li>
+<li>Bid the lowest rate — clients assume cheap = bad</li>
+<li>Apply to jobs with 50+ proposals already (red ocean)</li>
+<li>Send the same proposal to 20 jobs in a row (algorithm tracks this)</li>
+<li>Skip the "Cover Letter" section — that IS your application</li>
+<li>Promise "24/7 availability" — sounds desperate, signals no boundaries</li>
+<li>Ignore the screening questions (clients filter by who answered them)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📝 Adaptable template — Upwork cover letter</div>
+
+<div class="scenarios-intro">
+<p>Upwork shows clients only the FIRST 100 characters of your proposal as a preview. <strong>That preview decides if they click "Read More."</strong> Your first sentence is your headline — it MUST hook them.</p>
+</div>
+
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">⚡ The framework — never copy verbatim</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'upwork-template')">Copy structure</button>
+</div>
+<div class="template-body" id="upwork-template"><span class="placeholder">[Hook line: a question about their problem OR a 1-sentence insight tied to their post — under 100 characters]</span>
+
+Hi <span class="placeholder">[Their first name if visible — otherwise skip and start with the body]</span>,
+
+You mentioned <span class="placeholder">[exact pain point from their post — quote them]</span>. That's a problem I've solved for <span class="placeholder">[number]</span> clients in <span class="placeholder">[their niche]</span>.
+
+Two quick ideas before we even talk:
+• <span class="placeholder">[Specific suggestion #1 tied to their post]</span>
+• <span class="placeholder">[Specific suggestion #2 tied to their post]</span>
+
+A bit about me: <span class="placeholder">[1 sentence: your niche, years of experience, ONE relevant proof point with a number]</span>.
+
+Tools I'm fluent in (matching your stack): <span class="placeholder">[3-5 tools FROM THEIR JOB POST]</span>.
+
+Portfolio: <span class="placeholder">[link]</span>
+
+If those ideas resonate, I'd love to share a free 15-min walkthrough of how I'd tackle this for you. Calendar: <span class="placeholder">[link]</span>
+
+<span class="placeholder">[Your name]</span></div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📌 3 sample fills — see how it adapts</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario A — agency owner needing inbox triage</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "Need an inbox manager for my marketing agency. ~150 emails/day, mostly client comms + new leads. Need someone fast, organized, who can draft responses for my approval. Long-term role."</div>
+<div class="scenario-analysis">
+<p><strong>The hook line should be:</strong> "150 emails/day usually means 4 hours buried in Gmail — let's get you to inbox-zero in under 1 hour."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'upwork-sample-a')">Copy</button>
+</div>
+<div class="template-body" id="upwork-sample-a">150 emails/day usually means 4 hours buried in Gmail — let's get you to inbox-zero in under 1 hour.
+
+Hi there,
+
+You mentioned needing someone fast and organized to manage 150+ emails a day with draft-response approval. That's a workflow I've run for 4 agency owners in the last 2 years — last one went from 3 hours/day on email down to 30 mins for final approvals.
+
+Two quick ideas:
+• Set up a 4-bucket triage (Urgent / Awaiting Reply / FYI / Archive) — most agency inboxes get 60% calmer just from this
+• Build a "Top 20 client questions" macro library — saves 80% of typing on common asks
+
+About me: 3-year EA with a focus on agencies and consultants. Last client cut their email time from 21 hrs/wk to 7 hrs/wk in the first 30 days.
+
+Tools matching your stack: Gmail/Google Workspace, Boomerang, ClickUp (I saw it in your post), Loom for async updates.
+
+Portfolio: [link]
+
+Open to a 15-min call this week to see if it clicks? Calendar: [link]
+
+Maria</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario B — SaaS founder needing customer support</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "B2B SaaS founder hiring CS rep for our Intercom queue. ~50 tickets/day, mostly billing questions, login issues, simple feature requests. Must be technical enough to escalate the right things."</div>
+<div class="scenario-analysis">
+<p><strong>The hook line should be:</strong> "Intercom queue + 50 tickets/day = the sweet spot where automation handles 30% before a human even looks. Want to see how?"</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'upwork-sample-b')">Copy</button>
+</div>
+<div class="template-body" id="upwork-sample-b">Intercom queue + 50 tickets/day = the sweet spot where automation handles 30% before a human even looks. Want to see how?
+
+Hi there,
+
+You mentioned needing a CS rep who's technical enough to escalate the right things — that's the hardest part of B2B SaaS support. I've been the first CS hire for 2 SaaS companies (one in dev tools, one in fintech).
+
+Two quick ideas:
+• Set up Intercom Resolution Bot for the top 10 most-asked questions (typically billing/login) — handled my last client's volume by 35% on day 1
+• Build a clear escalation flowchart so technical bugs go to engineering with the right context, not back-and-forth
+
+About me: 2.5 years in B2B SaaS support. Last role: handled 60-80 tickets/day with a 4.8/5 CSAT. Comfortable reading docs, writing technical responses, and knowing when to escalate.
+
+Tools matching your stack: Intercom (advanced — workflows, articles, bots), Stripe billing, Linear for bug escalation, Notion for SOPs.
+
+Portfolio with sample tickets: [link]
+
+15-min call this week if it sounds like a fit? [calendar link]
+
+Kim</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario C — coach needing podcast production support</div>
+<div class="scenario-quote"><strong>Job post said:</strong> "Looking for a podcast VA. I record weekly episodes, need someone to handle audio editing in Descript, write show notes, and post to Spotify/Apple. 5-6 hrs/week per episode."</div>
+<div class="scenario-analysis">
+<p><strong>The hook line should be:</strong> "Podcast post-production should be 4 hours, not 6 — Descript automations cut my last client's edit time by 35%."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this job</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'upwork-sample-c')">Copy</button>
+</div>
+<div class="template-body" id="upwork-sample-c">Podcast post-production should be 4 hours, not 6 — Descript automations cut my last client's edit time by 35%.
+
+Hi there,
+
+You mentioned needing podcast editing in Descript + show notes + multi-platform posting. That's a workflow I've systematized for 3 podcasters (one solo show, two interview shows).
+
+Two quick ideas:
+• Build Descript templates with your intro/outro pre-set, plus auto-removal of filler words tuned to YOUR speaking style
+• Create a show notes template that pulls from a 3-bullet hook + timestamps + 1 quote — turns a 90-min job into a 30-min one
+
+About me: Podcast VA for 2 years. Last show I worked on grew from 200 → 1,400 downloads/episode in 6 months partly because show notes were finally SEO-optimized.
+
+Tools matching your stack: Descript (advanced — overdub, multitrack, templates), Spotify for Podcasters, Apple Podcasts Connect, Buzzsprout, Notion for episode planning.
+
+Portfolio (sample episodes I edited): [link]
+
+15-min call this week to discuss? [calendar link]
+
+Anna</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- ═══ SECTION 4: LINKEDIN ═══ -->
+<div class="major-section" id="linkedin">
+<div class="major-eyebrow">Section 04 · Platform-specific</div>
+<h2 class="major-title">LinkedIn — <em>the long game</em>.</h2>
+<p class="major-sub">LinkedIn is the highest-paying VA channel and the slowest. You're not applying to job posts — you're DM-ing decision-makers cold. Done well, you can build a 6-month pipeline of premium clients. Done poorly, you'll get reported as spam.</p>
+</div>
+
+<div class="platform-block">
+<div class="platform-header">
+<div class="platform-icon linkedin">in</div>
+<div>
+<div class="platform-name">LinkedIn</div>
+<div class="platform-tag">Cold outreach · Premium clients · Trust-based · Slow burn</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">⚙ How LinkedIn actually works for VAs</div>
+<div class="fund-text" style="font-size: 14px;">You're not waiting for jobs to be posted. You identify founders, agency owners, and consultants in your niche → engage with their content for 1-2 weeks → THEN send a personalized DM. The DM is not a pitch — it's a relationship-opener. <strong>If you pitch in the first message, you're done.</strong></div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">✓✗ Do's and Don'ts</div>
+<div class="dos-donts">
+<div class="dos-card">
+<h4>Do</h4>
+<ul>
+<li>Optimize YOUR profile first — headline, banner, About section all need to clearly say what you do</li>
+<li>Comment on their posts thoughtfully for 7-14 days BEFORE messaging</li>
+<li>Lead the DM with something specific from their content</li>
+<li>Be a human — share opinions, not pitches</li>
+<li>Use voice notes (LinkedIn now supports them — 80% of VAs don't use them)</li>
+<li>Post your own content 2-3x/week — clients check your profile after you DM</li>
+<li>Target founders/owners directly, not "HR" or "recruiters"</li>
+</ul>
+</div>
+<div class="donts-card">
+<h4>Don't</h4>
+<ul>
+<li>Pitch in the first message — instant block</li>
+<li>Send connection requests with the default "I'd like to connect" message</li>
+<li>Spam the same DM to 50 people in a day (LinkedIn will restrict your account)</li>
+<li>Send PDFs or attachments in the first DM</li>
+<li>Use AI-generated openers — clients can spot them in 2 seconds</li>
+<li>DM C-suite at huge companies (you'll get ignored — go for SMB founders)</li>
+<li>Ghost after they respond — follow up within 24 hours</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📝 Adaptable template — LinkedIn cold DM</div>
+
+<div class="scenarios-intro">
+<p>This template is for <strong>after</strong> you've engaged with their content for 1-2 weeks. Sending this cold without prior engagement = ignored. The whole point is that they recognize your name when you DM them.</p>
+</div>
+
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">⚡ The framework — relationship first, work second</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'li-template')">Copy structure</button>
+</div>
+<div class="template-body" id="li-template">Hi <span class="placeholder">[First name]</span>,
+
+I've been following your posts on <span class="placeholder">[topic they post about]</span> for a few weeks — your take on <span class="placeholder">[specific post or idea they shared]</span> really stuck with me, especially the bit about <span class="placeholder">[one specific phrase or argument from their post]</span>.
+
+Quick intro: I'm <span class="placeholder">[your name]</span>, a <span class="placeholder">[your niche]</span> VA. I help <span class="placeholder">[their type of business]</span> with <span class="placeholder">[specific outcome you deliver]</span> — basically the kind of <span class="placeholder">[type of work]</span> stuff that eats founders' calendars.
+
+Not pitching you — just wanted to say your content's been useful, and if you ever need an extra set of hands with <span class="placeholder">[something specific that aligns with what they post about]</span>, I'd love to chat.
+
+Either way, keep the posts coming.
+
+<span class="placeholder">[Your name]</span></div>
+</div>
+</div>
+
+<div class="platform-section">
+<div class="platform-section-head">📌 3 sample fills — see how it adapts</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario A — agency founder posting about hiring struggles</div>
+<div class="scenario-quote"><strong>Their recent post:</strong> "Spent 6 hours interviewing 'experienced' VAs this week. None could explain how they'd actually handle our client onboarding. Where are the good ones?"</div>
+<div class="scenario-analysis">
+<p><strong>The opening line should be:</strong> "Your post about interviewing 6 VAs and none being able to explain client onboarding actually made me laugh-and-cringe — I see this in my own niche all the time."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this person</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'li-sample-a')">Copy</button>
+</div>
+<div class="template-body" id="li-sample-a">Hi Sarah,
+
+Your post about interviewing 6 VAs and none being able to explain client onboarding actually made me laugh-and-cringe. I see this in my own niche all the time — most VAs can DO the tasks but can't articulate the SYSTEM behind them. That's a real differentiator.
+
+Quick intro: I'm Maria, an EA-focused VA. I work with small marketing agencies (3-10 person teams) on the operational side — onboarding, internal SOPs, client comms structure. The kind of work that's invisible when it's working and obvious when it's not.
+
+Not pitching — just wanted to say your hiring rant was on point. If you ever want an outside set of eyes on your client onboarding flow (or just want to vent about candidates), my DMs are open.
+
+Keep the honest posts coming. They're rare.
+
+Maria</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario B — SaaS founder posting about busy launch</div>
+<div class="scenario-quote"><strong>Their recent post:</strong> "Launching v2 of our product next month. Marketing, sales calls, dev coordination, customer support — and somehow I'm supposed to also do strategy. Send help."</div>
+<div class="scenario-analysis">
+<p><strong>The opening line should be:</strong> "Launching v2 while doing your own customer support is the founder version of changing a tire on a moving car. Been on the support side of 2 of those launches."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this person</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'li-sample-b')">Copy</button>
+</div>
+<div class="template-body" id="li-sample-b">Hi James,
+
+Launching v2 while still doing your own customer support is the founder version of changing a tire on a moving car. Been on the support side of 2 of those launches — it's brutal but recoverable.
+
+Quick intro: I'm Kim, a CS-focused VA for B2B SaaS. I usually come in around launches because that's when ticket volume spikes and founders can't be in Intercom all day. Set up automation, draft responses for approval, escalate the actual bugs to engineering.
+
+Not pitching — just wanted to say good luck with v2. If you find yourself drowning in support tickets in the first week post-launch, I'm around. That's exactly the moment most founders realize they should've hired someone 2 weeks earlier.
+
+Either way, looking forward to seeing the launch.
+
+Kim</div>
+</div>
+</div>
+
+<div class="scenario-card">
+<div class="scenario-label">Scenario C — coach posting about content overwhelm</div>
+<div class="scenario-quote"><strong>Their recent post:</strong> "Recorded 3 podcast episodes this week. They're sitting in Descript untouched because I don't have time to edit, write show notes, and post them. Why is content always the bottleneck?"</div>
+<div class="scenario-analysis">
+<p><strong>The opening line should be:</strong> "The 'recorded but unpublished' graveyard is the most underrated reason great podcasts die. I literally specialize in dragging episodes out of that graveyard."</p>
+</div>
+<div class="template-wrap">
+<div class="template-meta">
+<div class="template-meta-label">Adapted for this person</div>
+<button class="btn-copy-tpl" onclick="copyTpl(this, 'li-sample-c')">Copy</button>
+</div>
+<div class="template-body" id="li-sample-c">Hi David,
+
+The "recorded but unpublished" graveyard is the most underrated reason great podcasts die. I literally specialize in dragging episodes out of that graveyard.
+
+Quick intro: I'm Anna, a podcast production VA. I work with coaches and consultants on the post-recording side — Descript editing, show notes, multi-platform posting, basic promo content. Usually clients send me the raw recording and within 48 hours it's live with show notes, IG carousel, and audiogram.
+
+Not pitching you — just wanted to say I felt that post in my soul. If you ever want to clear that backlog of recorded episodes, my DMs are open.
+
+Keep recording. The world needs more honest takes on [their niche].
+
+Anna</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<!-- ═══ SECTION 5: GATE-KEPT TACTICS ═══ -->
+<div class="major-section" id="tactics">
+<div class="major-eyebrow">Section 05 · The advanced stuff</div>
+<h2 class="major-title">Gate-kept <em>tactics</em>.</h2>
+<p class="major-sub">These are the moves most VA coaches charge for or never share publicly. They work because most VAs don't know about them or are too lazy to do them.</p>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 01</div>
+<div class="tactic-title">Find Upwork jobs that <em>aren't on Upwork yet</em></div>
+<div class="tactic-body">
+<p>Upwork has a hidden filter: <code>posted_within=24h</code>. Combine that with your niche keywords and you'll see jobs in the first 1-3 hours after posting — when there are 5 proposals instead of 50.</p>
+<p><strong>How:</strong> Save your favorite searches with the "<em>Posted: Less than 24 hours</em>" filter. Set browser alerts for the search URL using a free tool like Distill.io. New job → instant notification → apply within 30 minutes. Game-changing for first-mover advantage.</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 02</div>
+<div class="tactic-title">The <em>"comment for a week"</em> LinkedIn play</div>
+<div class="tactic-body">
+<p>Pick 10 dream clients on LinkedIn (founders, agency owners, consultants in your niche). Don't DM them. Instead: comment thoughtfully on their posts EVERY DAY for 7-10 days.</p>
+<p><strong>By day 10:</strong> they recognize your name. <strong>By day 14:</strong> they sometimes DM YOU first. The DM you send after this kind of warm-up has a 5-10x higher response rate than a cold one. The trick is your comments must add value (insights, examples, questions) — never compliments like "great post!"</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 03</div>
+<div class="tactic-title">The <em>reverse Upwork</em> move</div>
+<div class="tactic-body">
+<p>Upwork lets you SEE who hired before. Find clients who recently hired a VA in your niche, then look at their hiring history. If they hired one VA in March and another in July, they probably need a third in November.</p>
+<p><strong>How:</strong> Use Upwork's "Browse Clients" feature (often missed). Filter by spend, location, and hiring frequency. Reach out via direct message to clients who match your niche but currently don't have an active post — they'll often have new work coming.</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 04</div>
+<div class="tactic-title">The <em>"3 ideas before you hire me"</em> opener</div>
+<div class="tactic-body">
+<p>Most pitches say "I CAN do X." Better: actually DO a small piece of X for free in your application. 3 specific ideas tied to their business, before they've paid you a cent.</p>
+<p><strong>Examples:</strong> If they're a Shopify store, point out that their abandoned cart email is missing a discount code. If they're a podcaster, suggest 3 episode title rewrites for their last 3 episodes. <strong>Investing 15 minutes of free thinking</strong> in your application = 5-10x reply rate. Most VAs won't do this. That's why it works.</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 05</div>
+<div class="tactic-title">Apply to <em>"failed hires"</em></div>
+<div class="tactic-body">
+<p>When a job post is reposted on OLJ or Upwork after 2-3 weeks, it usually means their first hire didn't work out. These clients are MORE motivated, MORE generous on rate, and faster to commit because they're behind schedule.</p>
+<p><strong>How to spot:</strong> Same job title, similar description, same client. On OLJ, jobs older than 2 weeks but recently bumped. On Upwork, look at the "Posted X days ago" date. <strong>In your application, gently acknowledge it:</strong> "I noticed this role's been live for a bit — happy to discuss what's been working and what hasn't if it helps."</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 06</div>
+<div class="tactic-title">The <em>video intro</em> nobody sends</div>
+<div class="tactic-body">
+<p>For high-value Upwork jobs ($1,000+) or LinkedIn outreach to premium clients, send a 30-60 second Loom or video intro instead of (or in addition to) text. <strong>Less than 5% of VAs do this.</strong> It instantly differentiates you and lets the client see you're a real, professional human.</p>
+<p>Keep it under 60 seconds. Reference their post in the first 5 seconds. Show your face, decent lighting, no scripting (sounds robotic). End with "I'm Maria, looking forward to hearing back."</p>
+</div>
+</div>
+
+<div class="tactic-card">
+<div class="tactic-eyebrow">⚡ Tactic 07</div>
+<div class="tactic-title">The <em>lurker-to-lead</em> Facebook group play</div>
+<div class="tactic-body">
+<p>Join 5-10 niche Facebook groups where YOUR ideal clients hang out (e.g., "Shopify Store Owners," "SaaS Founders," "Coaches in Health & Wellness"). DON'T post your services. Instead, answer their tactical questions in the comments daily for 2-3 weeks.</p>
+<p>Help with Shopify settings, suggest tools, share frameworks. Become known as "the helpful VA in the comments." After 2-3 weeks, founders start DMing YOU asking if you're available. <strong>Best client acquisition channel for VAs in 2026</strong> — and the slowest, which is why most VAs skip it.</p>
+</div>
+</div>
+
+
+<!-- ═══ SECTION 6: ROUTINE ═══ -->
+<div class="major-section" id="routine">
+<div class="major-eyebrow">Section 06 · The discipline</div>
+<h2 class="major-title">The daily <em>routine</em>.</h2>
+<p class="major-sub">All the tactics in the world don't matter if you don't apply consistently. Here's a 2-hour daily routine that — done for 30 days — will fill your client pipeline.</p>
+</div>
+
+<div class="routine-card">
+<table class="routine-table">
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–15 min</td>
+<td><strong>Inbox + tracker check</strong> — reply to any client interest from yesterday FIRST. Speed of response matters more than anything. Update your client tracker.</td>
+</tr>
+<tr>
+<td>15–35 min</td>
+<td><strong>OnlineJobs.ph</strong> — apply to 2-3 jobs posted in the last 24 hours. CUSTOMIZED. No exceptions.</td>
+</tr>
+<tr>
+<td>35–65 min</td>
+<td><strong>Upwork</strong> — apply to 2-3 jobs in your specialized niche, posted in the last 1-3 hours. Use Boost on the best one.</td>
+</tr>
+<tr>
+<td>65–90 min</td>
+<td><strong>LinkedIn</strong> — comment on 5 dream-client posts. Send 1-2 DMs to people you've engaged with for 7+ days.</td>
+</tr>
+<tr>
+<td>90–105 min</td>
+<td><strong>Content / community</strong> — post 1 piece of content on LinkedIn OR add value in 2-3 niche Facebook groups.</td>
+</tr>
+<tr>
+<td>105–120 min</td>
+<td><strong>Wrap up</strong> — log everything in your tracker. Note which application you're proudest of. End on a win.</td>
+</tr>
+</tbody>
+</table>
+
+<div style="margin-top: 24px; padding: 18px 22px; background: rgba(196,255,71,0.05); border-radius: 12px; border-left: 3px solid #c4ff47;">
+<p style="font-size: 13px; color: #d0d0d0; line-height: 1.65; margin: 0;"><strong style="color:#c4ff47;">The honest math:</strong> 7-9 customized applications/day × 5 days/week × 4 weeks = 140-180 quality applications a month. Even at a 5% reply rate (low for THIS quality), that's 7-9 leads. At a 30% close rate on leads, that's 2-3 new clients a month. <strong>This works.</strong> The only thing that gets in the way is consistency.</p>
+</div>
+</div>
+
+
+<div class="back-cta">
+<div class="back-cta-title">Now — go apply.</div>
+<p class="back-cta-sub">All the strategy in the world doesn't matter if you don't open OLJ today and send your first customized application. Start small. Start now.</p>
+<a href="https://www.onlinejobs.ph/" target="_blank" class="btn btn-primary">Open OnlineJobs.ph →</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+function copyTpl(btn, elementId) {
+  const el = document.getElementById(elementId);
+  // Get plain text without the HTML span tags
+  const text = el.innerText || el.textContent;
+  const original = btn.innerHTML;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => { btn.innerHTML = original; }, 2000);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => { btn.innerHTML = original; }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

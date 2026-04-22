@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Certifications + Courses — Kailami</title>
+<meta name="description" content="A curated hub of free certifications and courses for virtual assistants — organized by niche, time, and what you'll gain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.cert-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .cert-wrap { padding: 0 24px; } }
+
+.disclaimer-banner {
+  background: rgba(255,200,100,0.05); border: 1px solid rgba(255,200,100,0.2);
+  border-radius: 14px; padding: 16px 22px; margin: 32px auto 28px;
+  max-width: 800px; display: flex; gap: 14px; align-items: flex-start;
+}
+.disclaimer-icon {
+  width: 32px; height: 32px; border-radius: 50%; background: rgba(255,200,100,0.1);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: #ffc864; font-size: 14px; font-weight: 600;
+}
+.disclaimer-text { font-size: 13px; color: #d0d0d0; line-height: 1.6; }
+.disclaimer-text strong { color: #ffc864; font-weight: 500; }
+
+.legend-row {
+  display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+  padding: 16px; background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; margin-bottom: 32px;
+}
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #c0c0c0; }
+.legend-badge {
+  font-size: 10px; padding: 3px 8px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 0.4px;
+}
+.legend-badge.cert { background: rgba(196,255,71,0.15); color: #c4ff47; }
+.legend-badge.course { background: rgba(135,180,255,0.12); color: #87b4ff; }
+.legend-badge.audit { background: rgba(255,200,100,0.12); color: #ffc864; }
+
+.filter-bar {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
+  padding: 16px; background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+.filter-label {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #888; font-weight: 600; padding: 8px 10px; align-self: center;
+}
+.filter-btn {
+  background: transparent; border: 1px solid rgba(255,255,255,0.12);
+  color: #c0c0c0; padding: 8px 14px; border-radius: 999px;
+  font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.filter-btn:hover { border-color: rgba(196,255,71,0.4); color: #fff; }
+.filter-btn.active { background: #c4ff47; color: #0a0a0a; border-color: #c4ff47; }
+@media (max-width: 640px) { .filter-label { width: 100%; padding: 4px 10px; } }
+
+.cert-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-top: 24px; margin-bottom: 60px;
+}
+@media (max-width: 900px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .cert-grid { grid-template-columns: 1fr; } }
+
+.cert-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 24px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 12px;
+  text-decoration: none; position: relative;
+}
+.cert-card:hover { border-color: #c4ff47; transform: translateY(-3px); }
+.cert-card:hover .cert-cta { color: #c4ff47; }
+.cert-card:hover .cert-arrow { transform: translate(4px, -4px); }
+
+.cert-top-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.cert-type-badge {
+  font-size: 10px; padding: 3px 9px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase;
+}
+.cert-type-badge.cert { background: rgba(196,255,71,0.15); color: #c4ff47; }
+.cert-type-badge.course { background: rgba(135,180,255,0.12); color: #87b4ff; }
+.cert-type-badge.audit { background: rgba(255,200,100,0.12); color: #ffc864; }
+.cert-time {
+  background: rgba(255,255,255,0.05); color: #a0a0a0;
+  font-size: 11px; padding: 3px 8px; border-radius: 999px;
+  white-space: nowrap; font-weight: 500;
+}
+
+.cert-provider {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #888; font-weight: 500;
+}
+
+.cert-title {
+  font-size: 17px; font-weight: 500; color: #fff;
+  letter-spacing: -0.3px; line-height: 1.3;
+}
+
+.cert-niches { display: flex; flex-wrap: wrap; gap: 5px; }
+.cert-niche-tag {
+  background: rgba(255,255,255,0.05); color: #a0a0a0;
+  font-size: 10px; padding: 3px 8px; border-radius: 999px;
+  font-weight: 500;
+}
+
+.cert-gain {
+  font-size: 13px; color: #a0a0a0; line-height: 1.6; flex: 1;
+}
+
+.cert-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 12px; margin-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.cert-cta { font-size: 12px; color: #888; font-weight: 500; transition: color 0.2s; }
+.cert-arrow { color: #888; font-size: 16px; transition: all 0.3s; }
+
+.empty-state {
+  grid-column: 1 / -1; text-align: center; padding: 60px 20px;
+  color: #888; font-size: 14px;
+}
+
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 24px 0 32px;
+}
+@media (max-width: 640px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+.stat-mini {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 22px;
+}
+.stat-mini-num { font-size: 24px; font-weight: 500; color: #c4ff47; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.stat-mini-label { font-size: 12px; color: #888; letter-spacing: 0.5px; }
+
+.back-cta {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 32px; text-align: center; margin: 40px 0;
+}
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>100% free · No credit card</div>
+<h1 class="page-title">Free <em>certifications</em> + courses.</h1>
+<p class="page-lede">A curated hub of legit free certs (Google, HubSpot, Meta, Canva, QuickBooks) plus free courses from Coursera, edX, Udemy, and more — organized by niche and time. Stack them. Add them to your resume. Stand out.</p>
+</section>
+</div>
+
+<div class="cert-wrap">
+
+<div class="disclaimer-banner">
+<div class="disclaimer-icon">!</div>
+<div class="disclaimer-text">
+<strong>Heads up:</strong> Platforms change their offerings often (Udemy courses rotate between free and paid especially). Before you invest hours, click through to confirm it's still free. If anything's broken, message us in the <a href="https://www.facebook.com/groups/1422755666045207" target="_blank" style="color:#c4ff47;">Facebook community</a> — we'll update the list.
+</div>
+</div>
+
+<div class="legend-row">
+<div class="legend-item"><span class="legend-badge cert">Free cert</span> Verified certificate, fully free</div>
+<div class="legend-item"><span class="legend-badge course">Free course</span> Great learning, no formal cert</div>
+<div class="legend-item"><span class="legend-badge audit">Audit free</span> Free to watch, cert is paid</div>
+</div>
+
+<div class="stats-row">
+<div class="stat-mini"><div class="stat-mini-num" id="total-count">0</div><div class="stat-mini-label">Total resources</div></div>
+<div class="stat-mini"><div class="stat-mini-num" id="cert-count">0</div><div class="stat-mini-label">Free certifications</div></div>
+<div class="stat-mini"><div class="stat-mini-num" id="course-count">0</div><div class="stat-mini-label">Free courses</div></div>
+<div class="stat-mini"><div class="stat-mini-num">$0</div><div class="stat-mini-label">Out of pocket</div></div>
+</div>
+
+<div class="filter-bar">
+<span class="filter-label">Niche:</span>
+<button class="filter-btn active" onclick="filterBy('niche', 'all', this)">All</button>
+<button class="filter-btn" onclick="filterBy('niche', 'ea', this)">EA / Admin</button>
+<button class="filter-btn" onclick="filterBy('niche', 'smm', this)">Social Media</button>
+<button class="filter-btn" onclick="filterBy('niche', 'marketing', this)">Marketing</button>
+<button class="filter-btn" onclick="filterBy('niche', 'design', this)">Design</button>
+<button class="filter-btn" onclick="filterBy('niche', 'video', this)">Video</button>
+<button class="filter-btn" onclick="filterBy('niche', 'ecommerce', this)">eCommerce</button>
+<button class="filter-btn" onclick="filterBy('niche', 'bookkeeping', this)">Bookkeeping</button>
+<button class="filter-btn" onclick="filterBy('niche', 'cs', this)">Customer Support</button>
+<button class="filter-btn" onclick="filterBy('niche', 'tech', this)">Tech / Systems</button>
+<button class="filter-btn" onclick="filterBy('niche', 'pm', this)">Project Mgmt</button>
+<button class="filter-btn" onclick="filterBy('niche', 'ai', this)">AI Tools</button>
+<button class="filter-btn" onclick="filterBy('niche', 'writing', this)">Writing / Copy</button>
+</div>
+
+<div class="filter-bar">
+<span class="filter-label">Type:</span>
+<button class="filter-btn active" onclick="filterBy('type', 'all', this)">All types</button>
+<button class="filter-btn" onclick="filterBy('type', 'cert', this)">Free cert only</button>
+<button class="filter-btn" onclick="filterBy('type', 'course', this)">Free course only</button>
+<button class="filter-btn" onclick="filterBy('type', 'audit', this)">Audit free</button>
+</div>
+
+<div class="filter-bar">
+<span class="filter-label">Time:</span>
+<button class="filter-btn active" onclick="filterBy('time', 'all', this)">Any length</button>
+<button class="filter-btn" onclick="filterBy('time', 'short', this)">Under 2 hrs</button>
+<button class="filter-btn" onclick="filterBy('time', 'medium', this)">2–10 hrs</button>
+<button class="filter-btn" onclick="filterBy('time', 'long', this)">10+ hrs</button>
+</div>
+
+<div class="cert-grid" id="cert-grid"></div>
+
+<div class="back-cta">
+<div class="back-cta-title">Done stacking?</div>
+<p class="back-cta-sub">Head back to the roadmap to add your certs and courses to your resume and profile.</p>
+<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+// type: 'cert' = verified free cert, 'course' = great learning no cert, 'audit' = free to watch cert is paid
+// time: 'short' = <2hrs, 'medium' = 2-10hrs, 'long' = 10+hrs
+const items = [
+  // ═══════════ EA / ADMIN ═══════════
+  { type: "cert", provider: "Google", title: "Google Workspace Essentials", niches: ["ea","tech"], time: "short", timeLabel: "~1.5 hrs", gain: "Gmail, Drive, Calendar, Docs, Sheets. Directly applicable to 90% of admin VA work.", link: "https://skillshop.exceedlms.com/student/catalog/list?category_ids=3915-google-workspace" },
+  { type: "audit", provider: "Google / Coursera", title: "Google Project Management Certificate", niches: ["ea","pm"], time: "long", timeLabel: "100+ hrs", gain: "Full PM fundamentals — agile, scrum, stakeholder management. Audit is free, cert is paid.", link: "https://www.coursera.org/professional-certificates/google-project-management" },
+  { type: "course", provider: "Microsoft", title: "Microsoft 365 Fundamentals", niches: ["ea","tech"], time: "medium", timeLabel: "~5 hrs", gain: "Word, Excel, Outlook, Teams — if your clients use Microsoft instead of Google.", link: "https://learn.microsoft.com/en-us/training/paths/m365-fundamentals/" },
+  { type: "course", provider: "Alison", title: "Admin Office Skills Diploma", niches: ["ea"], time: "long", timeLabel: "~10 hrs", gain: "Comprehensive admin fundamentals — scheduling, correspondence, office systems. Digital cert available.", link: "https://alison.com/course/diploma-in-administrative-office-management-revised" },
+  { type: "audit", provider: "edX", title: "Effective Business Communication", niches: ["ea","cs","writing"], time: "medium", timeLabel: "~8 hrs", gain: "Professional email, meeting notes, client comms. Audit is free on edX.", link: "https://www.edx.org/learn/communication" },
+
+  // ═══════════ SOCIAL MEDIA ═══════════
+  { type: "cert", provider: "Meta", title: "Meta Certified Digital Marketing Associate", niches: ["smm","marketing"], time: "medium", timeLabel: "~6 hrs", gain: "Facebook and Instagram ads fundamentals. Recognized by every business running Meta ads.", link: "https://www.facebook.com/business/learn" },
+  { type: "cert", provider: "HubSpot", title: "Social Media Marketing Certification", niches: ["smm","marketing"], time: "medium", timeLabel: "~4.5 hrs", gain: "Full social strategy — content, community, measurement, listening. Exam-based cert.", link: "https://academy.hubspot.com/courses/social-media" },
+  { type: "cert", provider: "Hootsuite", title: "Social Marketing Certification", niches: ["smm"], time: "medium", timeLabel: "~4 hrs", gain: "Industry-recognized SMM cert. Strategy, tactics, platform-specific best practices.", link: "https://education.hootsuite.com/pages/free-social-media-courses" },
+  { type: "course", provider: "Later", title: "Social Media Strategy", niches: ["smm"], time: "short", timeLabel: "~1 hr each", gain: "Short, Instagram-focused courses on content pillars, hashtags, analytics. No cert.", link: "https://later.com/blog/category/social-media-strategy/" },
+  { type: "course", provider: "Udemy", title: "Instagram Marketing basics (filter to 'Free')", niches: ["smm"], time: "short", timeLabel: "varies", gain: "Udemy has periodic free Instagram courses. Filter by 'Free' in search. No certs on free versions.", link: "https://www.udemy.com/courses/search/?price=price-free&q=instagram+marketing&sort=relevance" },
+  { type: "course", provider: "Udemy", title: "TikTok Marketing (filter to 'Free')", niches: ["smm"], time: "short", timeLabel: "varies", gain: "Same deal — free TikTok courses rotate in and out on Udemy. Good for bite-sized learning.", link: "https://www.udemy.com/courses/search/?price=price-free&q=tiktok+marketing&sort=relevance" },
+
+  // ═══════════ MARKETING ═══════════
+  { type: "cert", provider: "Google", title: "Fundamentals of Digital Marketing", niches: ["marketing"], time: "long", timeLabel: "~40 hrs", gain: "The gold standard free marketing cert. Globally recognized — looks great on any resume.", link: "https://learndigital.withgoogle.com/digitalgarage" },
+  { type: "cert", provider: "HubSpot", title: "Inbound Marketing Certification", niches: ["marketing","smm"], time: "medium", timeLabel: "~5 hrs", gain: "Content marketing, SEO, lead gen, buyer's journey. The HubSpot cert clients recognize.", link: "https://academy.hubspot.com/courses/inbound-marketing" },
+  { type: "cert", provider: "HubSpot", title: "Email Marketing Certification", niches: ["marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Email strategy, segmentation, deliverability, automation. Exam at the end.", link: "https://academy.hubspot.com/courses/email-marketing-certification-course" },
+  { type: "cert", provider: "HubSpot", title: "Content Marketing Certification", niches: ["marketing","writing"], time: "medium", timeLabel: "~6 hrs", gain: "Long-form writing, blogging, content strategy, repurposing. Paired well with SMM.", link: "https://academy.hubspot.com/courses/content-marketing" },
+  { type: "course", provider: "Mailchimp", title: "Email Marketing Foundations", niches: ["marketing"], time: "short", timeLabel: "~2 hrs", gain: "Hands-on email campaign building. Great if clients use Mailchimp specifically.", link: "https://mailchimp.com/resources/email-marketing-foundations/" },
+  { type: "course", provider: "SEMrush", title: "SEO Toolkit Course", niches: ["marketing"], time: "medium", timeLabel: "~4 hrs", gain: "Keyword research, on-page SEO, backlink strategy using SEMrush tools.", link: "https://www.semrush.com/academy/" },
+  { type: "audit", provider: "Coursera / UVA", title: "Digital Marketing Specialization", niches: ["marketing"], time: "long", timeLabel: "~80 hrs", gain: "7-course specialization from UVA on digital strategy. Audit is free, cert is paid.", link: "https://www.coursera.org/specializations/digital-marketing" },
+
+  // ═══════════ DESIGN ═══════════
+  { type: "cert", provider: "Canva", title: "Design School — Canva Certified", niches: ["design","smm"], time: "short", timeLabel: "~1 hr", gain: "Canva fundamentals, design principles, branded templates. Quick win for any creative VA.", link: "https://www.canva.com/designschool/" },
+  { type: "course", provider: "Adobe", title: "Adobe Express for Creators", niches: ["design","video"], time: "short", timeLabel: "~2 hrs", gain: "Free Adobe design tool — alternative to Canva. Tutorials and guides.", link: "https://www.adobe.com/express/learn/tutorials" },
+  { type: "audit", provider: "Coursera / CalArts", title: "Graphic Design Specialization", niches: ["design"], time: "long", timeLabel: "~60 hrs", gain: "CalArts specialization covering typography, images, color. Audit is free, cert is paid.", link: "https://www.coursera.org/specializations/graphic-design" },
+  { type: "course", provider: "Udemy", title: "Canva courses (filter to 'Free')", niches: ["design"], time: "short", timeLabel: "varies", gain: "Udemy has rotating free Canva courses. Check the 'Free' filter. Good practice, no cert.", link: "https://www.udemy.com/courses/search/?price=price-free&q=canva&sort=relevance" },
+  { type: "course", provider: "Figma", title: "Figma for Beginners (free YouTube series)", niches: ["design","tech"], time: "short", timeLabel: "~2 hrs", gain: "Figma's own official learning series. The tool every modern design team uses.", link: "https://www.figma.com/resources/learn-design/" },
+
+  // ═══════════ VIDEO ═══════════
+  { type: "cert", provider: "Blackmagic", title: "DaVinci Resolve Training", niches: ["video"], time: "long", timeLabel: "~20 hrs", gain: "Free pro video editor training — the tool used in Hollywood. PDF certs available.", link: "https://www.blackmagicdesign.com/products/davinciresolve/training" },
+  { type: "course", provider: "CapCut", title: "CapCut tutorials & guides", niches: ["video","smm"], time: "short", timeLabel: "~1 hr", gain: "The tool every SMM uses for reels. Mobile-first editing skills in under an hour.", link: "https://www.capcut.com/tools/tutorials" },
+  { type: "course", provider: "Udemy", title: "Video Editing courses (filter to 'Free')", niches: ["video"], time: "medium", timeLabel: "varies", gain: "Udemy often has free Premiere, DaVinci, and CapCut intro courses. Rotate in and out.", link: "https://www.udemy.com/courses/search/?price=price-free&q=video+editing&sort=relevance" },
+  { type: "course", provider: "YouTube", title: "Peter McKinnon's editing tutorials", niches: ["video"], time: "short", timeLabel: "varies", gain: "Free, high-quality tutorials from one of the most watched video editors on YouTube. No cert but top-tier learning.", link: "https://www.youtube.com/@PeterMcKinnon" },
+
+  // ═══════════ eCOMMERCE ═══════════
+  { type: "cert", provider: "Shopify", title: "Shopify Academy — All Courses", niches: ["ecommerce"], time: "medium", timeLabel: "~6 hrs", gain: "Free courses across store setup, merchandising, customer experience, and marketing.", link: "https://www.shopify.com/academy" },
+  { type: "cert", provider: "HubSpot", title: "eCommerce Marketing Certification", niches: ["ecommerce","marketing"], time: "medium", timeLabel: "~4 hrs", gain: "Marketing strategy specifically for online stores. Segmentation, lifecycle, retention.", link: "https://academy.hubspot.com/courses/ecommerce-marketing" },
+  { type: "course", provider: "Udemy", title: "Shopify courses (filter to 'Free')", niches: ["ecommerce"], time: "short", timeLabel: "varies", gain: "Rotating free Shopify basics on Udemy. Store setup, product listing, dropshipping.", link: "https://www.udemy.com/courses/search/?price=price-free&q=shopify&sort=relevance" },
+
+  // ═══════════ BOOKKEEPING ═══════════
+  { type: "cert", provider: "Intuit", title: "QuickBooks Online Certification", niches: ["bookkeeping"], time: "medium", timeLabel: "~6 hrs", gain: "Official QuickBooks cert — the #1 bookkeeping tool for small businesses. Gold standard.", link: "https://quickbooks.intuit.com/learn-and-support/en-us/product-training/quickbooks-online-certification/" },
+  { type: "cert", provider: "Xero", title: "Xero Advisor Certification", niches: ["bookkeeping"], time: "medium", timeLabel: "~5 hrs", gain: "Free Xero cert — the other major bookkeeping tool. Great if clients use Xero not QB.", link: "https://www.xero.com/us/programs/partner-program/advisor-certification/" },
+  { type: "audit", provider: "Coursera / Intuit", title: "Bookkeeping Basics", niches: ["bookkeeping"], time: "medium", timeLabel: "~10 hrs", gain: "Intuit's Coursera course — accounting equation, debits/credits, financial statements.", link: "https://www.coursera.org/learn/bookkeeping-basics" },
+  { type: "course", provider: "Udemy", title: "Bookkeeping basics (filter to 'Free')", niches: ["bookkeeping"], time: "medium", timeLabel: "varies", gain: "Udemy runs rotating free bookkeeping intros. Good for fundamentals before the certs above.", link: "https://www.udemy.com/courses/search/?price=price-free&q=bookkeeping&sort=relevance" },
+
+  // ═══════════ CUSTOMER SUPPORT ═══════════
+  { type: "cert", provider: "HubSpot", title: "Customer Service Certification", niches: ["cs"], time: "medium", timeLabel: "~4 hrs", gain: "Service strategy, ticket management, customer retention. HubSpot methodology.", link: "https://academy.hubspot.com/courses/customer-service" },
+  { type: "course", provider: "Zendesk", title: "Zendesk Foundational Courses", niches: ["cs","tech"], time: "short", timeLabel: "~2 hrs", gain: "Hands-on Zendesk platform training. If clients use Zendesk, this is a must.", link: "https://training.zendesk.com/" },
+  { type: "course", provider: "Intercom", title: "Intercom Academy", niches: ["cs"], time: "short", timeLabel: "~2 hrs", gain: "Free training on Intercom — live chat, automation, help center building.", link: "https://academy.intercom.com/" },
+  { type: "course", provider: "Alison", title: "Customer Service Skills Diploma", niches: ["cs"], time: "long", timeLabel: "~10 hrs", gain: "Comprehensive customer service diploma. Digital cert available for free.", link: "https://alison.com/course/customer-service-training" },
+
+  // ═══════════ TECH / SYSTEMS ═══════════
+  { type: "cert", provider: "Asana", title: "Asana Academy", niches: ["pm","tech","ea"], time: "short", timeLabel: "~2 hrs", gain: "Free Asana training + cert. If clients use Asana for PM, this is a resume builder.", link: "https://academy.asana.com/" },
+  { type: "course", provider: "Monday.com", title: "Monday.com Community Courses", niches: ["pm","tech"], time: "short", timeLabel: "~2 hrs", gain: "Monday.com basics, workflows, automation. Free through their learning platform.", link: "https://monday.com/helpcenter/monday-community-academy" },
+  { type: "course", provider: "Notion", title: "Notion Essentials", niches: ["tech","pm","ea"], time: "short", timeLabel: "~1.5 hrs", gain: "Databases, relations, templates, formulas. The VA-favorite workspace tool.", link: "https://www.notion.so/help/guides/category/notion-basics" },
+  { type: "course", provider: "Zapier", title: "Zapier Learn — Automation Basics", niches: ["tech","pm"], time: "short", timeLabel: "~2 hrs", gain: "Build automations between 5000+ apps. In-demand skill that sets you apart from other VAs.", link: "https://zapier.com/learn/" },
+  { type: "cert", provider: "ClickUp", title: "ClickUp University", niches: ["pm","tech"], time: "medium", timeLabel: "~3 hrs", gain: "All-in-one workspace training. ClickUp certification available for power users.", link: "https://university.clickup.com/" },
+  { type: "cert", provider: "freeCodeCamp", title: "Responsive Web Design Certification", niches: ["tech"], time: "long", timeLabel: "~300 hrs", gain: "Real free cert in HTML/CSS from freeCodeCamp. If you want to become a tech VA, start here.", link: "https://www.freecodecamp.org/learn/2022/responsive-web-design/" },
+
+  // ═══════════ PROJECT MANAGEMENT ═══════════
+  { type: "audit", provider: "Google / Coursera", title: "Google Project Management (full program)", niches: ["pm","ea"], time: "long", timeLabel: "~100 hrs", gain: "6-course specialization on Agile, Scrum, Waterfall. Audit is free, graded cert is paid.", link: "https://www.coursera.org/professional-certificates/google-project-management" },
+  { type: "course", provider: "Atlassian", title: "Atlassian University — Jira / Confluence", niches: ["pm","tech"], time: "medium", timeLabel: "~4 hrs", gain: "Jira and Confluence training. High-demand for tech teams and dev-adjacent VA work.", link: "https://university.atlassian.com/student/catalog" },
+  { type: "course", provider: "Udemy", title: "Agile & Scrum basics (filter to 'Free')", niches: ["pm"], time: "short", timeLabel: "varies", gain: "Udemy often has free Agile/Scrum fundamentals. Good before paid PMI certs.", link: "https://www.udemy.com/courses/search/?price=price-free&q=agile+scrum&sort=relevance" },
+
+  // ═══════════ AI TOOLS ═══════════
+  { type: "audit", provider: "Google / Coursera", title: "Google AI Essentials", niches: ["ai","marketing","tech"], time: "medium", timeLabel: "~10 hrs", gain: "Hands-on AI use for work. Prompting, responsible use, real use cases. Audit is free.", link: "https://www.coursera.org/learn/google-ai-essentials" },
+  { type: "course", provider: "DeepLearning.AI", title: "ChatGPT Prompt Engineering", niches: ["ai"], time: "short", timeLabel: "~2 hrs", gain: "Official OpenAI partner course. Prompting techniques that actually work.", link: "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/" },
+  { type: "course", provider: "Anthropic", title: "Claude prompting guides", niches: ["ai"], time: "short", timeLabel: "~1 hr", gain: "Official guides on prompting Claude effectively. No formal cert, but essential reading.", link: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" },
+  { type: "course", provider: "Udemy", title: "ChatGPT for business (filter to 'Free')", niches: ["ai"], time: "short", timeLabel: "varies", gain: "Rotating free ChatGPT intro courses on Udemy. Focus on workplace use cases.", link: "https://www.udemy.com/courses/search/?price=price-free&q=chatgpt&sort=relevance" },
+
+  // ═══════════ WRITING / COPY ═══════════
+  { type: "cert", provider: "HubSpot", title: "Copywriting Certification", niches: ["writing","marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Email, landing page, ad copy. Free HubSpot cert with exam.", link: "https://academy.hubspot.com/courses/copywriting" },
+  { type: "course", provider: "Copyhackers", title: "Free copywriting guides", niches: ["writing"], time: "medium", timeLabel: "~5 hrs", gain: "Industry-respected copywriting breakdowns. No formal cert but top-tier writing education.", link: "https://copyhackers.com/blog/" },
+  { type: "course", provider: "Udemy", title: "Copywriting (filter to 'Free')", niches: ["writing"], time: "short", timeLabel: "varies", gain: "Udemy has periodic free copywriting intros. Good for fundamentals.", link: "https://www.udemy.com/courses/search/?price=price-free&q=copywriting&sort=relevance" },
+  { type: "course", provider: "Grammarly", title: "Grammarly Business courses", niches: ["writing","ea"], time: "short", timeLabel: "~1 hr", gain: "Professional writing fundamentals — grammar, clarity, tone. Free through Grammarly Business.", link: "https://www.grammarly.com/business/learn" },
+];
+
+const state = { niche: 'all', type: 'all', time: 'all' };
+
+function typeLabel(t) {
+  return t === 'cert' ? 'Free cert' : t === 'course' ? 'Free course' : 'Audit free';
+}
+
+function render() {
+  const grid = document.getElementById('cert-grid');
+  const filtered = items.filter(c => {
+    const nicheOk = state.niche === 'all' || c.niches.includes(state.niche);
+    const typeOk = state.type === 'all' || c.type === state.type;
+    const timeOk = state.time === 'all' || c.time === state.time;
+    return nicheOk && typeOk && timeOk;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No results match these filters. Try loosening them.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(c => `
+    <a href="${c.link}" target="_blank" class="cert-card">
+      <div class="cert-top-row">
+        <span class="cert-type-badge ${c.type}">${typeLabel(c.type)}</span>
+        <div class="cert-time">${c.timeLabel}</div>
+      </div>
+      <div class="cert-provider">${c.provider}</div>
+      <div class="cert-title">${c.title}</div>
+      <div class="cert-niches">
+        ${c.niches.map(n => `<span class="cert-niche-tag">${nicheLabel(n)}</span>`).join('')}
+      </div>
+      <div class="cert-gain">${c.gain}</div>
+      <div class="cert-footer">
+        <div class="cert-cta">Start learning</div>
+        <div class="cert-arrow">↗</div>
+      </div>
+    </a>
+  `).join('');
+}
+
+function nicheLabel(n) {
+  const labels = {
+    ea: 'EA/Admin', smm: 'Social Media', marketing: 'Marketing',
+    design: 'Design', video: 'Video', ecommerce: 'eCommerce',
+    bookkeeping: 'Bookkeeping', cs: 'Customer Support',
+    tech: 'Tech/Systems', pm: 'Project Mgmt', ai: 'AI Tools',
+    writing: 'Writing'
+  };
+  return labels[n] || n;
+}
+
+function filterBy(kind, value, btn) {
+  state[kind] = value;
+  const group = btn.parentElement;
+  group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// Counts
+const total = items.length;
+const certCount = items.filter(i => i.type === 'cert').length;
+const courseCount = items.filter(i => i.type === 'course' || i.type === 'audit').length;
+document.getElementById('total-count').textContent = total;
+document.getElementById('cert-count').textContent = certCount;
+document.getElementById('course-count').textContent = courseCount;
+
+render();
+</script>
+
+</body>
+</html>

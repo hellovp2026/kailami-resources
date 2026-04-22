@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scam Detector — Kailami</title>
+<meta name="description" content="Free scam detector for VAs. Run a potential client through 10 red-flag checks before you accept the work — protect yourself from common scams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.scam-wrap { max-width: 820px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .scam-wrap { padding: 0 24px; } }
+
+/* Intro card */
+.intro-card {
+  background: rgba(255,200,100,0.05); border: 1px solid rgba(255,200,100,0.2);
+  border-radius: 16px; padding: 22px 26px; margin: 32px 0 32px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.intro-icon {
+  width: 36px; height: 36px; border-radius: 50%; background: rgba(255,200,100,0.12);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  color: #ffc864; font-size: 16px; font-weight: 600;
+}
+.intro-text { font-size: 14px; color: #d0d0d0; line-height: 1.65; }
+.intro-text strong { color: #ffc864; font-weight: 500; }
+
+/* Progress */
+.progress-wrap {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 16px 22px; margin-bottom: 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.progress-info { font-size: 13px; color: #a0a0a0; }
+.progress-info strong { color: #c4ff47; font-weight: 600; }
+.progress-bar-bg { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; max-width: 240px; }
+.progress-bar-fill { height: 100%; background: #c4ff47; transition: width 0.4s ease-out; border-radius: 999px; }
+
+/* Questions */
+.question-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 28px 30px; margin-bottom: 14px;
+  transition: all 0.3s;
+}
+.question-card.answered { border-color: rgba(196,255,71,0.2); }
+.q-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  font-size: 12px; font-weight: 600; margin-bottom: 12px;
+}
+.q-title { font-size: 17px; font-weight: 500; color: #fff; line-height: 1.35; margin-bottom: 8px; letter-spacing: -0.3px; }
+.q-context { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 18px; }
+.q-options { display: flex; gap: 10px; }
+.q-btn {
+  flex: 1; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.12);
+  color: #c0c0c0; padding: 12px 16px; border-radius: 10px;
+  font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.q-btn:hover { border-color: rgba(196,255,71,0.4); color: #fff; }
+.q-btn.selected.yes {
+  background: rgba(255,100,100,0.12); border-color: rgba(255,100,100,0.5); color: #ff9999;
+}
+.q-btn.selected.no {
+  background: rgba(196,255,71,0.12); border-color: #c4ff47; color: #c4ff47;
+}
+
+/* Result */
+.result-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px; padding: 40px; margin-top: 32px;
+  display: none; position: relative; overflow: hidden;
+}
+.result-card.visible { display: block; animation: fadeUp 0.5s ease-out; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.result-card.tier-safe { background: linear-gradient(135deg, rgba(196,255,71,0.1), rgba(196,255,71,0.02)); border-color: rgba(196,255,71,0.3); }
+.result-card.tier-caution { background: linear-gradient(135deg, rgba(255,200,100,0.1), rgba(255,200,100,0.02)); border-color: rgba(255,200,100,0.3); }
+.result-card.tier-danger { background: linear-gradient(135deg, rgba(255,100,100,0.12), rgba(255,100,100,0.02)); border-color: rgba(255,100,100,0.3); }
+
+.result-card::before {
+  content: ''; position: absolute; top: -120px; right: -120px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  opacity: 0.08; pointer-events: none;
+}
+.result-card.tier-safe::before { color: #c4ff47; }
+.result-card.tier-caution::before { color: #ffc864; }
+.result-card.tier-danger::before { color: #ff6464; }
+
+.result-content { position: relative; z-index: 2; }
+.result-tier-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 12px;
+}
+.tier-safe .result-tier-label { color: #c4ff47; }
+.tier-caution .result-tier-label { color: #ffc864; }
+.tier-danger .result-tier-label { color: #ff6464; }
+
+.result-score {
+  font-size: clamp(40px, 6vw, 56px); font-weight: 500;
+  letter-spacing: -1.5px; line-height: 1; margin-bottom: 16px; color: #fff;
+}
+.result-score em {
+  font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400;
+}
+.tier-safe .result-score em { color: #c4ff47; }
+.tier-caution .result-score em { color: #ffc864; }
+.tier-danger .result-score em { color: #ff6464; }
+
+.result-summary { font-size: 16px; color: #e0e0e0; line-height: 1.65; margin-bottom: 24px; }
+
+.advice-list {
+  background: rgba(0,0,0,0.3); border-radius: 14px; padding: 22px 26px;
+  margin-top: 18px;
+}
+.advice-title {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 12px;
+}
+.advice-list ul { list-style: none; }
+.advice-list ul li {
+  font-size: 14px; color: #d0d0d0; line-height: 1.65; padding: 6px 0 6px 22px;
+  position: relative;
+}
+.advice-list ul li::before {
+  content: '→'; position: absolute; left: 0; top: 6px;
+  color: #c4ff47; font-weight: 600;
+}
+
+.flagged-section { margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+.flagged-title {
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #ff9999; font-weight: 600; margin-bottom: 12px;
+}
+.flagged-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.flagged-list li {
+  font-size: 13px; color: #c0c0c0; line-height: 1.5;
+  padding: 10px 14px; background: rgba(255,100,100,0.06);
+  border-left: 2px solid rgba(255,100,100,0.4); border-radius: 0 8px 8px 0;
+}
+
+.result-actions {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px;
+}
+.btn-restart {
+  background: transparent; border: 1px solid rgba(255,255,255,0.15);
+  color: #c0c0c0; padding: 12px 22px; border-radius: 999px;
+  font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-restart:hover { border-color: #c4ff47; color: #c4ff47; }
+
+/* Submit button */
+.submit-row {
+  display: flex; justify-content: center; margin: 32px 0;
+}
+.btn-submit {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 16px 36px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; font-family: inherit;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-submit:hover:not(:disabled) { background: #d4ff6b; transform: translateY(-2px); }
+.btn-submit:disabled { background: #2a2a2a; color: #666; cursor: not-allowed; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free safety check · Takes 2 minutes</div>
+<h1 class="page-title">Is this client a <em>scam</em>?</h1>
+<p class="page-lede">Run a potential client through 10 red-flag checks before you accept the work. Most VA scams follow predictable patterns — this catches them before you waste hours or get burned.</p>
+</section>
+</div>
+
+<div class="scam-wrap">
+
+<div class="intro-card">
+<div class="intro-icon">!</div>
+<div class="intro-text">
+<strong>This isn't a guarantee.</strong> A high score doesn't mean it's definitely a scam, and a low score doesn't mean you're 100% safe. Use this as a sanity check before taking on a sketchy-feeling client. <strong>When in doubt, walk away</strong> — there are always more clients.
+</div>
+</div>
+
+<div class="progress-wrap">
+<div class="progress-info"><strong id="answered-count">0</strong> of 10 answered</div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div></div>
+</div>
+
+<div id="questions-container"></div>
+
+<div class="submit-row">
+<button class="btn-submit" id="submit-btn" disabled onclick="showResult()">
+See my risk score →
+</button>
+</div>
+
+<div class="result-card" id="result-card">
+<div class="result-content" id="result-content"></div>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "Is the client asking to communicate or pay OUTSIDE the platform you found them on?",
+    context: "Classic Upwork/OnlineJobs scam. They want you off-platform so the platform can't protect you when they don't pay.",
+    flag: "Off-platform payment or communication"
+  },
+  {
+    q: "Are they offering to pay in crypto, gift cards, wire transfer to a foreign account, or any unusual method?",
+    context: "Real businesses pay through standard methods (Wise, Payoneer, PayPal, direct deposit). Crypto and gift cards are scammer favorites.",
+    flag: "Suspicious payment method"
+  },
+  {
+    q: "Are they asking you to BUY anything upfront — equipment, software, training, or a 'starter kit'?",
+    context: "No legitimate employer makes you pay to work. Ever. This is the #1 scam targeting Filipino VAs specifically.",
+    flag: "Pay-to-work scheme"
+  },
+  {
+    q: "Are they refusing to sign a contract or NDA before work starts?",
+    context: "Real clients want a contract too — it protects both of you. Refusing one means they're planning not to pay or deliver.",
+    flag: "No contract"
+  },
+  {
+    q: "Is the scope vague AND the timeline weirdly urgent?",
+    context: "Real businesses know what they need and have realistic timelines. \"Just do whatever, but I need it tomorrow\" is a setup for scope creep, no pay, or both.",
+    flag: "Vague scope + urgent timeline"
+  },
+  {
+    q: "Are they asking for personal info (ID copy, bank login, SSN, address) BEFORE any work or hiring decision?",
+    context: "Identity theft. Some scammers don't even want VA work — they want your personal info to commit fraud elsewhere.",
+    flag: "Requesting personal info before hiring"
+  },
+  {
+    q: "Does the pay sound too good to be true for the work? (e.g., $50/hr for 'easy data entry')",
+    context: "Real rates match real work. If a basic task pays 5x market rate, the catch is coming — usually a fake check, identity theft, or pay-to-work scheme.",
+    flag: "Pay too good to be true"
+  },
+  {
+    q: "Do they want to communicate ONLY through WhatsApp, Telegram, or other off-record apps?",
+    context: "Refusing to use email or platform messaging means they want zero paper trail. That's never to YOUR benefit.",
+    flag: "Off-record-only communication"
+  },
+  {
+    q: "Are they asking you to do a 'trial task' that's substantial (more than 30 minutes of real work) — without paying?",
+    context: "A short test (10–15 min) is normal. A 3-hour 'trial project' is just free labor. Real clients pay for real work.",
+    flag: "Unpaid substantial trial work"
+  },
+  {
+    q: "Can you NOT find any legitimate trace of them — no LinkedIn, no website, vague or unverifiable company?",
+    context: "Every real business has SOME footprint. If their company is a black box and the founder doesn't exist online, you're talking to a fake identity.",
+    flag: "No verifiable identity"
+  }
+];
+
+const answers = new Array(questions.length).fill(null);
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = questions.map((q, i) => `
+    <div class="question-card" id="q-${i}">
+      <div class="q-number">${i + 1}</div>
+      <div class="q-title">${q.q}</div>
+      <div class="q-context">${q.context}</div>
+      <div class="q-options">
+        <button class="q-btn" data-index="${i}" data-value="yes" onclick="answer(${i}, true, this)">Yes</button>
+        <button class="q-btn" data-index="${i}" data-value="no" onclick="answer(${i}, false, this)">No</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function answer(index, value, btn) {
+  answers[index] = value;
+  // Mark card as answered
+  document.getElementById(`q-${index}`).classList.add('answered');
+  // Update buttons in this card only
+  const card = document.getElementById(`q-${index}`);
+  card.querySelectorAll('.q-btn').forEach(b => {
+    b.classList.remove('selected', 'yes', 'no');
+  });
+  btn.classList.add('selected', value ? 'yes' : 'no');
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== null).length;
+  document.getElementById('answered-count').textContent = answered;
+  document.getElementById('progress-fill').style.width = `${(answered / questions.length) * 100}%`;
+  document.getElementById('submit-btn').disabled = answered < questions.length;
+}
+
+function showResult() {
+  const yesCount = answers.filter(a => a === true).length;
+  const flaggedItems = questions.filter((q, i) => answers[i] === true).map(q => q.flag);
+
+  let tier, tierLabel, headline, summary, advice;
+
+  if (yesCount <= 2) {
+    tier = 'safe';
+    tierLabel = 'Low risk';
+    headline = `<em>${yesCount}</em> red flag${yesCount === 1 ? '' : 's'}. Probably legit.`;
+    summary = "This client looks reasonable. Most legitimate work has 0–2 minor concerns. Still do your due diligence — verify their company, get a contract, use platform payments — but don't lose this gig over paranoia.";
+    advice = [
+      "Always work through the platform you found them on for the first 1–2 jobs",
+      "Get a written agreement covering scope, deadlines, and payment terms",
+      "Send the first invoice early to test their payment behavior",
+      "Trust your gut — if something else feels off that wasn't on this list, ask questions"
+    ];
+  } else if (yesCount <= 5) {
+    tier = 'caution';
+    tierLabel = 'Proceed with caution';
+    headline = `<em>${yesCount}</em> red flags. Be careful.`;
+    summary = "This client has multiple warning signs. Not necessarily a scam, but the risk is real. Do extra verification before you commit any time, and protect yourself if you decide to move forward.";
+    advice = [
+      "Push back on the red flags — \"I only work on-platform\" or \"I need a contract before starting\" — see how they react",
+      "If they get defensive or pushy when you set boundaries, walk away",
+      "Get half payment upfront before starting (real clients accept this)",
+      "Verify their identity independently — search their name + company on LinkedIn",
+      "Tell someone (your community group, a fellow VA) about the gig in case it goes sideways"
+    ];
+  } else {
+    tier = 'danger';
+    tierLabel = 'High risk · Likely scam';
+    headline = `<em>${yesCount}</em> red flags. This is almost certainly a scam.`;
+    summary = "Stop. This pattern matches almost every VA scam targeting Filipino freelancers. Do NOT send personal info, do NOT do any unpaid work, do NOT pay them anything. Walk away — there are real clients out there.";
+    advice = [
+      "Do not respond further. They will pressure you to act fast — that's the trick.",
+      "Report them on the platform (Upwork, OnlineJobs, LinkedIn) so other VAs are warned",
+      "Post about the scam in the Kailami community group — protect other VAs from the same pattern",
+      "If you already shared personal info, change passwords and watch your bank/email closely",
+      "Block them on every channel"
+    ];
+  }
+
+  const resultCard = document.getElementById('result-card');
+  const content = document.getElementById('result-content');
+  resultCard.className = `result-card visible tier-${tier}`;
+
+  content.innerHTML = `
+    <div class="result-tier-label">${tierLabel}</div>
+    <div class="result-score">${headline}</div>
+    <div class="result-summary">${summary}</div>
+
+    <div class="advice-list">
+      <div class="advice-title">What to do next</div>
+      <ul>${advice.map(a => `<li>${a}</li>`).join('')}</ul>
+    </div>
+
+    ${flaggedItems.length ? `
+      <div class="flagged-section">
+        <div class="flagged-title">Red flags you flagged</div>
+        <ul class="flagged-list">${flaggedItems.map(f => `<li>${f}</li>`).join('')}</ul>
+      </div>
+    ` : ''}
+
+    <div class="result-actions">
+      <button class="btn-restart" onclick="restart()">Check another client</button>
+      <a href="index.html" class="btn-restart">Back to homepage</a>
+    </div>
+  `;
+
+  // Scroll to result
+  setTimeout(() => {
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function restart() {
+  answers.fill(null);
+  document.getElementById('result-card').classList.remove('visible');
+  renderQuestions();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Network — Kailami</title>
+<meta name="description" content="Join the VAST Professionals VA network. Get matched with high-paying clients, work with backing from a team that has your back.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.apply-wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .apply-wrap { padding: 0 24px; } }
+
+/* Hiring banner */
+.hiring-banner {
+  background: linear-gradient(135deg, rgba(196,255,71,0.12), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3); border-radius: 24px;
+  padding: 40px 48px; margin: 32px 0 60px;
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px;
+  align-items: center; position: relative; overflow: hidden;
+}
+@media (max-width: 900px) { .hiring-banner { grid-template-columns: 1fr; padding: 32px 28px; gap: 24px; text-align: left; } }
+.hiring-banner::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.18), transparent 70%);
+}
+.hiring-content { position: relative; z-index: 2; }
+.hiring-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(196,255,71,0.2); color: #c4ff47;
+  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hiring-pill-dot { width: 6px; height: 6px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.hiring-title {
+  font-size: clamp(28px, 4vw, 44px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1.05; margin-bottom: 14px;
+}
+.hiring-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.hiring-sub { font-size: 16px; color: #c0c0c0; line-height: 1.6; margin-bottom: 24px; max-width: 480px; }
+
+/* FB CTA card on the right of hiring banner */
+.fb-cta-card {
+  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px; padding: 24px;
+  position: relative; z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.fb-cta-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.fb-cta-icon {
+  width: 44px; height: 44px; border-radius: 12px; background: #1877f2;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.fb-cta-icon svg { width: 22px; height: 22px; color: #fff; }
+.fb-cta-name { font-size: 14px; font-weight: 500; color: #fff; }
+.fb-cta-meta { font-size: 11px; color: #888; }
+.fb-cta-text { font-size: 13px; color: #d0d0d0; line-height: 1.6; margin-bottom: 16px; }
+
+/* Section headers */
+.apply-section { margin-bottom: 80px; }
+.apply-section-head { margin-bottom: 36px; }
+.apply-section-eyebrow {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.apply-section-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.apply-section-title {
+  font-size: clamp(30px, 4.5vw, 48px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1; margin-bottom: 14px;
+}
+.apply-section-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.apply-section-sub { font-size: 15px; color: #a0a0a0; line-height: 1.6; max-width: 580px; }
+
+/* Benefits grid */
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+@media (max-width: 900px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .benefits-grid { grid-template-columns: 1fr; } }
+
+.benefit-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 28px;
+  transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.benefit-card:hover { border-color: rgba(196,255,71,0.3); transform: translateY(-3px); }
+.benefit-num {
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  color: #c4ff47; font-size: 32px; line-height: 1; font-weight: 400;
+}
+.benefit-title { font-size: 18px; font-weight: 500; color: #fff; letter-spacing: -0.4px; line-height: 1.3; }
+.benefit-text { font-size: 14px; color: #a0a0a0; line-height: 1.6; }
+
+/* How it works */
+.how-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+@media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } }
+.how-step {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 28px;
+  position: relative; overflow: hidden;
+}
+.how-step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(196,255,71,0.1); color: #c4ff47;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 600; margin-bottom: 16px;
+}
+.how-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; margin-bottom: 8px; }
+.how-step-text { font-size: 14px; color: #a0a0a0; line-height: 1.6; }
+
+/* Big CTA section */
+.big-cta {
+  background: linear-gradient(135deg, rgba(196,255,71,0.14), rgba(196,255,71,0.02));
+  border: 1px solid rgba(196,255,71,0.3); border-radius: 28px;
+  padding: 60px; text-align: center;
+  position: relative; overflow: hidden; margin-top: 60px;
+}
+@media (max-width: 640px) { .big-cta { padding: 40px 28px; } }
+.big-cta::before {
+  content: ''; position: absolute; top: -120px; left: -120px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.15), transparent 70%);
+}
+.big-cta::after {
+  content: ''; position: absolute; bottom: -80px; right: -80px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.1), transparent 70%);
+}
+.big-cta-content { position: relative; z-index: 2; }
+.big-cta-title {
+  font-size: clamp(28px, 4.5vw, 44px); font-weight: 500;
+  letter-spacing: -1.5px; color: #fff; line-height: 1.05; margin-bottom: 16px;
+}
+.big-cta-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.big-cta-sub {
+  font-size: 16px; color: #c0c0c0; line-height: 1.6;
+  max-width: 520px; margin: 0 auto 28px;
+}
+.big-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #1877f2; color: #fff; padding: 16px 28px;
+  border-radius: 999px; font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+}
+.big-cta-btn:hover { background: #2384ff; transform: translateY(-2px); }
+.big-cta-btn svg { width: 20px; height: 20px; }
+
+.cta-secondary {
+  display: block; margin-top: 16px; font-size: 13px;
+  color: #a0a0a0; text-decoration: none; transition: color 0.2s;
+}
+.cta-secondary:hover { color: #c4ff47; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>We're hiring · High-paying roles</div>
+<h1 class="page-title">Join the <em>VAST</em> network.</h1>
+<p class="page-lede">Stop hunting for clients. Stop competing on rock-bottom rates. Get matched with pre-vetted clients who pay market-competitive USD rates — and have a team behind you when things get tough.</p>
+</section>
+</div>
+
+<div class="apply-wrap">
+
+<!-- HIRING BANNER -->
+<div class="hiring-banner">
+<div class="hiring-content">
+<div class="hiring-pill"><span class="hiring-pill-dot"></span>Now hiring</div>
+<h2 class="hiring-title">High-paying roles, <em>posted weekly</em>.</h2>
+<p class="hiring-sub">All open roles are posted on our Facebook page first. Follow the page so you never miss one — many fill within 24–48 hours.</p>
+<a href="https://www.facebook.com/profile.php?id=61586264845529" target="_blank" class="big-cta-btn">
+<svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+Follow our Facebook page
+</a>
+</div>
+
+<div class="fb-cta-card">
+<div class="fb-cta-header">
+<div class="fb-cta-icon">
+<svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+</div>
+<div>
+<div class="fb-cta-name">VAST Professionals</div>
+<div class="fb-cta-meta">Page · Job postings + opportunities</div>
+</div>
+</div>
+<p class="fb-cta-text">Active openings drop here every week — EA, SMM, design, eCommerce, and more. Turn on notifications so you're first to apply.</p>
+</div>
+</div>
+
+<!-- BENEFITS -->
+<div class="apply-section">
+<div class="apply-section-head">
+<div class="apply-section-eyebrow">Why join us</div>
+<h2 class="apply-section-title">Why work with <em>VAST</em>.</h2>
+<p class="apply-section-sub">Most agencies treat VAs like commodities. We don't. Here's what working through us actually looks like.</p>
+</div>
+
+<div class="benefits-grid">
+<div class="benefit-card">
+<div class="benefit-num">01</div>
+<div class="benefit-title">Pre-vetted clients only</div>
+<div class="benefit-text">No chasing scams, no ghost clients, no payment stress. Every client we send your way has been screened by us first.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">02</div>
+<div class="benefit-title">Market-competitive USD rates</div>
+<div class="benefit-text">Clients pay agency rates and you get a fair cut — without negotiating against 100 desperate freelancers from scratch.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">03</div>
+<div class="benefit-title">Steady, recurring work</div>
+<div class="benefit-text">We keep matching you with new clients as old ones wrap. You stop the hunt. We handle the pipeline.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">04</div>
+<div class="benefit-title">Backed by our training</div>
+<div class="benefit-text">Clients trust you faster because you came up through our system. The Kailami stamp opens doors a generic VA profile can't.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">05</div>
+<div class="benefit-title">A real community</div>
+<div class="benefit-text">Freelancing is lonely. With us, you have peers in every niche to ask, vent to, and grow alongside. You're not alone.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">06</div>
+<div class="benefit-title">Direct support from Kailami + the team</div>
+<div class="benefit-text">When something goes sideways with a client — scope creep, tough conversations, payment delays — you have backup. Not a Slack bot. Real people.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">07</div>
+<div class="benefit-title">Zero client acquisition stress</div>
+<div class="benefit-text">No more cold pitches. No more 50 cover letters a day. Focus 100% on the work you were trained to do.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">08</div>
+<div class="benefit-title">Matched to your actual niche</div>
+<div class="benefit-text">We don't drop you into work you hate. EA matches go to EAs. Design goes to designers. The right fit, not just the next available person.</div>
+</div>
+
+<div class="benefit-card">
+<div class="benefit-num">09</div>
+<div class="benefit-title">Long-term retainers, not one-offs</div>
+<div class="benefit-text">Most placements are 3+ month engagements. Stable income, deep client relationships, real career growth.</div>
+</div>
+</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="apply-section">
+<div class="apply-section-head">
+<div class="apply-section-eyebrow">How it works</div>
+<h2 class="apply-section-title">3 simple <em>steps</em>.</h2>
+<p class="apply-section-sub">Joining the network is straightforward. We post openings, you apply, we match you.</p>
+</div>
+
+<div class="how-grid">
+<div class="how-step">
+<div class="how-step-num">1</div>
+<div class="how-step-title">Follow the Facebook page</div>
+<div class="how-step-text">All open roles drop on our page first. Turn on notifications so you see them when they post — many roles fill in 24–48 hours.</div>
+</div>
+
+<div class="how-step">
+<div class="how-step-num">2</div>
+<div class="how-step-title">Apply to roles that fit you</div>
+<div class="how-step-text">When you see a role that matches your niche and skills, apply through the post. We review every applicant personally.</div>
+</div>
+
+<div class="how-step">
+<div class="how-step-num">3</div>
+<div class="how-step-title">Get matched + start working</div>
+<div class="how-step-text">If you're a fit, we introduce you to the client. You start earning. We stay in your corner the whole time.</div>
+</div>
+</div>
+</div>
+
+<!-- BIG CTA -->
+<div class="big-cta">
+<div class="big-cta-content">
+<div class="apply-section-eyebrow" style="justify-content: center;">Ready to join?</div>
+<h2 class="big-cta-title">Don't miss the <em>next opening</em>.</h2>
+<p class="big-cta-sub">Follow our Facebook page now. Turn on notifications. Be the first to apply when high-paying roles drop — because they fill fast.</p>
+<a href="https://www.facebook.com/profile.php?id=61586264845529" target="_blank" class="big-cta-btn">
+<svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+Follow VAST Professionals on Facebook
+</a>
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" class="cta-secondary">Or join the free community group →</a>
+</div>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All resources free forever</div><div>Made with care for the VA community</div></div>
+</footer>
+
+</body>
+</html>
