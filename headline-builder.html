@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23c4ff47'%3EK%3C/text%3E%3Ccircle cx='24' cy='9' r='2' fill='%23c4ff47'/%3E%3C/svg%3E">
+<title>Profile Headline Builder — Kailami</title>
+<meta name="description" content="Build a killer Upwork/OnlineJobs profile headline in 30 seconds. The Tool | Niche | Problem | Result formula that gets you hired.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.hb-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .hb-wrap { padding: 0 24px; } }
+
+/* Why this works card */
+.why-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 24px 28px; margin: 28px 0 20px;
+}
+.why-card p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin: 0; }
+.why-card strong { color: #c4ff47; font-weight: 500; }
+.why-card em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+
+/* Formula display */
+.formula-card {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.01));
+  border: 1px solid rgba(196,255,71,0.25);
+  border-radius: 18px; padding: 26px 30px; margin-bottom: 24px;
+  text-align: center;
+}
+.formula-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 12px; }
+.formula-display {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: clamp(13px, 2vw, 17px); color: #fff; font-weight: 500;
+  letter-spacing: 0.5px; line-height: 1.5;
+  word-break: break-word;
+}
+.formula-display .pipe { color: #c4ff47; margin: 0 6px; font-weight: 700; }
+.formula-display .slot { color: #c4ff47; font-style: italic; font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 1.1em; }
+
+/* Builder form */
+.builder-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin: 32px 0;
+}
+@media (max-width: 800px) { .builder-grid { grid-template-columns: 1fr; } }
+
+.builder-inputs, .builder-output {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px; padding: 32px;
+}
+.builder-output {
+  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border-color: rgba(196,255,71,0.25);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.builder-output::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,255,71,0.12), transparent 70%);
+}
+.builder-output-content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+
+.builder-section-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.builder-section-label::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+
+/* Input fields */
+.input-group { margin-bottom: 22px; }
+.input-label { font-size: 13px; color: #fff; font-weight: 500; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.input-label .slot-num {
+  background: rgba(196,255,71,0.15); color: #c4ff47;
+  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-size: 12px; width: 20px; height: 20px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-weight: 400;
+}
+.input-hint { font-size: 11px; color: #888; margin-bottom: 8px; line-height: 1.5; }
+.input-hint strong { color: #c4ff47; font-weight: 500; }
+.input-group input, .input-group select {
+  width: 100%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px 14px; font-family: inherit; font-size: 14px;
+  color: #fff; transition: border-color 0.2s;
+}
+.input-group input:focus, .input-group select:focus { outline: none; border-color: #c4ff47; }
+.input-group input::placeholder { color: #555; }
+.input-group select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+
+/* Output */
+.output-headline {
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 24px 22px; min-height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: clamp(13px, 1.8vw, 16px); color: #fff; font-weight: 500;
+  letter-spacing: 0.3px; line-height: 1.55; text-align: center;
+  word-break: break-word;
+  margin-bottom: 14px;
+}
+.output-headline .pipe { color: #c4ff47; margin: 0 6px; font-weight: 700; }
+.output-headline .placeholder-text { color: #666; font-style: italic; font-weight: 400; }
+
+.output-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #888; margin-bottom: 14px;
+  flex-wrap: wrap; gap: 8px;
+}
+.char-count strong { color: #c4ff47; font-weight: 600; }
+.char-count.warning strong { color: #ffc864; }
+.char-count.over strong { color: #ff9999; }
+
+.btn-copy-hl {
+  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
+  padding: 12px 20px; border-radius: 999px; font-size: 13px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  font-family: inherit; width: 100%; justify-content: center;
+}
+.btn-copy-hl:hover:not(:disabled) { background: #d4ff6b; }
+.btn-copy-hl:disabled { background: #2a2a2a; color: #666; cursor: not-allowed; }
+
+/* Platform tabs */
+.platform-tabs {
+  display: flex; gap: 6px; margin: 18px 0 0;
+  padding: 4px; background: #0a0a0a; border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.platform-tab {
+  flex: 1; padding: 8px 10px; border-radius: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.4px;
+  text-transform: uppercase;
+  background: transparent; color: #888; border: none; cursor: pointer;
+  transition: all 0.2s; font-family: inherit;
+}
+.platform-tab:hover { color: #c0c0c0; }
+.platform-tab.active { background: rgba(196,255,71,0.12); color: #c4ff47; }
+.platform-note {
+  font-size: 11px; color: #888; line-height: 1.55; margin-top: 10px;
+  padding: 10px 14px; background: rgba(0,0,0,0.3); border-radius: 8px;
+}
+.platform-note strong { color: #c4ff47; font-weight: 500; }
+
+/* Examples section */
+.examples-section { margin: 40px 0; }
+.examples-label {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.examples-label::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.examples-grid { display: flex; flex-direction: column; gap: 10px; }
+.example-card {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 18px 22px; cursor: pointer;
+  transition: all 0.2s;
+}
+.example-card:hover { border-color: rgba(196,255,71,0.3); }
+.example-niche {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #c4ff47; font-weight: 600; margin-bottom: 8px;
+}
+.example-headline {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13px; color: #e0e0e0; line-height: 1.55;
+  word-break: break-word;
+}
+.example-headline .pipe { color: #c4ff47; margin: 0 5px; font-weight: 700; }
+.example-cta { font-size: 11px; color: #888; margin-top: 10px; }
+
+/* Back CTA */
+.back-cta {
+  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px; padding: 32px; text-align: center; margin: 40px 0;
+}
+.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="tools.html">Tools</a>
+<a href="templates.html">Templates</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+
+<div class="wrap">
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>Free builder · Under 30 seconds</div>
+<h1 class="page-title">Profile <em>headline</em> builder.</h1>
+<p class="page-lede">Your profile headline is the first thing clients see on Upwork and OnlineJobs. Most VAs waste it with "Experienced Virtual Assistant." This tool builds a specific, keyword-rich headline in under 30 seconds — using the exact formula that gets real replies.</p>
+</section>
+</div>
+
+<div class="hb-wrap">
+
+<div class="why-card">
+<p>Generic beats specific every time — and not in a good way. Clients skim profiles fast. If your headline says "<em>Hardworking Virtual Assistant</em>," you look like every other applicant. If it says "<strong>Gmail | Google Calendar | Executive Assistant | Inbox Zero Systems | Saving Founders 10+ Hrs/Week</strong>" — you just told them exactly what tools you know, what you do, what problem you solve, and what result they'll get. In one line.</p>
+</div>
+
+<div class="formula-card">
+<div class="formula-label">The Formula</div>
+<div class="formula-display">
+<span class="slot">Tool</span><span class="pipe">|</span><span class="slot">Tool</span><span class="pipe">|</span><span class="slot">Niche</span><span class="pipe">|</span><span class="slot">Problem You Solve</span><span class="pipe">|</span><span class="slot">Result</span>
+</div>
+</div>
+
+<div class="builder-grid">
+
+<!-- INPUTS -->
+<div class="builder-inputs">
+<div class="builder-section-label">Fill these in</div>
+
+<div class="input-group">
+<label class="input-label"><span class="slot-num">1</span> First tool</label>
+<div class="input-hint">The most important tool you use daily. <strong>Be specific.</strong> "Canva" beats "Design software."</div>
+<input type="text" id="tool1" placeholder="e.g., Gmail, Canva, Shopify, QuickBooks" oninput="build()">
+</div>
+
+<div class="input-group">
+<label class="input-label"><span class="slot-num">2</span> Second tool</label>
+<div class="input-hint">A second tool that pairs with the first. <strong>Clients filter by tool names.</strong></div>
+<input type="text" id="tool2" placeholder="e.g., Google Calendar, Instagram, Klaviyo, Xero" oninput="build()">
+</div>
+
+<div class="input-group">
+<label class="input-label"><span class="slot-num">3</span> Niche / role title</label>
+<div class="input-hint">Your specific role, not "VA." Pick the niche that matches what you do.</div>
+<select id="niche" onchange="build()">
+<option value="">Pick your niche...</option>
+<option>Executive Assistant</option>
+<option>Administrative Virtual Assistant</option>
+<option>Social Media Manager</option>
+<option>Content Writer</option>
+<option>Email Marketing VA</option>
+<option>Graphic Designer</option>
+<option>Video Editor</option>
+<option>eCommerce VA</option>
+<option>Shopify VA</option>
+<option>Amazon VA</option>
+<option>Bookkeeping Assistant</option>
+<option>Customer Support Specialist</option>
+<option>Podcast Production VA</option>
+<option>SaaS Support Specialist</option>
+<option>Real Estate VA</option>
+<option>Lead Generation Specialist</option>
+<option>Data Entry Specialist</option>
+<option>SEO Virtual Assistant</option>
+<option>Project Management VA</option>
+<option>Operations VA</option>
+</select>
+</div>
+
+<div class="input-group">
+<label class="input-label"><span class="slot-num">4</span> Problem you solve</label>
+<div class="input-hint">A short phrase describing WHAT you fix for clients. <strong>Start with a noun or verb-ing.</strong></div>
+<input type="text" id="problem" placeholder="e.g., Inbox Zero Systems, Content Strategy, Scaling eComm Stores" oninput="build()">
+</div>
+
+<div class="input-group">
+<label class="input-label"><span class="slot-num">5</span> Measurable result</label>
+<div class="input-hint">A specific outcome. <strong>Numbers beat adjectives.</strong> "Saving founders 10+ hrs/week" beats "helping founders save time."</div>
+<input type="text" id="result" placeholder="e.g., Saving Founders 10+ Hrs/Week, Growing Brands to 100K Followers" oninput="build()">
+</div>
+</div>
+
+<!-- OUTPUT -->
+<div class="builder-output">
+<div class="builder-output-content">
+<div class="builder-section-label">Your headline</div>
+
+<div class="output-headline" id="output">
+<span class="placeholder-text">Start filling in the fields — your headline builds live here.</span>
+</div>
+
+<div class="output-meta">
+<span class="char-count" id="char-display">0 characters</span>
+<span id="fit-status" style="color:#888;">Waiting for input...</span>
+</div>
+
+<button class="btn-copy-hl" id="copy-btn" disabled onclick="copyHeadline()">
+<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+Copy my headline
+</button>
+
+<!-- Platform fit note -->
+<div class="platform-tabs">
+<button class="platform-tab active" onclick="setPlatform('upwork', this)">Upwork</button>
+<button class="platform-tab" onclick="setPlatform('olj', this)">OnlineJobs.ph</button>
+<button class="platform-tab" onclick="setPlatform('linkedin', this)">LinkedIn</button>
+</div>
+<div class="platform-note" id="platform-note">
+<strong>Upwork:</strong> Headline max is 70 characters. Shorter = punchier. Aim for 60-70.
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- EXAMPLES -->
+<div class="examples-section">
+<div class="examples-label">Real examples — tap to try</div>
+<div class="examples-grid">
+
+<div class="example-card" onclick="loadExample({tool1:'Gmail', tool2:'Google Calendar', niche:'Executive Assistant', problem:'Inbox Zero Systems', result:'Saving Founders 10+ Hrs/Week'})">
+<div class="example-niche">Executive Assistant</div>
+<div class="example-headline">Gmail<span class="pipe">|</span>Google Calendar<span class="pipe">|</span>Executive Assistant<span class="pipe">|</span>Inbox Zero Systems<span class="pipe">|</span>Saving Founders 10+ Hrs/Week</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+<div class="example-card" onclick="loadExample({tool1:'Canva', tool2:'Instagram', niche:'Social Media Manager', problem:'Content Strategy', result:'Helping Coaches Grow to 10K Followers'})">
+<div class="example-niche">Social Media Manager</div>
+<div class="example-headline">Canva<span class="pipe">|</span>Instagram<span class="pipe">|</span>Social Media Manager<span class="pipe">|</span>Content Strategy<span class="pipe">|</span>Helping Coaches Grow to 10K Followers</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+<div class="example-card" onclick="loadExample({tool1:'Shopify', tool2:'Klaviyo', niche:'eCommerce VA', problem:'Abandoned Cart Recovery', result:'Recovering 20%+ of Lost Sales'})">
+<div class="example-niche">eCommerce VA</div>
+<div class="example-headline">Shopify<span class="pipe">|</span>Klaviyo<span class="pipe">|</span>eCommerce VA<span class="pipe">|</span>Abandoned Cart Recovery<span class="pipe">|</span>Recovering 20%+ of Lost Sales</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+<div class="example-card" onclick="loadExample({tool1:'QuickBooks', tool2:'Xero', niche:'Bookkeeping Assistant', problem:'Monthly Reconciliation', result:'Month-End Books Closed in 48 Hrs'})">
+<div class="example-niche">Bookkeeping</div>
+<div class="example-headline">QuickBooks<span class="pipe">|</span>Xero<span class="pipe">|</span>Bookkeeping Assistant<span class="pipe">|</span>Monthly Reconciliation<span class="pipe">|</span>Month-End Books Closed in 48 Hrs</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+<div class="example-card" onclick="loadExample({tool1:'Descript', tool2:'Notion', niche:'Podcast Production VA', problem:'End-to-End Podcast Workflow', result:'From Raw Audio to Published in 48 Hrs'})">
+<div class="example-niche">Podcast Production</div>
+<div class="example-headline">Descript<span class="pipe">|</span>Notion<span class="pipe">|</span>Podcast Production VA<span class="pipe">|</span>End-to-End Podcast Workflow<span class="pipe">|</span>From Raw Audio to Published in 48 Hrs</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+<div class="example-card" onclick="loadExample({tool1:'Intercom', tool2:'Stripe', niche:'SaaS Support Specialist', problem:'Technical B2B Support', result:'Maintaining 4.8+ CSAT at 60 Tickets/Day'})">
+<div class="example-niche">SaaS Support</div>
+<div class="example-headline">Intercom<span class="pipe">|</span>Stripe<span class="pipe">|</span>SaaS Support Specialist<span class="pipe">|</span>Technical B2B Support<span class="pipe">|</span>Maintaining 4.8+ CSAT at 60 Tickets/Day</div>
+<div class="example-cta">Tap to load this into the builder →</div>
+</div>
+
+</div>
+</div>
+
+<div class="back-cta">
+<div class="back-cta-title">Headline locked in?</div>
+<p class="back-cta-sub">Now use it on your Upwork, OnlineJobs.ph, and LinkedIn profiles. Then get back to applying.</p>
+<a href="application-mastery.html" class="btn btn-primary">Open Application Mastery →</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a></div><div>Made with care for the VA community</div></div>
+</footer>
+
+<script>
+const PLATFORMS = {
+  upwork:   { max: 70, note: '<strong>Upwork:</strong> Headline max is 70 characters. Shorter = punchier. Aim for 60-70.' },
+  olj:      { max: 150, note: '<strong>OnlineJobs.ph:</strong> Headline / job title field fits up to ~150 characters. Longer works here.' },
+  linkedin: { max: 220, note: '<strong>LinkedIn:</strong> Headline max is 220 characters. Use the full formula + extras (e.g., add " | Available for hire").' },
+};
+
+let platform = 'upwork';
+
+function build() {
+  const t1 = document.getElementById('tool1').value.trim();
+  const t2 = document.getElementById('tool2').value.trim();
+  const niche = document.getElementById('niche').value.trim();
+  const problem = document.getElementById('problem').value.trim();
+  const result = document.getElementById('result').value.trim();
+
+  const parts = [t1, t2, niche, problem, result].filter(p => p.length > 0);
+  const output = document.getElementById('output');
+  const btn = document.getElementById('copy-btn');
+
+  if (parts.length === 0) {
+    output.innerHTML = '<span class="placeholder-text">Start filling in the fields — your headline builds live here.</span>';
+    btn.disabled = true;
+    document.getElementById('char-display').innerHTML = '0 characters';
+    document.getElementById('fit-status').innerHTML = '<span style="color:#888;">Waiting for input...</span>';
+    return;
+  }
+
+  // Assemble with visible pipes
+  const assembled = parts.map(p => escapeHTML(p)).join('<span class="pipe">|</span>');
+  output.innerHTML = assembled;
+
+  // Plain text for char count + copy
+  const plainText = parts.join(' | ');
+  const charCount = plainText.length;
+  const max = PLATFORMS[platform].max;
+  const remaining = max - charCount;
+
+  const charEl = document.getElementById('char-display');
+  charEl.innerHTML = `<strong>${charCount}</strong> characters`;
+  charEl.className = 'char-count';
+  if (charCount > max) charEl.className = 'char-count over';
+  else if (charCount > max * 0.9) charEl.className = 'char-count warning';
+
+  const fitEl = document.getElementById('fit-status');
+  if (parts.length < 5) {
+    fitEl.innerHTML = `<span style="color:#ffc864;">${5 - parts.length} field${5 - parts.length === 1 ? '' : 's'} left</span>`;
+  } else if (charCount > max) {
+    fitEl.innerHTML = `<span style="color:#ff9999;">${charCount - max} over ${platform} limit</span>`;
+  } else if (charCount > max * 0.9) {
+    fitEl.innerHTML = `<span style="color:#ffc864;">${remaining} chars remaining</span>`;
+  } else {
+    fitEl.innerHTML = `<span style="color:#c4ff47;">Fits ${platform.toUpperCase()} ✓</span>`;
+  }
+
+  btn.disabled = parts.length < 3;
+}
+
+function escapeHTML(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function setPlatform(name, btn) {
+  platform = name;
+  document.querySelectorAll('.platform-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('platform-note').innerHTML = PLATFORMS[name].note;
+  build();
+}
+
+function copyHeadline() {
+  const t1 = document.getElementById('tool1').value.trim();
+  const t2 = document.getElementById('tool2').value.trim();
+  const niche = document.getElementById('niche').value.trim();
+  const problem = document.getElementById('problem').value.trim();
+  const result = document.getElementById('result').value.trim();
+  const parts = [t1, t2, niche, problem, result].filter(p => p.length > 0);
+  const plainText = parts.join(' | ');
+  const btn = document.getElementById('copy-btn');
+  const original = btn.innerHTML;
+
+  navigator.clipboard.writeText(plainText).then(() => {
+    btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copied to clipboard';
+    setTimeout(() => { btn.innerHTML = original; }, 2500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = plainText;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => { btn.innerHTML = original; }, 2500);
+  });
+}
+
+function loadExample(data) {
+  document.getElementById('tool1').value = data.tool1;
+  document.getElementById('tool2').value = data.tool2;
+  document.getElementById('niche').value = data.niche;
+  document.getElementById('problem').value = data.problem;
+  document.getElementById('result').value = data.result;
+  build();
+  document.querySelector('.builder-grid').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+build(); // Initial render
+</script>
+
+</body>
+</html>

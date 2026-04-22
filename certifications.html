@@ -228,7 +228,7 @@
 <div class="back-cta">
 <div class="back-cta-title">Done stacking?</div>
 <p class="back-cta-sub">Head back to the roadmap to add your certs and courses to your resume and profile.</p>
-<a href="beginner-checklist.html" class="btn btn-primary">← Back to the roadmap</a>
+<a href="the-path.html" class="btn btn-primary">← Back to The Path</a>
 </div>
 
 </div>
@@ -236,7 +236,7 @@
 <footer>
 <div class="footer-inner">
 <div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
-<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
 </div>
@@ -248,27 +248,24 @@
 // time: 'short' = <2hrs, 'medium' = 2-10hrs, 'long' = 10+hrs
 const items = [
   // ═══════════ EA / ADMIN ═══════════
-  { type: "cert", provider: "Google", title: "Google Workspace Essentials", niches: ["ea","tech"], time: "short", timeLabel: "~1.5 hrs", gain: "Gmail, Drive, Calendar, Docs, Sheets. Directly applicable to 90% of admin VA work.", link: "https://skillshop.exceedlms.com/student/catalog/list?category_ids=3915-google-workspace" },
   { type: "audit", provider: "Google / Coursera", title: "Google Project Management Certificate", niches: ["ea","pm"], time: "long", timeLabel: "100+ hrs", gain: "Full PM fundamentals — agile, scrum, stakeholder management. Audit is free, cert is paid.", link: "https://www.coursera.org/professional-certificates/google-project-management" },
-  { type: "course", provider: "Microsoft", title: "Microsoft 365 Fundamentals", niches: ["ea","tech"], time: "medium", timeLabel: "~5 hrs", gain: "Word, Excel, Outlook, Teams — if your clients use Microsoft instead of Google.", link: "https://learn.microsoft.com/en-us/training/paths/m365-fundamentals/" },
-  { type: "course", provider: "Alison", title: "Admin Office Skills Diploma", niches: ["ea"], time: "long", timeLabel: "~10 hrs", gain: "Comprehensive admin fundamentals — scheduling, correspondence, office systems. Digital cert available.", link: "https://alison.com/course/diploma-in-administrative-office-management-revised" },
-  { type: "audit", provider: "edX", title: "Effective Business Communication", niches: ["ea","cs","writing"], time: "medium", timeLabel: "~8 hrs", gain: "Professional email, meeting notes, client comms. Audit is free on edX.", link: "https://www.edx.org/learn/communication" },
 
   // ═══════════ SOCIAL MEDIA ═══════════
-  { type: "cert", provider: "Meta", title: "Meta Certified Digital Marketing Associate", niches: ["smm","marketing"], time: "medium", timeLabel: "~6 hrs", gain: "Facebook and Instagram ads fundamentals. Recognized by every business running Meta ads.", link: "https://www.facebook.com/business/learn" },
+  { type: "cert", provider: "Meta", title: "Meta Certified Digital Marketing Associate", niches: ["smm","marketing"], time: "medium", timeLabel: "~6 hrs", gain: "Facebook and Instagram ads fundamentals. Recognized by every business running Meta ads.", link: "https://www.facebook.com/business/learn/courses" },
   { type: "cert", provider: "HubSpot", title: "Social Media Marketing Certification", niches: ["smm","marketing"], time: "medium", timeLabel: "~4.5 hrs", gain: "Full social strategy — content, community, measurement, listening. Exam-based cert.", link: "https://academy.hubspot.com/courses/social-media" },
-  { type: "cert", provider: "Hootsuite", title: "Social Marketing Certification", niches: ["smm"], time: "medium", timeLabel: "~4 hrs", gain: "Industry-recognized SMM cert. Strategy, tactics, platform-specific best practices.", link: "https://education.hootsuite.com/pages/free-social-media-courses" },
-  { type: "course", provider: "Later", title: "Social Media Strategy", niches: ["smm"], time: "short", timeLabel: "~1 hr each", gain: "Short, Instagram-focused courses on content pillars, hashtags, analytics. No cert.", link: "https://later.com/blog/category/social-media-strategy/" },
+  { type: "audit", provider: "Coursera", title: "Free Social Media Marketing Courses", niches: ["smm"], time: "medium", timeLabel: "varies", gain: "Curated free courses from Coursera covering social media strategy, platform-specific best practices, and analytics. Audit is free.", link: "https://www.coursera.org/courses?query=social%20media%20marketing&productDifficultyLevel=Beginner" },
+  { type: "course", provider: "Coursera", title: "Instagram & Content Strategy (free courses)", niches: ["smm"], time: "varies", timeLabel: "varies", gain: "Curated free courses on Instagram growth, content pillars, hashtags, and analytics. Audit is free.", link: "https://www.coursera.org/search?query=instagram%20marketing&price=1" },
   { type: "course", provider: "Udemy", title: "Instagram Marketing basics (filter to 'Free')", niches: ["smm"], time: "short", timeLabel: "varies", gain: "Udemy has periodic free Instagram courses. Filter by 'Free' in search. No certs on free versions.", link: "https://www.udemy.com/courses/search/?price=price-free&q=instagram+marketing&sort=relevance" },
   { type: "course", provider: "Udemy", title: "TikTok Marketing (filter to 'Free')", niches: ["smm"], time: "short", timeLabel: "varies", gain: "Same deal — free TikTok courses rotate in and out on Udemy. Good for bite-sized learning.", link: "https://www.udemy.com/courses/search/?price=price-free&q=tiktok+marketing&sort=relevance" },
 
   // ═══════════ MARKETING ═══════════
-  { type: "cert", provider: "Google", title: "Fundamentals of Digital Marketing", niches: ["marketing"], time: "long", timeLabel: "~40 hrs", gain: "The gold standard free marketing cert. Globally recognized — looks great on any resume.", link: "https://learndigital.withgoogle.com/digitalgarage" },
+  { type: "cert", provider: "Google", title: "Fundamentals of Digital Marketing", niches: ["marketing"], time: "long", timeLabel: "~40 hrs", gain: "The gold standard free marketing cert. Globally recognized — looks great on any resume.", link: "https://www.coursera.org/google-certificates/digital-marketing-certificate" },
   { type: "cert", provider: "HubSpot", title: "Inbound Marketing Certification", niches: ["marketing","smm"], time: "medium", timeLabel: "~5 hrs", gain: "Content marketing, SEO, lead gen, buyer's journey. The HubSpot cert clients recognize.", link: "https://academy.hubspot.com/courses/inbound-marketing" },
-  { type: "cert", provider: "HubSpot", title: "Email Marketing Certification", niches: ["marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Email strategy, segmentation, deliverability, automation. Exam at the end.", link: "https://academy.hubspot.com/courses/email-marketing-certification-course" },
+  { type: "cert", provider: "HubSpot", title: "Email Marketing Certification", niches: ["marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Email strategy, segmentation, deliverability, automation. Exam at the end.", link: "https://academy.hubspot.com/courses/email-marketing-certification-en" },
   { type: "cert", provider: "HubSpot", title: "Content Marketing Certification", niches: ["marketing","writing"], time: "medium", timeLabel: "~6 hrs", gain: "Long-form writing, blogging, content strategy, repurposing. Paired well with SMM.", link: "https://academy.hubspot.com/courses/content-marketing" },
-  { type: "course", provider: "Mailchimp", title: "Email Marketing Foundations", niches: ["marketing"], time: "short", timeLabel: "~2 hrs", gain: "Hands-on email campaign building. Great if clients use Mailchimp specifically.", link: "https://mailchimp.com/resources/email-marketing-foundations/" },
-  { type: "course", provider: "SEMrush", title: "SEO Toolkit Course", niches: ["marketing"], time: "medium", timeLabel: "~4 hrs", gain: "Keyword research, on-page SEO, backlink strategy using SEMrush tools.", link: "https://www.semrush.com/academy/" },
+  { type: "cert", provider: "HubSpot", title: "SEO Training Certification", niches: ["marketing","writing"], time: "medium", timeLabel: "~4 hrs", gain: "SEO fundamentals — keyword research, on-page optimization, link building, technical SEO. Exam-based cert.", link: "https://academy.hubspot.com/courses/seo-training" },
+  { type: "course", provider: "Coursera", title: "Email Marketing (free courses)", niches: ["marketing"], time: "varies", timeLabel: "varies", gain: "Browse free email marketing courses covering strategy, automation, segmentation, and deliverability. Audit-only.", link: "https://www.coursera.org/search?query=email%20marketing&price=1" },
+  { type: "course", provider: "SEMrush", title: "Off-Page SEO & AI Search Essentials", niches: ["marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Modern SEO for 2026 — off-page optimization, backlinks, and how to rank in AI search (ChatGPT, Perplexity, Google AI Overviews).", link: "https://www.semrush.com/academy/courses/off-page-seo-and-ai-search-essentials-with-semrush/" },
   { type: "audit", provider: "Coursera / UVA", title: "Digital Marketing Specialization", niches: ["marketing"], time: "long", timeLabel: "~80 hrs", gain: "7-course specialization from UVA on digital strategy. Audit is free, cert is paid.", link: "https://www.coursera.org/specializations/digital-marketing" },
 
   // ═══════════ DESIGN ═══════════
@@ -280,7 +277,7 @@ const items = [
 
   // ═══════════ VIDEO ═══════════
   { type: "cert", provider: "Blackmagic", title: "DaVinci Resolve Training", niches: ["video"], time: "long", timeLabel: "~20 hrs", gain: "Free pro video editor training — the tool used in Hollywood. PDF certs available.", link: "https://www.blackmagicdesign.com/products/davinciresolve/training" },
-  { type: "course", provider: "CapCut", title: "CapCut tutorials & guides", niches: ["video","smm"], time: "short", timeLabel: "~1 hr", gain: "The tool every SMM uses for reels. Mobile-first editing skills in under an hour.", link: "https://www.capcut.com/tools/tutorials" },
+  { type: "course", provider: "Udemy", title: "CapCut & Reels editing (free courses)", niches: ["video","smm"], time: "varies", timeLabel: "varies", gain: "The tool every SMM uses for Reels. Browse Udemy's free CapCut and short-form video editing courses.", link: "https://www.udemy.com/courses/search/?price=price-free&q=capcut&sort=relevance" },
   { type: "course", provider: "Udemy", title: "Video Editing courses (filter to 'Free')", niches: ["video"], time: "medium", timeLabel: "varies", gain: "Udemy often has free Premiere, DaVinci, and CapCut intro courses. Rotate in and out.", link: "https://www.udemy.com/courses/search/?price=price-free&q=video+editing&sort=relevance" },
   { type: "course", provider: "YouTube", title: "Peter McKinnon's editing tutorials", niches: ["video"], time: "short", timeLabel: "varies", gain: "Free, high-quality tutorials from one of the most watched video editors on YouTube. No cert but top-tier learning.", link: "https://www.youtube.com/@PeterMcKinnon" },
 
@@ -290,16 +287,13 @@ const items = [
   { type: "course", provider: "Udemy", title: "Shopify courses (filter to 'Free')", niches: ["ecommerce"], time: "short", timeLabel: "varies", gain: "Rotating free Shopify basics on Udemy. Store setup, product listing, dropshipping.", link: "https://www.udemy.com/courses/search/?price=price-free&q=shopify&sort=relevance" },
 
   // ═══════════ BOOKKEEPING ═══════════
-  { type: "cert", provider: "Intuit", title: "QuickBooks Online Certification", niches: ["bookkeeping"], time: "medium", timeLabel: "~6 hrs", gain: "Official QuickBooks cert — the #1 bookkeeping tool for small businesses. Gold standard.", link: "https://quickbooks.intuit.com/learn-and-support/en-us/product-training/quickbooks-online-certification/" },
-  { type: "cert", provider: "Xero", title: "Xero Advisor Certification", niches: ["bookkeeping"], time: "medium", timeLabel: "~5 hrs", gain: "Free Xero cert — the other major bookkeeping tool. Great if clients use Xero not QB.", link: "https://www.xero.com/us/programs/partner-program/advisor-certification/" },
+  { type: "course", provider: "Coursera", title: "QuickBooks & Bookkeeping (free courses)", niches: ["bookkeeping"], time: "varies", timeLabel: "varies", gain: "Free QuickBooks and bookkeeping fundamentals. Audit-only. Intuit also offers a paid official cert separately.", link: "https://www.coursera.org/search?query=quickbooks&price=1" },
+  { type: "course", provider: "Udemy", title: "Xero Accounting (free courses)", niches: ["bookkeeping"], time: "varies", timeLabel: "varies", gain: "Browse free Xero courses on Udemy — the other major bookkeeping tool. Great if clients use Xero instead of QB.", link: "https://www.udemy.com/courses/search/?price=price-free&q=xero&sort=relevance" },
   { type: "audit", provider: "Coursera / Intuit", title: "Bookkeeping Basics", niches: ["bookkeeping"], time: "medium", timeLabel: "~10 hrs", gain: "Intuit's Coursera course — accounting equation, debits/credits, financial statements.", link: "https://www.coursera.org/learn/bookkeeping-basics" },
   { type: "course", provider: "Udemy", title: "Bookkeeping basics (filter to 'Free')", niches: ["bookkeeping"], time: "medium", timeLabel: "varies", gain: "Udemy runs rotating free bookkeeping intros. Good for fundamentals before the certs above.", link: "https://www.udemy.com/courses/search/?price=price-free&q=bookkeeping&sort=relevance" },
 
-  // ═══════════ CUSTOMER SUPPORT ═══════════
-  { type: "cert", provider: "HubSpot", title: "Customer Service Certification", niches: ["cs"], time: "medium", timeLabel: "~4 hrs", gain: "Service strategy, ticket management, customer retention. HubSpot methodology.", link: "https://academy.hubspot.com/courses/customer-service" },
-  { type: "course", provider: "Zendesk", title: "Zendesk Foundational Courses", niches: ["cs","tech"], time: "short", timeLabel: "~2 hrs", gain: "Hands-on Zendesk platform training. If clients use Zendesk, this is a must.", link: "https://training.zendesk.com/" },
+  // ═══════════ CUSTOMER SUPPORT ═══════════  { type: "course", provider: "Zendesk", title: "Zendesk Foundational Courses", niches: ["cs","tech"], time: "short", timeLabel: "~2 hrs", gain: "Hands-on Zendesk platform training. If clients use Zendesk, this is a must.", link: "https://training.zendesk.com/" },
   { type: "course", provider: "Intercom", title: "Intercom Academy", niches: ["cs"], time: "short", timeLabel: "~2 hrs", gain: "Free training on Intercom — live chat, automation, help center building.", link: "https://academy.intercom.com/" },
-  { type: "course", provider: "Alison", title: "Customer Service Skills Diploma", niches: ["cs"], time: "long", timeLabel: "~10 hrs", gain: "Comprehensive customer service diploma. Digital cert available for free.", link: "https://alison.com/course/customer-service-training" },
 
   // ═══════════ TECH / SYSTEMS ═══════════
   { type: "cert", provider: "Asana", title: "Asana Academy", niches: ["pm","tech","ea"], time: "short", timeLabel: "~2 hrs", gain: "Free Asana training + cert. If clients use Asana for PM, this is a resume builder.", link: "https://academy.asana.com/" },
@@ -320,9 +314,7 @@ const items = [
   { type: "course", provider: "Anthropic", title: "Claude prompting guides", niches: ["ai"], time: "short", timeLabel: "~1 hr", gain: "Official guides on prompting Claude effectively. No formal cert, but essential reading.", link: "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" },
   { type: "course", provider: "Udemy", title: "ChatGPT for business (filter to 'Free')", niches: ["ai"], time: "short", timeLabel: "varies", gain: "Rotating free ChatGPT intro courses on Udemy. Focus on workplace use cases.", link: "https://www.udemy.com/courses/search/?price=price-free&q=chatgpt&sort=relevance" },
 
-  // ═══════════ WRITING / COPY ═══════════
-  { type: "cert", provider: "HubSpot", title: "Copywriting Certification", niches: ["writing","marketing"], time: "medium", timeLabel: "~3 hrs", gain: "Email, landing page, ad copy. Free HubSpot cert with exam.", link: "https://academy.hubspot.com/courses/copywriting" },
-  { type: "course", provider: "Copyhackers", title: "Free copywriting guides", niches: ["writing"], time: "medium", timeLabel: "~5 hrs", gain: "Industry-respected copywriting breakdowns. No formal cert but top-tier writing education.", link: "https://copyhackers.com/blog/" },
+  // ═══════════ WRITING / COPY ═══════════  { type: "course", provider: "Copyhackers", title: "The Copywriting Formula", niches: ["writing"], time: "short", timeLabel: "~1 hr", gain: "A legendary copywriting formula breakdown from Joanna Wiebe — the foundation of conversion copy. Saved by thousands of copywriters.", link: "https://copyhackers.com/2015/10/copywriting-formula/" },
   { type: "course", provider: "Udemy", title: "Copywriting (filter to 'Free')", niches: ["writing"], time: "short", timeLabel: "varies", gain: "Udemy has periodic free copywriting intros. Good for fundamentals.", link: "https://www.udemy.com/courses/search/?price=price-free&q=copywriting&sort=relevance" },
   { type: "course", provider: "Grammarly", title: "Grammarly Business courses", niches: ["writing","ea"], time: "short", timeLabel: "~1 hr", gain: "Professional writing fundamentals — grammar, clarity, tone. Free through Grammarly Business.", link: "https://www.grammarly.com/business/learn" },
 ];
