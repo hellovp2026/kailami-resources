@@ -1,0 +1,103 @@
+# Checks every course link in courses.json once a week and opens a GitHub issue
+# listing anything broken. Free courses go paid or disappear all the time, and
+# a dead link on the Learn page is the fastest way to lose a reader's trust.
+#
+# This needs no API keys and scrapes nothing: it simply asks each URL whether
+# it still exists.
+
+name: Check course links
+
+on:
+  schedule:
+    - cron: "0 1 * * 1"      # every Monday, 01:00 UTC (09:00 Manila)
+  workflow_dispatch: {}       # also runnable by hand from the Actions tab
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate courses.json
+        run: |
+          node -e "
+            const d = require('./courses.json');
+            if (!Array.isArray(d.courses)) { console.error('courses must be an array'); process.exit(1); }
+            const bad = d.courses.filter(c => !c.title || !c.link || !c.type);
+            if (bad.length) { console.error('entries missing title/link/type:', bad.length); process.exit(1); }
+            console.log('courses.json OK:', d.courses.length, 'courses');
+          "
+
+      - name: Check every link
+        id: check
+        run: |
+          node -e "
+          const https = require('https');
+          const http = require('http');
+          const data = require('./courses.json');
+
+          function head(url) {
+            return new Promise((resolve) => {
+              let done = false;
+              const finish = (v) => { if (!done) { done = true; resolve(v); } };
+              try {
+                const lib = url.startsWith('https') ? https : http;
+                const req = lib.request(url, { method: 'GET', timeout: 20000, headers: {
+                  'User-Agent': 'Mozilla/5.0 (compatible; KailamiLinkCheck/1.0)'
+                }}, (res) => {
+                  finish(res.statusCode);
+                  res.destroy();
+                });
+                req.on('timeout', () => { req.destroy(); finish('timeout'); });
+                req.on('error', (e) => finish('error: ' + e.code));
+                req.end();
+              } catch (e) { finish('error'); }
+            });
+          }
+
+          (async () => {
+            const broken = [];
+            for (const c of data.courses) {
+              const status = await head(c.link);
+              const ok = typeof status === 'number' && status < 400;
+              // 403/429 usually means bot-blocking, not a dead page, so note separately
+              const blocked = status === 403 || status === 429;
+              if (!ok && !blocked) broken.push({ title: c.title, provider: c.provider, link: c.link, status });
+              await new Promise(r => setTimeout(r, 400));
+            }
+            const fs = require('fs');
+            fs.writeFileSync('broken.json', JSON.stringify(broken, null, 2));
+            console.log('checked', data.courses.length, 'links,', broken.length, 'look broken');
+          })();
+          "
+
+      - name: Open an issue if anything is broken
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const broken = JSON.parse(fs.readFileSync('broken.json', 'utf8'));
+            if (!broken.length) {
+              core.info('All course links are healthy. No issue opened.');
+              return;
+            }
+            const lines = broken.map(b => `- [ ] **${b.title}** (${b.provider}) returned \`${b.status}\`\n  ${b.link}`);
+            const body = [
+              `The weekly link check found **${broken.length}** course link(s) that may be dead.`,
+              ``,
+              `Each of these should be opened by hand to confirm, since some providers block automated checks.`,
+              `If a course is gone or is no longer free, remove or replace it in \`courses.json\`.`,
+              ``,
+              ...lines,
+            ].join('\n');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `${broken.length} course link(s) may be broken`,
+              body,
+              labels: ['course-links'],
+            });
