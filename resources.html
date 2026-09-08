@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23c4ff47'%3EK%3C/text%3E%3Ccircle cx='24' cy='9' r='2' fill='%23c4ff47'/%3E%3C/svg%3E">
+<title>Free Resources for VAs | Kailami</title>
+<meta name="description" content="Every free resource for virtual assistants in one place: interactive tools, copy-paste templates, and 25+ email scripts. Filter by what you need.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6.72,400.700;1,6.72,400.700&family=Archivo:ital,wght@0,400.700;1,400.700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('kailami_theme');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
+<link rel="stylesheet" href="styles.css">
+<style>
+.hub-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+@media (max-width: 768px) { .hub-wrap { padding: 0 24px; } }
+
+.tools-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 28px 0 40px;
+}
+@media (max-width: 700px) { .tools-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* Mini Path callout at top of hub page */
+.path-callout-mini {
+  display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  background: linear-gradient(135deg, var(--lime) 0%, var(--accent) 100%);
+  color: var(--on-lime);
+  border-radius: var(--r-md); padding: 24px 32px;
+  margin: 28px 0 16px;
+  text-decoration: none; transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+@media (max-width: 700px) { .path-callout-mini { grid-template-columns: 1fr; padding: 22px 24px; gap: 16px; } }
+.path-callout-mini::before {
+  content: ''; position: absolute; top: -80px; right: -80px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, var(--hairline), transparent 70%);
+  transition: all 0.5s;
+}
+.path-callout-mini:hover { transform: translateY(-2px); box-shadow: 0 16px 32px var(--accent-wash); }
+.path-callout-mini:hover::before { top: -50px; right: -50px; }
+.path-callout-mini:hover .pcm-arrow { transform: translateX(6px); }
+
+.pcm-content { position: relative; z-index: 2; }
+.pcm-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--nav-bg); color: var(--on-lime);
+  font-size: 10px; padding: 4px 11px; border-radius: var(--r-pill);
+  font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.pcm-dot { width: 5px; height: 5px; background: var(--bg); border-radius: 50%; animation: pulse 2s infinite; }
+.pcm-title {
+  font-size: 22px; font-weight: 600; letter-spacing: -0.6px;
+  line-height: 1.15; margin-bottom: 6px; color: var(--on-lime);
+}
+.pcm-title em { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
+.pcm-desc { font-size: 13px; line-height: 1.55; color: var(--on-lime); opacity: 0.85; max-width: 580px; }
+.pcm-cta {
+  background: var(--bg); color: var(--accent);
+  padding: 12px 20px; border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  position: relative; z-index: 2;
+}
+.pcm-arrow { transition: transform 0.3s; display: inline-block; }
+.stat-mini {
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 18px 22px;
+}
+.stat-mini-num { font-size: 24px; font-weight: 500; color: var(--accent); letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.stat-mini-label { font-size: 12px; color: var(--muted); letter-spacing: 0.5px; }
+
+.tools-grid-hub {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-bottom: 60px;
+}
+@media (max-width: 1000px) { .tools-grid-hub { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .tools-grid-hub { grid-template-columns: 1fr; } }
+
+.tool-hub-card {
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 32px; transition: all 0.3s;
+  display: flex; flex-direction: column; gap: 16px; min-height: 260px;
+  position: relative; overflow: hidden;
+  text-decoration: none;
+}
+.tool-hub-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.tool-hub-card::after {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-wash), transparent 70%);
+  transition: all 0.5s;
+}
+.tool-hub-card:hover::after { top: -30%; right: -30%; }
+.tool-hub-badge {
+  display: inline-block; background: var(--accent-wash); color: var(--accent);
+  font-size: 11px; padding: 4px 11px; border-radius: var(--r-pill); font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; width: fit-content;
+}
+.tool-hub-title { font-size: 22px; font-weight: 500; color: var(--ink); letter-spacing: -0.5px; line-height: 1.2; }
+.tool-hub-desc { font-size: 14px; color: var(--muted); line-height: 1.6; flex: 1; }
+.tool-hub-link { font-size: 13px; color: var(--accent); font-weight: 500; display: flex; align-items: center; gap: 6px; }
+.tool-hub-arrow { transition: transform 0.2s; }
+.tool-hub-card:hover .tool-hub-arrow { transform: translateX(6px); }
+
+/* Highlight card for the bigger items */
+.tool-hub-card.highlight {
+  background: linear-gradient(135deg, var(--accent-wash), var(--accent-wash));
+  border-color: var(--accent-wash);
+}
+
+.section-divider { margin: 60px 0 28px; }
+.section-divider-eyebrow { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.section-divider-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--lime); }
+.section-divider-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 500; letter-spacing: -1px; color: var(--ink); line-height: 1.1; margin-bottom: 10px; }
+.section-divider-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.section-divider-sub { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 700px; }
+</style>
+
+<style>
+.rh-filters {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin: 0 0 28px; padding: 14px; border: 1px solid var(--hairline);
+  border-radius: var(--r-md); background: var(--surface);
+}
+.rh-filter-label {
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; margin-right: 4px; padding-left: 6px;
+}
+.rh-filter {
+  background: transparent; border: 1px solid var(--hairline);
+  color: var(--body); font-size: 13.5px; font-weight: 500;
+  padding: 8px 16px; border-radius: var(--r-pill); cursor: pointer;
+  font-family: inherit; transition: all 0.2s;
+}
+.rh-filter:hover { border-color: var(--accent); color: var(--accent); }
+.rh-filter.active { background: var(--lime); color: var(--on-lime); border-color: var(--lime); }
+.rh-count { font-size: 13px; color: var(--muted); margin: 0 0 20px; padding-left: 6px; }
+.rh-sublinks { display: block; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+.rh-sublinks a { color: var(--accent); text-decoration: underline; }
+.rh-empty {
+  padding: 40px; text-align: center; color: var(--muted);
+  border: 1px dashed var(--hairline); border-radius: var(--r-md);
+}
+</style>
+<style>
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--lime); color: var(--on-lime); padding: 12px 18px;
+  border-radius: 0 0 var(--r-sm) 0; font-weight: 600; }
+.skip-link:focus { left: 0; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style></head>
+<body>
+<a href="#rh-main" class="skip-link">Skip to content</a>
+<nav>
+<div class="nav-inner">
+<a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
+<div class="nav-links">
+<a href="the-path.html">Start here</a>
+<a href="resources.html">Resources</a>
+<a href="certifications.html">Learn</a>
+<a href="apply.html">Join us</a>
+</div>
+<button class="nav-burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+</button>
+<a href="index.html" class="back-link">← Back</a>
+</div>
+</nav>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+<a href="the-path.html">Start here<span class="mm-hint">The guided 30-task programme</span></a>
+<a href="resources.html">Resources<span class="mm-hint">Tools, templates and email scripts</span></a>
+<a href="certifications.html">Learn<span class="mm-hint">Free certifications and courses</span></a>
+<a href="apply.html">Join us<span class="mm-hint">Apply to the VAST network</span></a>
+<a href="https://www.vastprofessionals.com" target="_blank" rel="noopener">Hire a VA<span class="mm-hint">For businesses</span></a>
+<a href="resources.html" class="mobile-menu-cta">Get free tools</a>
+</nav>
+
+<div class="wrap">
+<a href="index.html" class="back-link" data-smart-back>&larr; Back</a>
+
+<section class="page-hero">
+<div class="tag-chip"><span class="tag-dot"></span>16 free resources · No signup · No paywall</div>
+<h1 class="page-title">Free <em>resources</em> for VAs.</h1>
+<p class="page-lede">Everything in one place. Interactive tools you use in the browser, templates you copy and customise, and email scripts for every awkward client conversation. All free, forever.</p>
+</section>
+
+<main id="rh-main">
+<div class="rh-filters" role="group" aria-label="Filter resources">
+<span class="rh-filter-label">Show</span>
+<button type="button" class="rh-filter active" data-filter="all" aria-pressed="true">Everything (16)</button>
+<button type="button" class="rh-filter" data-filter="tool" aria-pressed="false">Tools (9)</button>
+<button type="button" class="rh-filter" data-filter="template" aria-pressed="false">Templates (5)</button>
+<button type="button" class="rh-filter" data-filter="email" aria-pressed="false">Emails (2)</button>
+</div>
+<p class="rh-count" id="rh-count" aria-live="polite">Showing all 16 resources</p>
+
+<div class="tools-grid-hub" id="rh-grid">
+<a href="niche-quiz.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Quiz · 5 min</div>
+<div class="tool-hub-title">Niche finder quiz</div>
+<div class="tool-hub-desc">Answer 15 questions about your skills, interests and goals. Get your top 3 matched VA niches, plus a shortcut if you would rather start as a general VA.</div>
+
+<div class="tool-hub-cta">Take the quiz →</div>
+</a>
+<a href="headline-builder.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Builder · 30 sec</div>
+<div class="tool-hub-title">Profile headline builder</div>
+<div class="tool-hub-desc">Build an Upwork, OnlineJobs or LinkedIn headline in under 30 seconds using the Tool | Niche | Problem | Result formula, with live character counts per platform.</div>
+
+<div class="tool-hub-cta">Build my headline →</div>
+</a>
+<a href="rate-calculator.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Calculator</div>
+<div class="tool-hub-title">VA rate calculator</div>
+<div class="tool-hub-desc">Plug in your income goal, hours and expenses. Get the hourly rate you actually need to charge in USD and PHP, with a reality check against what beginners really earn.</div>
+
+<div class="tool-hub-cta">Calculate my rate →</div>
+</a>
+<a href="application-mastery.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Big guide ★</div>
+<div class="tool-hub-title">Application mastery</div>
+<div class="tool-hub-desc">The full platform-by-platform guide to landing clients on OnlineJobs.ph, Upwork and LinkedIn. Do's, don'ts, adaptable templates and gate-kept tactics.</div>
+
+<div class="tool-hub-cta">Open the guide →</div>
+</a>
+<a href="scam-detector.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Safety check</div>
+<div class="tool-hub-title">Scam detector</div>
+<div class="tool-hub-desc">Run a potential client through 10 red-flag checks. Get a risk score and specific advice before you accept the work or hand over any documents.</div>
+
+<div class="tool-hub-cta">Check my client →</div>
+</a>
+<a href="about-generator.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">AI generator</div>
+<div class="tool-hub-title">About section generator</div>
+<div class="tool-hub-desc">Fill a short form and get a polished About section for your Upwork or OnlineJobs profile, built from a prompt you can copy and run yourself.</div>
+
+<div class="tool-hub-cta">Build my About →</div>
+</a>
+<a href="discovery-call.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Script · Printable</div>
+<div class="tool-hub-title">Discovery call script</div>
+<div class="tool-hub-desc">The 30-minute call framework that closes clients. Phase-by-phase structure, exact phrases, objection handling and a printable cheat sheet for beside your laptop.</div>
+
+<div class="tool-hub-cta">Open the script →</div>
+</a>
+<a href="onboarding-checklist.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">22 steps · Saves</div>
+<div class="tool-hub-title">Onboarding checklist</div>
+<div class="tool-hub-desc">22 steps to onboard any new client like a pro, including the full contractor agreement. Saves your progress automatically and resets for each new client.</div>
+
+<div class="tool-hub-cta">Open the checklist →</div>
+</a>
+<a href="mock-ea.html" class="tool-hub-card" data-cat="tool">
+<div class="tool-hub-badge">Practice work</div>
+<div class="tool-hub-title">Mock tasks for your portfolio</div>
+<div class="tool-hub-desc">Real practice briefs you complete for an imaginary client, so you have something to show before you have any clients. Admin, social media, graphic design and video editing.</div>
+<span class="rh-sublinks"><a href="mock-ea.html">Admin</a> · <a href="mock-smm.html">Social media</a> · <a href="mock-graphic-design.html">Design</a> · <a href="mock-video-editing.html">Video</a></span>
+<div class="tool-hub-cta">Open mock tasks →</div>
+</a>
+<a href="https://canva.link/gcr430aguasr93j" target="_blank" rel="noopener" class="tool-hub-card" data-cat="template">
+<div class="tool-hub-badge">Canva</div>
+<div class="tool-hub-title">VA portfolio template</div>
+<div class="tool-hub-desc">A clean, modern portfolio designed for VAs. Sections for niche, services, sample work, testimonials and contact. Edit in Canva, export as PDF, send to clients.</div>
+
+<div class="tool-hub-cta">Open template in Canva ↗</div>
+</a>
+<a href="https://docs.google.com/document/d/1nds94r0McJVtUwVTzwtr99_xqNrSVQh94J86GaFFou4/copy" target="_blank" rel="noopener" class="tool-hub-card" data-cat="template">
+<div class="tool-hub-badge">Google Docs</div>
+<div class="tool-hub-title">VA resume template</div>
+<div class="tool-hub-desc">A one-page resume built for VA applications, with headings applicant tracking systems can read. Written for Filipino VAs applying to US, UK and Australian clients.</div>
+
+<div class="tool-hub-cta">Make a copy in Google Docs ↗</div>
+</a>
+<a href="https://docs.google.com/document/d/1AajSmHQ5DS06on-4g0FAZwp5lnUulNTDkU5P1Wuu6uk/copy" target="_blank" rel="noopener" class="tool-hub-card" data-cat="template">
+<div class="tool-hub-badge">Google Docs</div>
+<div class="tool-hub-title">Independent contractor agreement</div>
+<div class="tool-hub-desc">A 17-section contract for PH-based VAs working with US, UK and AU clients. Covers scope, payment, IP, AI usage, data protection and disputes. Not legal advice.</div>
+
+<div class="tool-hub-cta">Make a copy in Google Docs ↗</div>
+</a>
+<a href="https://docs.google.com/spreadsheets/d/19r_0XatVPCNynqkYz21HFSIXb7NZfdbIqoE59cM7Xjs/copy" target="_blank" rel="noopener" class="tool-hub-card" data-cat="template">
+<div class="tool-hub-badge">Google Sheets</div>
+<div class="tool-hub-title">Daily task tracker</div>
+<div class="tool-hub-desc">Track tasks per client, time spent, completion status and notes. Use it for billing, time tracking or weekly client reports.</div>
+
+<div class="tool-hub-cta">Make a copy in Sheets ↗</div>
+</a>
+<a href="https://docs.google.com/spreadsheets/d/1mGX5GnEvHRYBwpKgOHhcqcDz_thuXi702Kpon5fCFlg/copy" target="_blank" rel="noopener" class="tool-hub-card" data-cat="template">
+<div class="tool-hub-badge">Google Sheets</div>
+<div class="tool-hub-title">Client + application tracker</div>
+<div class="tool-hub-desc">Track every application, lead and active client in one place. Status, follow-up dates, rate, notes. This is what tells you which pitch is actually working.</div>
+
+<div class="tool-hub-cta">Make a copy in Sheets ↗</div>
+</a>
+<a href="email-templates.html" class="tool-hub-card" data-cat="email">
+<div class="tool-hub-badge">25+ scripts ★</div>
+<div class="tool-hub-title">Email templates pack</div>
+<div class="tool-hub-desc">25+ copy-paste emails for every situation: pitches, onboarding, scope creep, rate increases, payment reminders, firing clients, declining work. Searchable, one-click copy.</div>
+
+<div class="tool-hub-cta">Browse all 25+ →</div>
+</a>
+<a href="https://chatgpt.com/g/g-696657703bbc81919a41044a3bc04420-cover-letters-by-vast" target="_blank" rel="noopener" class="tool-hub-card" data-cat="email">
+<div class="tool-hub-badge">ChatGPT</div>
+<div class="tool-hub-title">Cover letter GPT</div>
+<div class="tool-hub-desc">A custom GPT that writes personalised cover letters for VA applications. Paste the job post, get a letter that actually references it instead of generic spam.</div>
+
+<div class="tool-hub-cta">Open the GPT ↗</div>
+</a>
+</div>
+<div class="rh-empty" id="rh-empty" style="display:none;">Nothing in that category yet.</div>
+</main>
+</div>
+
+<footer>
+<div class="footer-inner">
+<div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="resources.html">All tools</a></li><li><a href="resources.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
+</div>
+<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:var(--muted);">Terms of Use</a> · <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
+</footer>
+<script>
+(function () {
+  var grid = document.getElementById('rh-grid');
+  var cards = [].slice.call(grid.querySelectorAll('.tool-hub-card'));
+  var buttons = [].slice.call(document.querySelectorAll('.rh-filter'));
+  var countEl = document.getElementById('rh-count');
+  var emptyEl = document.getElementById('rh-empty');
+  var LABEL = { all: 'resources', tool: 'tools', template: 'templates', email: 'email resources' };
+
+  function apply(cat) {
+    var shown = 0;
+    cards.forEach(function (c) {
+      var match = (cat === 'all') || c.getAttribute('data-cat') === cat;
+      c.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    buttons.forEach(function (b) {
+      var on = b.getAttribute('data-filter') === cat;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    countEl.textContent = 'Showing ' + shown + ' ' + (LABEL[cat] || 'resources');
+    emptyEl.style.display = shown ? 'none' : 'block';
+    try { history.replaceState(null, '', cat === 'all' ? location.pathname : '#' + cat); } catch (e) {}
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
+  });
+
+  // deep links like resources.html#templates land pre-filtered
+  function applyFromHash() {
+    var hash = (location.hash || '').replace('#', '').toLowerCase();
+    var map = { tools: 'tool', tool: 'tool', templates: 'template', template: 'template',
+                emails: 'email', email: 'email', all: 'all' };
+    if (map[hash]) apply(map[hash]);
+  }
+  applyFromHash();
+  window.addEventListener('hashchange', applyFromHash);
+})();
+</script>
+
+
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
+<div class="social-dock" id="social-dock" role="complementary" aria-label="Follow Kailami on social media">
+<p class="social-dock-label">Follow <span>Kailami</span></p>
+<div class="social-dock-links">
+<a href="https://instagram.com/kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on Instagram" title="Instagram">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.23 1 .5 1.4.94.44.44.71.84.94 1.4.17.4.36 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.23.6-.5 1-.94 1.4-.44.44-.84.71-1.4.94-.4.17-1 .36-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.23-1-.5-1.4-.94-.44-.44-.71-.84-.94-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.23-.6.5-1 .94-1.4.44-.44.84-.71 1.4-.94.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.9c-3.1 0-3.5 0-4.7.07-1 .05-1.5.21-1.8.33-.35.14-.6.3-.86.56-.26.26-.42.51-.56.86-.12.3-.28.8-.33 1.8-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1 .21 1.5.33 1.8.14.35.3.6.56.86.26.26.51.42.86.56.3.12.8.28 1.8.33 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.5-.21 1.8-.33.35-.14.6-.3.86-.56.26-.26.42-.51.56-.86.12-.3.28-.8.33-1.8.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.21-1.5-.33-1.8a2.3 2.3 0 00-.56-.86 2.3 2.3 0 00-.86-.56c-.3-.12-.8-.28-1.8-.33-1.2-.06-1.6-.07-4.7-.07zm0 3.2a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4zm0 1.9a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm6-2.1a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+</a>
+<a href="https://tiktok.com/@kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on TikTok" title="TikTok">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.5 3h-2.9v11.6a2.6 2.6 0 11-1.86-2.5V9.14a5.5 5.5 0 103.9 5.28V8.66a6.9 6.9 0 003.86 1.2V6.96a4.15 4.15 0 01-1.9-1.14z"/></svg>
+</a>
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" rel="noopener" aria-label="Join the Kailami VA community on Facebook" title="Facebook community">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.39H7.08v-3.46h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.46h-2.8v8.39C19.61 23.02 24 18.06 24 12.07z"/></svg>
+</a>
+<a href="https://linkedin.com/in/kyladon" target="_blank" rel="noopener" aria-label="Kyla Don on LinkedIn" title="LinkedIn">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+</a>
+</div>
+<button class="social-dock-close" id="social-dock-close" type="button" aria-label="Hide the follow bar" title="Hide">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="width:13px;height:13px;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+</button>
+</div>
+<script>
+(function () {
+  var dock = document.getElementById('social-dock');
+  if (!dock) return;
+  var KEY = 'kailami_social_dock_hidden';
+  try { if (sessionStorage.getItem(KEY) === '1') { dock.remove(); return; } } catch (e) {}
+
+  var closeBtn = document.getElementById('social-dock-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      dock.classList.remove('visible');
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      setTimeout(function () { dock.remove(); }, 450);
+    });
+  }
+
+  // Appears once the reader is genuinely into the page, not straight away.
+  function check() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    var pct = window.scrollY / max;
+    dock.classList.toggle('visible', pct > 0.35);
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+  check();
+})();
+</script>
+<script>
+(function () {
+  var burger = document.getElementById('nav-burger');
+  var menu = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) { var f = menu.querySelector('a'); if (f) f.focus(); }
+  }
+  burger.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('menu-open'));
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setOpen(false); burger.focus(); }
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 860 && document.body.classList.contains('menu-open')) setOpen(false);
+  });
+})();
+</script>
+<script>
+(function () {
+  // "Back" used to always go to the homepage, even if you arrived from a hub.
+  // Now it returns to the previous page when that page was on this site.
+  var links = document.querySelectorAll('.back-link');
+  if (!links.length) return;
+  var ref = document.referrer;
+  var sameSite = false;
+  try { sameSite = !!ref && new URL(ref).host === location.host && new URL(ref).pathname !== location.pathname; } catch (e) {}
+  links.forEach(function (a) {
+    if (sameSite) {
+      a.addEventListener('click', function (e) { e.preventDefault(); history.back(); });
+      try {
+        var name = new URL(ref).pathname.split('/').pop().replace('.html','').replace(/-/g,' ');
+        if (name && name !== 'index') {
+          a.textContent = '\u2190 Back to ' + name.charAt(0).toUpperCase() + name.slice(1);
+        }
+      } catch (e) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>

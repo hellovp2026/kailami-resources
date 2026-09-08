@@ -13,7 +13,7 @@
       ],
       "time": "long",
       "timeLabel": "100+ hrs",
-      "gain": "Full PM fundamentals — agile, scrum, stakeholder management. Audit is free, cert is paid.",
+      "gain": "Full PM fundamentals: agile, scrum, stakeholder management. Audit is free, cert is paid.",
       "link": "https://www.coursera.org/professional-certificates/google-project-management",
       "added": "2026-04-22"
     },
@@ -41,7 +41,7 @@
       ],
       "time": "medium",
       "timeLabel": "~4.5 hrs",
-      "gain": "Full social strategy — content, community, measurement, listening. Exam-based cert.",
+      "gain": "Full social strategy: content, community, measurement, listening. Exam-based cert.",
       "link": "https://academy.hubspot.com/courses/social-media",
       "added": "2026-04-22"
     },
@@ -93,7 +93,7 @@
       ],
       "time": "short",
       "timeLabel": "varies",
-      "gain": "Same deal — free TikTok courses rotate in and out on Udemy. Good for bite-sized learning.",
+      "gain": "Same deal, free TikTok courses rotate in and out on Udemy. Good for bite-sized learning.",
       "link": "https://www.udemy.com/courses/search/?price=price-free&q=tiktok+marketing&sort=relevance",
       "added": "2026-04-22"
     },
@@ -106,7 +106,7 @@
       ],
       "time": "long",
       "timeLabel": "~40 hrs",
-      "gain": "The gold standard free marketing cert. Globally recognized — looks great on any resume.",
+      "gain": "The gold standard free marketing cert. Globally recognized, looks great on any resume.",
       "link": "https://www.coursera.org/google-certificates/digital-marketing-certificate",
       "added": "2026-04-22"
     },
@@ -161,7 +161,7 @@
       ],
       "time": "medium",
       "timeLabel": "~4 hrs",
-      "gain": "SEO fundamentals — keyword research, on-page optimization, link building, technical SEO. Exam-based cert.",
+      "gain": "SEO fundamentals: keyword research, on-page optimization, link building, technical SEO. Exam-based cert.",
       "link": "https://academy.hubspot.com/courses/seo-training",
       "added": "2026-04-22"
     },
@@ -187,7 +187,7 @@
       ],
       "time": "medium",
       "timeLabel": "~3 hrs",
-      "gain": "Modern SEO for 2026 — off-page optimization, backlinks, and how to rank in AI search (ChatGPT, Perplexity, Google AI Overviews).",
+      "gain": "Modern SEO for 2026, off-page optimization, backlinks, and how to rank in AI search (ChatGPT, Perplexity, Google AI Overviews).",
       "link": "https://www.semrush.com/academy/courses/off-page-seo-and-ai-search-essentials-with-semrush/",
       "added": "2026-04-22"
     },
@@ -207,7 +207,7 @@
     {
       "type": "cert",
       "provider": "Canva",
-      "title": "Design School — Canva Certified",
+      "title": "Design School. Canva Certified",
       "niches": [
         "design",
         "smm"
@@ -228,7 +228,7 @@
       ],
       "time": "short",
       "timeLabel": "~2 hrs",
-      "gain": "Free Adobe design tool — alternative to Canva. Tutorials and guides.",
+      "gain": "Free Adobe design tool, alternative to Canva. Tutorials and guides.",
       "link": "https://www.adobe.com/express/learn/tutorials",
       "added": "2026-04-22"
     },
@@ -281,7 +281,7 @@
       ],
       "time": "long",
       "timeLabel": "~20 hrs",
-      "gain": "Free pro video editor training — the tool used in Hollywood. PDF certs available.",
+      "gain": "Free pro video editor training, the tool used in Hollywood. PDF certs available.",
       "link": "https://www.blackmagicdesign.com/products/davinciresolve/training",
       "added": "2026-04-22"
     },
@@ -328,7 +328,7 @@
     {
       "type": "cert",
       "provider": "Shopify",
-      "title": "Shopify Academy — All Courses",
+      "title": "Shopify Academy. All Courses",
       "niches": [
         "ecommerce"
       ],
@@ -387,7 +387,7 @@
       ],
       "time": "varies",
       "timeLabel": "varies",
-      "gain": "Browse free Xero courses on Udemy — the other major bookkeeping tool. Great if clients use Xero instead of QB.",
+      "gain": "Browse free Xero courses on Udemy, the other major bookkeeping tool. Great if clients use Xero instead of QB.",
       "link": "https://www.udemy.com/courses/search/?price=price-free&q=xero&sort=relevance",
       "added": "2026-04-22"
     },
@@ -400,7 +400,7 @@
       ],
       "time": "medium",
       "timeLabel": "~10 hrs",
-      "gain": "Intuit's Coursera course — accounting equation, debits/credits, financial statements.",
+      "gain": "Intuit's Coursera course: accounting equation, debits/credits, financial statements.",
       "link": "https://www.coursera.org/learn/bookkeeping-basics",
       "added": "2026-04-22"
     },
@@ -426,7 +426,7 @@
       ],
       "time": "short",
       "timeLabel": "~2 hrs",
-      "gain": "Free training on Intercom — live chat, automation, help center building.",
+      "gain": "Free training on Intercom, live chat, automation, help center building.",
       "link": "https://academy.intercom.com/",
       "added": "2026-04-22"
     },
@@ -477,7 +477,7 @@
     {
       "type": "course",
       "provider": "Zapier",
-      "title": "Zapier Learn — Automation Basics",
+      "title": "Zapier Learn. Automation Basics",
       "niches": [
         "tech",
         "pm"
@@ -532,7 +532,7 @@
     {
       "type": "course",
       "provider": "Atlassian",
-      "title": "Atlassian University — Jira / Confluence",
+      "title": "Atlassian University. Jira / Confluence",
       "niches": [
         "pm",
         "tech"
@@ -633,7 +633,7 @@
       ],
       "time": "short",
       "timeLabel": "~1 hr",
-      "gain": "Professional writing fundamentals — grammar, clarity, tone. Free through Grammarly Business.",
+      "gain": "Professional writing fundamentals: grammar, clarity, tone. Free through Grammarly Business.",
       "link": "https://www.grammarly.com/business/learn",
       "added": "2026-04-22"
     }

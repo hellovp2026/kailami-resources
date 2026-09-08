@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23c4ff47'%3EK%3C/text%3E%3Ccircle cx='24' cy='9' r='2' fill='%23c4ff47'/%3E%3C/svg%3E">
-<title>Kailami — Free Resources for VAs</title>
+<title>Kailami. Free Resources for VAs</title>
 <meta name="description" content="Curated sheets, trackers, and templates for virtual assistants. Built from real client work. Free.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6.72,400.700;1,6.72,400.700&family=Archivo:ital,wght@0,400.700;1,400.700&display=swap" rel="stylesheet">
 <script>
 (function () {
   try {
@@ -29,13 +29,15 @@
 }
 @media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 40px; } }
 
-h1.hero-title {
+h1,
+.hero-title {
   font-size: clamp(48px, 7vw, 92px);
   line-height: 0.95; font-weight: 500; letter-spacing: -3px;
   margin-bottom: 28px; color: var(--ink);
 }
-h1.hero-title em {
-  font-family: 'Instrument Serif', serif;
+h1 em,
+.hero-title em {
+  font-family: 'Newsreader', serif;
   font-style: italic; color: var(--accent); font-weight: 400;
 }
 .lede { font-size: 18px; line-height: 1.6; color: var(--muted); margin-bottom: 36px; max-width: 560px; }
@@ -89,7 +91,7 @@ h1.hero-title em {
 .stat:last-child { border-right: none; }
 @media (max-width: 768px) {
   .stat:nth-child(2) { border-right: none; }
-  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--hairline); }
+  .stat:nth-child(1).stat:nth-child(2) { border-bottom: 1px solid var(--hairline); }
 }
 .stat-num {
   font-size: clamp(36px, 5vw, 52px); font-weight: 500; color: var(--accent);
@@ -101,7 +103,7 @@ h1.hero-title em {
 .hero-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 @media (max-width: 900px) { .hero-cards-grid { grid-template-columns: 1fr; } }
 
-/* The Path callout banner — for beginners */
+/* The Path callout banner, for beginners */
 .path-callout {
   display: grid; grid-template-columns: 1.4fr auto; gap: 32px; align-items: center;
   background: linear-gradient(135deg, var(--lime) 0%, var(--accent) 100%);
@@ -134,7 +136,7 @@ h1.hero-title em {
   font-size: clamp(26px, 4vw, 38px); font-weight: 600;
   letter-spacing: -1.2px; line-height: 1.05; margin-bottom: 12px; color: var(--on-lime);
 }
-.path-callout-title em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+.path-callout-title em { font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
 .path-callout-desc {
   font-size: 14px; line-height: 1.6; color: var(--on-lime);
   max-width: 560px; opacity: 0.85;
@@ -160,7 +162,7 @@ h1.hero-title em {
 .hero-card:hover { border-color: var(--accent); transform: translateY(-4px); }
 .hero-card:hover .hero-card-arrow { transform: translateX(8px); }
 
-.hero-card-tools::before, .hero-card-templates::before {
+.hero-card-tools::before.hero-card-templates::before {
   content: ''; position: absolute; top: -120px; right: -120px;
   width: 320px; height: 320px; border-radius: 50%;
   background: radial-gradient(circle, var(--accent-wash), transparent 70%);
@@ -181,7 +183,7 @@ h1.hero-title em {
   font-size: clamp(32px, 4.5vw, 48px); font-weight: 500;
   letter-spacing: -1.5px; color: var(--ink); line-height: 1; margin-bottom: 16px;
 }
-.hero-card-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.hero-card-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .hero-card-desc {
   font-size: 14px; color: var(--body); line-height: 1.6; margin-bottom: 14px;
 }
@@ -248,7 +250,7 @@ h1.hero-title em {
 .tutorial-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
 @media (max-width: 900px) { .tutorial-row { grid-template-columns: 1fr; gap: 32px; } }
 .tutorial-text h3 { font-size: clamp(32px, 4vw, 44px); font-weight: 500; letter-spacing: -1.2px; color: var(--ink); margin-bottom: 20px; line-height: 1.05; }
-.tutorial-text h3 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.tutorial-text h3 em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .tutorial-text p { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; }
 .video-card {
   background: var(--surface); border-radius: var(--r-md); aspect-ratio: 16/10;
@@ -289,8 +291,8 @@ h1.hero-title em {
 .bento-card:hover .bento-arrow { transform: translate(4px, -4px); color: var(--accent); }
 .bento-card.span-3 { grid-column: span 3; }
 .bento-card.span-2 { grid-column: span 2; }
-@media (max-width: 900px) { .bento-card.span-3, .bento-card.span-2 { grid-column: span 2; } }
-@media (max-width: 540px) { .bento-card.span-3, .bento-card.span-2 { grid-column: span 1; } }
+@media (max-width: 900px) { .bento-card.span-3.bento-card.span-2 { grid-column: span 2; } }
+@media (max-width: 540px) { .bento-card.span-3.bento-card.span-2 { grid-column: span 1; } }
 
 .bento-icon {
   width: 48px; height: 48px; border-radius: var(--r-sm);
@@ -340,7 +342,7 @@ h1.hero-title em {
   font-size: clamp(32px, 5vw, 48px); font-weight: 500;
   letter-spacing: -1.8px; color: var(--ink); line-height: 1.05; margin-bottom: 16px;
 }
-.certs-banner-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.certs-banner-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .certs-banner-sub { font-size: 15px; color: var(--body); line-height: 1.65; margin-bottom: 24px; max-width: 500px; }
 .certs-banner-cta { font-size: 14px; color: var(--accent); font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
 .certs-banner-arrow { transition: transform 0.2s; display: inline-block; }
@@ -394,7 +396,7 @@ h1.hero-title em {
   font-size: clamp(22px, 3vw, 30px); font-weight: 500;
   color: var(--ink); letter-spacing: -0.8px; line-height: 1.2;
 }
-.hiring-strip-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.hiring-strip-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .hiring-strip-sub { font-size: 14px; color: var(--muted); line-height: 1.6; max-width: 600px; }
 .hiring-strip-right { display: flex; align-items: center; }
 .hiring-strip-cta { font-size: 14px; color: var(--accent); font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s; }
@@ -435,7 +437,7 @@ h1.hero-title em {
   font-size: clamp(32px, 4.5vw, 52px); font-weight: 500;
   letter-spacing: -1.8px; color: var(--ink); line-height: 1; margin-bottom: 20px;
 }
-.webinars-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.webinars-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .webinars-desc { font-size: 16px; color: var(--body); line-height: 1.6; margin-bottom: 28px; max-width: 480px; }
 .webinars-features { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
 .webinars-feature { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--body); }
@@ -519,7 +521,7 @@ h1.hero-title em {
   color: var(--accent);
 }
 .about-photo-initials {
-  font-size: 72px; font-weight: 500; font-family: 'Instrument Serif', serif;
+  font-size: 72px; font-weight: 500; font-family: 'Newsreader', serif;
   font-style: italic; color: var(--accent); line-height: 1;
 }
 .about-photo-fallback-text {
@@ -531,7 +533,7 @@ h1.hero-title em {
 .about-text p { font-size: 17px; color: var(--body); line-height: 1.65; margin: 0; }
 .about-text p:first-child { font-size: 19px; color: var(--ink); font-weight: 400; line-height: 1.55; }
 .about-text strong { color: var(--accent); font-weight: 500; }
-.about-text em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.about-text em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 
 .about-stats-row {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -554,7 +556,7 @@ h1.hero-title em {
 .client-testimonials { margin-bottom: 56px; }
 .client-test-head { margin-bottom: 28px; }
 .client-test-title { font-size: clamp(26px, 4vw, 40px); font-weight: 500; letter-spacing: -1.2px; color: var(--ink); line-height: 1; }
-.client-test-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.client-test-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .client-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 @media (max-width: 900px) { .client-test-grid { grid-template-columns: 1fr; } }
 .client-test-card {
@@ -589,7 +591,7 @@ h1.hero-title em {
   font-size: clamp(28px, 4.5vw, 44px); font-weight: 500;
   letter-spacing: -1.5px; color: var(--ink); line-height: 1; margin-bottom: 16px;
 }
-.contact-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.contact-title em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .contact-sub {
   font-size: 16px; color: var(--body); line-height: 1.6;
   max-width: 480px; margin: 0 auto 28px;
@@ -613,38 +615,54 @@ h1.hero-title em {
 .social-handle { font-size: 12px; color: var(--muted); }
 .social-arrow { color: var(--faint); font-size: 18px; transition: all 0.3s; }
 </style>
-</head>
+<style>
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--lime); color: var(--on-lime); padding: 12px 18px;
+  border-radius: 0 0 var(--r-sm) 0; font-weight: 600; }
+.skip-link:focus { left: 0; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style></head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
 <div class="nav-inner">
 <a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
 <div class="nav-links">
 <a href="the-path.html">Start here</a>
-<a href="tools.html">Tools</a>
-<a href="templates.html">Templates</a>
+<a href="resources.html">Resources</a>
 <a href="certifications.html">Learn</a>
 <a href="apply.html">Join us</a>
 <a href="https://www.vastprofessionals.com" target="_blank" rel="noopener">Hire a VA</a>
 </div>
+<button class="nav-burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
 </button>
-<a href="tools.html" class="nav-cta">Get free tools →</a>
+<a href="resources.html" class="nav-cta">Get free tools →</a>
 </div>
 </nav>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+<a href="the-path.html">Start here<span class="mm-hint">The guided 30-task programme</span></a>
+<a href="resources.html">Resources<span class="mm-hint">Tools, templates and email scripts</span></a>
+<a href="certifications.html">Learn<span class="mm-hint">Free certifications and courses</span></a>
+<a href="apply.html">Join us<span class="mm-hint">Apply to the VAST network</span></a>
+<a href="https://www.vastprofessionals.com" target="_blank" rel="noopener">Hire a VA<span class="mm-hint">For businesses</span></a>
+<a href="resources.html" class="mobile-menu-cta">Get free tools</a>
+</nav>
 
-<div class="wrap">
+
+<div id="main-content" tabindex="-1"></div><div class="wrap">
 
 <section class="hero">
 <div>
 <div class="tag-chip"><span class="tag-dot"></span>Free for VAs</div>
 <h1 class="hero-title">Tools that make VAs <em>actually</em> efficient.</h1>
-<p class="lede">Curated sheets, trackers, templates, and interactive tools built from real client work — used by 20,000+ VAs building their careers.</p>
+<p class="lede">Curated sheets, trackers, templates, and interactive tools built from real client work, used by 20,000+ VAs building their careers.</p>
 <div class="cta-row">
-<a href="tools.html" class="btn btn-primary">Browse free tools →</a>
-<a href="templates.html" class="btn btn-ghost">Browse templates →</a>
+<a href="resources.html" class="btn btn-primary">Browse free tools →</a>
+<a href="resources.html" class="btn btn-ghost">Browse templates →</a>
 </div>
 </div>
 
@@ -694,14 +712,14 @@ h1.hero-title em {
 <div class="eyebrow">Free for VAs</div>
 <h2 class="section-title">Everything you need, <em>nothing</em> you don't.</h2>
 </div>
-<p class="section-sub">Two collections covering everything a VA needs — interactive tools you USE, and templates you COPY. All free. No sign-up, no paywall, ever.</p>
+<p class="section-sub">Two collections covering everything a VA needs: interactive tools you use, and templates you copy. All free. No sign-up, no paywall, ever.</p>
 </div>
 
 <a href="the-path.html" class="path-callout fade-in">
 <div class="path-callout-left">
 <div class="path-callout-pill"><span class="path-callout-dot"></span>Don't know where to start?</div>
 <div class="path-callout-title">I built this <em>for you</em>.</div>
-<div class="path-callout-desc">Overwhelmed by all this? Skip the chaos. The Path is a guided, day-by-day program — pick your pace, commit, and I walk you through everything in order. Niche → certs → portfolio → applications → first client. 30 tasks. Real work. No shortcuts.</div>
+<div class="path-callout-desc">Overwhelmed by all this? Skip the chaos. The Path is a guided, day-by-day program. Pick your pace, commit, and I walk you through everything in order. Niche → certs → portfolio → applications → first client. 30 tasks. Real work. No shortcuts.</div>
 </div>
 <div class="path-callout-right">
 <div class="path-callout-cta">Start the Path <span class="path-callout-arrow">→</span></div>
@@ -710,7 +728,7 @@ h1.hero-title em {
 
 <div class="hero-cards-grid fade-in">
 
-<a href="tools.html" class="hero-card hero-card-tools">
+<a href="resources.html" class="hero-card hero-card-tools">
 <div class="hero-card-content">
 <div class="hero-card-eyebrow">
 <span class="hero-card-dot"></span>
@@ -728,7 +746,7 @@ h1.hero-title em {
 </div>
 </a>
 
-<a href="templates.html" class="hero-card hero-card-templates">
+<a href="resources.html" class="hero-card hero-card-templates">
 <div class="hero-card-content">
 <div class="hero-card-eyebrow">
 <span class="hero-card-dot"></span>
@@ -757,7 +775,7 @@ h1.hero-title em {
 Free certifications + courses
 </div>
 <h2 class="certs-banner-title">Stack <em>legit</em> certs. Free.</h2>
-<p class="certs-banner-sub">Real free certifications from Google, HubSpot, Meta, Canva, QuickBooks, and more — plus free courses from Coursera, Udemy, and beyond. Organized by niche and time. 50+ resources. All 100% free.</p>
+<p class="certs-banner-sub">Real free certifications from Google, HubSpot, Meta, Canva, QuickBooks, and more, plus free courses from Coursera, Udemy, and beyond. Organized by niche and time. 50+ resources. All 100% free.</p>
 <div class="certs-banner-cta">Browse the full list <span class="certs-banner-arrow">→</span></div>
 </div>
 <div class="certs-banner-visual">
@@ -774,7 +792,7 @@ Free certifications + courses
 <div class="hiring-strip-left">
 <div class="hiring-strip-pill"><span class="hiring-strip-pill-dot"></span>We're hiring</div>
 <div class="hiring-strip-title">Want to <em>work with us</em>?</div>
-<div class="hiring-strip-sub">Join the VAST Professionals network — get matched with pre-vetted clients, market-competitive USD rates, and a team that has your back.</div>
+<div class="hiring-strip-sub">Join the VAST Professionals network and get matched with pre-vetted clients, market-competitive USD rates, and a team that has your back.</div>
 </div>
 <div class="hiring-strip-right">
 <div class="hiring-strip-cta">Learn more <span class="hiring-strip-arrow">→</span></div>
@@ -878,10 +896,10 @@ Free certifications + courses
 </div>
 
 <div class="about-text">
-<p>I run a team of 50+ virtual assistants and I've worked with hundreds of clients who were all at the same breaking point — trying to do everything themselves.</p>
+<p>I run a team of 50+ virtual assistants and I've worked with hundreds of clients who were all at the same breaking point, trying to do everything themselves.</p>
 <p>I know what it feels like to wear every hat in your business. That's exactly why I built this.</p>
 <p>Over the years I've <strong>trained 300+ VAs in my live sessions</strong>, matched them with founders who needed real help, and shared my templates with <strong>20,000+ VAs around the world</strong>. The resources on this site are the same ones my team and I actually use.</p>
-<p>Whether you're a VA here to learn, or a business looking for someone to help you breathe again — <em>you're in the right place</em>.</p>
+<p>Whether you're a VA here to learn, or a business looking for someone to help you breathe again, <em>you're in the right place</em>.</p>
 </div>
 </div>
 
@@ -909,7 +927,7 @@ Free certifications + courses
 <div class="client-test-grid">
 <div class="client-test-card">
 <div class="stars"><span aria-hidden="true">★★★★★</span><span class="sr-only">Rated 5 out of 5</span></div>
-<p class="quote">"I found my EA through Kailami's training program. She hit the ground running — I didn't have to teach her the basics. Honestly a game-changer for how I run my business."</p>
+<p class="quote">"I found my EA through Kailami's training program. She hit the ground running. I didn't have to teach her the basics. Honestly a game-changer for how I run my business."</p>
 <div class="author">
 <div class="avatar biz">MS</div>
 <div><div class="author-name">Marcus S.</div><div class="author-role">E-commerce Founder</div></div>
@@ -940,7 +958,7 @@ Free certifications + courses
 <div class="contact-content">
 <div class="eyebrow" style="margin-bottom: 10px;">Looking for a VA?</div>
 <h3 class="contact-title">Tell me what you <em>need</em>.</h3>
-<p class="contact-sub">Send me a quick email about your business and what you're looking for. My team and I will match you with a VA who actually fits — usually within 48 hours.</p>
+<p class="contact-sub">Send me a quick email about your business and what you're looking for. My team and I will match you with a VA who actually fits, usually within 48 hours.</p>
 <a href="mailto:hello@vastprofessionals.com?subject=Looking%20for%20a%20VA" class="btn btn-primary btn-lg">Email hello@vastprofessionals.com →</a>
 </div>
 </div>
@@ -988,7 +1006,7 @@ Free certifications + courses
 </div>
 
 <div class="footer-col">
-<div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul>
+<div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="resources.html">All tools</a></li><li><a href="resources.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul>
 </div>
 
 <div class="footer-col">
@@ -1052,7 +1070,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   position: relative;
   transform: translateY(20px) scale(0.97);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.3, 1.1);
-  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-family: 'Archivo', -apple-system, sans-serif;
 }
 @media (max-width: 600px) {
   .gate-card { padding: 32px 24px; border-radius: var(--r-md); }
@@ -1088,7 +1106,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 12px;
 }
 .gate-title em {
-  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-family: 'Newsreader', serif; font-style: italic;
   color: var(--accent); font-weight: 400;
 }
 .gate-subtitle {
@@ -1137,7 +1155,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 <div class="gate-content">
 <div class="gate-pill"><span class="gate-pill-dot"></span>Hey, quick one</div>
 <h2 class="gate-title">Mind telling me <em>who you are</em>?</h2>
-<p class="gate-subtitle">Everything on this site is free, always. But I'd love to know who's actually using it — and if you're ever interested in joining my agency, this is how I'll find you. <strong>Totally optional.</strong></p>
+<p class="gate-subtitle">Everything on this site is free, always. But I'd love to know who's actually using it, and if you're ever interested in joining my agency, this is how I'll find you. <strong>Totally optional.</strong></p>
 
 <div class="gate-iframe-wrap">
 <iframe src="https://tally.so/embed/aQr72B?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" title="Kailami community form" loading="lazy"></iframe>
@@ -1233,6 +1251,78 @@ I'll never share your email. By submitting, you agree to our <a href="privacy.ht
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
+<div class="social-dock" id="social-dock" role="complementary" aria-label="Follow Kailami on social media">
+<p class="social-dock-label">Follow <span>Kailami</span></p>
+<div class="social-dock-links">
+<a href="https://instagram.com/kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on Instagram" title="Instagram">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.23 1 .5 1.4.94.44.44.71.84.94 1.4.17.4.36 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.23.6-.5 1-.94 1.4-.44.44-.84.71-1.4.94-.4.17-1 .36-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.23-1-.5-1.4-.94-.44-.44-.71-.84-.94-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.23-.6.5-1 .94-1.4.44-.44.84-.71 1.4-.94.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.9c-3.1 0-3.5 0-4.7.07-1 .05-1.5.21-1.8.33-.35.14-.6.3-.86.56-.26.26-.42.51-.56.86-.12.3-.28.8-.33 1.8-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1 .21 1.5.33 1.8.14.35.3.6.56.86.26.26.51.42.86.56.3.12.8.28 1.8.33 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.5-.21 1.8-.33.35-.14.6-.3.86-.56.26-.26.42-.51.56-.86.12-.3.28-.8.33-1.8.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.21-1.5-.33-1.8a2.3 2.3 0 00-.56-.86 2.3 2.3 0 00-.86-.56c-.3-.12-.8-.28-1.8-.33-1.2-.06-1.6-.07-4.7-.07zm0 3.2a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4zm0 1.9a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm6-2.1a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+</a>
+<a href="https://tiktok.com/@kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on TikTok" title="TikTok">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.5 3h-2.9v11.6a2.6 2.6 0 11-1.86-2.5V9.14a5.5 5.5 0 103.9 5.28V8.66a6.9 6.9 0 003.86 1.2V6.96a4.15 4.15 0 01-1.9-1.14z"/></svg>
+</a>
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" rel="noopener" aria-label="Join the Kailami VA community on Facebook" title="Facebook community">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.39H7.08v-3.46h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.46h-2.8v8.39C19.61 23.02 24 18.06 24 12.07z"/></svg>
+</a>
+<a href="https://linkedin.com/in/kyladon" target="_blank" rel="noopener" aria-label="Kyla Don on LinkedIn" title="LinkedIn">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+</a>
+</div>
+<button class="social-dock-close" id="social-dock-close" type="button" aria-label="Hide the follow bar" title="Hide">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="width:13px;height:13px;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+</button>
+</div>
+<script>
+(function () {
+  var dock = document.getElementById('social-dock');
+  if (!dock) return;
+  var KEY = 'kailami_social_dock_hidden';
+  try { if (sessionStorage.getItem(KEY) === '1') { dock.remove(); return; } } catch (e) {}
+
+  var closeBtn = document.getElementById('social-dock-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      dock.classList.remove('visible');
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      setTimeout(function () { dock.remove(); }, 450);
+    });
+  }
+
+  // Appears once the reader is genuinely into the page, not straight away.
+  function check() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    var pct = window.scrollY / max;
+    dock.classList.toggle('visible', pct > 0.35);
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+  check();
+})();
+</script>
+<script>
+(function () {
+  var burger = document.getElementById('nav-burger');
+  var menu = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) { var f = menu.querySelector('a'); if (f) f.focus(); }
+  }
+  burger.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('menu-open'));
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setOpen(false); burger.focus(); }
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 860 && document.body.classList.contains('menu-open')) setOpen(false);
   });
 })();
 </script>

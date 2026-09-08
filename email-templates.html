@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ctext x='16' y='23' font-family='system-ui,-apple-system,sans-serif' font-size='20' font-weight='700' text-anchor='middle' fill='%23c4ff47'%3EK%3C/text%3E%3Ccircle cx='24' cy='9' r='2' fill='%23c4ff47'/%3E%3C/svg%3E">
-<title>Email Templates Pack — Kailami</title>
+<title>Email Templates Pack | Kailami</title>
 <meta name="description" content="25 battle-tested email and message templates for VAs. Pitches, difficult conversations, invoices, firing clients. Copy, customize, send.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6.72,400.700;1,6.72,400.700&family=Archivo:ital,wght@0,400.700;1,400.700&display=swap" rel="stylesheet">
 <script>
 (function () {
   try {
@@ -63,7 +63,7 @@
   padding: 28px 0 12px; margin-top: 16px; flex-wrap: wrap;
 }
 .cat-num {
-  font-family: 'Instrument Serif', serif; font-style: italic;
+  font-family: 'Newsreader', serif; font-style: italic;
   color: var(--accent); font-size: 36px; line-height: 1; font-weight: 400;
 }
 .cat-title {
@@ -158,7 +158,7 @@
 }
 .intro-card p { font-size: 14px; color: var(--body); line-height: 1.7; margin: 0; }
 .intro-card strong { color: var(--accent); font-weight: 500; }
-.intro-card em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.intro-card em { font-family: 'Newsreader', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 
 /* Growing library card */
 .growing-card {
@@ -192,19 +192,47 @@
 .back-cta-title { font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.4px; }
 .back-cta-sub { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
 </style>
-</head>
+<style>
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 999;
+  background: var(--lime); color: var(--on-lime); padding: 12px 18px;
+  border-radius: 0 0 var(--r-sm) 0; font-weight: 600; }
+.skip-link:focus { left: 0; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style><style>
+.next-step-band {
+  margin: 8px 0 64px; padding: 28px 32px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-left: 4px solid var(--lime); border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.next-step-band .nsb-eyebrow {
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--accent); font-weight: 600; margin-bottom: 6px;
+}
+.next-step-band .nsb-title { font-size: 19px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; }
+.next-step-band .nsb-sub { font-size: 14px; color: var(--muted); margin-top: 4px; max-width: 46em; }
+.next-step-band .nsb-btn {
+  background: var(--lime); color: var(--on-lime); font-weight: 600;
+  padding: 13px 22px; border-radius: var(--r-pill); font-size: 14.5px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.next-step-band .nsb-btn:hover { filter: brightness(1.06); }
+@media (max-width: 700px) { .next-step-band { flex-direction: column; align-items: flex-start; } }
+</style></head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
 <div class="nav-inner">
 <a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
 <div class="nav-links">
 <a href="the-path.html">Start here</a>
-<a href="tools.html">Tools</a>
-<a href="templates.html">Templates</a>
+<a href="resources.html">Resources</a>
 <a href="certifications.html">Learn</a>
 <a href="apply.html">Join us</a>
 </div>
+<button class="nav-burger" id="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
@@ -212,19 +240,28 @@
 <a href="index.html" class="back-link">← Back</a>
 </div>
 </nav>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+<a href="the-path.html">Start here<span class="mm-hint">The guided 30-task programme</span></a>
+<a href="resources.html">Resources<span class="mm-hint">Tools, templates and email scripts</span></a>
+<a href="certifications.html">Learn<span class="mm-hint">Free certifications and courses</span></a>
+<a href="apply.html">Join us<span class="mm-hint">Apply to the VAST network</span></a>
+<a href="https://www.vastprofessionals.com" target="_blank" rel="noopener">Hire a VA<span class="mm-hint">For businesses</span></a>
+<a href="resources.html" class="mobile-menu-cta">Get free tools</a>
+</nav>
 
-<div class="wrap">
+
+<div id="main-content" tabindex="-1"></div><div class="wrap">
 <section class="page-hero">
 <div class="tag-chip"><span class="tag-dot"></span>25+ templates · New ones added regularly</div>
 <h1 class="page-title">Email + message <em>templates</em>.</h1>
-<p class="page-lede">The emails and messages VAs need most — pitches, follow-ups, payment reminders, firing clients, declining work. Battle-tested. New templates added regularly based on what the community asks for.</p>
+<p class="page-lede">The emails and messages VAs need most, pitches, follow-ups, payment reminders, firing clients, declining work. Battle-tested. New templates added regularly based on what the community asks for.</p>
 </section>
 </div>
 
 <div class="tpl-wrap">
 
 <div class="intro-card">
-<p>Most VAs waste hours writing the same emails over and over. These templates cover <strong>every situation you'll hit in your first year</strong> — from pitching your first client to firing your worst one. Every template has a <em>bracketed field</em> like <code>[CLIENT NAME]</code> so you know what to swap. Don't use them word-for-word — tweak one or two phrases so it sounds like you.</p>
+<p>Most VAs waste hours writing the same emails over and over. These templates cover <strong>every situation you'll hit in your first year</strong>, from pitching your first client to firing your worst one. Every template has a <em>bracketed field</em> like <code>[CLIENT NAME]</code> so you know what to swap. Don't use them word-for-word, tweak one or two phrases so it sounds like you.</p>
 </div>
 
 <div class="growing-card">
@@ -245,7 +282,7 @@
 <div class="controls-bar">
 <div class="search-wrap">
 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-<input type="text" class="search-input" id="search" placeholder="Search templates — e.g., 'late payment' or 'scope creep'..." oninput="filterTemplates()">
+<input type="text" class="search-input" id="search" placeholder="Search templates, e.g., 'late payment' or 'scope creep'..." oninput="filterTemplates()">
 </div>
 <div class="filter-row" id="category-filters"></div>
 </div>
@@ -254,16 +291,24 @@
 
 <div class="back-cta">
 <div class="back-cta-title">Found what you need?</div>
-<p class="back-cta-sub">Bookmark this page — you'll be back for the difficult ones.</p>
+<p class="back-cta-sub">Bookmark this page, you'll be back for the difficult ones.</p>
 <a href="index.html" class="btn btn-primary">← Back to homepage</a>
 </div>
 
 </div>
 
+<div class="next-step-band">
+<div>
+<div class="nsb-eyebrow">What next</div>
+<div class="nsb-title">Got your scripts?</div>
+<div class="nsb-sub">If you want clients matched to you instead of hunting for them, apply to the network.</div>
+</div>
+<a href="https://www.vastprofessionals.com/careers" target="_blank" rel="noopener" class="nsb-btn">Apply to VAST &rarr;</a>
+</div>
 <footer>
 <div class="footer-inner">
 <div class="footer-brand-block"><div class="footer-logo"><span class="logo-dot"></span>kailami.</div><p class="footer-tagline">Free resources for virtual assistants. Built from real client work, shared with the community.</p></div>
-<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="tools.html">All tools</a></li><li><a href="templates.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
+<div class="footer-col"><div class="footer-col-title">Resources</div><ul><li><a href="the-path.html">The Path (start here)</a></li><li><a href="resources.html">All tools</a></li><li><a href="resources.html">All templates</a></li><li><a href="headline-builder.html">Headline builder</a></li><li><a href="certifications.html">Certs + courses</a></li><li><a href="apply.html">Join the network</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
 </div>
@@ -273,7 +318,7 @@
 <script>
 const categories = [
   { id: 'pitch', num: '01', title: 'Cold pitches + first contact', sub: 'Landing in their inbox for the first time.' },
-  { id: 'onboard', num: '02', title: 'Discovery + onboarding', sub: 'The first 72 hours with a new client — where trust is built or lost.' },
+  { id: 'onboard', num: '02', title: 'Discovery + onboarding', sub: 'The first 72 hours with a new client, where trust is built or lost.' },
   { id: 'daily', num: '03', title: 'Day-to-day communication', sub: 'The quiet emails that keep clients happy.' },
   { id: 'hard', num: '04', title: 'Difficult conversations', sub: 'The ones that scare beginners. Use these and you\'ll be a pro.' },
   { id: 'money', num: '05', title: 'Money + invoices', sub: 'Getting paid, on time, without awkwardness.' },
@@ -282,24 +327,24 @@ const categories = [
 ];
 
 const templates = [
-  // ═══ 01 — PITCHES ═══
+  // ═══ 01. PITCHES ═══
   {
     cat: 'pitch', tone: 'warm',
-    title: 'Cold pitch — Upwork',
+    title: 'Cold pitch. Upwork',
     context: 'First message to a client from an Upwork job post.',
     toneNote: 'Open with their problem, not yourself. Clients skim the first 2 lines and decide whether to read on.',
     subject: '',
     body: `Hi [CLIENT NAME],
 
-You mentioned in your post that [specific problem they described — quote a phrase from the job post]. That's exactly the kind of work I focus on.
+You mentioned in your post that [specific problem they described, quote a phrase from the job post]. That's exactly the kind of work I focus on.
 
-I'm a [niche] VA helping [target client type] with [specific outcome you deliver]. Most recently I [mini win — one sentence, with a number if possible].
+I'm a [niche] VA helping [target client type] with [specific outcome you deliver]. Most recently I [mini win, one sentence, with a number if possible].
 
 Two quick ideas for your situation:
 • [Specific, small suggestion directly tied to their post]
 • [Second specific suggestion]
 
-If it's useful, I'd love to share a free 15-minute walkthrough of how I'd tackle your [project] — no pitch, just clarity.
+If it's useful, I'd love to share a free 15-minute walkthrough of how I'd tackle your [project], no pitch, just clarity.
 
 Available tools I'm fluent in: [3–5 most relevant tools from their post].
 
@@ -308,17 +353,17 @@ Thanks for reading,
   },
   {
     cat: 'pitch', tone: 'warm',
-    title: 'Cold pitch — LinkedIn DM',
+    title: 'Cold pitch. LinkedIn DM',
     context: 'Reaching out cold to a founder or business owner on LinkedIn.',
     toneNote: 'LinkedIn punishes salesy DMs. Be a human first, pitch second. Comment on their content for a week before sending.',
     subject: '',
     body: `Hi [FIRST NAME],
 
-I've been following your posts on [topic they post about] — your take on [specific thing they said] really stuck with me.
+I've been following your posts on [topic they post about], your take on [specific thing they said] really stuck with me.
 
-Quick intro: I'm [YOUR NAME], a [niche] VA. I help [target client type] with [outcome] — basically the kind of admin stuff that eats founders' calendars.
+Quick intro: I'm [YOUR NAME], a [niche] VA. I help [target client type] with [outcome], basically the kind of admin stuff that eats founders' calendars.
 
-Not pitching you — just wanted to say your content's been useful, and if you ever need an extra set of hands with [specific thing that aligns with their work], I'd love to chat.
+Not pitching you, just wanted to say your content's been useful, and if you ever need an extra set of hands with [specific thing that aligns with their work], I'd love to chat.
 
 Either way, keep the posts coming.
 
@@ -336,7 +381,7 @@ Just floating this back to the top of your inbox in case it got buried.
 
 Since I sent this, I thought of one more thing that might help: [one concrete new insight, idea, or resource].
 
-No pressure either way — just wanted to make sure it didn't get lost.
+No pressure either way, just wanted to make sure it didn't get lost.
 
 [YOUR NAME]`
   },
@@ -345,7 +390,7 @@ No pressure either way — just wanted to make sure it didn't get lost.
     title: 'Response to a job post (not Upwork)',
     context: 'Direct email response to a job listing (OnlineJobs.ph, company website, etc.).',
     toneNote: 'Mirror their exact language from the job post. If they wrote "rockstar VA," don\'t call yourself a "virtual assistant professional."',
-    subject: '[ROLE TITLE FROM POST] — [YOUR NAME], [NICHE]',
+    subject: '[ROLE TITLE FROM POST], [YOUR NAME], [NICHE]',
     body: `Hi [HIRING MANAGER NAME],
 
 I saw your posting for a [role] and wanted to reach out directly.
@@ -363,20 +408,20 @@ A few things I'd do in the first 2 weeks if we worked together:
 Portfolio: [LINK]
 Resume: attached.
 
-Happy to jump on a short call whenever works — my calendar is [LINK or times].
+Happy to jump on a short call whenever works, my calendar is [LINK or times].
 
 [YOUR NAME]`
   },
 
-  // ═══ 02 — ONBOARDING ═══
+  // ═══ 02. ONBOARDING ═══
   {
     cat: 'onboard', tone: 'warm',
     title: 'Booking a discovery call',
     context: 'Replying to a client who showed interest and agreeing to a call.',
-    subject: 'Discovery call — [YOUR NAME] × [CLIENT NAME]',
+    subject: 'Discovery call, [YOUR NAME] × [CLIENT NAME]',
     body: `Hi [NAME],
 
-Thanks for getting back to me — excited to learn more about [their business] and see how I can help.
+Thanks for getting back to me, excited to learn more about [their business] and see how I can help.
 
 For the call, I'd love to cover:
 • What's driving you to hire a VA right now
@@ -396,7 +441,7 @@ Talk soon,
     title: 'Post-call thank-you + next steps',
     context: 'Within 24 hours of a discovery call that went well.',
     toneNote: 'This email alone separates pros from amateurs. Write one EVERY time. It creates a paper trail and shows you listen.',
-    subject: 'Next steps from our call — [CLIENT NAME]',
+    subject: 'Next steps from our call, [CLIENT NAME]',
     body: `Hi [NAME],
 
 Great talking with you today. Wanted to quickly recap what we discussed so we're on the same page:
@@ -412,7 +457,7 @@ What I'd take on in the first month:
 • [Specific deliverable #3]
 
 Proposed terms:
-• [Rate and structure — hourly/monthly/project]
+• [Rate and structure, hourly/monthly/project]
 • [Hours per week / scope]
 • [Start date]
 
@@ -425,11 +470,11 @@ Did I miss anything, or does this match what we talked about?
   {
     cat: 'onboard', tone: 'warm',
     title: 'Kickoff email + questionnaire',
-    context: 'First day of working together — getting the info you need to start strong.',
+    context: 'First day of working together, getting the info you need to start strong.',
     subject: 'Welcome! A few things to get us started 🎉',
     body: `Hi [NAME],
 
-Official welcome — excited to kick things off!
+Official welcome, excited to kick things off!
 
 To hit the ground running in week one, I've put together a short questionnaire. Nothing long, just the essentials so I don't have to bug you with small questions every day.
 
@@ -453,15 +498,15 @@ Working style:
 Quick wins:
 • What's the first thing you'd love off your plate?
 
-Take your time — but if you can send before [day] I can have a full plan back to you by end of next week.
+Take your time, but if you can send before [day] I can have a full plan back to you by end of next week.
 
 [YOUR NAME]`
   },
   {
     cat: 'onboard', tone: 'warm',
-    title: 'Kickoff summary — "here\'s what we agreed"',
+    title: 'Kickoff summary, "here\'s what we agreed"',
     context: 'Sent after signing the contract, locks in scope in writing before work starts.',
-    subject: 'Confirmed — scope and starting point',
+    subject: 'Confirmed, scope and starting point',
     body: `Hi [NAME],
 
 All signed and set. Here's a summary of what we've locked in so we both have it in writing:
@@ -487,20 +532,20 @@ Invoicing:
 Start date:
 [DATE]
 
-If anything above doesn't match your understanding, let me know before I get started — easier to adjust now than later.
+If anything above doesn't match your understanding, let me know before I get started, easier to adjust now than later.
 
 Otherwise, I'll see you [day of first deliverable or first check-in]!
 
 [YOUR NAME]`
   },
 
-  // ═══ 03 — DAILY ═══
+  // ═══ 03. DAILY ═══
   {
     cat: 'daily', tone: 'warm',
     title: 'Weekly update email',
     context: 'Send every Friday (or your agreed check-in day) to any retainer client.',
     toneNote: 'Make this boring, predictable, and short. Clients love predictability. Bold completed items and questions so they can scan.',
-    subject: 'Week of [DATE] — update',
+    subject: 'Week of [DATE], update',
     body: `Hi [NAME],
 
 Quick recap of this week:
@@ -511,8 +556,8 @@ Completed:
 • [Task 3 with specific outcome]
 
 In progress:
-• [Task 1 — where it stands + blocker if any]
-• [Task 2 — where it stands + blocker if any]
+• [Task 1, where it stands + blocker if any]
+• [Task 2, where it stands + blocker if any]
 
 Questions for you (please answer when you have time):
 • [Question 1]
@@ -535,12 +580,12 @@ Have a good weekend,
 
 Before I dive into [task], I want to make sure I have the right read on what you're going for.
 
-Option A: [Interpretation 1 — describe what you\'d do]
-Option B: [Interpretation 2 — describe what you\'d do]
+Option A: [Interpretation 1, describe what you\'d do]
+Option B: [Interpretation 2, describe what you\'d do]
 
 If it's A, I'd need [X]. If B, I'd lean toward [Y].
 
-Which way would you like me to take it? (Either works — just want to get it right the first time.)
+Which way would you like me to take it? (Either works, just want to get it right the first time.)
 
 Thanks,
 [YOUR NAME]`
@@ -565,7 +610,7 @@ What I'd love from you:
 • Review when you get a chance (shouldn't take more than [X] minutes)
 • Flag anything that needs tweaking before [deadline/launch]
 
-If it all looks good, [next step — publishing, sending, etc.].
+If it all looks good, [next step, publishing, sending, etc.].
 
 [YOUR NAME]`
   },
@@ -577,33 +622,33 @@ If it all looks good, [next step — publishing, sending, etc.].
     subject: 'Still on track with [PROJECT]?',
     body: `Hi [NAME],
 
-Haven't heard back on [specific question/deliverable] — just want to make sure nothing slipped through.
+Haven't heard back on [specific question/deliverable], just want to make sure nothing slipped through.
 
 Two options depending on what you need:
 
 1. If you want me to keep going on [task], I'll assume [reasonable default] unless I hear otherwise by [date].
 
-2. If you've been slammed, no stress — just let me know when you can regroup and I'll work around it.
+2. If you've been slammed, no stress, just let me know when you can regroup and I'll work around it.
 
 Either way works on my end. Just wanted to keep things moving.
 
 [YOUR NAME]`
   },
 
-  // ═══ 04 — DIFFICULT CONVERSATIONS ═══
+  // ═══ 04. DIFFICULT CONVERSATIONS ═══
   {
     cat: 'hard', tone: 'firm',
     title: 'Pushing back on scope creep',
     context: 'Client keeps adding tasks outside the agreed scope without adjusting pay.',
-    toneNote: 'Be firm, not apologetic. You\'re not asking for a favor — you\'re clarifying the deal you already made.',
-    subject: 'Re: [REQUEST] — quick scope check',
+    toneNote: 'Be firm, not apologetic. You\'re not asking for a favor, you\'re clarifying the deal you already made.',
+    subject: 'Re: [REQUEST], quick scope check',
     body: `Hi [NAME],
 
-Happy to help with [new request] — just flagging that it's outside our original scope so we can figure out the right way to handle it.
+Happy to help with [new request], just flagging that it's outside our original scope so we can figure out the right way to handle it.
 
 For context, our agreement covers [remind them of the specific scope].
 
-[New task] falls into [different category], which is 100% something I can do — it just needs either:
+[New task] falls into [different category], which is 100% something I can do, it just needs either:
 
 1. Expanding our current scope/hours (would add ~[X hours] per [week/month])
 2. Treating it as a one-off project at [rate]
@@ -618,35 +663,35 @@ Let me know which direction works best for you and I'll get started.
     title: 'Requesting a rate increase',
     context: 'After 6+ months of good work, or when your value has clearly grown.',
     toneNote: 'Don\'t apologize. Don\'t over-explain. State the new rate, state WHY, give a clear effective date.',
-    subject: 'Updating my rates — effective [DATE]',
+    subject: 'Updating my rates, effective [DATE]',
     body: `Hi [NAME],
 
-Been thinking about this for a while and wanted to give you plenty of heads up: I'll be updating my rate starting [DATE — at least 30 days out].
+Been thinking about this for a while and wanted to give you plenty of heads up: I'll be updating my rate starting [DATE, at least 30 days out].
 
 New rate: $[NEW RATE] per [hour/month]
 
 Why now:
-• [Specific reason 1 — e.g., "the scope has grown significantly since we started"]
-• [Specific reason 2 — e.g., "I've added [certification/skill] that directly benefits your work"]
-• [Specific reason 3 — e.g., "market rates for this niche have shifted"]
+• [Specific reason 1, e.g., "the scope has grown significantly since we started"]
+• [Specific reason 2, e.g., "I've added [certification/skill] that directly benefits your work"]
+• [Specific reason 3, e.g., "market rates for this niche have shifted"]
 
 A few notes to make this easier:
 • This reflects [X%] increase, below the market average of [Y%]
-• I'd love to keep working with you at the new rate — you've been one of my favorite clients
+• I'd love to keep working with you at the new rate, you've been one of my favorite clients
 • If budget is an issue, I'm open to talking through options (different scope, fewer hours, etc.)
 
-Let me know your thoughts — happy to discuss on a quick call if easier.
+Let me know your thoughts, happy to discuss on a quick call if easier.
 
 [YOUR NAME]`
   },
   {
     cat: 'hard', tone: 'warm',
-    title: 'Payment reminder — gentle (first nudge)',
+    title: 'Payment reminder, gentle (first nudge)',
     context: 'Invoice is 2–5 days overdue. Assume they just forgot.',
     subject: 'Friendly reminder: invoice [#] due',
     body: `Hi [NAME],
 
-Just a quick heads up — invoice [#] for [AMOUNT] was due on [DATE] and I haven't seen it come through yet.
+Just a quick heads up, invoice [#] for [AMOUNT] was due on [DATE] and I haven't seen it come through yet.
 
 Totally possible it's just slipped through the cracks. Want me to resend a copy, or is it in the pipeline on your end?
 
@@ -657,7 +702,7 @@ Thanks!
   },
   {
     cat: 'hard', tone: 'firm',
-    title: 'Payment reminder — firm (second nudge)',
+    title: 'Payment reminder, firm (second nudge)',
     context: 'Invoice is 7–10 days overdue. Stop being cute.',
     toneNote: 'Remove apologies and qualifiers. State the fact, state the consequence, keep it short.',
     subject: 'Overdue: invoice [#]',
@@ -665,7 +710,7 @@ Thanks!
 
 Invoice [#] for [AMOUNT] is now [X] days overdue (due [DATE]).
 
-Per our agreement, invoices are payable within [X] days. I'll need this resolved by [SPECIFIC DATE — 3–5 days out] to keep things on track.
+Per our agreement, invoices are payable within [X] days. I'll need this resolved by [SPECIFIC DATE, 3–5 days out] to keep things on track.
 
 If there's a processing issue on your end, let me know so we can work it out. If payment is in progress, just reply with the date I can expect it.
 
@@ -675,10 +720,10 @@ Link: [INVOICE LINK]
   },
   {
     cat: 'hard', tone: 'blunt',
-    title: 'Payment reminder — final (before pausing work)',
-    context: 'Invoice is 14+ days overdue. You have leverage — use it.',
+    title: 'Payment reminder, final (before pausing work)',
+    context: 'Invoice is 14+ days overdue. You have leverage, use it.',
     toneNote: 'This is not the time for warm. State the terms of your contract and the consequence. No apologies.',
-    subject: 'Action required: invoice [#] — work pause',
+    subject: 'Action required: invoice [#], work pause',
     body: `Hi [NAME],
 
 Invoice [#] for [AMOUNT] is now [X] days overdue. I've reached out on [DATE 1] and [DATE 2] without a response or payment.
@@ -688,10 +733,10 @@ Per our contract:
 • Work may be suspended after [X] days of non-payment
 • Late fees of [X%] apply
 
-I'll be pausing all active work on your account starting [DATE — tomorrow or day after] until the outstanding balance is resolved. This includes [specific things you'll stop doing].
+I'll be pausing all active work on your account starting [DATE, tomorrow or day after] until the outstanding balance is resolved. This includes [specific things you'll stop doing].
 
 To resume:
-• Pay invoice [#] — [LINK]
+• Pay invoice [#], [LINK]
 • Reply to this email confirming receipt
 
 I want to keep working together, but I can't continue unpaid. Let me know as soon as you can.
@@ -700,45 +745,45 @@ I want to keep working together, but I can't continue unpaid. Let me know as soo
   },
   {
     cat: 'hard', tone: 'firm',
-    title: 'Missed deadline — apology + recovery plan',
+    title: 'Missed deadline, apology + recovery plan',
     context: 'You missed a deadline. Own it. Fix it. Don\'t grovel.',
-    toneNote: 'One sentence of ownership, then PIVOT to solutions. Clients don\'t want apologies — they want fixes.',
-    subject: '[PROJECT] — updated timeline',
+    toneNote: 'One sentence of ownership, then PIVOT to solutions. Clients don\'t want apologies, they want fixes.',
+    subject: '[PROJECT], updated timeline',
     body: `Hi [NAME],
 
-I missed the [DATE] deadline on [project]. That's on me — [brief, honest reason without excuses].
+I missed the [DATE] deadline on [project]. That's on me, [brief, honest reason without excuses].
 
 Here's the recovery plan:
 
-• [Specific item 1] — done by [NEW DATE]
-• [Specific item 2] — done by [NEW DATE]
-• [Specific item 3] — done by [NEW DATE]
+• [Specific item 1], done by [NEW DATE]
+• [Specific item 2], done by [NEW DATE]
+• [Specific item 3], done by [NEW DATE]
 
 To prevent this going forward:
 • [Specific process change #1]
 • [Specific process change #2]
 
-If the delay causes issues on your end, tell me and I'll figure out how to make it right — whether that's prioritizing something else, working through the weekend, or discounting this cycle.
+If the delay causes issues on your end, tell me and I'll figure out how to make it right, whether that's prioritizing something else, working through the weekend, or discounting this cycle.
 
 Thanks for your patience.
 
 [YOUR NAME]`
   },
 
-  // ═══ 05 — MONEY ═══
+  // ═══ 05. MONEY ═══
   {
     cat: 'money', tone: 'warm',
     title: 'Invoice email',
-    context: 'Send with every invoice — the email itself.',
-    subject: 'Invoice [#] — [MONTH/PERIOD]',
+    context: 'Send with every invoice, the email itself.',
+    subject: 'Invoice [#], [MONTH/PERIOD]',
     body: `Hi [NAME],
 
 Invoice [#] attached, covering work from [START DATE] to [END DATE].
 
 Summary:
-• [Line item 1] — $[AMOUNT]
-• [Line item 2] — $[AMOUNT]
-• [Line item 3] — $[AMOUNT]
+• [Line item 1], $[AMOUNT]
+• [Line item 2], $[AMOUNT]
+• [Line item 3], $[AMOUNT]
 Total: $[TOTAL]
 
 Due: [DATE]
@@ -761,7 +806,7 @@ Thanks,
 
 Something I noticed this week and wanted to flag:
 
-[Specific observation about their business — e.g., "your email response time is averaging 3 days, and I've seen a few leads drop off because of it"].
+[Specific observation about their business, e.g., "your email response time is averaging 3 days, and I've seen a few leads drop off because of it"].
 
 If it's useful, here's a quick proposal to fix it:
 
@@ -778,21 +823,21 @@ What it costs:
 • [Rate or flat fee]
 • Starts [DATE]
 
-No pressure — but if it's a yes, I can kick it off next Monday. If not, totally fine, we'll keep going as-is.
+No pressure, but if it's a yes, I can kick it off next Monday. If not, totally fine, we'll keep going as-is.
 
 [YOUR NAME]`
   },
 
-  // ═══ 06 — ENDING ═══
+  // ═══ 06. ENDING ═══
   {
     cat: 'end', tone: 'firm',
     title: 'Firing a client (gracefully)',
-    context: 'When you need to end the relationship — client is difficult, bad fit, or not worth it.',
+    context: 'When you need to end the relationship, client is difficult, bad fit, or not worth it.',
     toneNote: 'Don\'t list their flaws. Keep the reason professional and vague. Always offer a clean handoff to protect your reputation.',
-    subject: 'Ending our engagement — [DATE]',
+    subject: 'Ending our engagement, [DATE]',
     body: `Hi [NAME],
 
-I've been thinking about this for a while, and I've decided to end our working relationship effective [DATE — at least 2 weeks out per contract notice].
+I've been thinking about this for a while, and I've decided to end our working relationship effective [DATE, at least 2 weeks out per contract notice].
 
 The short version: I don't think I'm the right fit for what you need going forward. You deserve someone who can fully focus on [specific thing that isn't working], and I don't feel I'm the best person to do that.
 
@@ -802,7 +847,7 @@ To keep the handoff clean:
 • All access credentials, files, and SOPs will be handed back / transferred on [DATE]
 • Final invoice for work through [DATE] will be sent on [DATE]
 
-If it helps, I can recommend [alternative — other VAs in your community, agencies, etc.].
+If it helps, I can recommend [alternative, other VAs in your community, agencies, etc.].
 
 I appreciate the opportunity to have worked together, and I wish you well.
 
@@ -813,20 +858,20 @@ I appreciate the opportunity to have worked together, and I wish you well.
     title: 'Responding when a client ends things',
     context: 'A client just told you they\'re ending the engagement.',
     toneNote: 'Don\'t beg. Don\'t be defensive. Ask for a testimonial while you still have goodwill.',
-    subject: 'Got it — thanks for letting me know',
+    subject: 'Got it, thanks for letting me know',
     body: `Hi [NAME],
 
-Thanks for the heads up, and totally understood — these decisions come up.
+Thanks for the heads up, and totally understood, these decisions come up.
 
 To make the transition smooth:
 • I'll wrap up [in-progress items] before [DATE]
-• I'll prep a handoff document with SOPs, credentials, and context — ready by [DATE]
+• I'll prep a handoff document with SOPs, credentials, and context, ready by [DATE]
 • Final invoice will come on [DATE] covering work through our end date
 • Happy to jump on a 30-min handoff call with you or your next VA
 
 One ask: if you've been happy with my work (even a little), would you be willing to write a short testimonial or a LinkedIn recommendation? Even 2–3 sentences would mean a lot and help me with my next clients.
 
-Thanks for the opportunity — I genuinely appreciated working with you.
+Thanks for the opportunity. I genuinely appreciated working with you.
 
 [YOUR NAME]`
   },
@@ -834,10 +879,10 @@ Thanks for the opportunity — I genuinely appreciated working with you.
     cat: 'end', tone: 'warm',
     title: 'Pausing a retainer',
     context: 'Client wants to pause for a month or two (not end entirely).',
-    subject: 'Pausing our retainer — [DATES]',
+    subject: 'Pausing our retainer, [DATES]',
     body: `Hi [NAME],
 
-Got it — totally fine to pause.
+Got it, totally fine to pause.
 
 Confirming the details:
 • Pause starts: [DATE]
@@ -846,16 +891,16 @@ Confirming the details:
 • During the pause, I'll be: [\"not actively working on your account\" or \"monitoring inbox only, billed hourly\"]
 
 Few things to keep in mind:
-• I can't guarantee I'll have the same capacity when we resume — if your needs change, I may need to re-quote
+• I can't guarantee I'll have the same capacity when we resume, if your needs change, I may need to re-quote
 • For urgent one-off tasks during the pause, my hourly rate is $[RATE] if you need me
 • If the pause stretches beyond [X] months, we may need to requalify the retainer
 
-Enjoy [reason they\'re pausing — travel, launch prep, etc.] — talk soon.
+Enjoy [reason they\'re pausing, travel, launch prep, etc.], talk soon.
 
 [YOUR NAME]`
   },
 
-  // ═══ 07 — DECLINE ═══
+  // ═══ 07. DECLINE ═══
   {
     cat: 'decline', tone: 'firm',
     title: 'Declining free work / "quick favors"',
@@ -864,11 +909,11 @@ Enjoy [reason they\'re pausing — travel, launch prep, etc.] — talk soon.
     subject: 'Re: [THEIR REQUEST]',
     body: `Hi [NAME],
 
-Thanks for thinking of me — genuinely flattering that you'd ask.
+Thanks for thinking of me, genuinely flattering that you'd ask.
 
 This one isn't something I can take on for free, though. Between my current client load and the time it'd actually take to do well, I can't add it without it pulling from work I'm committed to.
 
-If it's useful, I do offer this kind of work at $[RATE] — typically [X hours] for a project like this. Happy to send a quick proposal if you want to move forward.
+If it's useful, I do offer this kind of work at $[RATE], typically [X hours] for a project like this. Happy to send a quick proposal if you want to move forward.
 
 Either way, hope [their project] goes well.
 
@@ -884,10 +929,10 @@ Either way, hope [their project] goes well.
 
 Thanks for reaching out and taking the time to share what you're looking for.
 
-After thinking it over, I don't think I'm the right fit for this one. [Brief, professional reason — "my current workload doesn't leave room for the scope you described" or "I focus specifically on [different niche]"].
+After thinking it over, I don't think I'm the right fit for this one. [Brief, professional reason, "my current workload doesn't leave room for the scope you described" or "I focus specifically on [different niche]"].
 
 A few suggestions that might help:
-• [Specific alternative — a different type of VA, a platform, a resource]
+• [Specific alternative, a different type of VA, a platform, a resource]
 • [Another if relevant]
 
 If things change on my end or yours, feel free to reach back out. Best of luck with the project.
@@ -1080,6 +1125,100 @@ window.kailamiCopy = function (text) {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
+<div class="social-dock" id="social-dock" role="complementary" aria-label="Follow Kailami on social media">
+<p class="social-dock-label">Follow <span>Kailami</span></p>
+<div class="social-dock-links">
+<a href="https://instagram.com/kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on Instagram" title="Instagram">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.23 1 .5 1.4.94.44.44.71.84.94 1.4.17.4.36 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.23.6-.5 1-.94 1.4-.44.44-.84.71-1.4.94-.4.17-1 .36-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.23-1-.5-1.4-.94-.44-.44-.71-.84-.94-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.23-.6.5-1 .94-1.4.44-.44.84-.71 1.4-.94.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.9c-3.1 0-3.5 0-4.7.07-1 .05-1.5.21-1.8.33-.35.14-.6.3-.86.56-.26.26-.42.51-.56.86-.12.3-.28.8-.33 1.8-.06 1.2-.07 1.6-.07 4.7s0 3.5.07 4.7c.05 1 .21 1.5.33 1.8.14.35.3.6.56.86.26.26.51.42.86.56.3.12.8.28 1.8.33 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1-.05 1.5-.21 1.8-.33.35-.14.6-.3.86-.56.26-.26.42-.51.56-.86.12-.3.28-.8.33-1.8.06-1.2.07-1.6.07-4.7s0-3.5-.07-4.7c-.05-1-.21-1.5-.33-1.8a2.3 2.3 0 00-.56-.86 2.3 2.3 0 00-.86-.56c-.3-.12-.8-.28-1.8-.33-1.2-.06-1.6-.07-4.7-.07zm0 3.2a4.7 4.7 0 110 9.4 4.7 4.7 0 010-9.4zm0 1.9a2.8 2.8 0 100 5.6 2.8 2.8 0 000-5.6zm6-2.1a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+</a>
+<a href="https://tiktok.com/@kailamitheva" target="_blank" rel="noopener" aria-label="Kailami on TikTok" title="TikTok">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0115.5 3h-2.9v11.6a2.6 2.6 0 11-1.86-2.5V9.14a5.5 5.5 0 103.9 5.28V8.66a6.9 6.9 0 003.86 1.2V6.96a4.15 4.15 0 01-1.9-1.14z"/></svg>
+</a>
+<a href="https://www.facebook.com/groups/1422755666045207" target="_blank" rel="noopener" aria-label="Join the Kailami VA community on Facebook" title="Facebook community">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.07C24 5.44 18.63.07 12 .07S0 5.44 0 12.07c0 5.99 4.39 10.95 10.13 11.85v-8.39H7.08v-3.46h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.46h-2.8v8.39C19.61 23.02 24 18.06 24 12.07z"/></svg>
+</a>
+<a href="https://linkedin.com/in/kyladon" target="_blank" rel="noopener" aria-label="Kyla Don on LinkedIn" title="LinkedIn">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 013.37-1.85c3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+</a>
+</div>
+<button class="social-dock-close" id="social-dock-close" type="button" aria-label="Hide the follow bar" title="Hide">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="width:13px;height:13px;"><path d="M18 6L6 18M6 6l12 12"/></svg>
+</button>
+</div>
+<script>
+(function () {
+  var dock = document.getElementById('social-dock');
+  if (!dock) return;
+  var KEY = 'kailami_social_dock_hidden';
+  try { if (sessionStorage.getItem(KEY) === '1') { dock.remove(); return; } } catch (e) {}
+
+  var closeBtn = document.getElementById('social-dock-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      dock.classList.remove('visible');
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      setTimeout(function () { dock.remove(); }, 450);
+    });
+  }
+
+  // Appears once the reader is genuinely into the page, not straight away.
+  function check() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    var pct = window.scrollY / max;
+    dock.classList.toggle('visible', pct > 0.35);
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check, { passive: true });
+  check();
+})();
+</script>
+<script>
+(function () {
+  var burger = document.getElementById('nav-burger');
+  var menu = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    document.body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open) { var f = menu.querySelector('a'); if (f) f.focus(); }
+  }
+  burger.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('menu-open'));
+  });
+  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setOpen(false); burger.focus(); }
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 860 && document.body.classList.contains('menu-open')) setOpen(false);
+  });
+})();
+</script>
+<script>
+(function () {
+  // "Back" used to always go to the homepage, even if you arrived from a hub.
+  // Now it returns to the previous page when that page was on this site.
+  var links = document.querySelectorAll('.back-link');
+  if (!links.length) return;
+  var ref = document.referrer;
+  var sameSite = false;
+  try { sameSite = !!ref && new URL(ref).host === location.host && new URL(ref).pathname !== location.pathname; } catch (e) {}
+  links.forEach(function (a) {
+    if (sameSite) {
+      a.addEventListener('click', function (e) { e.preventDefault(); history.back(); });
+      try {
+        var name = new URL(ref).pathname.split('/').pop().replace('.html','').replace(/-/g,' ');
+        if (name && name !== 'index') {
+          a.textContent = '\u2190 Back to ' + name.charAt(0).toUpperCase() + name.slice(1);
+        }
+      } catch (e) {}
+    }
   });
 })();
 </script>
