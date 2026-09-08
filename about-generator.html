@@ -132,6 +132,7 @@
 <div class="nav-inner">
 <a href="index.html" class="logo"><span class="logo-dot"></span>kailami.</a>
 <div class="nav-links">
+<a href="the-path.html">Start here</a>
 <a href="tools.html">Tools</a>
 <a href="templates.html">Templates</a>
 <a href="certifications.html">Learn</a>
@@ -306,7 +307,7 @@ Copy prompt
 <div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
 </div>
-<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a></div><div>Made with care for the VA community</div></div>
+<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a> · <a href="privacy.html" style="color:#888;">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
 </footer>
 
 <script>
@@ -390,7 +391,7 @@ function copyPrompt() {
   const text = document.getElementById('prompt-text').textContent;
   const btn = document.getElementById('copy-btn');
 
-  navigator.clipboard.writeText(text).then(() => {
+  window.kailamiCopy(text).then(() => {
     btn.classList.add('copied');
     btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg> Copied!';
     setTimeout(() => {
@@ -413,5 +414,38 @@ function copyPrompt() {
 }
 </script>
 
+<script>
+/* Protocol-safe clipboard helper.
+   navigator.clipboard only exists in a secure context (https/localhost).
+   On http it is undefined, so calling .writeText() throws synchronously and
+   any .catch() attached to it never runs. This wraps both paths. */
+window.kailamiCopy = function (text) {
+  function legacy() {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, ta.value.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return Promise.resolve(ok);
+    } catch (e) {
+      return Promise.resolve(false);
+    }
+  }
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      return navigator.clipboard.writeText(text).then(function () { return true; }).catch(legacy);
+    } catch (e) {
+      return legacy();
+    }
+  }
+  return legacy();
+};
+</script>
 </body>
 </html>
