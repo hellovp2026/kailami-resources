@@ -1,0 +1,641 @@
+{
+  "schema": 1,
+  "updated": "2026-09-08",
+  "note": "Edit this file to add, remove or change courses. The Learn page reads it live, so no HTML changes are needed. Set added to the date you add a course; entries added within the last 30 days show a NEW badge automatically.",
+  "courses": [
+    {
+      "type": "audit",
+      "provider": "Google / Coursera",
+      "title": "Google Project Management Certificate",
+      "niches": [
+        "ea",
+        "pm"
+      ],
+      "time": "long",
+      "timeLabel": "100+ hrs",
+      "gain": "Full PM fundamentals — agile, scrum, stakeholder management. Audit is free, cert is paid.",
+      "link": "https://www.coursera.org/professional-certificates/google-project-management",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Meta",
+      "title": "Meta Certified Digital Marketing Associate",
+      "niches": [
+        "smm",
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "~6 hrs",
+      "gain": "Facebook and Instagram ads fundamentals. Recognized by every business running Meta ads.",
+      "link": "https://www.facebook.com/business/learn/courses",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "Social Media Marketing Certification",
+      "niches": [
+        "smm",
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "~4.5 hrs",
+      "gain": "Full social strategy — content, community, measurement, listening. Exam-based cert.",
+      "link": "https://academy.hubspot.com/courses/social-media",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Coursera",
+      "title": "Free Social Media Marketing Courses",
+      "niches": [
+        "smm"
+      ],
+      "time": "medium",
+      "timeLabel": "varies",
+      "gain": "Curated free courses from Coursera covering social media strategy, platform-specific best practices, and analytics. Audit is free.",
+      "link": "https://www.coursera.org/courses?query=social%20media%20marketing&productDifficultyLevel=Beginner",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Coursera",
+      "title": "Instagram & Content Strategy (free courses)",
+      "niches": [
+        "smm"
+      ],
+      "time": "varies",
+      "timeLabel": "varies",
+      "gain": "Curated free courses on Instagram growth, content pillars, hashtags, and analytics. Audit is free.",
+      "link": "https://www.coursera.org/search?query=instagram%20marketing&price=1",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Instagram Marketing basics (filter to 'Free')",
+      "niches": [
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Udemy has periodic free Instagram courses. Filter by 'Free' in search. No certs on free versions.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=instagram+marketing&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "TikTok Marketing (filter to 'Free')",
+      "niches": [
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Same deal — free TikTok courses rotate in and out on Udemy. Good for bite-sized learning.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=tiktok+marketing&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Google",
+      "title": "Fundamentals of Digital Marketing",
+      "niches": [
+        "marketing"
+      ],
+      "time": "long",
+      "timeLabel": "~40 hrs",
+      "gain": "The gold standard free marketing cert. Globally recognized — looks great on any resume.",
+      "link": "https://www.coursera.org/google-certificates/digital-marketing-certificate",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "Inbound Marketing Certification",
+      "niches": [
+        "marketing",
+        "smm"
+      ],
+      "time": "medium",
+      "timeLabel": "~5 hrs",
+      "gain": "Content marketing, SEO, lead gen, buyer's journey. The HubSpot cert clients recognize.",
+      "link": "https://academy.hubspot.com/courses/inbound-marketing",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "Email Marketing Certification",
+      "niches": [
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "~3 hrs",
+      "gain": "Email strategy, segmentation, deliverability, automation. Exam at the end.",
+      "link": "https://academy.hubspot.com/courses/email-marketing-certification-en",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "Content Marketing Certification",
+      "niches": [
+        "marketing",
+        "writing"
+      ],
+      "time": "medium",
+      "timeLabel": "~6 hrs",
+      "gain": "Long-form writing, blogging, content strategy, repurposing. Paired well with SMM.",
+      "link": "https://academy.hubspot.com/courses/content-marketing",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "SEO Training Certification",
+      "niches": [
+        "marketing",
+        "writing"
+      ],
+      "time": "medium",
+      "timeLabel": "~4 hrs",
+      "gain": "SEO fundamentals — keyword research, on-page optimization, link building, technical SEO. Exam-based cert.",
+      "link": "https://academy.hubspot.com/courses/seo-training",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Coursera",
+      "title": "Email Marketing (free courses)",
+      "niches": [
+        "marketing"
+      ],
+      "time": "varies",
+      "timeLabel": "varies",
+      "gain": "Browse free email marketing courses covering strategy, automation, segmentation, and deliverability. Audit-only.",
+      "link": "https://www.coursera.org/search?query=email%20marketing&price=1",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "SEMrush",
+      "title": "Off-Page SEO & AI Search Essentials",
+      "niches": [
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "~3 hrs",
+      "gain": "Modern SEO for 2026 — off-page optimization, backlinks, and how to rank in AI search (ChatGPT, Perplexity, Google AI Overviews).",
+      "link": "https://www.semrush.com/academy/courses/off-page-seo-and-ai-search-essentials-with-semrush/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Coursera / UVA",
+      "title": "Digital Marketing Specialization",
+      "niches": [
+        "marketing"
+      ],
+      "time": "long",
+      "timeLabel": "~80 hrs",
+      "gain": "7-course specialization from UVA on digital strategy. Audit is free, cert is paid.",
+      "link": "https://www.coursera.org/specializations/digital-marketing",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Canva",
+      "title": "Design School — Canva Certified",
+      "niches": [
+        "design",
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "~1 hr",
+      "gain": "Canva fundamentals, design principles, branded templates. Quick win for any creative VA.",
+      "link": "https://www.canva.com/designschool/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Adobe",
+      "title": "Adobe Express for Creators",
+      "niches": [
+        "design",
+        "video"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Free Adobe design tool — alternative to Canva. Tutorials and guides.",
+      "link": "https://www.adobe.com/express/learn/tutorials",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Coursera / CalArts",
+      "title": "Graphic Design Specialization",
+      "niches": [
+        "design"
+      ],
+      "time": "long",
+      "timeLabel": "~60 hrs",
+      "gain": "CalArts specialization covering typography, images, color. Audit is free, cert is paid.",
+      "link": "https://www.coursera.org/specializations/graphic-design",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Canva courses (filter to 'Free')",
+      "niches": [
+        "design"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Udemy has rotating free Canva courses. Check the 'Free' filter. Good practice, no cert.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=canva&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Figma",
+      "title": "Figma for Beginners (free YouTube series)",
+      "niches": [
+        "design",
+        "tech"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Figma's own official learning series. The tool every modern design team uses.",
+      "link": "https://www.figma.com/resources/learn-design/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Blackmagic",
+      "title": "DaVinci Resolve Training",
+      "niches": [
+        "video"
+      ],
+      "time": "long",
+      "timeLabel": "~20 hrs",
+      "gain": "Free pro video editor training — the tool used in Hollywood. PDF certs available.",
+      "link": "https://www.blackmagicdesign.com/products/davinciresolve/training",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "CapCut & Reels editing (free courses)",
+      "niches": [
+        "video",
+        "smm"
+      ],
+      "time": "varies",
+      "timeLabel": "varies",
+      "gain": "The tool every SMM uses for Reels. Browse Udemy's free CapCut and short-form video editing courses.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=capcut&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Video Editing courses (filter to 'Free')",
+      "niches": [
+        "video"
+      ],
+      "time": "medium",
+      "timeLabel": "varies",
+      "gain": "Udemy often has free Premiere, DaVinci, and CapCut intro courses. Rotate in and out.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=video+editing&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube",
+      "title": "Peter McKinnon's editing tutorials",
+      "niches": [
+        "video"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Free, high-quality tutorials from one of the most watched video editors on YouTube. No cert but top-tier learning.",
+      "link": "https://www.youtube.com/@PeterMcKinnon",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Shopify",
+      "title": "Shopify Academy — All Courses",
+      "niches": [
+        "ecommerce"
+      ],
+      "time": "medium",
+      "timeLabel": "~6 hrs",
+      "gain": "Free courses across store setup, merchandising, customer experience, and marketing.",
+      "link": "https://www.shopify.com/academy",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot",
+      "title": "eCommerce Marketing Certification",
+      "niches": [
+        "ecommerce",
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "~4 hrs",
+      "gain": "Marketing strategy specifically for online stores. Segmentation, lifecycle, retention.",
+      "link": "https://academy.hubspot.com/courses/ecommerce-marketing",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Shopify courses (filter to 'Free')",
+      "niches": [
+        "ecommerce"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Rotating free Shopify basics on Udemy. Store setup, product listing, dropshipping.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=shopify&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Coursera",
+      "title": "QuickBooks & Bookkeeping (free courses)",
+      "niches": [
+        "bookkeeping"
+      ],
+      "time": "varies",
+      "timeLabel": "varies",
+      "gain": "Free QuickBooks and bookkeeping fundamentals. Audit-only. Intuit also offers a paid official cert separately.",
+      "link": "https://www.coursera.org/search?query=quickbooks&price=1",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Xero Accounting (free courses)",
+      "niches": [
+        "bookkeeping"
+      ],
+      "time": "varies",
+      "timeLabel": "varies",
+      "gain": "Browse free Xero courses on Udemy — the other major bookkeeping tool. Great if clients use Xero instead of QB.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=xero&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Coursera / Intuit",
+      "title": "Bookkeeping Basics",
+      "niches": [
+        "bookkeeping"
+      ],
+      "time": "medium",
+      "timeLabel": "~10 hrs",
+      "gain": "Intuit's Coursera course — accounting equation, debits/credits, financial statements.",
+      "link": "https://www.coursera.org/learn/bookkeeping-basics",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Bookkeeping basics (filter to 'Free')",
+      "niches": [
+        "bookkeeping"
+      ],
+      "time": "medium",
+      "timeLabel": "varies",
+      "gain": "Udemy runs rotating free bookkeeping intros. Good for fundamentals before the certs above.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=bookkeeping&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Intercom",
+      "title": "Intercom Academy",
+      "niches": [
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Free training on Intercom — live chat, automation, help center building.",
+      "link": "https://academy.intercom.com/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "Asana",
+      "title": "Asana Academy",
+      "niches": [
+        "pm",
+        "tech",
+        "ea"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Free Asana training + cert. If clients use Asana for PM, this is a resume builder.",
+      "link": "https://academy.asana.com/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Monday.com",
+      "title": "Monday.com Community Courses",
+      "niches": [
+        "pm",
+        "tech"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Monday.com basics, workflows, automation. Free through their learning platform.",
+      "link": "https://monday.com/helpcenter/monday-community-academy",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Notion",
+      "title": "Notion Essentials",
+      "niches": [
+        "tech",
+        "pm",
+        "ea"
+      ],
+      "time": "short",
+      "timeLabel": "~1.5 hrs",
+      "gain": "Databases, relations, templates, formulas. The VA-favorite workspace tool.",
+      "link": "https://www.notion.so/help/guides/category/notion-basics",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Zapier",
+      "title": "Zapier Learn — Automation Basics",
+      "niches": [
+        "tech",
+        "pm"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Build automations between 5000+ apps. In-demand skill that sets you apart from other VAs.",
+      "link": "https://zapier.com/learn/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "ClickUp",
+      "title": "ClickUp University",
+      "niches": [
+        "pm",
+        "tech"
+      ],
+      "time": "medium",
+      "timeLabel": "~3 hrs",
+      "gain": "All-in-one workspace training. ClickUp certification available for power users.",
+      "link": "https://university.clickup.com/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "cert",
+      "provider": "freeCodeCamp",
+      "title": "Responsive Web Design Certification",
+      "niches": [
+        "tech"
+      ],
+      "time": "long",
+      "timeLabel": "~300 hrs",
+      "gain": "Real free cert in HTML/CSS from freeCodeCamp. If you want to become a tech VA, start here.",
+      "link": "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Google / Coursera",
+      "title": "Google Project Management (full program)",
+      "niches": [
+        "pm",
+        "ea"
+      ],
+      "time": "long",
+      "timeLabel": "~100 hrs",
+      "gain": "6-course specialization on Agile, Scrum, Waterfall. Audit is free, graded cert is paid.",
+      "link": "https://www.coursera.org/professional-certificates/google-project-management",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Atlassian",
+      "title": "Atlassian University — Jira / Confluence",
+      "niches": [
+        "pm",
+        "tech"
+      ],
+      "time": "medium",
+      "timeLabel": "~4 hrs",
+      "gain": "Jira and Confluence training. High-demand for tech teams and dev-adjacent VA work.",
+      "link": "https://university.atlassian.com/student/catalog",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Agile & Scrum basics (filter to 'Free')",
+      "niches": [
+        "pm"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Udemy often has free Agile/Scrum fundamentals. Good before paid PMI certs.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=agile+scrum&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "audit",
+      "provider": "Google / Coursera",
+      "title": "Google AI Essentials",
+      "niches": [
+        "ai",
+        "marketing",
+        "tech"
+      ],
+      "time": "medium",
+      "timeLabel": "~10 hrs",
+      "gain": "Hands-on AI use for work. Prompting, responsible use, real use cases. Audit is free.",
+      "link": "https://www.coursera.org/learn/google-ai-essentials",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "DeepLearning.AI",
+      "title": "ChatGPT Prompt Engineering",
+      "niches": [
+        "ai"
+      ],
+      "time": "short",
+      "timeLabel": "~2 hrs",
+      "gain": "Official OpenAI partner course. Prompting techniques that actually work.",
+      "link": "https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Anthropic",
+      "title": "Claude prompting guides",
+      "niches": [
+        "ai"
+      ],
+      "time": "short",
+      "timeLabel": "~1 hr",
+      "gain": "Official guides on prompting Claude effectively. No formal cert, but essential reading.",
+      "link": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "ChatGPT for business (filter to 'Free')",
+      "niches": [
+        "ai"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Rotating free ChatGPT intro courses on Udemy. Focus on workplace use cases.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=chatgpt&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Udemy",
+      "title": "Copywriting (filter to 'Free')",
+      "niches": [
+        "writing"
+      ],
+      "time": "short",
+      "timeLabel": "varies",
+      "gain": "Udemy has periodic free copywriting intros. Good for fundamentals.",
+      "link": "https://www.udemy.com/courses/search/?price=price-free&q=copywriting&sort=relevance",
+      "added": "2026-04-22"
+    },
+    {
+      "type": "course",
+      "provider": "Grammarly",
+      "title": "Grammarly Business courses",
+      "niches": [
+        "writing",
+        "ea"
+      ],
+      "time": "short",
+      "timeLabel": "~1 hr",
+      "gain": "Professional writing fundamentals — grammar, clarity, tone. Free through Grammarly Business.",
+      "link": "https://www.grammarly.com/business/learn",
+      "added": "2026-04-22"
+    }
+  ]
+}
