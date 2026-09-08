@@ -9,63 +9,73 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('kailami_theme');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="stylesheet" href="styles.css">
 <style>
 .quiz-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 768px) { .quiz-wrap { padding: 0 24px; } }
 
 .progress-card {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px; padding: 24px 28px; margin-bottom: 40px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 24px 28px; margin-bottom: 40px;
   position: sticky; top: 80px; z-index: 50;
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .progress-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
-.progress-label { font-size: 12px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
-.progress-count { font-size: 15px; color: #fff; font-weight: 500; }
-.progress-count em { font-style: normal; color: #c4ff47; font-weight: 600; }
-.progress-bar { height: 6px; background: #1f1f1f; border-radius: 999px; overflow: hidden; }
-.progress-fill { height: 100%; background: #c4ff47; border-radius: 999px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+.progress-label { font-size: 12px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
+.progress-count { font-size: 15px; color: var(--ink); font-weight: 500; }
+.progress-count em { font-style: normal; color: var(--accent); font-weight: 600; }
+.progress-bar { height: 6px; background: var(--surface-2); border-radius: var(--r-pill); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--lime); border-radius: var(--r-pill); transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 0%; }
 
 .question-card {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface); border: 1px solid var(--hairline);
   border-radius: 24px; padding: 40px; margin-bottom: 20px;
   transition: all 0.3s;
 }
-.question-card:hover { border-color: rgba(255,255,255,0.12); }
-.question-card.answered { border-color: rgba(196,255,71,0.3); }
+.question-card:hover { border-color: var(--hairline); }
+.question-card.answered { border-color: var(--accent-wash); }
 .q-num {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: 12px; color: #c4ff47; font-weight: 600;
+  font-size: 12px; color: var(--accent); font-weight: 600;
   letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;
 }
-.q-num-dot { width: 24px; height: 1px; background: #c4ff47; }
+.q-num-dot { width: 24px; height: 1px; background: var(--lime); }
 .q-text {
-  font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: #fff;
+  font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: var(--ink);
   letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 28px;
 }
 .options-grid { display: flex; flex-direction: column; gap: 10px; }
 .option {
-  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px; padding: 18px 22px; cursor: pointer;
+  background: var(--surface-2); border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 18px 22px; cursor: pointer;
   display: flex; align-items: center; gap: 14px; transition: all 0.2s;
 }
-.option:hover { background: #1f1f1f; border-color: rgba(255,255,255,0.15); }
-.option.selected { border-color: #c4ff47; background: rgba(196,255,71,0.06); }
+.option:hover { background: var(--surface-2); border-color: var(--hairline); }
+.option.selected { border-color: var(--accent); background: var(--accent-wash); }
 .option-radio {
   width: 22px; height: 22px; border-radius: 50%;
-  border: 1.5px solid #3a3a3a; flex-shrink: 0;
+  border: 1.5px solid var(--hairline-solid); flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s;
 }
-.option.selected .option-radio { border-color: #c4ff47; }
+.option.selected .option-radio { border-color: var(--accent); }
 .option-radio-dot {
   width: 10px; height: 10px; border-radius: 50%;
-  background: #c4ff47; opacity: 0; transition: opacity 0.2s;
+  background: var(--lime); opacity: 0; transition: opacity 0.2s;
 }
 .option.selected .option-radio-dot { opacity: 1; }
-.option-text { font-size: 15px; color: #e0e0e0; flex: 1; line-height: 1.5; }
-.option.selected .option-text { color: #fff; }
+.option-text { font-size: 15px; color: var(--body); flex: 1; line-height: 1.5; }
+.option.selected .option-text { color: var(--ink); }
 
 .action-row { display: flex; gap: 12px; margin: 40px 0; justify-content: center; flex-wrap: wrap; }
 
@@ -74,38 +84,38 @@
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .match-card {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface); border: 1px solid var(--hairline);
   border-radius: 24px; padding: 36px; margin-bottom: 16px;
   transition: all 0.3s; position: relative; overflow: hidden;
 }
 .match-card.rank-1 {
-  border-color: #c4ff47;
-  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent-wash), var(--accent-wash));
 }
 .match-header { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
 .rank-badge {
-  width: 52px; height: 52px; border-radius: 50%; background: #1f1f1f;
+  width: 52px; height: 52px; border-radius: 50%; background: var(--surface-2);
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; font-weight: 600; color: #888; flex-shrink: 0;
+  font-size: 18px; font-weight: 600; color: var(--muted); flex-shrink: 0;
 }
-.match-card.rank-1 .rank-badge { background: #c4ff47; color: #0a0a0a; }
+.match-card.rank-1 .rank-badge { background: var(--lime); color: var(--on-lime); }
 .match-title-block { flex: 1; }
-.match-title { font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
-.match-card.rank-1 .match-title { color: #c4ff47; }
-.match-score { font-size: 13px; color: #888; margin-top: 4px; }
-.match-bar-wrap { height: 4px; background: #1f1f1f; border-radius: 999px; overflow: hidden; margin-bottom: 20px; }
-.match-bar { height: 100%; background: #c4ff47; border-radius: 999px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); width: 0%; }
-.match-desc { font-size: 15px; color: #c0c0c0; line-height: 1.6; margin-bottom: 18px; }
-.match-tasks { font-size: 13px; color: #888; line-height: 1.6; }
-.match-tasks strong { color: #c4ff47; font-weight: 500; }
+.match-title { font-size: clamp(22px, 3vw, 28px); font-weight: 500; color: var(--ink); letter-spacing: -0.8px; line-height: 1.1; }
+.match-card.rank-1 .match-title { color: var(--accent); }
+.match-score { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.match-bar-wrap { height: 4px; background: var(--surface-2); border-radius: var(--r-pill); overflow: hidden; margin-bottom: 20px; }
+.match-bar { height: 100%; background: var(--lime); border-radius: var(--r-pill); transition: width 0.8s cubic-bezier(0.4,0,0.2,1); width: 0%; }
+.match-desc { font-size: 15px; color: var(--body); line-height: 1.6; margin-bottom: 18px; }
+.match-tasks { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.match-tasks strong { color: var(--accent); font-weight: 500; }
 
 .next-steps {
-  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.02));
-  border: 1px solid rgba(196,255,71,0.25);
+  background: linear-gradient(135deg, var(--accent-wash), var(--accent-wash));
+  border: 1px solid var(--accent-wash);
   border-radius: 24px; padding: 40px; margin-top: 32px; text-align: center;
 }
-.next-steps-title { font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 10px; letter-spacing: -0.5px; }
-.next-steps-sub { font-size: 14px; color: #c0c0c0; margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.next-steps-title { font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.5px; }
+.next-steps-sub { font-size: 14px; color: var(--body); margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -120,6 +130,10 @@
 <a href="certifications.html">Learn</a>
 <a href="apply.html">Join us</a>
 </div>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+</button>
 <a href="index.html" class="back-link">← Back</a>
 </div>
 </nav>
@@ -202,7 +216,7 @@
 </div>
 </div>
 <div class="footer-bottom">
-<div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a> · <a href="privacy.html" style="color:#888;">Privacy Policy</a></div>
+<div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:var(--muted);">Terms of Use</a> · <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a></div>
 <div>Made with care for the VA community</div>
 </div>
 </footer>
@@ -524,5 +538,16 @@ function retakeQuiz() {
 renderQuestions();
 </script>
 
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>

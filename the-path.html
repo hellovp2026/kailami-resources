@@ -9,6 +9,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('kailami_theme');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="stylesheet" href="styles.css">
 <style>
 .path-wrap { max-width: 920px; margin: 0 auto; padding: 0 48px; }
@@ -21,8 +31,8 @@
 
 /* ─────────── INTRO SCREEN — brutal honesty ─────────── */
 .intro-hero {
-  background: linear-gradient(135deg, rgba(196,255,71,0.08), rgba(196,255,71,0.01));
-  border: 1px solid rgba(196,255,71,0.2);
+  background: linear-gradient(135deg, var(--accent-wash), var(--accent-wash));
+  border: 1px solid var(--accent-wash);
   border-radius: 28px; padding: 56px 48px;
   margin: 32px 0 24px;
   position: relative; overflow: hidden;
@@ -31,46 +41,46 @@
 .intro-hero::before {
   content: ''; position: absolute; top: -120px; right: -120px;
   width: 320px; height: 320px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,255,71,0.18), transparent 70%);
+  background: radial-gradient(circle, var(--accent-wash), transparent 70%);
 }
 .intro-content { position: relative; z-index: 2; }
 .intro-pill {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(196,255,71,0.12); color: #c4ff47;
-  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  background: var(--accent-wash); color: var(--accent);
+  font-size: 11px; padding: 6px 14px; border-radius: var(--r-pill);
   font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
   margin-bottom: 20px;
 }
-.intro-pill-dot { width: 6px; height: 6px; background: #c4ff47; border-radius: 50%; animation: pulse 2s infinite; }
+.intro-pill-dot { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; animation: pulse 2s infinite; }
 .intro-headline {
   font-size: clamp(36px, 6vw, 60px); font-weight: 500;
-  letter-spacing: -2px; color: #fff; line-height: 1; margin-bottom: 20px;
+  letter-spacing: -2px; color: var(--ink); line-height: 1; margin-bottom: 20px;
 }
-.intro-headline em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
-.intro-lede { font-size: 16px; color: #d0d0d0; line-height: 1.7; margin-bottom: 12px; max-width: 620px; }
+.intro-headline em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.intro-lede { font-size: 16px; color: var(--body); line-height: 1.7; margin-bottom: 12px; max-width: 620px; }
 
 /* The truth section — direct, no sugar */
 .truth-section {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 22px; padding: 36px 40px; margin-bottom: 24px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 36px 40px; margin-bottom: 24px;
 }
 @media (max-width: 700px) { .truth-section { padding: 28px 24px; } }
 .truth-eyebrow {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: #ff9999; font-weight: 700; margin-bottom: 16px;
+  color: var(--danger); font-weight: 700; margin-bottom: 16px;
   display: flex; align-items: center; gap: 10px;
 }
-.truth-eyebrow::before { content: ''; width: 24px; height: 1px; background: #ff9999; }
+.truth-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--danger); }
 .truth-section h2 {
   font-size: clamp(24px, 3.5vw, 32px); font-weight: 500;
-  letter-spacing: -0.8px; color: #fff; line-height: 1.15; margin-bottom: 20px;
+  letter-spacing: -0.8px; color: var(--ink); line-height: 1.15; margin-bottom: 20px;
 }
-.truth-section h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #ff9999; font-weight: 400; }
+.truth-section h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--danger); font-weight: 400; }
 .truth-section p {
-  font-size: 15px; color: #d0d0d0; line-height: 1.75; margin-bottom: 14px;
+  font-size: 15px; color: var(--body); line-height: 1.75; margin-bottom: 14px;
 }
 .truth-section p:last-child { margin-bottom: 0; }
-.truth-section strong { color: #fff; font-weight: 500; }
+.truth-section strong { color: var(--ink); font-weight: 500; }
 
 .truth-list {
   background: rgba(255,100,100,0.04); border-left: 3px solid rgba(255,100,100,0.4);
@@ -79,10 +89,10 @@
 .truth-list ul { list-style: none; }
 .truth-list li {
   position: relative; padding-left: 22px; font-size: 14px;
-  color: #d0d0d0; line-height: 1.65; margin-bottom: 8px;
+  color: var(--body); line-height: 1.65; margin-bottom: 8px;
 }
 .truth-list li:last-child { margin-bottom: 0; }
-.truth-list li::before { content: '✗'; position: absolute; left: 0; color: #ff9999; font-weight: 700; }
+.truth-list li::before { content: '✗'; position: absolute; left: 0; color: var(--danger); font-weight: 700; }
 
 /* Big intro CTA */
 .intro-cta-row {
@@ -90,37 +100,37 @@
   margin-top: 32px;
 }
 .btn-big {
-  background: #c4ff47; color: #0a0a0a; border: none; cursor: pointer;
-  padding: 18px 36px; border-radius: 999px;
+  background: var(--lime); color: var(--on-lime); border: none; cursor: pointer;
+  padding: 18px 36px; border-radius: var(--r-pill);
   font-size: 16px; font-weight: 600; font-family: inherit;
   transition: all 0.2s; display: inline-flex; align-items: center; gap: 10px;
 }
-.btn-big:hover { background: #d4ff6b; transform: translateY(-2px); }
+.btn-big:hover { background: var(--accent); transform: translateY(-2px); }
 .btn-big-ghost {
-  background: transparent; color: #c0c0c0; border: 1px solid rgba(255,255,255,0.15);
-  padding: 17px 30px; border-radius: 999px;
+  background: transparent; color: var(--body); border: 1px solid var(--hairline);
+  padding: 17px 30px; border-radius: var(--r-pill);
   font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
   transition: all 0.2s;
   text-decoration: none; display: inline-flex; align-items: center;
 }
-.btn-big-ghost:hover { border-color: #c4ff47; color: #c4ff47; }
+.btn-big-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
 
 /* ─────────── PACE SELECT SCREEN ─────────── */
 .pace-header { text-align: center; margin: 48px 0 32px; }
 .pace-header .eyebrow-pill {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(196,255,71,0.1); color: #c4ff47;
-  font-size: 11px; padding: 6px 14px; border-radius: 999px;
+  background: var(--accent-wash); color: var(--accent);
+  font-size: 11px; padding: 6px 14px; border-radius: var(--r-pill);
   font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
   margin-bottom: 18px;
 }
 .pace-header h2 {
   font-size: clamp(30px, 5vw, 48px); font-weight: 500;
-  letter-spacing: -1.5px; color: #fff; line-height: 1.05; margin-bottom: 14px;
+  letter-spacing: -1.5px; color: var(--ink); line-height: 1.05; margin-bottom: 14px;
 }
-.pace-header h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
-.pace-header p { font-size: 15px; color: #a0a0a0; line-height: 1.6; max-width: 580px; margin: 0 auto; }
+.pace-header h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.pace-header p { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 580px; margin: 0 auto; }
 
 .pace-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -129,32 +139,32 @@
 @media (max-width: 800px) { .pace-grid { grid-template-columns: 1fr; } }
 
 .pace-card {
-  background: #141414; border: 2px solid rgba(255,255,255,0.08);
-  border-radius: 22px; padding: 32px 28px; cursor: pointer;
+  background: var(--surface); border: 2px solid var(--hairline);
+  border-radius: var(--r-md); padding: 32px 28px; cursor: pointer;
   transition: all 0.3s; text-align: center;
   display: flex; flex-direction: column; gap: 14px;
 }
-.pace-card:hover { border-color: rgba(196,255,71,0.4); transform: translateY(-3px); }
-.pace-card.recommended { border-color: rgba(196,255,71,0.3); position: relative; }
+.pace-card:hover { border-color: var(--accent-wash); transform: translateY(-3px); }
+.pace-card.recommended { border-color: var(--accent-wash); position: relative; }
 .pace-card.recommended::before {
   content: 'Recommended'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: #c4ff47; color: #0a0a0a;
+  background: var(--lime); color: var(--on-lime);
   font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-  padding: 4px 12px; border-radius: 999px;
+  padding: 4px 12px; border-radius: var(--r-pill);
 }
-.pace-name { font-size: 14px; color: #c4ff47; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+.pace-name { font-size: 14px; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
 .pace-duration {
-  font-size: 56px; font-weight: 500; color: #fff; letter-spacing: -2px;
+  font-size: 56px; font-weight: 500; color: var(--ink); letter-spacing: -2px;
   font-family: 'Instrument Serif', serif; font-style: italic; line-height: 1; font-weight: 400;
 }
-.pace-duration small { font-size: 18px; color: #888; font-style: normal; font-family: 'Space Grotesk', sans-serif; font-weight: 500; margin-left: 4px; letter-spacing: 0; }
-.pace-commitment { font-size: 14px; color: #d0d0d0; font-weight: 500; }
-.pace-best-for { font-size: 12px; color: #888; line-height: 1.5; }
+.pace-duration small { font-size: 18px; color: var(--muted); font-style: normal; font-family: 'Space Grotesk', sans-serif; font-weight: 500; margin-left: 4px; letter-spacing: 0; }
+.pace-commitment { font-size: 14px; color: var(--body); font-weight: 500; }
+.pace-best-for { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
 
 /* ─────────── COMMIT SCREEN ─────────── */
 .commit-card {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
+  background: var(--surface); border: 1px solid var(--hairline);
   border-radius: 28px; padding: 56px 48px; margin: 40px 0;
   position: relative; overflow: hidden;
 }
@@ -162,98 +172,98 @@
 .commit-card::before {
   content: ''; position: absolute; bottom: -120px; left: -120px;
   width: 320px; height: 320px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,255,71,0.08), transparent 70%);
+  background: radial-gradient(circle, var(--accent-wash), transparent 70%);
 }
 .commit-content { position: relative; z-index: 2; }
 .commit-eyebrow {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: #c4ff47; font-weight: 600; margin-bottom: 16px;
+  color: var(--accent); font-weight: 600; margin-bottom: 16px;
   display: flex; align-items: center; gap: 10px;
 }
-.commit-eyebrow::before { content: ''; width: 24px; height: 1px; background: #c4ff47; }
+.commit-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--lime); }
 .commit-card h2 {
   font-size: clamp(28px, 4.5vw, 40px); font-weight: 500;
-  letter-spacing: -1.2px; color: #fff; line-height: 1.1; margin-bottom: 20px;
+  letter-spacing: -1.2px; color: var(--ink); line-height: 1.1; margin-bottom: 20px;
 }
-.commit-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
-.commit-card p { font-size: 15px; color: #c0c0c0; line-height: 1.75; margin-bottom: 14px; }
-.commit-card strong { color: #fff; font-weight: 500; }
+.commit-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
+.commit-card p { font-size: 15px; color: var(--body); line-height: 1.75; margin-bottom: 14px; }
+.commit-card strong { color: var(--ink); font-weight: 500; }
 
 .commit-statement {
-  background: rgba(196,255,71,0.06); border: 2px dashed rgba(196,255,71,0.3);
-  border-radius: 16px; padding: 28px 32px; margin: 28px 0;
-  font-size: 18px; color: #fff; font-weight: 500; line-height: 1.5;
+  background: var(--accent-wash); border: 2px dashed var(--accent-wash);
+  border-radius: var(--r-md); padding: 28px 32px; margin: 28px 0;
+  font-size: 18px; color: var(--ink); font-weight: 500; line-height: 1.5;
   letter-spacing: -0.3px;
 }
 @media (max-width: 600px) { .commit-statement { font-size: 16px; padding: 24px; } }
-.commit-statement em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.commit-statement em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 
 .commit-checkbox-row {
   display: flex; gap: 14px; align-items: flex-start;
-  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 18px 22px; margin: 20px 0; cursor: pointer;
+  background: var(--bg); border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 18px 22px; margin: 20px 0; cursor: pointer;
   transition: all 0.2s;
 }
-.commit-checkbox-row:hover { border-color: rgba(196,255,71,0.3); }
-.commit-checkbox-row.checked { background: rgba(196,255,71,0.04); border-color: #c4ff47; }
+.commit-checkbox-row:hover { border-color: var(--accent-wash); }
+.commit-checkbox-row.checked { background: var(--accent-wash); border-color: var(--accent); }
 .commit-checkbox {
   width: 24px; height: 24px; border-radius: 6px;
-  border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0;
+  border: 1.5px solid var(--hairline); flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s; margin-top: 1px;
 }
-.commit-checkbox-row.checked .commit-checkbox { background: #c4ff47; border-color: #c4ff47; }
+.commit-checkbox-row.checked .commit-checkbox { background: var(--lime); border-color: var(--accent); }
 .commit-checkbox svg { width: 14px; height: 14px; opacity: 0; }
 .commit-checkbox-row.checked .commit-checkbox svg { opacity: 1; }
-.commit-checkbox-text { font-size: 13px; color: #d0d0d0; line-height: 1.6; }
-.commit-checkbox-row.checked .commit-checkbox-text { color: #fff; }
+.commit-checkbox-text { font-size: 13px; color: var(--body); line-height: 1.6; }
+.commit-checkbox-row.checked .commit-checkbox-text { color: var(--ink); }
 
 
 /* ─────────── PATH SCREEN — the actual journey ─────────── */
 /* Sticky progress + reset bar */
 .path-progress {
   position: sticky; top: 80px; z-index: 50;
-  background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 14px 22px;
+  background: var(--nav-bg); backdrop-filter: blur(12px);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 14px 22px;
   margin: 32px 0 28px;
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
 }
 .path-progress-info {
-  font-size: 13px; color: #a0a0a0; white-space: nowrap;
+  font-size: 13px; color: var(--muted); white-space: nowrap;
   display: flex; align-items: center; gap: 6px;
 }
-.path-progress-info strong { color: #c4ff47; font-weight: 600; font-size: 14px; }
-.path-progress-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; min-width: 120px; }
-.path-progress-fill { height: 100%; background: #c4ff47; transition: width 0.4s ease-out; border-radius: 999px; }
+.path-progress-info strong { color: var(--accent); font-weight: 600; font-size: 14px; }
+.path-progress-bar { flex: 1; height: 6px; background: var(--hairline); border-radius: var(--r-pill); overflow: hidden; min-width: 120px; }
+.path-progress-fill { height: 100%; background: var(--lime); transition: width 0.4s ease-out; border-radius: var(--r-pill); }
 .path-pace-badge {
-  background: rgba(196,255,71,0.1); color: #c4ff47;
-  font-size: 11px; padding: 4px 11px; border-radius: 999px;
+  background: var(--accent-wash); color: var(--accent);
+  font-size: 11px; padding: 4px 11px; border-radius: var(--r-pill);
   font-weight: 600; letter-spacing: 0.5px; white-space: nowrap;
 }
 .path-reset {
   background: rgba(255,153,153,0.08); border: 1px solid rgba(255,153,153,0.25);
-  color: #ff9999; padding: 7px 14px; border-radius: 999px;
+  color: var(--danger); padding: 7px 14px; border-radius: var(--r-pill);
   font-size: 12px; font-weight: 600; cursor: pointer;
   transition: all 0.2s; font-family: inherit; white-space: nowrap;
   display: inline-flex; align-items: center; gap: 6px;
 }
-.path-reset:hover { background: rgba(255,153,153,0.15); border-color: #ff9999; }
+.path-reset:hover { background: rgba(255,153,153,0.15); border-color: var(--danger); }
 
 /* Week blocks */
 .week-block {
-  background: #141414; border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 22px; padding: 32px; margin-bottom: 18px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 32px; margin-bottom: 18px;
   transition: all 0.3s;
 }
-.week-block.complete { border-color: rgba(196,255,71,0.3); }
+.week-block.complete { border-color: var(--accent-wash); }
 .week-block.locked {
-  background: #0c0c0c; border-color: rgba(255,255,255,0.04);
+  background: var(--bg); border-color: var(--hairline);
   opacity: 0.55;
 }
 .week-block.current {
-  border-color: rgba(196,255,71,0.4);
-  box-shadow: 0 0 0 4px rgba(196,255,71,0.06);
+  border-color: var(--accent-wash);
+  box-shadow: 0 0 0 4px var(--accent-wash);
 }
 
 .week-head {
@@ -264,20 +274,20 @@
 }
 .week-num {
   font-family: 'Instrument Serif', serif; font-style: italic;
-  color: #c4ff47; font-size: 42px; line-height: 1; font-weight: 400; flex-shrink: 0;
+  color: var(--accent); font-size: 42px; line-height: 1; font-weight: 400; flex-shrink: 0;
 }
-.week-block.locked .week-num { color: #555; }
+.week-block.locked .week-num { color: var(--faint); }
 .week-head-content { flex: 1; }
-.week-eyebrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #888; font-weight: 600; margin-bottom: 4px; }
-.week-block.complete .week-eyebrow { color: #c4ff47; }
-.week-title { font-size: 22px; color: #fff; font-weight: 500; letter-spacing: -0.5px; line-height: 1.2; }
-.week-block.locked .week-title { color: #666; }
+.week-eyebrow { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+.week-block.complete .week-eyebrow { color: var(--accent); }
+.week-title { font-size: 22px; color: var(--ink); font-weight: 500; letter-spacing: -0.5px; line-height: 1.2; }
+.week-block.locked .week-title { color: var(--faint); }
 .week-meta {
   display: flex; align-items: center; gap: 10px; margin-top: 8px;
-  font-size: 12px; color: #888;
+  font-size: 12px; color: var(--muted);
 }
 .week-meta-pill {
-  background: rgba(255,255,255,0.04); padding: 3px 9px; border-radius: 999px;
+  background: var(--hairline); padding: 3px 9px; border-radius: var(--r-pill);
   font-weight: 500;
 }
 .week-status-icon {
@@ -286,11 +296,11 @@
 }
 .week-collapse {
   width: 32px; height: 32px; border-radius: 50%;
-  background: rgba(255,255,255,0.04);
+  background: var(--hairline);
   display: flex; align-items: center; justify-content: center;
-  color: #888; transition: all 0.3s;
+  color: var(--muted); transition: all 0.3s;
 }
-.week-block.expanded .week-collapse { background: #c4ff47; color: #0a0a0a; transform: rotate(180deg); }
+.week-block.expanded .week-collapse { background: var(--lime); color: var(--on-lime); transform: rotate(180deg); }
 
 .week-body {
   max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
@@ -298,21 +308,21 @@
 .week-block.expanded .week-body { max-height: 5000px; }
 
 .week-locked-msg {
-  background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px 20px;
-  font-size: 13px; color: #888; line-height: 1.6; margin-top: 8px;
+  background: var(--shadow); border-radius: var(--r-sm); padding: 16px 20px;
+  font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 8px;
   display: flex; align-items: center; gap: 12px;
 }
-.week-locked-msg svg { width: 18px; height: 18px; flex-shrink: 0; color: #666; }
+.week-locked-msg svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--faint); }
 
 /* Day cards within a week */
 .days-list { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
 .day-card {
-  background: #0a0a0a; border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px; padding: 18px 22px;
+  background: var(--bg); border: 1px solid var(--hairline);
+  border-radius: var(--r-sm); padding: 18px 22px;
   transition: all 0.2s;
 }
 .day-card.done {
-  background: rgba(196,255,71,0.04); border-color: rgba(196,255,71,0.25);
+  background: var(--accent-wash); border-color: var(--accent-wash);
 }
 .day-head {
   display: flex; gap: 14px; align-items: flex-start;
@@ -320,11 +330,11 @@
 }
 .day-checkbox {
   width: 22px; height: 22px; border-radius: 6px;
-  border: 1.5px solid rgba(255,255,255,0.2); flex-shrink: 0;
+  border: 1.5px solid var(--hairline); flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s; margin-top: 2px;
 }
-.day-card.done .day-checkbox { background: #c4ff47; border-color: #c4ff47; }
+.day-card.done .day-checkbox { background: var(--lime); border-color: var(--accent); }
 .day-checkbox svg { width: 13px; height: 13px; opacity: 0; transition: opacity 0.2s; }
 .day-card.done .day-checkbox svg { opacity: 1; }
 
@@ -332,36 +342,36 @@
 .day-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
 .day-label {
   font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-  color: #c4ff47; font-weight: 600;
+  color: var(--accent); font-weight: 600;
 }
 .day-time {
-  background: rgba(255,255,255,0.05); color: #a0a0a0;
-  font-size: 10px; padding: 2px 8px; border-radius: 999px;
+  background: var(--hairline); color: var(--muted);
+  font-size: 10px; padding: 2px 8px; border-radius: var(--r-pill);
   font-weight: 500;
 }
 .day-title {
-  font-size: 15px; color: #fff; font-weight: 500;
+  font-size: 15px; color: var(--ink); font-weight: 500;
   letter-spacing: -0.2px; line-height: 1.4;
 }
-.day-card.done .day-title { color: #888; text-decoration: line-through; }
+.day-card.done .day-title { color: var(--muted); text-decoration: line-through; }
 .day-detail {
-  font-size: 13px; color: #a0a0a0; line-height: 1.6;
+  font-size: 13px; color: var(--muted); line-height: 1.6;
   margin-top: 8px; padding-left: 36px;
 }
 .day-action {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(196,255,71,0.1); color: #c4ff47;
-  font-size: 12px; padding: 6px 12px; border-radius: 999px;
+  background: var(--accent-wash); color: var(--accent);
+  font-size: 12px; padding: 6px 12px; border-radius: var(--r-pill);
   font-weight: 500; text-decoration: none; margin-top: 10px;
   margin-left: 36px; transition: all 0.2s;
 }
-.day-action:hover { background: rgba(196,255,71,0.2); }
+.day-action:hover { background: var(--accent-wash); }
 
 
 /* ─────────── COMPLETE SCREEN ─────────── */
 .complete-card {
-  background: linear-gradient(135deg, rgba(196,255,71,0.14), rgba(196,255,71,0.02));
-  border: 1px solid rgba(196,255,71,0.3); border-radius: 28px;
+  background: linear-gradient(135deg, var(--accent-wash), var(--accent-wash));
+  border: 1px solid var(--accent-wash); border-radius: 28px;
   padding: 64px 48px; margin: 40px 0; text-align: center;
   position: relative; overflow: hidden;
 }
@@ -369,59 +379,64 @@
 .complete-card::before {
   content: ''; position: absolute; top: -120px; left: -120px;
   width: 320px; height: 320px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,255,71,0.18), transparent 70%);
+  background: radial-gradient(circle, var(--accent-wash), transparent 70%);
 }
 .complete-card::after {
   content: ''; position: absolute; bottom: -80px; right: -80px;
   width: 260px; height: 260px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,255,71,0.12), transparent 70%);
+  background: radial-gradient(circle, var(--accent-wash), transparent 70%);
 }
 .complete-content { position: relative; z-index: 2; }
 .complete-emoji { font-size: 72px; margin-bottom: 20px; }
 .complete-card h2 {
   font-size: clamp(32px, 5vw, 52px); font-weight: 500;
-  letter-spacing: -1.8px; color: #fff; line-height: 1; margin-bottom: 18px;
+  letter-spacing: -1.8px; color: var(--ink); line-height: 1; margin-bottom: 18px;
 }
-.complete-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-weight: 400; }
+.complete-card h2 em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-weight: 400; }
 .complete-card p {
-  font-size: 16px; color: #d0d0d0; line-height: 1.7;
+  font-size: 16px; color: var(--body); line-height: 1.7;
   max-width: 560px; margin: 0 auto 16px;
 }
 .complete-card p:last-of-type { margin-bottom: 32px; }
-.complete-card strong { color: #c4ff47; font-weight: 500; }
+.complete-card strong { color: var(--accent); font-weight: 500; }
 
 
 /* ─────────── RESET MODAL ─────────── */
 .modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  position: fixed; inset: 0; background: var(--shadow);
   backdrop-filter: blur(4px); display: none;
   align-items: center; justify-content: center;
   z-index: 1000; padding: 20px;
 }
 .modal-overlay.visible { display: flex; }
 .modal {
-  background: #141414; border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px; padding: 32px; max-width: 440px; width: 100%;
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: var(--r-md); padding: 32px; max-width: 440px; width: 100%;
   text-align: center;
 }
-.modal h3 { font-size: 20px; color: #fff; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.4px; }
-.modal p { font-size: 14px; color: #c0c0c0; line-height: 1.6; margin-bottom: 24px; }
+.modal h3 { font-size: 20px; color: var(--ink); font-weight: 500; margin-bottom: 10px; letter-spacing: -0.4px; }
+.modal p { font-size: 14px; color: var(--body); line-height: 1.6; margin-bottom: 24px; }
 .modal-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .btn-modal-confirm {
-  background: #ff6464; color: #fff; border: none; cursor: pointer;
-  padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 500;
+  background: var(--danger); color: var(--ink); border: none; cursor: pointer;
+  padding: 11px 22px; border-radius: var(--r-pill); font-size: 14px; font-weight: 500;
   font-family: inherit; transition: all 0.2s;
 }
-.btn-modal-confirm:hover { background: #ff7a7a; }
+.btn-modal-confirm:hover { background: var(--danger); }
 .btn-modal-cancel {
-  background: transparent; border: 1px solid rgba(255,255,255,0.2);
-  color: #c0c0c0; padding: 10px 22px; border-radius: 999px;
+  background: transparent; border: 1px solid var(--hairline);
+  color: var(--body); padding: 10px 22px; border-radius: var(--r-pill);
   font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit;
   transition: all 0.2s;
 }
-.btn-modal-cancel:hover { border-color: #c4ff47; color: #c4ff47; }
+.btn-modal-cancel:hover { border-color: var(--accent); color: var(--accent); }
 </style>
-</head>
+<style>
+.path-storage-note {
+  font-size: 12px; line-height: 1.5; color: var(--faint);
+  margin: 10px 0 0; max-width: 46em;
+}
+</style></head>
 <body>
 
 <nav>
@@ -434,6 +449,10 @@
 <a href="certifications.html">Learn</a>
 <a href="apply.html">Join us</a>
 </div>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+</button>
 <a href="index.html" class="back-link">← Back</a>
 </div>
 </nav>
@@ -441,7 +460,7 @@
 <div class="wrap">
 <section class="page-hero">
 <div class="tag-chip"><span class="tag-dot"></span>Free guided program · Saves your progress</div>
-<p style="font-size:12.5px;color:#888;margin-top:10px;">Your progress is saved in this browser only. Clearing your browser data or switching devices will reset it.</p>
+<p style="font-size:12.5px;color:var(--muted);margin-top:10px;">Your progress is saved in this browser only. Clearing your browser data or switching devices will reset it.</p>
 <h1 class="page-title">The <em>Path</em>.</h1>
 <p class="page-lede">Don't know where to start? This is the only thing you need to open. A guided, day-by-day program that takes you from "I don't know what a VA is" to "I just landed my first client." 30 tasks. Real commitment. No shortcuts.</p>
 </section>
@@ -456,7 +475,7 @@
 <div class="intro-content">
 <div class="intro-pill"><span class="intro-pill-dot"></span>Built for beginners</div>
 <h1 class="intro-headline">Don't know how to <em>start</em>? Don't worry — I built this for you.</h1>
-<p class="intro-lede">There are over 30 free tools, templates, and guides on this site. Most VAs get overwhelmed and quit on day three because they don't know what to do first. <strong style="color:#fff;">This page solves that.</strong></p>
+<p class="intro-lede">There are over 30 free tools, templates, and guides on this site. Most VAs get overwhelmed and quit on day three because they don't know what to do first. <strong style="color:var(--ink);">This page solves that.</strong></p>
 <p class="intro-lede">Click "Start" below. I'll walk you through everything — niche, certs, portfolio, applications, discovery calls, onboarding — in the right order, on a realistic schedule. You just show up every day and do the work.</p>
 </div>
 </div>
@@ -550,7 +569,7 @@
 
 <div class="commit-checkbox-row" id="commit-row" onclick="toggleCommit()">
 <div class="commit-checkbox">
-<svg fill="none" stroke="#0a0a0a" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+<svg fill="none" stroke="var(--bg)" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
 </div>
 <div class="commit-checkbox-text">
 I have read the commitment out loud. I'm in. Let's begin.
@@ -572,6 +591,7 @@ I have read the commitment out loud. I'm in. Let's begin.
 <div class="path-progress">
 <div class="path-progress-info"><strong id="done-count">0</strong> of 30 done</div>
 <div class="path-progress-bar"><div class="path-progress-fill" id="progress-fill" style="width: 0%"></div></div>
+<p class="path-storage-note">Progress saves in this browser only, so use the same device and browser each time. On iPhone, open the Path at least once a week so Safari does not clear it.</p>
 <span class="path-pace-badge" id="pace-display">Steady · 6 weeks</span>
 <button class="path-reset" onclick="confirmReset()">
 <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg>
@@ -592,6 +612,7 @@ Reset Path
 <p>30 tasks. Real work. No shortcuts. You showed up every day for weeks while most people would've quit on day 3. <strong>You're a VA now.</strong></p>
 <p>The hard part isn't over — but the foundation is built. You have a niche, a portfolio, a profile, applications going out daily, and the systems to onboard your first client when they say yes. Now it's about consistency.</p>
 <p style="margin-top:10px;">One more thing: you just did 30 days of real work while most people quit on day three. That is exactly who we want in the VAST network. Send us your application and tell us you finished the Path.</p>
+<p style="margin-top:10px;font-size:13px;color:var(--faint);">One practical note: this record of your 30 tasks lives in this browser. If you switch devices or clear your data it will reset, so take a screenshot if you want to keep it.</p>
 <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
 <a href="https://www.vastprofessionals.com/careers" target="_blank" rel="noopener" class="btn-big">Apply to the VAST network →</a>
 <a href="onboarding-checklist.html" class="btn-big-ghost">Open onboarding checklist →</a>
@@ -622,7 +643,7 @@ Reset Path
 <div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
 </div>
-<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a> · <a href="privacy.html" style="color:#888;">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
+<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:var(--muted);">Terms of Use</a> · <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
 </footer>
 
 <script>
@@ -639,23 +660,23 @@ const PACES = {
 // Distributed into 6 phases, displayed differently per pace
 const TASKS = [
   // ─── PHASE 1: Foundations + niche ───
-  { phase: 1, time: '30 min',   title: 'Reality check — what being a VA actually means', detail: 'Before you touch any tool, watch these two videos from real VAs. They cover what the work is actually like, what to expect, and the hard truths nobody else talks about. <br><br><strong>Video 1:</strong> <a href="https://www.tiktok.com/@bestvainph/video/7603955534613548295" target="_blank" style="color:#c4ff47;">TikTok — honest reality check for new VAs</a><br><strong>Video 2:</strong> <a href="https://www.youtube.com/watch?v=JFHrK4Z6jaI" target="_blank" style="color:#c4ff47;">YouTube — beginner VA walkthrough</a><br><br>The VAs who succeed know what they\'re signing up for. Most of the ones who quit didn\'t. Don\'t skip this.', link: 'https://www.tiktok.com/@bestvainph/video/7603955534613548295', linkLabel: 'Watch reality-check video' },
+  { phase: 1, time: '30 min',   title: 'Reality check — what being a VA actually means', detail: 'Before you touch any tool, watch these two videos from real VAs. They cover what the work is actually like, what to expect, and the hard truths nobody else talks about. <br><br><strong>Video 1:</strong> <a href="https://www.tiktok.com/@bestvainph/video/7603955534613548295" target="_blank" style="color: var(--accent);">TikTok — honest reality check for new VAs</a><br><strong>Video 2:</strong> <a href="https://www.youtube.com/watch?v=JFHrK4Z6jaI" target="_blank" style="color: var(--accent);">YouTube — beginner VA walkthrough</a><br><br>The VAs who succeed know what they\'re signing up for. Most of the ones who quit didn\'t. Don\'t skip this.', link: 'https://www.tiktok.com/@bestvainph/video/7603955534613548295', linkLabel: 'Watch reality-check video' },
   { phase: 1, time: '20 min',   title: 'Take the Niche Finder Quiz', detail: 'Answer all 15 questions honestly. Don\'t pick what sounds cool — pick what matches what you\'re actually good at.', link: 'niche-quiz.html', linkLabel: 'Take quiz' },
   { phase: 1, time: '40 min',   title: 'Pick ONE niche from your top 3 results', detail: 'Read the descriptions for your top 3 matches from the quiz. Pick the ONE you\'ll commit to. Yes, just one. You can pivot later if it doesn\'t work — but generalists never get hired. Specialization = higher rates, faster hiring, better portfolio.', link: 'niche-quiz.html', linkLabel: 'Review my results' },
-  { phase: 1, time: '30 min',   title: 'Set up the basics — Upwork, OnlineJobs.ph, Claude/ChatGPT', detail: 'Create accounts on <a href="https://www.upwork.com/" target="_blank" style="color:#c4ff47;">Upwork</a> and <a href="https://www.onlinejobs.ph/" target="_blank" style="color:#c4ff47;">OnlineJobs.ph</a>. Sign up for a free Claude or ChatGPT account — you\'ll use it daily. Add a real, professional headshot to every profile (not a selfie, not a filter — a clean portrait with good lighting, white or neutral background).', link: 'https://www.onlinejobs.ph/', linkLabel: 'Sign up on OnlineJobs.ph' },
+  { phase: 1, time: '30 min',   title: 'Set up the basics — Upwork, OnlineJobs.ph, Claude/ChatGPT', detail: 'Create accounts on <a href="https://www.upwork.com/" target="_blank" style="color: var(--accent);">Upwork</a> and <a href="https://www.onlinejobs.ph/" target="_blank" style="color: var(--accent);">OnlineJobs.ph</a>. Sign up for a free Claude or ChatGPT account — you\'ll use it daily. Add a real, professional headshot to every profile (not a selfie, not a filter — a clean portrait with good lighting, white or neutral background).', link: 'https://www.onlinejobs.ph/', linkLabel: 'Sign up on OnlineJobs.ph' },
   { phase: 1, time: '20 min',   title: 'Use the Rate Calculator to set your starting rate', detail: 'Plug in your target income, hours, expenses. Get a realistic hourly number. Memorize it — you\'ll need to say it out loud on your first call.', link: 'rate-calculator.html', linkLabel: 'Open calculator' },
 
   // ─── PHASE 2: Skills + first cert ───
   { phase: 2, time: '20 min',   title: 'Browse the Free Certifications hub for your niche', detail: 'Filter by your niche. Pick ONE certification to start. The Google or HubSpot ones are widely recognized — start there if unsure.', link: 'certifications.html', linkLabel: 'Browse certs' },
   { phase: 2, time: '2-4 hrs',  title: 'Complete your first free certification', detail: 'Block off real time. No phone, no notifications. Finish the cert, take the exam, save the certificate as a PDF. This is your first credential.', link: 'certifications.html', linkLabel: 'Open certs' },
-  { phase: 2, time: '2-3 hrs',  title: 'Start your niche-specific mock task', detail: 'Open the mock task page for YOUR niche. Begin building a portfolio sample using a fake or volunteer client. This is the work clients actually want to see.<br><br><strong>Pick yours:</strong> <a href="mock-ea.html" target="_blank" style="color:#c4ff47;">EA / Admin</a> · <a href="mock-smm.html" target="_blank" style="color:#c4ff47;">Social Media</a> · <a href="mock-graphic-design.html" target="_blank" style="color:#c4ff47;">Graphic Design</a> · <a href="mock-video-editing.html" target="_blank" style="color:#c4ff47;">Video Editing</a><br><br>If your niche isn\'t listed above, pick the closest match and adapt. More niche mock tasks are added regularly.', link: 'mock-ea.html', linkLabel: 'EA mock task (example)' },
+  { phase: 2, time: '2-3 hrs',  title: 'Start your niche-specific mock task', detail: 'Open the mock task page for YOUR niche. Begin building a portfolio sample using a fake or volunteer client. This is the work clients actually want to see.<br><br><strong>Pick yours:</strong> <a href="mock-ea.html" target="_blank" style="color: var(--accent);">EA / Admin</a> · <a href="mock-smm.html" target="_blank" style="color: var(--accent);">Social Media</a> · <a href="mock-graphic-design.html" target="_blank" style="color: var(--accent);">Graphic Design</a> · <a href="mock-video-editing.html" target="_blank" style="color: var(--accent);">Video Editing</a><br><br>If your niche isn\'t listed above, pick the closest match and adapt. More niche mock tasks are added regularly.', link: 'mock-ea.html', linkLabel: 'EA mock task (example)' },
   { phase: 2, time: '2-3 hrs',  title: 'Complete the mock task and document the work', detail: 'Finish the mock task. Save screenshots, before/after shots, and a short write-up of your process. This becomes the centerpiece of your portfolio. <strong>Document as you go — don\'t wait until you\'re done.</strong>', link: 'templates.html', linkLabel: 'Open portfolio template' },
   { phase: 2, time: '20 min',   title: 'Pick your second certification', detail: 'Two certs is a meaningful resume signal. One looks accidental. Pick another from your niche or stack a complementary skill (e.g., Canva + Social Media if you\'re SMM).', link: 'certifications.html', linkLabel: 'Browse certs' },
 
   // ─── PHASE 3: Portfolio + profile ───
   { phase: 3, time: '2-3 hrs',  title: 'Build your portfolio in Canva', detail: 'Use the free portfolio template. Add your mock task work, your certifications, a short bio, your services, and contact info. Export as PDF. Get a public sharing link.', link: 'templates.html', linkLabel: 'Open templates' },
   { phase: 3, time: '40 min',   title: 'Use the About Section Generator', detail: 'Fill out the form. Get a polished About section. Edit a few sentences so it sounds like you, not generic AI text.', link: 'about-generator.html', linkLabel: 'Generate About' },
-  { phase: 3, time: '1 hr',     title: 'Build your full Upwork profile', detail: 'Add a real professional headshot (not a selfie). Use your generated About. List specific skills. Upload your portfolio. Take 2-3 skill tests. Set your rate to what the calculator gave you.<br><br><strong>The most important field: your headline.</strong> Use the Headline Builder to generate a killer one using the <code style="background:rgba(196,255,71,0.1);color:#c4ff47;padding:1px 5px;border-radius:3px;">Tool | Tool | Niche | Problem | Result</code> formula. Generic beats specific — in a BAD way.', link: 'headline-builder.html', linkLabel: 'Open headline builder' },
+  { phase: 3, time: '1 hr',     title: 'Build your full Upwork profile', detail: 'Add a real professional headshot (not a selfie). Use your generated About. List specific skills. Upload your portfolio. Take 2-3 skill tests. Set your rate to what the calculator gave you.<br><br><strong>The most important field: your headline.</strong> Use the Headline Builder to generate a killer one using the <code style="background:var(--accent-wash);color: var(--accent);padding:1px 5px;border-radius:3px;">Tool | Tool | Niche | Problem | Result</code> formula. Generic beats specific — in a BAD way.', link: 'headline-builder.html', linkLabel: 'Open headline builder' },
   { phase: 3, time: '40 min',   title: 'Build your full OnlineJobs.ph profile', detail: 'Same energy as Upwork. <strong>Get your ID badge verified</strong> — huge trust signal on OLJ. Take 2-3 skill tests. Add your photo, headline, and a clean job objective.<br><br>Re-use the Headline Builder — switch to the OLJ tab for the longer character allowance (you can be more detailed here than on Upwork).', link: 'headline-builder.html', linkLabel: 'Open headline builder' },
   { phase: 3, time: '2 hrs',    title: 'Complete your second certification', detail: 'Finish the cert you picked earlier. Add it to your profile, your portfolio, your resume. Stack the credentials.', link: 'certifications.html', linkLabel: 'Open certs' },
 
@@ -850,7 +871,7 @@ function renderPath() {
           <div class="day-card ${isDone ? 'done' : ''}">
             <div class="day-head" onclick="toggleTask(${task.globalIdx})">
               <div class="day-checkbox">
-                <svg fill="none" stroke="#0a0a0a" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <svg fill="none" stroke="var(--bg)" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               </div>
               <div class="day-content">
                 <div class="day-meta-row">
@@ -880,7 +901,7 @@ function renderPath() {
             </div>
           </div>
           ${isLocked
-            ? `<div class="week-status-icon"><svg width="20" height="20" fill="none" stroke="#666" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>`
+            ? `<div class="week-status-icon"><svg width="20" height="20" fill="none" stroke="var(--faint)" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>`
             : `<div class="week-collapse"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>`
           }
         </div>
@@ -937,5 +958,16 @@ function doReset() {
 }
 </script>
 
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>

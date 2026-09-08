@@ -9,42 +9,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('kailami_theme');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 <link rel="stylesheet" href="styles.css">
 <style>
 .mock-wrap { max-width: 900px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 768px) { .mock-wrap { padding: 0 24px; } }
 .mock-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 48px; }
 @media (max-width: 640px) { .mock-meta { grid-template-columns: 1fr; } }
-.meta-card { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 18px 20px; }
-.meta-label { font-size: 11px; color: #888; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
-.meta-value { font-size: 15px; color: #fff; font-weight: 500; line-height: 1.3; }
+.meta-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-sm); padding: 18px 20px; }
+.meta-label { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; }
+.meta-value { font-size: 15px; color: var(--ink); font-weight: 500; line-height: 1.3; }
 .section-block { margin-bottom: 56px; }
 .block-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; flex-wrap: wrap; }
-.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: #c4ff47; font-size: 38px; line-height: 1; font-weight: 400; }
-.block-title { font-size: 28px; font-weight: 500; color: #fff; letter-spacing: -0.8px; line-height: 1.1; }
-.block-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 28px; line-height: 1.6; }
-.mock-step { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px 30px; margin-bottom: 14px; transition: all 0.3s; }
-.mock-step:hover { border-color: rgba(196,255,71,0.2); }
+.block-num { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--accent); font-size: 38px; line-height: 1; font-weight: 400; }
+.block-title { font-size: 28px; font-weight: 500; color: var(--ink); letter-spacing: -0.8px; line-height: 1.1; }
+.block-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+.mock-step { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: 28px 30px; margin-bottom: 14px; transition: all 0.3s; }
+.mock-step:hover { border-color: var(--accent-wash); }
 .mock-step-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
-.mock-step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(196,255,71,0.1); color: #c4ff47; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
-.mock-step-title { font-size: 17px; font-weight: 500; color: #fff; letter-spacing: -0.3px; line-height: 1.3; }
-.mock-step p { font-size: 14px; color: #c0c0c0; line-height: 1.7; margin-bottom: 12px; }
+.mock-step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-wash); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.mock-step-title { font-size: 17px; font-weight: 500; color: var(--ink); letter-spacing: -0.3px; line-height: 1.3; }
+.mock-step p { font-size: 14px; color: var(--body); line-height: 1.7; margin-bottom: 12px; }
 .mock-step p:last-child { margin-bottom: 0; }
 .mock-step ul { list-style: none; margin: 10px 0; }
-.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: #e0e0e0; line-height: 1.7; margin-bottom: 6px; }
-.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: #c4ff47; }
-.mock-step strong { color: #c4ff47; font-weight: 500; }
-.callout-box { background: rgba(196,255,71,0.05); border-left: 2px solid #c4ff47; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px; }
-.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 4px; }
-.callout-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
-.screenshot-list { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 20px 24px; margin-top: 24px; }
-.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c4ff47; font-weight: 600; margin-bottom: 14px; }
+.mock-step ul li { position: relative; padding-left: 22px; font-size: 14px; color: var(--body); line-height: 1.7; margin-bottom: 6px; }
+.mock-step ul li::before { content: ''; position: absolute; left: 6px; top: 11px; width: 5px; height: 5px; border-radius: 50%; background: var(--lime); }
+.mock-step strong { color: var(--accent); font-weight: 500; }
+.callout-box { background: var(--accent-wash); border-left: 2px solid var(--lime); padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 14px 0 4px; }
+.callout-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+.callout-text { font-size: 13px; color: var(--body); line-height: 1.6; }
+.screenshot-list { background: var(--bg); border: 1px solid var(--hairline); border-radius: var(--r-sm); padding: 20px 24px; margin-top: 24px; }
+.screenshot-title { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
 .screenshot-list ul { list-style: none; }
-.screenshot-list ul li { font-size: 13px; color: #e0e0e0; padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
-.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: #c4ff47; font-weight: 600; }
-.back-cta { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 32px; text-align: center; margin-top: 48px; }
-.back-cta-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 8px; letter-spacing: -0.4px; }
-.back-cta-sub { font-size: 14px; color: #a0a0a0; margin-bottom: 20px; }
+.screenshot-list ul li { font-size: 13px; color: var(--body); padding: 6px 0 6px 24px; position: relative; line-height: 1.5; }
+.screenshot-list ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+.back-cta { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--r-md); padding: 32px; text-align: center; margin-top: 48px; }
+.back-cta-title { font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.4px; }
+.back-cta-sub { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
 </style>
 </head>
 <body>
@@ -61,6 +71,10 @@
 </div>
 <a href="the-path.html" class="back-link">← Back to The Path</a>
 </div>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg>
+</button>
 </nav>
 
 <div class="wrap">
@@ -129,7 +143,7 @@
 <li>2 neutrals (light and dark)</li>
 <li>1 highlight (for CTAs, alerts)</li>
 </ul>
-<p>Include hex codes for each. Use <a href="https://coolors.co" target="_blank" style="color:#c4ff47;">coolors.co</a> to help.</p>
+<p>Include hex codes for each. Use <a href="https://coolors.co" target="_blank" style="color: var(--accent);">coolors.co</a> to help.</p>
 </div>
 
 <div class="mock-step">
@@ -162,7 +176,7 @@
 </ul>
 <div class="callout-box">
 <div class="callout-label">Shortcut — use Claude to build the PDF</div>
-<div class="callout-text">If building a full PDF feels overwhelming, use <a href="https://claude.ai/" target="_blank" style="color:#c4ff47;">Claude</a> free. Paste all your brand info (colors, fonts, logo description, brand story) and ask Claude to build you a brand guidelines PDF. It'll generate a polished, downloadable document in seconds. You just add your logo images. This is NOT cheating — clients love VAs who use AI efficiently.</div>
+<div class="callout-text">If building a full PDF feels overwhelming, use <a href="https://claude.ai/" target="_blank" style="color: var(--accent);">Claude</a> free. Paste all your brand info (colors, fonts, logo description, brand story) and ask Claude to build you a brand guidelines PDF. It'll generate a polished, downloadable document in seconds. You just add your logo images. This is NOT cheating — clients love VAs who use AI efficiently.</div>
 </div>
 <p style="margin-top: 14px;">Otherwise, build it in Canva — search "brand guidelines template" to start from a pre-made layout.</p>
 </div>
@@ -335,8 +349,19 @@
 <div class="footer-col"><div class="footer-col-title">Community</div><ul><li><a href="https://www.facebook.com/groups/1422755666045207" target="_blank">Facebook group</a></li><li><a href="index.html#webinars">Free webinars</a></li></ul></div>
 <div class="footer-col"><div class="footer-col-title">Follow</div><ul><li><a href="https://instagram.com/kailamitheva" target="_blank">Instagram</a></li><li><a href="https://tiktok.com/@kailamitheva" target="_blank">TikTok</a></li><li><a href="https://linkedin.com/in/kyladon" target="_blank">LinkedIn</a></li></ul></div>
 </div>
-<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:#888;">Terms of Use</a> · <a href="privacy.html" style="color:#888;">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
+<div class="footer-bottom"><div>© 2026 Kailami · All Rights Reserved · <a href="terms.html" style="color:var(--muted);">Terms of Use</a> · <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a></div><div>Made with care for the VA community</div></div>
 </footer>
 
+<script>
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kailami_theme', next); } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
