@@ -4,30 +4,475 @@
   "note": "Edit this file to add, remove or change courses. The Learn page reads it live, so no HTML changes are needed. Set added to the date you add a course; entries added within the last 30 days show a NEW badge automatically.",
   "courses": [
     {
-      "type": "audit",
-      "provider": "Google / Coursera",
-      "title": "Google Project Management Certificate",
+      "type": "course",
+      "provider": "YouTube / Jeff Su",
+      "title": "Learn 95% of ChatGPT work in under 20 minutes",
+      "niches": [
+        "ai",
+        "ea",
+        "writing"
+      ],
+      "time": "short",
+      "timeLabel": "20 min",
+      "gain": "Practical prompting for actual work rather than novelty tricks: drafting, summarising, reformatting and cleaning up your own writing. The most useful twenty minutes on this list for admin work.",
+      "link": "https://www.youtube.com/watch?v=KmcTu2EigTs",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Modern Millie",
+      "title": "Create 30 days of content in under 60 minutes",
+      "niches": [
+        "smm",
+        "marketing"
+      ],
+      "time": "short",
+      "timeLabel": "under 1 hr",
+      "gain": "Batching a month of social content in one session. This is the workflow a social media VA is hired to run, and doing it in a batch is what makes the work profitable.",
+      "link": "https://www.youtube.com/watch?v=eea_h19WF00",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Omowunmi's Virtual Assistant Academy",
+      "title": "Manage a client's email like a pro",
+      "niches": [
+        "ea",
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "15 min",
+      "gain": "Built for VAs specifically, not for executives managing their own inbox. Labels, filters, priorities and what to escalate versus handle yourself.",
+      "link": "https://www.youtube.com/watch?v=adQL88toYJw",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Omowunmi's Virtual Assistant Academy",
+      "title": "Calendar management course for virtual assistants",
       "niches": [
         "ea",
         "pm"
       ],
+      "time": "short",
+      "timeLabel": "23 min",
+      "gain": "Step by step calendar management from a VA trainer: scheduling across time zones, handling conflicts, and protecting a client's focus time. Same instructor as the email video above.",
+      "link": "https://www.youtube.com/watch?v=ftI53fz6En0",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Metics Media",
+      "title": "CapCut Tutorial for Beginners, full editing guide",
+      "niches": [
+        "video",
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "1 video",
+      "gain": "Layout, trimming, transitions, captions, filters and audio in one pass. CapCut is free and is what most clients mean when they ask for short-form edits.",
+      "link": "https://www.youtube.com/watch?v=j5_471mO14c",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Simon Sez IT",
+      "title": "QuickBooks Online training playlist",
+      "niches": [
+        "bookkeeping"
+      ],
       "time": "long",
-      "timeLabel": "100+ hrs",
-      "gain": "Full PM fundamentals: agile, scrum, stakeholder management. Audit is free, cert is paid.",
-      "link": "https://www.coursera.org/professional-certificates/google-project-management",
-      "added": "2026-04-22"
+      "timeLabel": "video series",
+      "gain": "A structured series rather than scattered clips, working through QuickBooks Online from account setup onward. Pair it with Hector Garcia's channel when you need a specific feature explained.",
+      "link": "https://www.youtube.com/playlist?list=PLzj7TwUeMQ3icsjfVhIWZkH1ItMe0o7vB",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Hector Garcia CPA",
+      "title": "QuickBooks Online 2026 full tutorial",
+      "niches": [
+        "bookkeeping",
+        "ecommerce"
+      ],
+      "time": "long",
+      "timeLabel": "1 hr 54 min",
+      "gain": "A working CPA walking through the current QuickBooks Online in one sitting. His older tutorials have far more views but are built on the 2019 interface, which has since moved on.",
+      "link": "https://www.youtube.com/watch?v=agXb0R2O66Q",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Intuit",
+      "title": "Get started in QuickBooks Online, quick tour",
+      "niches": [
+        "bookkeeping"
+      ],
+      "time": "short",
+      "timeLabel": "4 min",
+      "gain": "Four minutes to get oriented before you commit to anything longer. Watch this first, then Hector Garcia's full tutorial.",
+      "link": "https://www.youtube.com/watch?v=hQw7D7yrYyM",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Technology for Teachers and Students",
+      "title": "Google Sheets for Beginners, the complete course",
+      "niches": [
+        "ea",
+        "bookkeeping",
+        "tech",
+        "pm"
+      ],
+      "time": "medium",
+      "timeLabel": "56 min",
+      "gain": "A full Sheets course in under an hour: formulas, formatting, sorting, filtering and charts. Spreadsheets are the most requested VA skill and the one most people fake.",
+      "link": "https://www.youtube.com/watch?v=UvCANQhqsSw",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Simpletivity",
+      "title": "How to use Google Drive, beginner tutorial",
+      "niches": [
+        "ea",
+        "tech"
+      ],
+      "time": "short",
+      "timeLabel": "18 min",
+      "gain": "Folders, sharing, permissions and search. Getting a client's Drive organised is often the first thing you are handed, and doing it badly is very visible.",
+      "link": "https://www.youtube.com/watch?v=luH4t1kZ5CA",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Teacher's Tech",
+      "title": "How to use Google Docs, beginner tutorial",
+      "niches": [
+        "ea",
+        "writing"
+      ],
+      "time": "short",
+      "timeLabel": "33 min",
+      "gain": "Formatting, comments, suggesting mode, templates and sharing. Suggesting mode in particular is how you edit a client's document without overwriting their work.",
+      "link": "https://www.youtube.com/watch?v=U2ISJJQ1URw",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Simpletivity",
+      "title": "How to use Google Calendar, beginner tutorial",
+      "niches": [
+        "ea",
+        "pm"
+      ],
+      "time": "short",
+      "timeLabel": "19 min",
+      "gain": "Multiple calendars, invites, availability and time zones. Calendar work is the least glamorous and most trusted thing an assistant does.",
+      "link": "https://www.youtube.com/watch?v=XNGqA6I1b24",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Thomas Frank Explains",
+      "title": "Build a Notion task manager you will actually use",
+      "niches": [
+        "ea",
+        "pm",
+        "tech"
+      ],
+      "time": "long",
+      "timeLabel": "1 hr 35 min",
+      "gain": "A full build rather than a tour, so you finish with a working system instead of notes. Chosen over his older databases course because Notion's interface has changed enough to trip up a beginner following along.",
+      "link": "https://www.youtube.com/watch?v=H2IFv_GBdUQ",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Santrel Media",
+      "title": "Canva Tutorial for Beginners, full walkthrough",
+      "niches": [
+        "design",
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "1 video",
+      "gain": "One sitting takes you from opening Canva to building client graphics: templates, brand kit, text, backgrounds and exporting. Watch it once with Canva open in another tab and follow along.",
+      "link": "https://www.youtube.com/watch?v=UwThwHPgsIw",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Learn With Shopify",
+      "title": "The official Shopify tutorial for beginners",
+      "niches": [
+        "ecommerce",
+        "smm"
+      ],
+      "time": "medium",
+      "timeLabel": "50 min",
+      "gain": "Shopify's own walkthrough of setting up and running a store: products, orders, fulfilment and admin. This is what an eCommerce VA is actually asked to do.",
+      "link": "https://www.youtube.com/watch?v=roM3wlSqk1c",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / Simpletivity",
+      "title": "Clean up a Gmail inbox fast",
+      "niches": [
+        "ea",
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "8 min",
+      "gain": "Eight minutes on bulk-clearing a neglected inbox. Use this first on a messy client account, then set up a system with the email management video.",
+      "link": "https://www.youtube.com/watch?v=4Zv7CIhNdRE",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / The Futur",
+      "title": "How to price your work, full whiteboard session",
+      "niches": [
+        "design",
+        "writing",
+        "marketing"
+      ],
+      "time": "medium",
+      "timeLabel": "73 min",
+      "gain": "Pricing models worked through end to end on a whiteboard. Older than most things here, and it does not matter: pricing logic does not change the way software interfaces do.",
+      "link": "https://www.youtube.com/watch?v=6rZQPhXGOlk",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
+      "provider": "YouTube / The Futur",
+      "title": "When a client says your price is too high, role play",
+      "niches": [
+        "design",
+        "writing",
+        "marketing",
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "13 min",
+      "gain": "A role play of the exact moment your rate gets pushed back on. Watch this before your first discovery call, right after you practise saying your number out loud.",
+      "link": "https://www.youtube.com/watch?v=RFk8ZmIDrFM",
+      "added": "2026-09-08"
     },
     {
       "type": "cert",
+      "provider": "Google Skillshop",
+      "title": "Google Ads Search Certification",
+      "niches": [
+        "marketing",
+        "ecommerce"
+      ],
+      "time": "medium",
+      "timeLabel": "3-5 hrs",
+      "gain": "The paid-ads credential clients ask for most often. Free from study through to the certificate, no exam fee. Note it expires after about 12 months and you retake it free.",
+      "link": "https://skillshop.withgoogle.com/googleads",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Google Skillshop",
+      "title": "Google Analytics 4 Certification",
+      "niches": [
+        "marketing",
+        "tech",
+        "ecommerce"
+      ],
+      "time": "medium",
+      "timeLabel": "3-4 hrs",
+      "gain": "GA4 is the reporting layer behind almost every client dashboard you will be asked to build. Free exam, free certificate, renewed yearly.",
+      "link": "https://analytics.google.com/analytics/academy/",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Google Skillshop",
+      "title": "Gemini for Google Workspace Certification",
+      "niches": [
+        "ea",
+        "ai",
+        "tech"
+      ],
+      "time": "medium",
+      "timeLabel": "3-4 hrs",
+      "gain": "Using AI inside Gmail, Docs, Sheets and Drive, which is exactly the stack most executive assistants live in. One of the few free credentials aimed at admin work rather than marketing. Search the Skillshop catalog for the certification by name.",
+      "link": "https://skillshop.exceedlms.com/student/catalog/browse",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Google Skillshop",
+      "title": "Google Workspace Administration Certification",
+      "niches": [
+        "ea",
+        "tech"
+      ],
+      "time": "medium",
+      "timeLabel": "4-6 hrs",
+      "gain": "Managing users, shared drives, groups and permissions in Workspace. If you want to be the VA who owns a client's whole Google setup rather than just their inbox, this is the credential for it. Search the Skillshop catalog for the certification by name.",
+      "link": "https://skillshop.exceedlms.com/student/catalog",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot Academy",
+      "title": "Inbound Service Fundamentals",
+      "niches": [
+        "cs",
+        "ea"
+      ],
+      "time": "short",
+      "timeLabel": "2 hrs",
+      "gain": "Handling customers properly: the support framework, tone, and turning complaints into retention. Customer support is one of the easiest VA niches to get hired into and this is the clearest free credential for it.",
+      "link": "https://academy.hubspot.com/courses/inbound-service-fundamentals",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot Academy",
+      "title": "HubSpot CRM Certification",
+      "niches": [
+        "cs",
+        "ea",
+        "pm"
+      ],
+      "time": "short",
+      "timeLabel": "2 hrs",
+      "gain": "Contacts, companies, deals and tickets. CRM hygiene is a task clients hand to a VA early, and this is often listed as a preferred qualification in admin and operations postings.",
+      "link": "https://academy.hubspot.com/courses/hubspot-crm",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot Academy",
+      "title": "AI for Marketing",
+      "niches": [
+        "ai",
+        "marketing",
+        "smm"
+      ],
+      "time": "short",
+      "timeLabel": "2-3 hrs",
+      "gain": "Using AI for content, campaigns and personalisation without producing obvious slop. Free certificate, and a credible way to show clients you use these tools deliberately.",
+      "link": "https://academy.hubspot.com/courses/ai-marketing",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "HubSpot Academy",
+      "title": "Digital Marketing Certification",
+      "niches": [
+        "marketing",
+        "smm"
+      ],
+      "time": "medium",
+      "timeLabel": "4-5 hrs",
+      "gain": "The broad overview: strategy, channels, and how the pieces fit together. Useful if you want one credential that covers the whole field rather than a single channel.",
+      "link": "https://academy.hubspot.com/courses/digital-marketing",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "audit",
+      "provider": "HubSpot Academy",
+      "title": "Service Hub Software",
+      "niches": [
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "1-2 hrs",
+      "gain": "Help desk, knowledge base and customer feedback tools. The videos and quizzes are free, but be aware the certificate itself needs a paid HubSpot plan, so treat this as learning rather than a credential.",
+      "link": "https://academy.hubspot.com/courses/hubspot-service-software",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Semrush Academy",
+      "title": "SEO Crash Course with Brian Dean",
+      "niches": [
+        "marketing",
+        "writing"
+      ],
+      "time": "short",
+      "timeLabel": "50 min",
+      "gain": "The fastest credible SEO grounding you can get. Fifty minutes from Backlinko's founder, with a free certificate at the end. Do this before any longer SEO course.",
+      "link": "https://www.semrush.com/academy/courses/semrush-seo-crash-course-with-brian-dean/",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Semrush Academy",
+      "title": "Keyword Research Essentials",
+      "niches": [
+        "marketing",
+        "writing",
+        "ecommerce"
+      ],
+      "time": "medium",
+      "timeLabel": "2 hrs",
+      "gain": "How to find what people actually search for and turn it into a content plan. This is the skill clients pay content VAs for, and the free certificate proves you have it.",
+      "link": "https://www.semrush.com/academy/courses/keyword-research-course-with-greg-gifford/",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "cert",
+      "provider": "Semrush Academy",
+      "title": "Local SEO Essentials",
+      "niches": [
+        "marketing",
+        "ecommerce",
+        "cs"
+      ],
+      "time": "short",
+      "timeLabel": "1 hr",
+      "gain": "Google Business Profiles, local citations and near-me visibility. Most small-business clients care far more about this than national SEO, and few VAs offer it.",
+      "link": "https://www.semrush.com/academy/courses/local-seo-course-with-greg-gifford/",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "audit",
+      "provider": "Meta / Coursera",
+      "title": "Meta Social Media Marketing Professional Certificate",
+      "niches": [
+        "smm",
+        "marketing"
+      ],
+      "time": "long",
+      "timeLabel": "80+ hrs",
+      "gain": "Six courses built by Meta: social strategy, content management, ad fundamentals, Meta Ads Manager, measurement, and a capstone. Audit every lesson free. The certificate and the Meta Digital Marketing Associate exam need a paid subscription, though financial aid is available.",
+      "link": "https://www.coursera.org/professional-certificates/facebook-social-media-marketing",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "audit",
+      "provider": "Meta / Coursera",
+      "title": "Advertising with Meta",
+      "niches": [
+        "smm",
+        "marketing",
+        "ecommerce"
+      ],
+      "time": "long",
+      "timeLabel": "15 hrs",
+      "gain": "The single most useful course in the Meta series if you only do one. Structure campaigns in Ads Manager, build an ad against a real objective, and set budget, placement and schedule. Audit is free.",
+      "link": "https://www.coursera.org/learn/advertising-with-facebook",
+      "added": "2026-09-08"
+    },
+    {
+      "type": "course",
       "provider": "Meta",
-      "title": "Meta Certified Digital Marketing Associate",
+      "title": "Meta Blueprint free courses",
       "niches": [
         "smm",
         "marketing"
       ],
       "time": "medium",
-      "timeLabel": "~6 hrs",
-      "gain": "Facebook and Instagram ads fundamentals. Recognized by every business running Meta ads.",
+      "timeLabel": "self-paced",
+      "gain": "Meta's own training for Facebook and Instagram ads, free and current with Ads Manager. Be clear on what is free: the courses are, but the Meta Certified Digital Marketing Associate exam costs around $99, so treat this as learning rather than a credential. Needs a Facebook login.",
       "link": "https://www.facebook.com/business/learn/courses",
       "added": "2026-04-22"
     },
@@ -229,7 +674,7 @@
       "time": "short",
       "timeLabel": "~2 hrs",
       "gain": "Free Adobe design tool, alternative to Canva. Tutorials and guides.",
-      "link": "https://www.adobe.com/express/learn/tutorials",
+      "link": "https://www.adobe.com/learn/express",
       "added": "2026-04-22"
     },
     {
@@ -310,19 +755,6 @@
       "timeLabel": "varies",
       "gain": "Udemy often has free Premiere, DaVinci, and CapCut intro courses. Rotate in and out.",
       "link": "https://www.udemy.com/courses/search/?price=price-free&q=video+editing&sort=relevance",
-      "added": "2026-04-22"
-    },
-    {
-      "type": "course",
-      "provider": "YouTube",
-      "title": "Peter McKinnon's editing tutorials",
-      "niches": [
-        "video"
-      ],
-      "time": "short",
-      "timeLabel": "varies",
-      "gain": "Free, high-quality tutorials from one of the most watched video editors on YouTube. No cert but top-tier learning.",
-      "link": "https://www.youtube.com/@PeterMcKinnon",
       "added": "2026-04-22"
     },
     {
@@ -447,17 +879,17 @@
     },
     {
       "type": "course",
-      "provider": "Monday.com",
-      "title": "Monday.com Community Courses",
+      "provider": "YouTube / Metics Media",
+      "title": "monday.com tutorial for beginners",
       "niches": [
         "pm",
-        "tech"
+        "ea"
       ],
-      "time": "short",
-      "timeLabel": "~2 hrs",
-      "gain": "Monday.com basics, workflows, automation. Free through their learning platform.",
-      "link": "https://monday.com/helpcenter/monday-community-academy",
-      "added": "2026-04-22"
+      "time": "medium",
+      "timeLabel": "34 min",
+      "gain": "Boards, groups, automations and dashboards. Replaces monday.com's own academy, which now bounces every visitor to a sign-in page.",
+      "link": "https://www.youtube.com/watch?v=EKiOeLSxDBA",
+      "added": "2026-09-08"
     },
     {
       "type": "course",
