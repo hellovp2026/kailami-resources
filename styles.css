@@ -95,7 +95,7 @@ button { font-family: inherit; }
 
 /* ─── NAV ─── */
 nav {
-  position: sticky; top: 0; z-index: 100;
+  position: sticky; top: 0; z-index: 300;   /* must beat .mobile-menu (200) so the burger stays tappable */
   background: var(--nav-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);

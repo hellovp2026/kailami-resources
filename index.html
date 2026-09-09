@@ -760,7 +760,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 <div class="hero-card-visual">
 <div class="hcv-card hcv-1"><div class="hcv-dot lime"></div><div class="hcv-text">Portfolio.canva</div></div>
 <div class="hcv-card hcv-2"><div class="hcv-dot amber"></div><div class="hcv-text">Resume.docx</div></div>
-<div class="hcv-card hcv-3"><div class="hcv-dot blue"></div><div class="hcv-text">Contract.docs</div></div>
+<div class="hcv-card hcv-3"><div class="hcv-dot blue"></div><div class="hcv-text">Contract.docx</div></div>
 </div>
 </a>
 
@@ -1317,7 +1317,9 @@ I'll never share your email. By submitting, you agree to our <a href="privacy.ht
   burger.addEventListener('click', function () {
     setOpen(!document.body.classList.contains('menu-open'));
   });
-  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') setOpen(false);
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setOpen(false); burger.focus(); }
   });

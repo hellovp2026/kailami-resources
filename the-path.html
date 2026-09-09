@@ -753,7 +753,7 @@ const TASKS = [
     link: "niche-quiz.html", linkLabel: "Review my results" },
 
   { phase: 1, time: "40 min", title: "Set up your accounts. Upwork, OnlineJobs.ph, LinkedIn, Claude/ChatGPT",
-    detail: "Create accounts on <a href=\"https://www.upwork.com/\" target=\"_blank\" style=\"color: var(--accent);\">Upwork</a><a href=\"https://www.onlinejobs.ph/\" target=\"_blank\" style=\"color: var(--accent);\">OnlineJobs.ph</a> and <a href=\"https://www.linkedin.com/\" target=\"_blank\" style=\"color: var(--accent);\">LinkedIn</a>. Just the accounts for now, you'll build the profiles properly in phase 3.<br><br>Also set up a free <a href=\"https://claude.ai\" target=\"_blank\" style=\"color: var(--accent);\">Claude</a> or ChatGPT account. You'll use it for research, drafting and tidying up your writing.<br><br><strong>Don't skip LinkedIn.</strong> Later in this Path you'll be messaging dream clients there, and you can't do that from an empty account.",
+    detail: "Create accounts on <a href=\"https://www.upwork.com/\" target=\"_blank\" style=\"color: var(--accent);\">Upwork</a>, <a href=\"https://www.onlinejobs.ph/\" target=\"_blank\" style=\"color: var(--accent);\">OnlineJobs.ph</a> and <a href=\"https://www.linkedin.com/\" target=\"_blank\" style=\"color: var(--accent);\">LinkedIn</a>. Just the accounts for now, you'll build the profiles properly in phase 3.<br><br>Also set up a free <a href=\"https://claude.ai\" target=\"_blank\" style=\"color: var(--accent);\">Claude</a> or ChatGPT account. You'll use it for research, drafting and tidying up your writing.<br><br><strong>Don't skip LinkedIn.</strong> Later in this Path you'll be messaging dream clients there, and you can't do that from an empty account.",
     link: "https://www.onlinejobs.ph/", linkLabel: "Sign up on OnlineJobs.ph" },
 
   { phase: 1, time: "20 min", title: "Use the Rate Calculator to set your starting rate",
@@ -923,10 +923,10 @@ function writeCommitment() {
   const hours = p.dailyHours === '1-2' ? 'one to two hours a day'
               : p.dailyHours === '3-4' ? 'three to four hours a day'
               : p.dailyHours + ' hours a day';
-  el.innerHTML = '"I commit to spending <em>' + hours + '</em><em>'
+  el.innerHTML = '"I commit to spending <em>' + hours + '</em>, <em>'
     + p.daysPerWeek + ' days a week</em>, for the next <em>' + p.weeks
-    + ' weeks</em> \u2014 that is ' + days + ' working days. I will <em>not</em> quit halfway. '
-    + 'I will <em>not</em> wait for motivation. I will show up and do the work \u2014 even when it\'s hard, '
+    + ' weeks</em>, that is ' + days + ' working days. I will <em>not</em> quit halfway. '
+    + 'I will <em>not</em> wait for motivation. I will show up and do the work, even when it\'s hard, '
     + 'even when nobody\'s watching, even when I want to quit. I am building my own future, '
     + 'and nobody else will do this for me."';
 }
@@ -1052,7 +1052,7 @@ function renderPath() {
         const isDone = state.completedTasks.includes(task.globalIdx);
         return `
           <div class="day-card ${isDone ? 'done' : ''}">
-            <div class="day-head" onclick="toggleTask(${task.globalIdx})">
+            <div class="day-head" onclick="toggleTask(${task.globalIdx})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTask(${task.globalIdx});}" role="button" tabindex="0" aria-pressed="${isDone}" aria-label="${isDone ? 'Completed' : 'Not completed'}, press Enter to toggle">
               <div class="day-checkbox">
                 <svg fill="none" stroke="var(--bg)" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
               </div>
@@ -1227,7 +1227,9 @@ function doReset() {
   burger.addEventListener('click', function () {
     setOpen(!document.body.classList.contains('menu-open'));
   });
-  menu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') setOpen(false);
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.body.classList.contains('menu-open')) { setOpen(false); burger.focus(); }
   });
